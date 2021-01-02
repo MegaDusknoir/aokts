@@ -1,3 +1,16 @@
+关于这个版本  
+--------------------  
+这是基于 mullikine 的 Trigger Studio 1.2.2.79 所修改的 AOKTS。  
+  
+差异：  
+* 中文化。
+* Wololokingdoms 支持。
+* 更好的 Userpatch 1.5 支持。
+* ETP 支持。
+* 不再保证对 SWGB 的兼容性。  
+  
+**↓以下信息为翻译↓**
+
 关于 Trigger Studio (触发工作室)  
 --------------------  
   
