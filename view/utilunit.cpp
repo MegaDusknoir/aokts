@@ -35,11 +35,11 @@ bool print_name(wchar_t * buffer, size_t size, const Unit& u)
 }
 
 const wchar_t * warningSelchange =
-L"Changing player. Clear all currently selected items?";
+L"变更玩家。清除当前选定的所有项目？";
 
 /** Sorting **/
 
-const char *sorts[] = { "ID", "Name" };
+const char *sorts[] = { "ID", "名称" };
 
 struct UnitSortData
 {
@@ -177,24 +177,53 @@ void UnitList_FillGroup(HWND typebox, const UnitGroupLink *group)
 	}
 }
 
+inline std::string UnicodeToANSI(const std::wstring& str)
+{
+	char*  pElementText;
+	int    iTextLen;
+	iTextLen = WideCharToMultiByte(CP_ACP, 0,
+		str.c_str(),
+		-1,
+		nullptr,
+		0,
+		nullptr,
+		nullptr);
+ 
+	pElementText = new char[iTextLen + 1];
+	memset((void*)pElementText, 0, sizeof(char) * (iTextLen + 1));
+	::WideCharToMultiByte(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		pElementText,
+		iTextLen,
+		nullptr,
+		nullptr);
+ 
+	std::string strText;
+	strText = pElementText;
+	delete[] pElementText;
+	return strText;
+}
+
 std::string get_unit_full_name(UID id)
 {
     std::ostringstream ss;
     std::string name = "";
     PlayersUnit fu = find_map_unit(id);
     if (fu.u) {
-        std::wstring unitname(fu.u->getType()->name());
+        std::string unitname(UnicodeToANSI(fu.u->getType()->name()));
         switch (fu.player) {
             case 8:
-                ss << "gaia's ";
+                ss << "盖亚的";
                 break;
             default:
-                ss << "p" << fu.player + 1 << "'s ";
+                ss << "玩家" << fu.player + 1 << " 的";
         }
         ss << std::string(unitname.begin(), unitname.end());
         return ss.str();
     }
-    return "INVALID UNIT ID";
+    return "<无效单位 ID >";
 }
 
 bool valid_unit_id(UID id)
@@ -372,7 +401,7 @@ void HandleCommand(HWND dialog, WORD code, WORD id, HWND control)
 		        /* Warn user if there are currently items selected */
 		        if (SendMessage(unitbox, LB_GETSELCOUNT, 0, 0) > 0)
 			        code = MessageBoxW(dialog, warningSelchange,
-								        L"Player Change", MB_ICONWARNING | MB_YESNO);
+								        L"玩家变更", MB_ICONWARNING | MB_YESNO);
 
 		        /* Take appropriate action */
 		        if (code == IDYES)

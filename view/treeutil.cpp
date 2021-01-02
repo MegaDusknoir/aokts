@@ -51,7 +51,7 @@ void TreeView_AddChild(HWND treeview, LPARAM param, HTREEITEM parent, HTREEITEM 
 
 	if (TreeView_GetNextItem(treeview, parent, TVGN_PARENT))
 	{
-		printf("WARNING: TreeView_AddChild was not given a root parent.\n");
+		printf("警告：没有为TreeView_AddChild提供根父级。\n");
 		parent = TreeView_GetParent(treeview, parent);
 	}
 

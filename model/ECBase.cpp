@@ -2,7 +2,7 @@
 
 char const * players_ec[] =
 {
-	"", "GAIA", "Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8"
+	"<无>", "盖亚", "玩家 1", "玩家 2", "玩家 3", "玩家 4", "玩家 5", "玩家 6", "玩家 7", "玩家 8"
 };
 
 ECBase::ECBase(enum ECType c, long t, long s)

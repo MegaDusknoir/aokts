@@ -73,6 +73,7 @@ bool Setts::load()
 	showtrigfunction = GetPrivateProfileInt("Advanced", "ShowTriggerFunction", 0, path) != 0;
 	showdisplayorder = GetPrivateProfileInt("Advanced", "ShowDisplayOrder", 1, path) != 0;
 	showtrigids = GetPrivateProfileInt("Advanced", "ShowTriggerIDs", 1, path) != 0;
+	wkmode = GetPrivateProfileInt("Advanced", "WololokingdomsMode", 0, path) != 0;
 	editall = GetPrivateProfileInt("Advanced", "EditAll", 0, path) != 0;
 	nowarnings = GetPrivateProfileInt("Advanced", "NoWarnings", 1, path) != 0;
 	drawconds = GetPrivateProfileInt("Advanced", "DrawConds", 1, path) != 0;

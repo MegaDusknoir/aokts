@@ -22,16 +22,16 @@ void TrigScrawlVisitor::visit(Trigger& t)
 
     _ss << t.getIDName(true) << " ";
     if (!t.state) {
-        _ss << "(off) ";
+        _ss << "(¹Ø) ";
     }
     if (t.loop) {
-        _ss << "Looping";
+        _ss << "Ñ­»·";
     } else {
-        _ss << "Trigger";
+        _ss << "´¥·¢";
     }
     const char * name = t.name;
     if (strlen(name) > 0)
-        _ss << ": " << name;
+        _ss << "£º" << name;
     _ss << NEWLINE;
 }
 
@@ -39,14 +39,14 @@ void TrigScrawlVisitor::visit(Effect& e)
 {
     const char * NEWLINE = "\r\n";
 
-	_ss << "\tE: " << e.getName().c_str() << ": " << e.getName(true, NameFlags::NONE, 1).c_str() << NEWLINE;
+	_ss << "\tE: " << e.getName().c_str() << "£º" << e.getName(true, NameFlags::NONE, 1).c_str() << NEWLINE;
 }
 
 void TrigScrawlVisitor::visit(Condition& c)
 {
     const char * NEWLINE = "\r\n";
 
-	_ss << "\tC: " << c.getName().c_str() << ": " << c.getName(true, NameFlags::NONE, 1).c_str() << NEWLINE;
+	_ss << "\tC: " << c.getName().c_str() << "£º" << c.getName(true, NameFlags::NONE, 1).c_str() << NEWLINE;
 }
 
 void TrigScrawlVisitor::visitEnd(Trigger&)

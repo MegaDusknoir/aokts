@@ -35,13 +35,13 @@ unsigned int c_index = UINT_MAX; // UINT_MAX is "no selection" value
 const char *rotates[NUM_ROTATES] = { "0/4", "1/4", "2/4", "3/4", "4/4", "5/4", "6/4", "7/4" };
 
 const char szTitle[] =
-"Unit Editor";
+"单位编辑器";
 const char errorUnfoundUnit[] =
-"Could not find unit to load. I most likely incorrectly deleted a unit.";
+"找不到要加载的单位。可能因为错误地删除了一个单位。";
 const char errorUnfoundType[] =
-"You have some strange units on this map, my friend. Unpredictable results may occur.";
-const char warningNoSelDelete[] = "No unit selected! Deleting aborted.";
-const char warningNoSelChangeOwnership[] = "No unit selected! Change ownership aborted.";
+"地图含有未知的单位。可能会出现不可预测的结果。";
+const char warningNoSelDelete[] = "未选择单位！删除已中止。";
+const char warningNoSelChangeOwnership[] = "未选择单位！所有权更改已中止。";
 
 inline int truncate(float x)
 {
@@ -186,6 +186,7 @@ void Units_Save(HWND dialog)
 	}
 
 	c_index = type_index;	//update this even if no unit selected
+	if (type_index == UINT_MAX) type_index++;//如果类型栏未选取则强制选取0 防止崩溃
 	UnitLink *type = (UnitLink*)SendMessage(typebox, LB_GETITEMDATA, type_index, 0);
 	if (type)
 		SetWindowText(ttext, type->id());
@@ -194,10 +195,46 @@ void Units_Save(HWND dialog)
 }
 
 void UnitList_ChangeType(HWND dialog, HWND typebox)
-{
+/*{
     unsigned int type_index = SendMessage(typebox, LB_GETCURSEL, 0, 0);
 	c_index = type_index;
+}*/
+{
+	HWND selbox, ttext;
+	
+	selbox = GetDlgItem(dialog, IDC_U_SELU);
+	ttext  = GetDlgItem(dialog, IDC_U_CONST);
+	enum Sorts sort =
+		(enum Sorts)SendDlgItemMessage(dialog, IDC_U_SORT, CB_GETCURSEL, 0, 0);
+
+	unsigned int type_index = SendMessage(typebox, LB_GETCURSEL, 0, 0);
+
+	// If it's a new constant, update selected unit.
+	if (type_index != c_index && u_index != SIZE_MAX)
+	{
+		vector<Unit>& units = propdata.p->units; // for convenience
+
+		// Get index of selected unit in listbox
+		unsigned int selected_index = SendMessage(selbox, LB_GETCURSEL, 0, 0);
+
+		Unit& u = units[u_index];
+
+		Units_Save(dialog);
+
+		//then "update" the string in the selection box
+		SendMessage(selbox, LB_DELETESTRING, selected_index, 0);
+		selected_index = UnitList_InsertItem(selbox, sort, units, &u);
+		SendMessage(selbox, LB_SETCURSEL, selected_index, 0);
+	}
+
+	c_index = type_index;	//update this even if no unit selected
+	UnitLink *type = (UnitLink*)SendMessage(typebox, LB_GETITEMDATA, type_index, 0);
+	if (type)
+		SetWindowText(ttext, type->id());
+	else
+		SetWindowTextW(ttext, L"ERR");
 }
+
 
 void Units_Reset(HWND dialog)
 {
@@ -207,7 +244,7 @@ void Units_Reset(HWND dialog)
 		GetDlgItem(dialog, IDC_U_SELU),
 		sort,
 		propdata.p->units);
-	u_index = SIZE_MAX;
+	//u_index = SIZE_MAX;
 	ENABLE_WND(IDC_U_DEL, false);
 	Units_DisableChangeOwnership(dialog);
 	ENABLE_WND(IDC_U_DESELECT, false);
@@ -636,7 +673,7 @@ BOOL Units_HandleInit(HWND dialog)
 	SendDlgItemMessage(dialog, IDC_U_SORT, CB_SETCURSEL, 0, 0);
 	SendDlgItemMessage(dialog, IDC_U_SELP, CB_SETCURSEL, propdata.pindex, 0);
 
-	LCombo_Fill(dialog, IDC_U_TYPE, esdata.unitgroups.head(), L"All");
+	LCombo_Fill(dialog, IDC_U_TYPE, esdata.unitgroups.head(), L"所有");
 	UnitList_FillGroup(GetDlgItem(dialog, IDC_U_UNIT), NULL);
 
 	//set edit control limits
@@ -652,7 +689,7 @@ void Units_HandleMapClick(HWND dialog, int x, int y)
 	if (u_index != SIZE_MAX)
 	{
 		Unit &u = propdata.p->units[u_index];
-		if (setts.nowarnings || (MessageBox(dialog, "Do you want to move the selected unit?", "Unit Editor", MB_YESNO) == IDYES))
+		if (setts.nowarnings || (MessageBox(dialog, "是否移动所选单位？", "单位编辑器", MB_YESNO) == IDYES))
 		{
 		    int ox = truncate(u.x);
 		    int oy = truncate(u.y);

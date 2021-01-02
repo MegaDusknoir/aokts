@@ -25,9 +25,9 @@ HWND tooltip;	//set with TooltipInit()
 static std::string makeUnhandledMessage(UINT msg, std::exception& ex)
 {
 	std::stringstream stream;
-	stream << "Unhandled exception while processing message "
+	stream << "处理消息 "
 		   << msg
-		   << ". Sorry, but I will now crash.\n\nDETAILS: "
+		   << " 时出现未处理的异常。抱歉，程序将停止运行。\n\n细节："
 		   << ex.what();
 	return stream.str();
 }
@@ -37,7 +37,7 @@ void unhandledExceptionAlert(HWND parent, UINT msg, std::exception& ex)
 	MessageBox(
 			parent,
 			makeUnhandledMessage(msg, ex).c_str(),
-			"Error",
+			"错误",
 			MB_ICONERROR);
 }
 
@@ -255,32 +255,34 @@ bool TSSetDlgItemInt(HWND hDlg, int nIDDlgItem, UINT uValue, BOOL bSigned) {
 const char * gameName(Game version) {
 	switch (version) {
 	case AOE:
-	    return "Age of Empires";
+	    return "帝国时代 1";
 	case ROR:
-	    return "Rise of Rome";
+	    return "罗马复兴";
 	case AOK:
-	    return "Age of Kings";
+	    return "国王时代";
 	case AOC:
-	    return "The Conquerors";
+	    return "征服者";
+	case ETP:
+	    return "征服者：ETP";
 	case UP:
-	    return "The Conquerors: UserPatch";
+	    return "征服者：UserPatch";
 	case AOHD:
-	    return "Age of Empires II: HD Edition 3.9";
+	    return "帝国时代 II: HD Edition 3.9";
 	case AOF:
-	    return "The Forgotten 3.9";
+	    return "失落帝国 3.9";
 	case AOHD4:
-	    return "Age of Empires II: HD Edition 4.2";
+	    return "帝国时代 II: HD Edition 4.2";
 	case AOF4:
-	    return "The Forgotten 4.2";
+	    return "失落帝国 4.2";
 	case AOHD6:
-	    return "Age of Empires II: HD Edition 4.3 (2F)";
+	    return "帝国时代 II: HD Edition 4.3 (2F)";
 	case AOF6:
-	    return "The Forgotten 4.3 (2F)";
+	    return "失落帝国 4.3 (2F)";
 	case SWGB:
-	    return "Star Wars Galactic Battlegrounds";
+	    return "星球大战：银河战场";
 	case SWGBCC:
-	    return "Clone Campaigns";
+	    return "克隆战争";
 	default:
-	    return "Unknown";
+	    return "<未知>";
 	}
 }

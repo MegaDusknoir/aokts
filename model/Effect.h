@@ -22,6 +22,8 @@ struct EffectVirtualTypeUP {
 	    EnableTechnology,
 	    DisableTechnology,
 	    EnableTechnologyAnyCiv,
+		EnableTechnologyAndButtonAnyCiv,
+		TeleportObject,
 	    SetHP,
 	    HealObject,
 	    SetAggressive,
@@ -45,6 +47,8 @@ struct EffectVirtualTypeUP {
 	    MinAmount,
 	    CapHealthPart1,
 	    CapHealthPart2,
+		UpAttribute,
+		UpEffect,
 	    SetAISignal,
 	    SetAISharedGloal,
 	    EnableCheats,
@@ -144,23 +148,55 @@ struct EffectType {
 	    ChangeSpeed_UP,
 	        SnapView_SWGB = ChangeSpeed_UP,
 	        AttackMove_HD = ChangeSpeed_UP,
+	        ChangeSpeed_ETP = ChangeSpeed_UP,
 	    ChangeRange_UP,
 	        DisableAdvancedButtons_SWGB = ChangeRange_UP,
 	        ChangeArmor_HD = ChangeRange_UP,
+	        ChangeRange_ETP = ChangeRange_UP,
 	    ChangeMeleArmor_UP,
 	        ChangeRange_HD = ChangeMeleArmor_UP,
 	        EnableTech_SWGB = ChangeMeleArmor_UP,
+	        ChangeMeleArmor_ETP = ChangeMeleArmor_UP,
 	    ChangePiercingArmor_UP,
 	        ChangeSpeed_HD = ChangePiercingArmor_UP,
 	        DisableTech_SWGB = ChangePiercingArmor_UP,
-	    EnableUnit_SWGB,
-	        HealObject_HD = EnableUnit_SWGB,
-	    DisableUnit_SWGB,
-	        TeleportObject_HD = DisableUnit_SWGB,
-	    FlashUnit_SWGB,
-	        ChangeUnitStance_HD = FlashUnit_SWGB,
-	    InputOff_CC,
-	    InputOn_CC,
+	        ChangePiercingArmor_ETP = ChangePiercingArmor_UP,
+	    ChangeROF_ETP,
+	        EnableUnit_SWGB = ChangeROF_ETP,
+	        HealObject_HD = ChangeROF_ETP,
+	    DisableAdvancedButtons_ETP,
+	        DisableUnit_SWGB = DisableAdvancedButtons_ETP,
+	        TeleportObject_HD = DisableAdvancedButtons_ETP,
+	    ChangeArmorClass_ETP,
+	        FlashUnit_SWGB = ChangeArmorClass_ETP,
+	        ChangeUnitStance_HD = ChangeArmorClass_ETP,
+	    ChangeAttackClass_ETP,
+	        InputOff_CC = ChangeAttackClass_ETP,
+	    ChangeDefaultArmor_ETP,
+	        InputOn_CC = ChangeDefaultArmor_ETP,
+		ChangeResource_ETP,
+		ChangeObjectResource_ETP,
+		ChangeLineofSight_ETP,
+		ChangeWorkRate_ETP,
+		ChangeHeroStatus_ETP,
+		ChangeIconID_ETP,
+		AIScriptGoalOff_ETP,
+		ChangeVariable_ETP,
+		ResetAllVariables_ETP,
+		ChangeResourcebyVariable_ETP,
+		SaveVariablestoFile_ETP,
+		LoadVariablesfromFile_ETP,
+		Guard_ETP,
+		Follow_ETP,
+		Scout_ETP,
+		DisplayParsedInstructions_ETP,
+		SendParsedChat_ETP,
+		ParseObjectName_ETP,
+		RandomizeVariable_ETP,
+		PickRandomValue_ETP,
+		SaveValuetoVariable_ETP,
+		CreateObjectbyVariable_ETP,
+		ChangeObjectGraphics_ETP,
 	};
 };
 
@@ -206,6 +242,7 @@ public:
 	int getPlayer() const;
 	const char * getTypeName(size_t type, bool concise = false) const;
 	void setPlayer(int);
+	void setText(int, bool);
     bool get_valid_since_last_check();
     bool check_and_save();
 	bool check() const;
@@ -264,12 +301,14 @@ public:
     static const int NUM_EFFECTS_AOF4 = 37;
     static const int NUM_EFFECTS_AOF6 = 37;
     static const int NUM_EFFECTS_UP = 34;
+    static const int NUM_EFFECTS_ETP = 62;
     static const int NUM_EFFECTS_SWGB = 37;
     static const int NUM_EFFECTS_CC   = 39;
 
     static const int NUM_VIRTUAL_EFFECTS_AOK = 3;
     static const int NUM_VIRTUAL_EFFECTS_AOC = 9;
-    static const int NUM_VIRTUAL_EFFECTS_UP = 32;
+    static const int NUM_VIRTUAL_EFFECTS_UP = 36;
+    static const int NUM_VIRTUAL_EFFECTS_ETP = 36;
     static const int NUM_VIRTUAL_EFFECTS_AOHD = 6;
     static const int NUM_VIRTUAL_EFFECTS_AOF = 6;
     static const int NUM_VIRTUAL_EFFECTS_SWGB = 6;
@@ -278,6 +317,7 @@ public:
 	static const char* types_aok[NUM_EFFECTS_AOK];
 	static const char* types_aoc[NUM_EFFECTS_AOC];
 	static const char* types_up[NUM_EFFECTS_UP];
+	static const char* types_etp[NUM_EFFECTS_ETP];
 	static const char* types_aohd[NUM_EFFECTS_AOHD6];
 	static const char* types_aof[NUM_EFFECTS_AOF4];
 	static const char* types_swgb[NUM_EFFECTS_SWGB];
@@ -285,6 +325,7 @@ public:
 	static const char* types_short_aok[NUM_EFFECTS_AOK];
 	static const char* types_short_aoc[NUM_EFFECTS_AOC];
 	static const char* types_short_up[NUM_EFFECTS_UP];
+	static const char* types_short_etp[NUM_EFFECTS_ETP];
 	static const char* types_short_aohd[NUM_EFFECTS_AOHD6];
 	static const char* types_short_aof[NUM_EFFECTS_AOF4];
 	static const char* types_short_swgb[NUM_EFFECTS_SWGB];
@@ -293,6 +334,7 @@ public:
 	static const char* virtual_types_aok[NUM_VIRTUAL_EFFECTS_AOK];
 	static const char* virtual_types_aoc[NUM_VIRTUAL_EFFECTS_AOC];
 	static const char* virtual_types_up[NUM_VIRTUAL_EFFECTS_UP];
+	static const char* virtual_types_etp[NUM_VIRTUAL_EFFECTS_ETP];
 	static const char* virtual_types_aohd[NUM_VIRTUAL_EFFECTS_AOHD];
 	static const char* virtual_types_aof[NUM_VIRTUAL_EFFECTS_AOF];
 	static const char* virtual_types_swgb[NUM_VIRTUAL_EFFECTS_SWGB];

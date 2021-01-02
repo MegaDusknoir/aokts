@@ -12,7 +12,14 @@ void ChangePlayerVisitor::visit(Trigger&)
 
 void ChangePlayerVisitor::visit(Effect& e)
 {
-	if (e.getPlayer() > ECBase::GAIA_INDEX)
+	extern bool changemessage;
+	if (e.getPlayer() > ECBase::GAIA_INDEX + '0')
+		e.setText(_player, 0);//变换up-effect
+	else if ( (e.type == EffectType::DisplayInstructions || e.type == EffectType::ChangeObjectName || e.type == EffectType::SendChat) && changemessage) {
+		e.setText(_player, 1);//变换参数文本
+		e.setPlayer(_player);
+	}
+	else if (e.getPlayer() > ECBase::GAIA_INDEX)
 		e.setPlayer(_player);
 }
 

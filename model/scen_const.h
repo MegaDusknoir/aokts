@@ -30,6 +30,7 @@ enum Game
 	AOF4    = 11,
 	AOHD6   = 12,
 	AOF6    = 13,
+	ETP     = 20,
 	NOCONV  = 100
 };
 
@@ -131,7 +132,7 @@ const size_t N_PLAYERS = 8;
 
 const size_t NUM_STYPES   = 4;   // number of stockpile resource types
 const size_t NUM_CINEM	  = 4;
-const size_t MAX_TRIGNAME = 256; // before African Kingdoms this was 128 I think. Has it been changed again for unicode?
+const size_t MAX_TRIGNAME = 255; // before African Kingdoms this was 128 I think. Has it been changed again for unicode?
 const size_t MAX_TRIGNAME_SAFE_AOC = 127;
 const size_t MAX_TRIGNAME_SAFE_HD = 126;
 

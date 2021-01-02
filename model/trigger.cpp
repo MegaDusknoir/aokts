@@ -104,6 +104,35 @@ std::string Trigger::getIDName(bool both)
     return name;
 }
 
+inline std::string UnicodeToANSI(const std::wstring& str)
+{
+	char*  pElementText;
+	int    iTextLen;
+	iTextLen = WideCharToMultiByte(CP_ACP, 0,
+		str.c_str(),
+		-1,
+		nullptr,
+		0,
+		nullptr,
+		nullptr);
+ 
+	pElementText = new char[iTextLen + 1];
+	memset((void*)pElementText, 0, sizeof(char) * (iTextLen + 1));
+	::WideCharToMultiByte(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		pElementText,
+		iTextLen,
+		nullptr,
+		nullptr);
+ 
+	std::string strText;
+	strText = pElementText;
+	delete[] pElementText;
+	return strText;
+}
+
 /*
  * DON'T LET AOKTS GET RECURSIVE WITH TRIGGER HINTS (if one trigger's
  * name displays the name of another)
@@ -204,6 +233,10 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	        c_chance *= (iter->amount / 100.0f);
 	        continue;
 	    }
+		if ((scen.game == UP || scen.game == ETP) && iter->type == ConditionType::Chance_UP) {
+	        c_chance *= (iter->amount / 100.0f);
+	        continue;
+	    }
 	    n_conds++;
 	    last_cond = &(*iter);
 	    switch (iter->type) {
@@ -214,7 +247,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            c_n_owned = iter->amount;
 	            c_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (c_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     c_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -226,7 +259,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            c_n_not_owned = iter->amount;
 	            c_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (c_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     c_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -238,7 +271,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            c_n_owned = iter->amount;
 	            c_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (c_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     c_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -359,7 +392,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            e_create_unit = true;
 	            e_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (e_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     e_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -380,7 +413,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            player_decimated = iter->s_player;
 	            e_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (e_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     e_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -391,7 +424,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            e_remove_unit = true;
 	            e_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (e_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     e_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -402,7 +435,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 	            e_change_ownership = true;
 	            e_has_unit_type = iter->pUnit && iter->pUnit->id();
 	            if (e_has_unit_type) {
-                    std::wstring unitname(iter->pUnit->name());
+                    std::string unitname(UnicodeToANSI(iter->pUnit->name()));
                     e_unit_type_name = std::string(unitname.begin(), unitname.end());
                 }
             }
@@ -458,7 +491,7 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
         if (activated >= 0 && activated < scen.triggers.size()) {
             tempss << scen.triggers.at(activated).getIDName(true);
         } else {
-            tempss << "(INVALID ID " << activated << ")";
+            tempss << "(<无效> ID " << activated << ")";
         }
     }
     activated_name = tempss.str();
@@ -471,18 +504,18 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
         if (deactivated >= 0 && deactivated < scen.triggers.size()) {
             tempss << scen.triggers.at(deactivated).getIDName(true);
         } else {
-            tempss << "(INVALID ID " << activated << ")";
+            tempss << "(<无效> ID " << activated << ")";
         }
     }
     deactivated_name = tempss.str();
 
 	if (c_chance != 100) {
-	    ss << c_chance << "% of the time, ";
+	    ss << c_chance << "% 的概率，";
 	}
 
     if (only_one_cond && only_one_effect) {
-        ss << "If " << last_cond->getName(setts.displayhints, NameFlags::LIMITLEN);
-        ss << " then " << last_effect->getName(setts.displayhints, NameFlags::LIMITLEN, recursion - 1);
+        ss << "若" << last_cond->getName(setts.displayhints, NameFlags::LIMITLEN);
+        ss << " 则" << last_effect->getName(setts.displayhints, NameFlags::LIMITLEN, recursion - 1);
         goto theendnotext;
     }
 
@@ -503,88 +536,88 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
 
     if (timer > 0) {
         if (this->loop) {
-            ss << "every " << time_string(timer,false) << " ";
+            ss << "每 " << time_string(timer,false) << " ";
         } else {
-            ss << "after " << time_string(timer,false) << " ";
+            ss << "经过 " << time_string(timer,false) << " ";
         }
     }
 
     if (c_in_area && c_has_gold && e_buff && e_lose_gold) {
-        ss << "purchase buff for " << -gold_total << " gold";
+        ss << "以 " << -gold_total << " 黄金购买强化";
         goto theend;
     }
 
     if (c_in_area && c_has_gold && e_create_unit && e_lose_gold) {
         switch (buyer) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << buyer;
+            ss << "玩家" << buyer;
         }
-        ss << " buy " << e_unit_type_name << " for " << -gold_total << " gold";
+        ss << " 以 " << -gold_total << " 黄金购买 " << e_unit_type_name;
         goto theend;
     }
 
     if (c_in_area && c_has_gold && e_research && e_lose_gold) {
         switch (buyer) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << buyer;
+            ss << "玩家" << buyer;
         }
-        ss << " buy research for " << -gold_total << " gold";
+        ss << " 以 " << -gold_total << " 黄金购买科技";
         goto theend;
     }
 
     if (c_own_fewer && e_create_unit && e_has_unit_type) {
         switch (player) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player;
+            ss << "玩家" << player;
         }
-        ss << " spawn " << e_unit_type_name;
+        ss << " 产生定量 " << e_unit_type_name;
         goto theend;
     }
 
     if (c_x_units_killed) {
-        ss << "reward ";
+        ss << "当 ";
         switch (killer) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << killer;
+            ss << "玩家" << killer;
         }
-        ss << " " << victims << " kills";
+        ss << " 杀敌 " << victims << " 奖励";
         if (e_earn_resource) {
             switch (e_res_type) {
             case 0:
-                ss << " " << food_total << " food";
+                ss << " " << food_total << " 食物";
                 break;
             case 1:
-                ss << " " << wood_total << " wood";
+                ss << " " << wood_total << " 木材";
                 break;
             case 2:
-                ss << " " << stone_total << " stone";
+                ss << " " << stone_total << " 石料";
                 break;
             case 3:
-                ss << " " << gold_total << " gold";
+                ss << " " << gold_total << " 黄金";
                 break;
             }
         }
@@ -592,31 +625,31 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     }
 
     if (c_x_buildings_razed) {
-        ss << "reward ";
+        ss << "当 ";
         switch (killer) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << killer;
+            ss << "玩家" << killer;
         }
-        ss << " " << razings << " razings";
+        ss << " 摧毁 " << razings << " 奖励";
         if (e_earn_resource) {
             switch (e_res_type) {
             case 0:
-                ss << " " << food_total << " food";
+                ss << " " << food_total << " 食物";
                 break;
             case 1:
-                ss << " " << wood_total << " wood";
+                ss << " " << wood_total << " 木材";
                 break;
             case 2:
-                ss << " " << stone_total << " stone";
+                ss << " " << stone_total << " 石料";
                 break;
             case 3:
-                ss << " " << gold_total << " gold";
+                ss << " " << gold_total << " 黄金";
                 break;
             }
         }
@@ -624,31 +657,31 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     }
 
     if (c_object_destroyed) {
-        ss << "killing " << get_unit_full_name(vanquished_unit);
+        ss << "消灭 " << get_unit_full_name(vanquished_unit);
         if (e_earn_resource) {
-            ss << " earns ";
             switch (earner) {
             case -1:
-                ss << "p?";
+                ss << "玩家?";
                 break;
             case 0:
-                ss << "Gaia";
+                ss << "盖亚";
                 break;
             default:
-                ss << "p" << earner;
+                ss << "玩家" << earner;
             }
+            ss << " 获得 ";
             switch (e_res_type) {
             case 0:
-                ss << " " << food_total << " food";
+                ss << " " << food_total << " 食物";
                 break;
             case 1:
-                ss << " " << wood_total << " wood";
+                ss << " " << wood_total << " 木材";
                 break;
             case 2:
-                ss << " " << stone_total << " stone";
+                ss << " " << stone_total << " 石料";
                 break;
             case 3:
-                ss << " " << gold_total << " gold";
+                ss << " " << gold_total << " 黄金";
                 break;
             }
         }
@@ -656,72 +689,72 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     }
 
     if (c_own && c_has_unit_type && e_earn_resource) {
-        ss << c_n_owned << " " << c_unit_type_name << " generates ";
+        ss << c_n_owned << " " << c_unit_type_name << " 为 ";
         switch (player) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player;
+            ss << "玩家" << player;
         }
+		ss << " 生成";
         switch (e_res_type) {
         case 0:
-            ss << " " << food_total << " food";
+            ss << " " << food_total << " 食物";
             break;
         case 1:
-            ss << " " << wood_total << " wood";
+            ss << " " << wood_total << " 木材";
             break;
         case 2:
-            ss << " " << stone_total << " stone";
+            ss << " " << stone_total << " 石料";
             break;
         case 3:
-            ss << " " << gold_total << " gold";
+            ss << " " << gold_total << " 黄金";
             break;
         }
         goto theend;
     }
 
     if ((c_own || c_in_area) && c_has_unit_type && this->loop && timer > 0 && e_lose_resource) {
-        ss << "upkeep of ";
         switch (player) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player;
+            ss << "玩家" << player;
         }
-        ss << "'s " << c_n_owned << " " << c_unit_type_name << " costs ";
+        ss << " 的 " << c_n_owned << " " << c_unit_type_name << " 维护消耗 ";
         switch (e_res_type) {
         case 0:
-            ss << " " << -food_total << " food";
+            ss << " " << -food_total << " 食物";
             break;
         case 1:
-            ss << " " << -wood_total << " wood";
+            ss << " " << -wood_total << " 木材";
             break;
         case 2:
-            ss << " " << -stone_total << " stone";
+            ss << " " << -stone_total << " 石料";
             break;
         case 3:
-            ss << " " << -gold_total << " gold";
+            ss << " " << -gold_total << " 黄金";
             break;
         }
         goto theend;
     }
 
     if (only_one_cond && timer == -1) {
-        ss << "If " << last_cond->getName(setts.displayhints, NameFlags::LIMITLEN) << " ";
+        ss << "若" << last_cond->getName(setts.displayhints, NameFlags::LIMITLEN) << " ";
         if (c_own) {
             goto theendnotext;
         }
     } else {
         if (defeat) {
-            ss << "p" << deceased << " disconnected";
+            ss << "玩家" << deceased << " 断开连接";
             goto theend;
         }
     }
@@ -730,9 +763,9 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
         if (e_has_text) {
             ss << trim(std::string(text)) << ". ";
         } else if (e_create_unit) {
-            ss << "create " << e_unit_type_name << " ";
+            ss << "产生 " << e_unit_type_name << " ";
         } else if (deactivated >= 0) {
-            ss << "deactivate " << deactivated_name << " ";
+            ss << "关闭 " << deactivated_name << " ";
         }
 
         ss << "=> " << activated_name;
@@ -740,26 +773,26 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     }
 
     if (victory) {
-        ss << "victory to ";
         for (int i = 0; i < 9; i++) {
             if (victor[i])
-                ss << "p" << i << " ";
+                ss << "玩家" << i << " ";
         }
+        ss << "宣布胜利";
         goto theend;
     }
 
     if (c_in_area && e_remove_unit) {
         switch (player) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player;
+            ss << "玩家" << player;
         }
-        ss << " buy special";
+        ss << " 以单位购买";
         goto theend;
     }
     //if (c_has_gold) {
@@ -773,95 +806,95 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     //}
 
     if (e_change_ownership) {
-        ss << "convert ";
+        ss << "改权 ";
         switch (convertee) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << convertee;
+            ss << "玩家" << convertee;
         }
-        ss << " " << (e_has_unit_type?e_unit_type_name:"units");
+        ss << " " << (e_has_unit_type?e_unit_type_name:"单位");
         goto theend;
     }
 
     if (!e_set_hp_units.empty()) {
-        ss << "set hp of  " << e_set_hp_units << " to " << e_set_hp_value;
+        ss << "设定  " << e_set_hp_units << " 生命值为 " << e_set_hp_value;
         goto theend;
     }
 
     if (e_kill_object) {
-        ss << "kill ";
+        ss << "摧毁 ";
         switch (player_decimated) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player_decimated;
+            ss << "玩家" << player_decimated;
         }
-        ss << " " << (e_has_unit_type?e_unit_type_name:"units");
+        ss << " " << (e_has_unit_type?e_unit_type_name:"单位");
         goto theend;
     }
 
     if (e_create_unit) {
-        ss << "create ";
+        ss << "产生 ";
         switch (player) {
         case -1:
-            ss << "p?";
+            ss << "玩家?";
             break;
         case 0:
-            ss << "Gaia";
+            ss << "盖亚";
             break;
         default:
-            ss << "p" << player;
+            ss << "玩家" << player;
         }
-        ss << " " << (e_has_unit_type?e_unit_type_name:"units");
+        ss << " " << (e_has_unit_type?e_unit_type_name:"单位");
         goto theend;
     }
 
     if (e_nerf) {
-        ss << "nerf some units";
+        ss << "弱化单位";
         goto theend;
     }
 
     if (e_buff) {
-        ss << "buff some units";
+        ss << "强化单位";
         goto theend;
     }
 
     if (e_research) {
-        ss << "do research";
+        ss << "研究";
         goto theend;
     }
 
     if (e_remove_unit) {
-        ss << "remove some units";
+        ss << "移除物件";
         goto theend;
     }
 
     if (e_task) {
-        ss << "task some units";
+        ss << "指派物件";
         goto theend;
     }
 
     if (e_sound) {
-        ss << "sound " << " \"" << trim(std::string(sound_name)) << "\"";
+        ss << "播放音效 " << " 「" << trim(std::string(sound_name)) << "」";
         goto theend;
     }
 
     if (e_rename) {
-        ss << "rename " << " \"" << trim(std::string(text)) << "\"";
+        ss << "改名为 " << " 「" << trim(std::string(text)) << "」";
         goto theendnotext;
     }
 
     if (e_chat) {
-        ss << "message " << " \"" << trim(std::string(chat_text)) << "\"";
+        ss << "发送讯息 " << " 「" << trim(std::string(chat_text)) << "」";
         goto theendnotext;
     }
 
@@ -875,13 +908,19 @@ std::string Trigger::getName(bool tip, bool limitlen, int recursion)
     goto theend;
 theend:
     if (e_has_text) {
-        ss << " \"" << trim(std::string(text)) << "\"";
+        ss << " 「" << trim(std::string(text)) << "」";
     }
 
 theendnotext:
     result = ss.str();
+	
+	std::string temptrig = this->name;
+	if ( result.length() >= 197-( temptrig.length() ) ) {
+		result = result.substr( 0,197-( temptrig.length() ) ) + "...";
+	}
 
-    return limitlen?result.substr(0,200):result;
+	return result;
+    //return limitlen?result.substr(0,200-(temptrig.length())):result;
 }
 
 bool compare_effect_nametip(const Effect& first,
@@ -895,12 +934,12 @@ bool compare_effect_nametip(const Effect& first,
 
     // UP only -- change speed must come after create
     if (first.type == 30 && scen.ver2 == SV2_AOC_SWGB) {
-        s.insert (0, "create");
+        s.insert (0, "创建");
     }
 
     switch (first.type) {
     case (long)EffectType::RemoveObject: // must come before create (clear way for spawn)
-        s.insert (0, "creat ");
+        s.insert (0, "创建 ");
         break;
     case (long)EffectType::KillObject: // must come after create (hawk explosions)
     case (long)EffectType::DamageObject:
@@ -911,12 +950,12 @@ bool compare_effect_nametip(const Effect& first,
     case (long)EffectType::ChangeMeleArmor_UP:
     case (long)EffectType::ChangePiercingArmor_UP:
     case (long)EffectType::ChangeOwnership: // must come after create (non-convertible gaia)
-        s.insert (0, "create");
+        s.insert (0, "创建");
     }
 
     switch (second.type) {
     case (long)EffectType::RemoveObject: // must come before create (clear way for spawn)
-        s.insert (0, "creat ");
+        s.insert (0, "创建 ");
         break;
     case 14: // kill must come after create (hawk explosions)
     case (long)EffectType::DamageObject:
@@ -927,7 +966,7 @@ bool compare_effect_nametip(const Effect& first,
     case (long)EffectType::ChangeMeleArmor_UP:
     case (long)EffectType::ChangePiercingArmor_UP:
     case (long)EffectType::ChangeOwnership: // must come after create (non-convertible gaia)
-        t.insert (0, "create");
+        t.insert (0, "创建");
     }
 
 	// Windows doesn't support POSIX strcasecmp().
@@ -1151,7 +1190,7 @@ public:
 		int player = e.getPlayer();
 
 		// If player is GAIA or -1, skip this effect.
-		if (player > ECBase::GAIA_INDEX && player != _player)
+		if (player > ECBase::GAIA_INDEX && ( player<'0'?player:player-'0' ) != (_player<'0'?_player:_player-'0') )
 		{
 			if (!_player) // no player assigned yet?
 				_player = player;

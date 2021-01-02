@@ -264,9 +264,9 @@ void ESDATA::readUnitGroup(const XML_Char **attrs)
 	}
 
 	// TODO: any less-hardcoded way to do this?
-	if (!wcscmp(link->name(), L"Buildings"))
+	if (!wcscmp(link->name(), L"½¨Öþ"))
 		ug_buildings = link;
-	else if (!wcscmp(link->name(), L"Units"))
+	else if (!wcscmp(link->name(), L"µ¥Î»"))
 		ug_units = link;
 
 	unitgroups.push_back(link);
@@ -452,6 +452,8 @@ int ESDATA::getCount(enum ESD_GROUP group)
 		return aitype_count;
 	case ESD_terrains:
 		return terrain_count;
+	case ESD_civs:
+		return civ_count;
 	}
 
 	return 0;

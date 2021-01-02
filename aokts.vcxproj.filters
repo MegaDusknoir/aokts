@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Util">
+      <UniqueIdentifier>{6c1427e2-9a64-4c1b-a75f-0969bc97e3c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{171d99a3-5216-4d9b-a944-735633948e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{be112415-e11f-47df-894b-82557e42772f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util\Buffer.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\cpp11compat.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\helper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hsv.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MemBuffer.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\NullBuffer.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\utilio.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="view\utilui.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\winugly.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\zlibfile.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ChangePlayerVisitor.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Condition.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\datatypes.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ECBase.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Effect.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\esdata.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Player.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\scen.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\scen_const.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\trigger.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\TriggerVisitor.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\TrigScrawlVisitor.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\TrigXmlReader.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\TrigXmlVisitor.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Unit.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="view\cbit.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\ecedit.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\editors.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\LCombo.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\LinkListBox.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\mapview.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="util\settings.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\treeutil.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\utilunit.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="res\resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\helper.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\hsv.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\MemBuffer.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\NullBuffer.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\utilio.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="view\utilui.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\zlibfile.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ChangePlayerVisitor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Condition.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\datatypes.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ECBase.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Effect.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\esdata.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Player.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\scen.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\scen_const.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\trigger.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\TrigScrawlVisitor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\TrigXmlReader.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\TrigXmlVisitor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Unit.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="view\aiedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\aokts.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\campaignedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\cbit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\compatedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\conditionedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\disablesedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\effectedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\imedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\LCombo.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\LinkListBox.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\mapedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\mapinspect.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\mapview.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\playerctyedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\playeredit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\playersedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="util\settings.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\treeutil.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\trigedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\trigtextview.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\unitedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\utilunit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="view\victedit.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\_AGE2_X10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\AGE2_X10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\aokts.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\aokts_big.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bm0.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cond-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cond-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\effect-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\effect-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\loop-off-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\loop-off-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\loop-on-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\loop-on-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\swgbts.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\trig-off-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\trig-off-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\trig-on-bad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\trig-on-good.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\common.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -33,7 +33,7 @@ Condition::Condition(Buffer& b)
     ClipboardType::Value cliptype;
     b.read(&cliptype, sizeof(cliptype));
     if (cliptype != ClipboardType::CONDITION)
-        throw bad_data_error("Condition has incorrect check value.");
+        throw bad_data_error("条件检测值不正确。");
 
     b.read(&type, sizeof(type));
     b.read(&size, sizeof(size));
@@ -56,25 +56,54 @@ Condition::Condition(Buffer& b)
 std::string Condition::areaName() const {
     std::ostringstream convert;
     if (valid_full_map()) {
-        convert << " on the map";
+        convert << "整个地图";
     } else {
         if (valid_area_location()) {
-            convert << " at " << area.left << "," << area.top;
+            convert << "位于 (" << area.left << "," << area.top << ") ";
         } else {
-            convert << " in area " << area.left << "," << area.bottom << " [" << area.right - area.left + 1 << "x" << area.top - area.bottom + 1 << "]";
+            convert << "位于 (" << area.left << "," << area.bottom << ") 起的 [" << area.right - area.left + 1 << "x" << area.top - area.bottom + 1 << "] 区域内";
         }
     }
     return convert.str();
 }
 
+inline std::string UnicodeToANSI(const std::wstring& str)
+{
+	char*  pElementText;
+	int    iTextLen;
+	iTextLen = WideCharToMultiByte(CP_ACP, 0,
+		str.c_str(),
+		-1,
+		nullptr,
+		0,
+		nullptr,
+		nullptr);
+ 
+	pElementText = new char[iTextLen + 1];
+	memset((void*)pElementText, 0, sizeof(char) * (iTextLen + 1));
+	::WideCharToMultiByte(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		pElementText,
+		iTextLen,
+		nullptr,
+		nullptr);
+ 
+	std::string strText;
+	strText = pElementText;
+	delete[] pElementText;
+	return strText;
+}
+
 inline std::string unitTypeName(const UnitLink *pUnit) {
     std::ostringstream convert;
     if (pUnit && pUnit->id()) {
-        std::wstring unitname(pUnit->name());
+        std::string unitname(UnicodeToANSI(pUnit->name()));
         std::string un(unitname.begin(), unitname.end());
         convert << un;
     } else {
-        convert << "unit";
+        convert << "单位";
     }
     return convert.str();
 }
@@ -89,15 +118,18 @@ std::string Condition::selectedUnits() const {
         convert << unitTypeName(pUnit);
     } else if (class_selected || unit_type_selected) { // account for groups[0]={-1,None}
         if (class_selected && unit_type_selected) {
-            convert << "units of both class " << groups[group + 1].name;
-            convert << " and type " << utypes[utype + 1].name;
+            convert << "种属" << groups[group + 1].name;
+            convert << "的" << utypes[utype + 1].name;
+			convert << "单位";
         } else if (class_selected) {
-            convert << "units of class " << groups[group + 1].name;
+            convert << groups[group + 1].name;
+			convert << "种属";
         } else {
-            convert << "units of type " << utypes[utype + 1].name;
+            convert << utypes[utype + 1].name;
+			convert << "单位";
         }
     } else {
-        convert << "units";
+        convert << "单位";
     }
     if (!(object == -1 && !valid_unit_id(object))) {
         convert << " " << object << " (" << get_unit_full_name(object) << ")";
@@ -108,7 +140,7 @@ std::string Condition::selectedUnits() const {
 std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) const
 {
     if (!tip) {
-	    return (type < scen.pergame->max_condition_types) ? types[type] : "Unknown!";
+	    return (type < scen.pergame->max_condition_types) ? types[type] : "<未知>!";
 	} else {
 	    std::string stype = std::string("");
         std::ostringstream convert;
@@ -120,83 +152,80 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
             goto end;
         }
 
-	    if (scen.game == UP && reserved == -256 || (scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6) && reverse_hd == 1)
-	        convert << "not " ;
+	    if ( (scen.game == UP || scen.game == ETP) && reserved == -256 || (scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6) && reverse_hd == 1)
+	        convert << "未满足" ;
 
         switch (type) {
         case ConditionType::BringObjectToArea:
             convert << get_unit_full_name(object) << " " << object;
-            convert << " is" << areaName();
+            convert << " 到达" << areaName();
             stype.append(convert.str());
             break;
         case ConditionType::BringObjectToObject:
-            convert << get_unit_full_name(object) << " " << object << " is next to unit " << get_unit_full_name(u_loc) << " " << u_loc;
+            convert << get_unit_full_name(object) << " " << object << " 接近 " << get_unit_full_name(u_loc) << " " << u_loc;
             stype.append(convert.str());
             break;
         case ConditionType::OwnObjects:
         case ConditionType::OwnFewerObjects:
         case ConditionType::ObjectsInArea:
+            convert << areaName();
             switch (type) {
             case ConditionType::OwnObjects:
             case ConditionType::ObjectsInArea:
+				convert << "有";
                 if (amount == 0) {
-                    convert << "any number of";
+                    //convert << "any number of";
                 } else {
-                    convert << "at least " << amount;
+                    convert << "至少" << amount << " 个";
                 }
                 break;
             case ConditionType::OwnFewerObjects:
                 if (amount == 0) {
-                    convert << "no";
+                    convert << "没有";
                 } else {
-                    convert << "at most " << amount;
+                    convert << "不多于" << amount << " 个";
                 }
                 break;
             }
             convert << " " << selectedUnits();
-            convert << areaName();
             stype.append(convert.str());
             break;
         case ConditionType::DestroyObject:
-            convert << get_unit_full_name(object) << " is killed";
+            convert << get_unit_full_name(object) << " 被消灭";
             stype.append(convert.str());
             break;
         case ConditionType::CaptureObject:
-            convert << playerPronoun(player) << " captured " << get_unit_full_name(object);
+            convert << playerPronoun(player) << " 捕获 " << get_unit_full_name(object);
             stype.append(convert.str());
             break;
         case ConditionType::AccumulateAttribute:
             switch (res_type) {
             case 0: // Food accumulated
-                convert << playerPronoun(player) << " has " << amount << " food";
+                convert << playerPronoun(player) << " 累积 " << amount << " 食物";
                 break;
             case 1: // Wood accumulated
-                convert << playerPronoun(player) << " has " << amount << " wood";
+                convert << playerPronoun(player) << " 累积 " << amount << " 木材";
                 break;
             case 2: // Stone accumulated
-                convert << playerPronoun(player) << " has " << amount << " stone";
+                convert << playerPronoun(player) << " 累积 " << amount << " 石料";
                 break;
             case 3: // Gold accumulated
-                convert << playerPronoun(player) << " has " << amount << " gold";
+                convert << playerPronoun(player) << " 累积 " << amount << " 黄金";
                 break;
             case 20: // Units killed
-                if (amount == 1) {
-                    convert << playerPronoun(player) << " kills a unit";
-                } else {
-                    convert << playerPronoun(player) << " has killed " << amount << " units";
-                }
+                convert << playerPronoun(player) << " 杀敌 " << amount << " 名";
                 break;
             case 44: // Kill ratio
                 if (amount == 0) {
-                    convert << playerPronoun(player) << " has equal kills and deaths";
+                    convert << playerPronoun(player) << " 杀敌等于损失";
                 } else if (amount == 1) {
-                    convert << playerPronoun(player) << " has killed one more than lost";
+                    convert << playerPronoun(player) << " 杀敌超过损失 1 单位";
                 } else if (amount > 0) {
-                    convert << playerPronoun(player) << " has " << amount << " more kills than deaths";
+                    convert << playerPronoun(player) << " 杀敌超过损失 " << amount << " 单位";
                 } else if (amount == -1) {
-                    convert << playerPronoun(player) << " has lost one more unit than has killed";
+                    convert << playerPronoun(player) << " 损失超过杀敌 1 单位";
                 } else {
-                    convert << playerPronoun(player) << " has " << -amount << " more deaths than kills";
+                    convert << playerPronoun(player) << " 损失超过杀敌 " << -amount << " 单位";
                 }
                 break;
             default:
@@ -206,10 +235,10 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
 	                for (int i=0; list; list = list->next(), i++)
 	                {
 		                if (i == res_type) {
-                            std::wstring resname(list->name());
-		                    convert << playerPronoun(player) << "'s ";
+                            std::string resname(UnicodeToANSI(list->name()));
+		                    convert << playerPronoun(player) << " 的";
                             convert << std::string( resname.begin(), resname.end());
-                            convert << " >= " << amount;
+                            convert << " ≥ " << amount;
 		                    break;
 		                }
 	                }
@@ -220,113 +249,108 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
             break;
         case ConditionType::ResearchTehcnology:
             if (valid_technology_spec()) {
-                convert << playerPronoun(player) << " has tech ";
-                std::wstring techname(pTech->name());
+                convert << playerPronoun(player) << " 已研发科技 ";
+                std::string techname(UnicodeToANSI(pTech->name()));
                 convert << std::string( techname.begin(), techname.end());
-                convert << " researched";
             } else {
-                convert << "INVALID";
+                convert << " <无效> ";
             }
             stype.append(convert.str());
             break;
         case ConditionType::ResearchingTechnology:
             if (pTech && pTech->id()) {
-                convert << playerPronoun(player) << " is researching ";
-                std::wstring techname(pTech->name());
+                convert << playerPronoun(player) << " 正在研发科技 ";
+                std::string techname(UnicodeToANSI(pTech->name()));
                 convert << std::string( techname.begin(), techname.end());
             } else {
-                convert << "INVALID";
+                convert << " <无效> ";
             }
             stype.append(convert.str());
             break;
         case ConditionType::Timer:
-            convert << time_string(timer) << " has passed";
+            convert << "时间经过 " << time_string(timer);
             stype.append(convert.str());
             break;
         case ConditionType::ObjectSelected:
-            convert << "selected unit " << object;
+            convert << "选择单位 " << object;
             convert << " (" << get_unit_full_name(object) << ")";
             stype.append(convert.str());
             break;
         case ConditionType::AISignal:
             switch (ai_signal) {
             case -1034:
-                convert << "singleplayer / cheats enabled";
+                convert << "单人模式 / 允许作弊";
                 break;
             case -1036:
-                convert << "starting resources set to standard";
+                convert << "起始资源：标准";
                 break;
             case -1039:
-                convert << "regicide";
+                convert << "弑君模式";
                 break;
             case -1040:
-                convert << "deathmatch";
+                convert << "死亡竞赛";
                 break;
             case -70850:
-                convert << "one-click garrison";
+                convert << "单击驻扎模式";
                 break;
             default:
                 if (ai_signal >= -518 && ai_signal <= -7) {
                     int signal = ai_signal + 518;
                     int taunt_player = signal / 64;
                     int taunt_set_id = signal % 64;
-                    convert << "player " << taunt_player + 1 << " taunted " << taunt_set[taunt_set_id];
+                    convert << "玩家 " << taunt_player + 1 << " 送出嘲讽 " << taunt_set[taunt_set_id];
                 } else if (ai_signal >= -774 && ai_signal <= -519) {
-                    convert << "AI goal " << ai_signal + 774 << " achieved";
+                    convert << "达成 AI 目标 " << ai_signal + 774;
                 } else {
-                    convert << "AI signalled " << ai_signal;
+                    convert << "AI 信号 " << ai_signal;
                 }
             }
             stype.append(convert.str());
             break;
         case ConditionType::ObjectVisible:
-            convert << "unit " << object;
-            convert << " (" << get_unit_full_name(object) << ") is visible";
+            convert << "物件 " << object;
+            convert << " (" << get_unit_full_name(object) << ") 可视";
             stype.append(convert.str());
             break;
         case ConditionType::PlayerDefeated:
             if (player == 0) {
-                convert << "Gaia";
+                convert << "盖亚";
             } else {
                 convert << playerPronoun(player);
             }
-            convert << " is defeated";
+            convert << " 被击败";
             stype.append(convert.str());
             break;
         case ConditionType::ObjectHasTarget:
-            convert << "unit " << object << " (" << get_unit_full_name(object) << ") is targetting";
+            convert << object << " (" << get_unit_full_name(object) << ") ";
             if (null_location_unit()) {
-                convert << " something";
+                convert << "已有目标";
             } else {
-                convert << " " << u_loc << " (" << get_unit_full_name(u_loc) << ")";
+                convert << "目标为 " << u_loc << " (" << get_unit_full_name(u_loc) << ")";
             }
             stype.append(convert.str());
             break;
         case ConditionType::UnitsGarrisoned:
-            if (amount == 1) {
-                convert << "unit " << object << " (" << get_unit_full_name(object) << ") has " << amount << " units garrisoned";
-            } else {
-                convert << "unit " << object << " (" << get_unit_full_name(object) << ") has one unit garrisoned";
-            }
+            convert << object << " (" << get_unit_full_name(object) << ") 驻扎了 " << amount << " 个单位";
             stype.append(convert.str());
             break;
         case ConditionType::DifficultyLevel:
-            convert << "difficulty is ";
+            convert << "难度设定为 ";
             switch (amount) {
             case DifficultyLevel::Hardest:
-                convert << "Hardest";
+                convert << "极难";
                 break;
             case DifficultyLevel::Hard:
-                convert << "Hard";
+                convert << "难";
                 break;
             case DifficultyLevel::Moderate:
-                convert << "Moderate";
+                convert << "中等";
                 break;
             case DifficultyLevel::Standard:
-                convert << "Standard";
+                convert << "标准";
                 break;
             case DifficultyLevel::Easiest:
-                convert << "Easiest";
+                convert << "最易";
                 break;
             }
             stype.append(convert.str());
@@ -335,11 +359,11 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
             if (valid_player()) {
                 convert << playerPronoun(player) << " has " << amount << " units queued past the pop cap";
             } else {
-                convert << "INVALID";
+                convert << " <无效> ";
             }
             stype.append(convert.str());
             break;
-        case ConditionType::OwnFewerFoundations_SWGB: // Chance_HD:
+        case ConditionType::OwnFewerFoundations_SWGB: // Chance_HD://Civilization_UP:
             switch (scen.game) {
             case AOHD:
             case AOF:
@@ -347,9 +371,16 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
             case AOF4:
             case AOHD6:
             case AOF6:
-                convert << amount << "% chance ";
+                convert << "随机概率" << amount << "% ";
                 stype.append(convert.str());
                 break;
+			case ETP:
+			case UP:{
+					std::string civname(UnicodeToANSI(esdata.civs.getByIdSafe(amount)->name()));
+					convert << playerPronoun(player) << "为" << std::string( civname.begin(), civname.end()) << "文明";
+					stype.append(convert.str());
+					break;
+				}
             case SWGB:
             case SWGBCC:
                 if (valid_player()) {
@@ -370,12 +401,24 @@ std::string Condition::getName(bool tip, NameFlags::Value flags, int recursion) 
                 stype.append(convert.str());
                 break;
             default:
-                convert << amount << "UNKNOWN CONDITION";
+                convert << amount << "<未知条件>";
                 stype.append(convert.str());
             }
             break;
+		case ConditionType::Chance_UP://SelectedObjectsInArea_SWGB:
+			switch (scen.game) {
+			case ETP:
+			case UP:
+				convert << "随机概率" << amount << "% ";
+                stype.append(convert.str());
+                break;
+			default:
+				convert << amount << "<未知条件>";
+                stype.append(convert.str());
+			}
+			break;
         default:
-            stype.append((type < scen.pergame->max_condition_types) ? types_short[type] : "Unknown!");
+            stype.append((type < scen.pergame->max_condition_types) ? types_short[type] : "<未知>!");
         }
 
 end:
@@ -468,15 +511,23 @@ bool Condition::check() const
 	case ConditionType::OwnFewerObjects:
 		return (player >= 0 && amount >= 0 && valid_area());
 
-	case ConditionType::OwnFewerFoundations_SWGB: // Chance_HD:
+	case ConditionType::OwnFewerFoundations_SWGB: // Chance_HD://Civilization_UP:
 	    if (scen.game == AOHD || scen.game == AOF || scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6) {
 	        return (amount >= 0 && amount <= 100);
-	    } else {
-		    return (player >= 0 && amount >= 0 && valid_area());
 	    }
-
+		else { 
+			if (scen.game == UP || scen.game == ETP){
+				return (amount >= 0 && player >= 0);
+			}
+			else {
+				return (player >= 0 && amount >= 0 && valid_area());
+			}
+		}
 	case ConditionType::ObjectsInArea:
-	case ConditionType::SelectedObjectsInArea_SWGB:
+	case ConditionType::Chance_UP://SelectedObjectsInArea_SWGB
+		if (scen.game == UP || scen.game == ETP) {
+	        return (amount >= 0 && amount <= 100);
+	    }
 	case ConditionType::PoweredObjectsInArea_SWGB:
 		return (valid_area() && amount >= 0);
 
@@ -536,7 +587,7 @@ void Condition::read(FILE *in)
     readbin(in, &size);
 
     if (size < 0 || size > MAXFIELDS)
-        throw bad_data_error("Condition has incorrect size value.");
+        throw bad_data_error("条件长度不正确。");
 
 	size_t read = fread(&amount, sizeof(long), size, in);
 	if (read != (size_t)size)
@@ -610,79 +661,138 @@ void Condition::accept(TriggerVisitor& tv)
 
 const char *Condition::types_aok[] =
 {
-	"",
-	"Bring Object to Area",
-	"Bring Object to Object",
-	"Own Objects",
-	"Own Fewer Objects",
-	"Objects in Area",
-	"Destroy Object",
-	"Capture Object",
-	"Accumulate Attribute",
-	"Researched Technology",
-	"Timer",
-	"Object Selected",
-	"AI Signal",
-	"Player Defeated",
-	"Object Has Target",
-	"Object Visible",
-	"Object Not Visible",
-	"Researching Technology",
-	"Units Garrisoned",
-	"Difficulty Level",
-	"Chance",
+	"无",
+	"将物件带到指定区域",
+	"将物件带给指定物件",
+	"拥有物件数量大于等于",
+	"拥有物件数量小于等于",
+	"区域内的物件大于等于",
+	"消灭物件",
+	"捕获物件",
+	"堆积属性",
+	"研究科技",
+	"计时器",
+	"已选择物件",
+	"收到AI信号",
+	"玩家被击败",
+	"物件已有目标",
+	"物件可视",
+	"物件不可视",
+	"正研发科技",
+	"已驻扎单位",
+	"游戏难度",
+};
+
+const char *Condition::types_up[] =
+{
+	"无",
+	"将物件带到指定区域",
+	"将物件带给指定物件",
+	"拥有物件数量大于等于",
+	"拥有物件数量小于等于",
+	"区域内的物件大于等于",
+	"消灭物件",
+	"捕获物件",
+	"堆积属性",
+	"研究科技",
+	"计时器",
+	"已选择物件",
+	"收到AI信号",
+	"玩家被击败",
+	"物件已有目标",
+	"物件可视",
+	"物件不可视",
+	"正研发科技",
+	"已驻扎单位",
+	"游戏难度",
+	"文明",
+	"随机百分比",
+};
+
+const char *Condition::types_etp[] =
+{
+	"无",
+	"将物件带到指定区域",
+	"将物件带给指定物件",
+	"拥有物件数量大于等于",
+	"拥有物件数量小于等于",
+	"区域内的物件大于等于",
+	"消灭物件",
+	"捕获物件",
+	"堆积属性",
+	"研究科技",
+	"计时器",
+	"已选择物件",
+	"收到AI信号",
+	"玩家被击败",
+	"物件已有目标",
+	"物件可视",
+	"物件不可视",
+	"正研发科技",
+	"已驻扎单位",
+	"游戏难度",
+	"文明",
+	"随机百分比",
+	"地基数量小于等于",
+	"废墟数量小于等于",
+	"对战设定",
+	"触发激活",
+	"计算机玩家",
+	"变量值等于",
+	"变量值大于",
+	"科技状态",
 };
 
 const char *Condition::types_swgb[] =
 {
-	"",
-	"Bring Object to Area",
-	"Bring Object to Object",
-	"Own Objects",
-	"Own Fewer Objects",
-	"Objects in Area",
-	"Destroy Object",
-	"Capture Object",
-	"Accumulate Attribute",
-	"Researched Technology",
-	"Timer",
-	"Object Selected",
-	"AI Signal",
-	"Player Defeated",
-	"Object Has Target",
-	"Object Visible",
-	"Object Not Visible",
-	"Researching Technology",
-	"Units Garrisoned",
-	"Difficulty Level",
-	"Own Fewer Foundations",
-	"Selected Objects in Area",
+	"无",
+	"将物件带到指定区域",
+	"将物件带给指定物件",
+	"拥有物件数量大于等于",
+	"拥有物件数量小于等于",
+	"区域内的物件大于等于",
+	"消灭物件",
+	"捕获物件",
+	"堆积属性",
+	"研究科技",
+	"计时器",
+	"已选择物件",
+	"收到AI信号",
+	"玩家被击败",
+	"物件已有目标",
+	"物件可视",
+	"物件不可视",
+	"正研发科技",
+	"已驻扎单位",
+	"游戏难度",
+	"拥有地基数量小于等于",
+	"选择区域内的物件",
 };
 
 const char *Condition::types_cc[] =
 {
-	"",
-	"Bring Object to Area",
-	"Bring Object to Object",
-	"Own Objects",
-	"Own Fewer Objects",
-	"Objects in Area",
-	"Destroy Object",
-	"Capture Object",
-	"Accumulate Attribute",
-	"Researched Technology",
-	"Timer",
-	"Object Selected",
-	"AI Signal",
-	"Player Defeated",
-	"Object Has Target",
-	"Object Visible",
-	"Object Not Visible",
-	"Researching Technology",
-	"Units Garrisoned",
-	"Difficulty Level",
-	"Own Fewer Foundations",
-	"Selected Objects in Area",
+	"无",
+	"将物件带到指定区域",
+	"将物件带给指定物件",
+	"拥有物件数量大于等于",
+	"拥有物件数量小于等于",
+	"区域内的物件大于等于",
+	"消灭物件",
+	"捕获物件",
+	"堆积属性",
+	"研究科技",
+	"计时器",
+	"已选择物件",
+	"收到AI信号",
+	"玩家被击败",
+	"物件已有目标",
+	"物件可视",
+	"物件不可视",
+	"正研发科技",
+	"已驻扎单位",
+	"游戏难度",
+	"拥有地基数量小于等于",
+	"选择区域内的物件",
 	"Powered Objects in Area",
 	"Units Queued Past Pop Cap",
 };
@@ -690,26 +800,86 @@ const char *Condition::types_cc[] =
 const char *Condition::types_short_aok[] =
 {
 	"",
-	"Arrived",
-	"At Object",
-	"Own",
-	"Own Fewer",
-	"In Area",
-	"Destroyed",
-	"Captured",
-	"Accumulated",
-	"Researched",
-	"Time",
-	"Selected",
-	"AI Signal",
-	"Defeated",
-	"Targetting",
-	"Visible",
-	"Not Visible",
-	"Researching",
-	"Garrisoned",
-	"Difficulty",
-	"Chance",
+	"抵达区域",
+	"带给物件",
+	"拥有大于",
+	"拥有少于",
+	"区域内",
+	"消灭",
+	"捕获",
+	"堆积",
+	"研究",
+	"计时",
+	"选择",
+	"AI 信号",
+	"击败",
+	"已有目标",
+	"可视",
+	"不可视",
+	"正研究",
+	"已驻扎",
+	"难度",
+	"随机",
+};
+
+const char *Condition::types_short_up[] =
+{
+	"",
+	"抵达区域",
+	"带给物件",
+	"拥有大于",
+	"拥有少于",
+	"区域内",
+	"消灭",
+	"捕获",
+	"堆积",
+	"研究",
+	"计时",
+	"选择",
+	"AI 信号",
+	"击败",
+	"已有目标",
+	"可视",
+	"不可视",
+	"正研究",
+	"已驻扎",
+	"难度",
+	"文明",
+	"随机",
+};
+
+const char *Condition::types_short_etp[] =
+{
+	"",
+	"抵达区域",
+	"带给物件",
+	"拥有大于",
+	"拥有少于",
+	"区域内",
+	"消灭",
+	"捕获",
+	"堆积",
+	"研究",
+	"计时",
+	"选择",
+	"AI 信号",
+	"击败",
+	"已有目标",
+	"可视",
+	"不可视",
+	"正研究",
+	"已驻扎",
+	"难度",
+	"文明",
+	"随机",
+	"地基少于",
+	"废墟少于",
+	"对战设定",
+	"触发激活",
+	"计算机玩家",
+	"变量等于",
+	"变量大于",
+	"科技状态",
 };
 
 const char *Condition::types_short_swgb[] =
@@ -768,81 +938,98 @@ const char *Condition::types_short_cc[] =
 
 const char *Condition::virtual_types_aok[] = {
     "",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
 };
 
 const char *Condition::virtual_types_aoc[] = {
     "",
-    "Singleplayer / Cheats Enabled",
-    "Taunt",
-    "AI Script Goal",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
-    "Starting age: Standard",
-    "Starting resources: Standard",
-    "Regicide",
-    "Deathmatch",
-    //"One-click Garrison",
+    "单人模式 / 允许作弊",
+    "嘲讽音效",
+    "AI 脚本目标",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
+    "起始时代：标准",
+    "起始资源：标准",
+    "弑君模式",
+    "死亡竞赛",
+    //"单击进驻模式",
 };
 
 const char *Condition::virtual_types_aohd[] = {
     "",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
 };
 
 const char *Condition::virtual_types_aof[] = {
     "",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
 };
 
 const char *Condition::virtual_types_up[] = {
     "",
-    "Singleplayer / Cheats Enabled",
-    "Taunt",
-    "AI Script Goal",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
-    "Starting age: Standard",
-    "Starting resources: Standard",
-    "Regicide",
-    "Deathmatch",
-    //"One-click Garrison",
+    "单人模式 / 允许作弊",
+    "嘲讽音效",
+    "AI 脚本目标",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
+    "起始时代：标准",
+    "起始资源：标准",
+    "弑君模式",
+    "死亡竞赛",
+    //"单击进驻模式",
+};
+
+const char *Condition::virtual_types_etp[] = {
+    "",
+    "单人模式 / 允许作弊",
+    "嘲讽音效",
+    "AI 脚本目标",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
+    "起始时代：标准",
+    "起始资源：标准",
+    "弑君模式",
+    "死亡竞赛",
+    //"单击进驻模式",
 };
 
 const char *Condition::virtual_types_cc[] = {
     "",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
 };
 
 const char *Condition::virtual_types_swgb[] = {
     "",
-    "Difficulty: Hardest",
-    "Difficulty: Hard",
-    "Difficulty: Moderate",
-    "Difficulty: Standard",
-    "Difficulty: Easiest",
+    "难度：极难",
+    "难度：难",
+    "难度：中等",
+    "难度：标准",
+    "难度：最易",
 };
 
 const char *Condition::taunt_set[] = {

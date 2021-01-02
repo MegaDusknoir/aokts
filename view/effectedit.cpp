@@ -44,16 +44,16 @@ void MakeNSelectedString(int count, HWND dest)
 	int ret;
 	switch (count) {
 	case -1:
-	    ret = _snprintf(pos, maxbytes, "No units selected", count);
+	    ret = _snprintf(pos, maxbytes, "未选中单位", count);
 	    break;
 	case 0:
-	    ret = _snprintf(pos, maxbytes, "0 units selected", count);
+	    ret = _snprintf(pos, maxbytes, "选中 0 个单位：", count);
 	    break;
 	case 1:
-	    ret = _snprintf(pos, maxbytes, "1 unit selected:", count);
+	    ret = _snprintf(pos, maxbytes, "选中 1 个单位：", count);
 	    break;
 	default:
-	    ret = _snprintf(pos, maxbytes, "%d units selected:", count);
+	    ret = _snprintf(pos, maxbytes, "选中 %d 个单位：", count);
 	    break;
 	}
 	pos += ret;
@@ -165,42 +165,110 @@ const char etable1_10C[Effect::NUM_EFFECTS_AOC][EditEffect::N_CONTROLS] = // Usi
 };
 
 // AoC v1.4RC
-const char etable1_14RC[Effect::NUM_EFFECTS_UP][EditEffect::N_CONTROLS] = // Using 0 instead of -1 to waste less space
+const char etable1_15RC[Effect::NUM_EFFECTS_UP][EditEffect::N_CONTROLS] = // Using 0 instead of -1 to waste less space
 {	//0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// None
 	{ 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Change Diplomacy
-	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Research Technology
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Research Technology
 	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Send Chat
-	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Play Sound
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Play Sound
 	{ 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },	// Tribute
 	{ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Unlock Gate
 	{ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Lock Gate
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Activate Trigger
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Deactivate Trigger
 	{ 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// AI Script Goal
-	{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Create Object
-	{ 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Task Object
-	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Declare Victory
+	{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Create Object
+	{ 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Task Object
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Declare Victory
 	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Kill Object
 	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Remove Object
-	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Change View
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Change View
 	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0 },	// Unload
-	{ 0, 0, 0, 0, 2, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Ownership
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Ownership
 	{ 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Patrol
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Display Instructions
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Clear Instructions
-	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Freeze Unit
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Freeze Unit
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Use Advanced Buttons
 	{ 0, 2, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Damage Object
 	{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Place Foundation
-	{ 0, 0, 0, 0, 1, 0, 2, 2, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0 },	// Change Object Name
-	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Object HP
-	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Object Attack
-	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Stop Unit
+	{ 0, 0, 0, 0, 1, 0, 2, 2, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 2, 0, 0 },	// Change Object Name
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Object HP
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Object Attack
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Stop Unit
 	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Speed
 	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Range
 	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Mele Armor
 	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Piercing Armor
+};
+
+// AoC ETP
+const char etable1_ETP[Effect::NUM_EFFECTS_ETP][EditEffect::N_CONTROLS] = // Using 0 instead of -1 to waste less space
+{	//0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// None
+	{ 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Change Diplomacy
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Research Technology
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Send Chat
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Play Sound
+	{ 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },	// Tribute
+	{ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Unlock Gate
+	{ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Lock Gate
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Activate Trigger
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Deactivate Trigger
+	{ 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// AI Script Goal
+	{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Create Object
+	{ 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Task Object
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Declare Victory
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Kill Object
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Remove Object
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Change View
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0 },	// Unload
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Ownership
+	{ 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Patrol
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Display Instructions
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 },	// Clear Instructions
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Freeze Unit
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Use Advanced Buttons
+	{ 0, 2, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Damage Object
+	{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Place Foundation
+	{ 0, 0, 0, 0, 1, 0, 2, 2, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 2, 0, 0 },	// Change Object Name
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Object HP
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Change Object Attack
+	{ 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },	// Stop Unit
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Speed
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Range
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Mele Armor
+	{ 0, 1, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0 },	// Change Piercing Armor
+
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件攻击间隔
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 关闭高级按钮
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件指定类型护甲
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件指定类型攻击
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件基础护甲
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变资源量
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件资源量
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件视野
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件工作效率
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 设置物件英雄状态
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 设置物件图标
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 停止发送AI信号
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变变量值
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 清零所有变量
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变资源与变量值
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 保存变量为文件
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 从文件中读取变量
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 警戒
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 跟随
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 侦察
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 显示带参数的信息
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 送出带参数的交谈讯息
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 设置带参数的物件名称
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 生成随机值
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 从数组抽取随机值
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 将数值保存到变量
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 从变量产生物件
+	{ 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 },	// 改变物件图像
 };
 
 // AOHD
@@ -367,8 +435,11 @@ void EffectControls(HWND dialog, int type)
 	case AOC:
 	    table = etable1_10C[type];
 	    break;
+	case ETP:
+		table = etable1_ETP[type];
+	    break;
 	case UP:
-	    table = etable1_14RC[type];
+		table = etable1_15RC[type];
 	    break;
 	case AOHD:
 	case AOF:
@@ -426,9 +497,9 @@ void EffectControls(HWND dialog, int type)
 	SendMessage(control, EM_SETLIMITTEXT, i, 0);
 }
 
-const char *dnames[4] = { "Ally", "Neutral", "Unknown", "Enemy" };
-const char *pnames[4] = { "None (-1)", "Objectives (0)", "Hints (1)", "Scouts (2)" };
-const char *snames[5] = { "None (-1)", "Aggressive (0)", "Defensive (1)", "Stand Ground (2)", "No Attack (3)" };
+const char *dnames[4] = { "联盟", "中立", "未知", "敌对" };
+const char *pnames[4] = { "无 (-1)", "任务目标 (0)", "提示 (1)", "侦察 (2)" };
+const char *snames[5] = { "无 (-1)", "进攻状态 (0)", "防卫状态 (1)", "坚守状态 (2)", "不还击状态 (3)" };
 const wchar_t *noselecte = L"<none>";
 
 void E_Init(HWND dialog, EditEffect *data)
@@ -546,8 +617,27 @@ void LoadVirtualTypeEffects(HWND dialog, EditEffect *data) {
             break;
         }
         break;
+	case ETP:
     case UP:
         switch (e->type) {
+        case EffectType::ChangeObjectName:
+            if (e->panel >= 1) {
+				SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_SETCURSEL, EffectVirtualTypeUP::UpAttribute, 0);
+				return;
+            }
+            break;
+        case EffectType::TaskObject:
+            if (e->panel >= 1) {
+				SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_SETCURSEL, EffectVirtualTypeUP::TeleportObject, 0);
+				return;
+            }
+            break;
+        case EffectType::DisplayInstructions:
+            if (e->panel == 9) {
+				SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_SETCURSEL, EffectVirtualTypeUP::UpEffect, 0);
+				return;
+            }
+            break;
         case EffectType::ResearchTechnology:
             switch (e->panel) {
             case 1:
@@ -558,6 +648,9 @@ void LoadVirtualTypeEffects(HWND dialog, EditEffect *data) {
 	            return;
             case 3:
 	            SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_SETCURSEL, EffectVirtualTypeUP::EnableTechnologyAnyCiv, 0);
+	            return;
+            case 5:
+	            SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_SETCURSEL, EffectVirtualTypeUP::EnableTechnologyAndButtonAnyCiv, 0);
 	            return;
             }
             break;
@@ -967,15 +1060,47 @@ void E_HandleChangeVType(HWND dialog, EditEffect *data)
 	int newtype = SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_GETCURSEL, 0, 0);
 
     switch (scen.game) {
+	case ETP:
     case UP:
 	    switch (newtype) {
         case EffectVirtualTypeUP::None:
             // Use this to clear the virtual effectss
             switch (data->e.type) {
             case EffectType::ChangeView:
-                data->e.panel = -1;
+            case EffectType::ChangeObjectHP:
+            case EffectType::ChangeObjectAttack:
+            case EffectType::ResearchTechnology:
+            case EffectType::CreateObject:
+            case EffectType::ChangeOwnership:
+            case EffectType::TaskObject:
+            case EffectType::FreezeUnit:
+            case EffectType::StopUnit:
+            case EffectType::ChangeObjectName:
+				data->e.panel = 0;
                 break;
+            case EffectType::Sound:break;
             }
+            break;
+        case EffectVirtualTypeUP::EnableTechnologyAndButtonAnyCiv:
+	        data->e = Effect();
+            data->e.panel = 5;
+            data->e.type = EffectType::ResearchTechnology;;
+            break;
+        case EffectVirtualTypeUP::TeleportObject:
+	        data->e = Effect();
+            data->e.panel = 1;
+            data->e.type = EffectType::TaskObject;
+            break;
+        case EffectVirtualTypeUP::UpAttribute:
+	        data->e = Effect();
+            data->e.panel = 1;
+            data->e.type = EffectType::ChangeObjectName;
+            break;
+        case EffectVirtualTypeUP::UpEffect:
+	        data->e = Effect();
+            data->e.panel = 9;
+			data->e.disp_time = 99999;
+            data->e.type = EffectType::DisplayInstructions;
             break;
         case EffectVirtualTypeUP::EnableObject:
 	        data->e = Effect();
@@ -1114,7 +1239,7 @@ void E_HandleChangeVType(HWND dialog, EditEffect *data)
         if (newtype >= EffectVirtualTypeUP::SetControlGroup1 &&
                 newtype <= EffectVirtualTypeUP::SetControlGroup9) {
 	        data->e = Effect();
-            data->e.panel = newtype - 14;
+            data->e.panel = newtype - EffectVirtualTypeUP::SetControlGroup1 + 1;
             data->e.type = EffectType::StopUnit;
         }
         break;
@@ -1274,16 +1399,17 @@ void E_HandleChangeVType(HWND dialog, EditEffect *data)
 }
 
 const char warnInvalidE[] =
-"Watch out, this effect appears to be invalid.";
+"注意，该效果似乎是无效的。";
 
 const char warnWeirdResource[] =
-"The resource you selected is non-standard and may have unpredictable consequences.";
+"所选择资源不是标准资源，可能会产生不可预知的后果。";
 
 void E_HandleChangeHPCap(HWND dialog, EditEffect *data)
 {
 	int max_health = GetDlgItemInt(dialog, IDC_E_MAXHEALTH, NULL, TRUE);
 
     switch (scen.game) {
+	case ETP:
     case UP:
     case AOC:
     case AOHD:
@@ -1324,6 +1450,7 @@ void E_HandleChangeAISigSharedGoal(HWND dialog, EditEffect *data)
     // can't do this. it will crash
     // data->e.ai_goal = 5;
     switch (scen.game) {
+	case ETP:
     case UP:
     case AOC:
         switch (data->e.type) {
@@ -1359,6 +1486,18 @@ void E_HandleCommand(HWND dialog, WORD id, WORD code, HWND control)
 {
 	/* Most of them use this */
 	class EditEffect *data = (EditEffect*)GetWindowLongPtr(dialog, DWLP_USER);
+	//=======================up-effect即时翻译====================
+	extern std::string UpTranslate(std::string, bool, bool);
+	if (SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_GETCURSEL, 0, 0) == EffectVirtualTypeUP::UpEffect) {
+		char trans[_MAX_FNAME];
+		GetDlgItemText(dialog,IDC_E_TEXT,trans,_MAX_FNAME);
+		SetDlgItemText(dialog, IDC_E_TRANSLATE, UpTranslate(trans,TRUE,FALSE).c_str());
+	}
+	if (SendDlgItemMessage(dialog, IDC_E_VTYPE, CB_GETCURSEL, 0, 0) == EffectVirtualTypeUP::UpAttribute) {
+		char trans[_MAX_FNAME];
+		GetDlgItemText(dialog,IDC_E_TEXT,trans,_MAX_FNAME);
+		SetDlgItemText(dialog, IDC_E_TRANSLATE, UpTranslate(trans,TRUE,TRUE).c_str());
+	}
 
 	switch (code)
 	{
@@ -1403,7 +1542,7 @@ void E_HandleCommand(HWND dialog, WORD id, WORD code, HWND control)
 				valid = data->e.check_and_save();
 
 		        if (!valid && !setts.editall)
-					ret = MessageBox(dialog, warnInvalidE, "Effect Editor", MB_OKCANCEL);
+					ret = MessageBox(dialog, warnInvalidE, "效果编辑器", MB_OKCANCEL);
 
 				if (ret == IDOK)
 				{
@@ -1461,7 +1600,7 @@ void E_HandleCommand(HWND dialog, WORD id, WORD code, HWND control)
 			case IDC_E_RESTYPE:
 				if (SendMessage(control, CB_GETCURSEL, 0, 0) >= NUM_STYPES &&
 					setts.warnbits & WARN_WEIRDRESOURCE)
-					MessageBox(dialog, warnWeirdResource, "Warning", MB_ICONWARNING);
+					MessageBox(dialog, warnWeirdResource, "警告", MB_ICONWARNING);
 				break;
 
 			case IDC_E_TRIG:
@@ -1481,10 +1620,10 @@ void E_HandleCommand(HWND dialog, WORD id, WORD code, HWND control)
 }
 
 const char errorNoDataE[] =
-"No Data! Functionality will be impaired.";
+"没有数据！功能将被损坏。";
 
 const char noteTrigDeleted[] =
-"Selected trigger deleted.";
+"已删除所选触发。";
 
 /**
  * Initializes the trigger editor, namely the tree's image list, in response to
@@ -1496,7 +1635,7 @@ BOOL Handle_WM_INITDIALOG(HWND dialog, class EditEffect* data)
 
 	if (!data)
 	{
-		MessageBox(dialog, errorNoDataE, "Error", MB_ICONWARNING);
+		MessageBox(dialog, errorNoDataE, "错误", MB_ICONWARNING);
 		DestroyWindow(dialog);
         return FALSE;
 	}
@@ -1558,7 +1697,7 @@ INT_PTR CALLBACK EffectWndProc(HWND dialog, UINT msg, WPARAM wParam, LPARAM lPar
 			data->TrigCallback(combobox, data->e.trig_index);
 
 			if (wParam == data->e.trig_index)
-				MessageBox(dialog, noteTrigDeleted, "Effect Editor Notice", MB_OK);
+				MessageBox(dialog, noteTrigDeleted, "效果编辑器注意事项", MB_OK);
 		}
 		break;
 	}

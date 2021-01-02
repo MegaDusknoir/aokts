@@ -33,31 +33,29 @@ enum CLICK_STATES
 	CLICK_MMSetT	//sets x,y coords for map move rect to
 } click_state = CLICK_Default;
 
-const char *szMapTitle = "Map Editor";
+const char *szMapTitle = "地图编辑器";
 const char *szMapStatus =
-"Click \"Set...\" and then a point on the map to automatically fill values.";
+"单击「设定…」，然后单击地图上的一个点以自动填充坐标值。";
 
 #define NUM_SIZES 8
 const char *sizes[NUM_SIZES] =
 {
-	"Tiny (120)", "Small (144)", "Medium (168)", "Normal (200)", "Large (220)", "Giant (240)", "Max (255)", "Ludks (480)"
+	"微型 (120)", "小型 (144)", "中型 (168)", "标准 (200)", "大型 (220)", "巨大 (240)", "最大 (255)", "特大 (480)"
 };
 
 #define NUM_ELEVS 7
 const char *elevs[NUM_ELEVS] = { "0", "1", "2", "3", "4", "5", "6" };
 
 const char *warningTileHasReachedLimit =
-"Sorry, doing this will result in a tile having an elevation less than 0 or greater than 255.";
+"抱歉，这将导致地格的海拔小于 0 或大于 255 。";
 const char *warningExceededMaxSize =
-"Sorry, you have exceeded the maximum allowed mapsize. I will now set the mapsize to maximum.";
+"抱歉，已超过允许的最大地图尺寸。地图大小将设置为最大。";
 const char *warningSensibleRect =
-"Please make a sensible source rectangle. I fixed it for you this time, but\n"
-"don\'t expect me to be as nice in the future...";
+"请选定一个合理的矩形范围来源。已经进行修复，但不保证未来依然能够修复...";
 const char *warningMapCopyOverlap =
-"Sorry, I had to cancel your map copy because the source and destination areas\n"
-"overlapped. This may be supported in the future.";
+"抱歉，因为来源区域和目标区域重叠，地图复制操作已被取消。这在将来可能会得到支持。";
 const char *infoMapCopySuccess =
-"Map copy successful. (As far as I know... as always, check for bugs!)";
+"地图复制成功。（单方面判断，请确认是否有误。）";
 
 BOOL Mapedit_Reset(HWND dialog)
 {
@@ -366,7 +364,7 @@ void Map_HandleMapPaste(HWND dialog)
 		scen.map_paste(target, b);
 	}
 	else
-		MessageBox(dialog, "Could not paste clipboard data.",
+		MessageBox(dialog, "无法粘贴剪贴板数据。",
 			szMapTitle, MB_ICONWARNING);
 	GlobalUnlock(cbMem);
 
@@ -1066,48 +1064,48 @@ void Map_HandleCommand(HWND dialog, WORD code, WORD id, HWND)
 
 		case IDC_TR_SAVETILE:
 			Map_SaveTile(dialog);
-		    SetWindowText(propdata.statusbar, "Tile saved");
+		    SetWindowText(propdata.statusbar, "地格已保存");
 			break;
 
 		case IDC_TR_NORMALIZE_ELEV:
 		    Map_SaveTile(dialog);
 			Map_HandleNormalizeElevation(dialog);
-		    SetWindowText(propdata.statusbar, "Elevation of tile normalized");
+		    SetWindowText(propdata.statusbar, "地格海拔已修正");
 			break;
 
 		case IDC_TR_FLOOD:
 			Map_HandleFloodFill(dialog);
-		    SetWindowText(propdata.statusbar, "Filled terrain");
+		    SetWindowText(propdata.statusbar, "地形已填充");
 			break;
 
 		case IDC_TR_FLOOD_ELEV:
 			Map_HandleFloodFillElev(dialog);
-		    SetWindowText(propdata.statusbar, "Filled elevation");
+		    SetWindowText(propdata.statusbar, "海拔已填充");
 			break;
 
 		case IDC_TR_OUTLINE:
 			Map_HandleOutline(dialog);
-		    SetWindowText(propdata.statusbar, "Outlined terrain");
+		    SetWindowText(propdata.statusbar, "地形块已描边");
 			break;
 
 		case IDC_TR_OUTLINE_FORCE:
 			Map_HandleStrictOutline(dialog);
-		    SetWindowText(propdata.statusbar, "Outlined terrain");
+		    SetWindowText(propdata.statusbar, "地形块已描边");
 			break;
 
 		case IDC_TR_OUTLINE_EIGHT:
 			Map_HandleOutlineEight(dialog);
-		    SetWindowText(propdata.statusbar, "Outlined terrain");
+		    SetWindowText(propdata.statusbar, "地形块已描边");
 			break;
 
 		case IDC_TR_OUTLINE_FORCE_EIGHT:
 			Map_HandleStrictOutlineEight(dialog);
-		    SetWindowText(propdata.statusbar, "Outlined terrain");
+		    SetWindowText(propdata.statusbar, "地形块已描边");
 			break;
 
 		case IDC_TR_SWAP_TERRAIN_TYPES:
 			Map_HandleSwapTerrainTypes(dialog);
-		    SetWindowText(propdata.statusbar, "Swapped terrain types");
+		    SetWindowText(propdata.statusbar, "地形类型已交换");
 			break;
 		}
 

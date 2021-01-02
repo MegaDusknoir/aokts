@@ -44,7 +44,7 @@ Effect::Effect(Buffer &b)
     ClipboardType::Value cliptype;
     b.read(&cliptype, sizeof(cliptype));
     if (cliptype != ClipboardType::EFFECT)
-        throw bad_data_error("Effect has incorrect check value.");
+        throw bad_data_error("效果检测值不正确。");
 
     b.read(&type, sizeof(type));
     b.read(&size, sizeof(size));
@@ -122,7 +122,7 @@ void Effect::read(FILE *in)
     readbin(in, &size);
 
     if (size < 0 || size > MAXFIELDS)
-        throw bad_data_error("Effect has incorrect size value.");
+        throw bad_data_error("效果长度不正确。");
 
 	size_t read = fread(&ai_goal, sizeof(long), size, in);
 	if (read != (size_t)size)
@@ -177,12 +177,16 @@ void Effect::write(FILE *out)
 
 std::string pluralizeUnitType(std::string unit_type_name) {
     std::ostringstream convert;
-    replaced(unit_type_name, ", Unpacked", "");
+    replaced(unit_type_name, " 组装的", "");
+	/*中文不需要复数
     if (!unit_type_name.empty() && *unit_type_name.rbegin() != 's' && !replaced(unit_type_name, "man", "men")) {
         convert << unit_type_name << "s";
     } else {
         convert << unit_type_name;
     }
+	*/
+	convert << unit_type_name;
+
     return convert.str();
 }
 
@@ -191,25 +195,54 @@ std::string Effect::areaName() const {
     if (valid_area()) {
         if (valid_partial_map()) {
             if (valid_area_location()) {
-                convert << " at " << area.left << "," << area.top;
+                convert << "位于 (" << area.left << "," << area.top << ") ";
             } else {
-                convert << " in area " << area.left << "," << area.bottom << " [" << area.right - area.left + 1 << "x" << area.top - area.bottom + 1 << "]";
+                convert << "位于 (" << area.left << "," << area.bottom << ") 起的 [" << area.right - area.left + 1 << "x" << area.top - area.bottom + 1 << "] 区域内";
             }
         }
     } else {
-        convert << " in INVALID AREA";
+        convert << "位于 <无效区域> ";
     }
     return convert.str();
+}
+
+inline std::string UnicodeToANSI(const std::wstring& str)
+{
+	char*  pElementText;
+	int    iTextLen;
+	iTextLen = WideCharToMultiByte(CP_ACP, 0,
+		str.c_str(),
+		-1,
+		nullptr,
+		0,
+		nullptr,
+		nullptr);
+ 
+	pElementText = new char[iTextLen + 1];
+	memset((void*)pElementText, 0, sizeof(char) * (iTextLen + 1));
+	::WideCharToMultiByte(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		pElementText,
+		iTextLen,
+		nullptr,
+		nullptr);
+ 
+	std::string strText;
+	strText = pElementText;
+	delete[] pElementText;
+	return strText;
 }
 
 inline std::string unitTypeName(const UnitLink *pUnit) {
     std::ostringstream convert;
     if (pUnit && pUnit->id()) {
-        std::wstring unitname(pUnit->name());
+        std::string unitname(UnicodeToANSI(pUnit->name()));
         std::string un(unitname.begin(), unitname.end());
         convert << un;
     } else {
-        convert << "unit";
+        convert << "单位";
     }
     return convert.str();
 }
@@ -218,6 +251,7 @@ std::string Effect::selectedUnits() const {
     std::ostringstream convert;
     bool class_selected = group >= 0 && group < NUM_GROUPS - 1;
     bool unit_type_selected = utype >= 0 && utype < NUM_UTYPES - 1;
+    convert << areaName();
     if (s_player >= 0)
         convert << playerPronoun(s_player) << " ";
     if (pUnit && pUnit->id()) {
@@ -228,20 +262,22 @@ std::string Effect::selectedUnits() const {
         }
     } else if (class_selected || unit_type_selected) { // account for groups[0]={-1,None}
         if (class_selected && unit_type_selected) {
-            convert << "units of both class " << groups[group + 1].name;
-            convert << " and type " << utypes[utype + 1].name;
+            convert << "种属" << groups[group + 1].name;
+            convert << "的" << utypes[utype + 1].name;
+			convert << "单位";
         } else if (class_selected) {
-            convert << "units of type " << groups[group + 1].name;
+            convert << groups[group + 1].name;
+			convert << "种属";
         } else {
-            convert << "units of class " << utypes[utype + 1].name;
+            convert << utypes[utype + 1].name;
+			convert << "单位";
         }
     } else {
-        convert << "units";
+        convert << "单位";
     }
 	for (int i = 0; i < num_sel; i++) {
         convert << " " << uids[i] << " (" << get_unit_full_name(uids[i]) << ")";
 	}
-    convert << areaName();
     return convert.str();
 }
 
@@ -295,11 +331,495 @@ private:
 	UCNST _cnst;
 };
 
+std::string AbilityType(int ability) //可修改能力列表
+{
+	std::string abilityname;
+	switch ( ability ) {
+		case 0: abilityname = "生命值";break;
+		case 1: abilityname = "视野半径";break;
+		case 2: abilityname = "驻守容量";break;
+		case 3: abilityname = "面积半径 1";break;
+		case 4: abilityname = "面积半径 2";break;
+		case 5: abilityname = "移动速度";break;
+		case 6: abilityname = "旋转速度";break;
+		case 8: abilityname = "装甲值";break;
+		case 9: abilityname = "攻击力";break;
+		case 10: abilityname = "攻击间隔";break;
+		case 11: abilityname = "命中率";break;
+		case 12: abilityname = "最大射程";break;
+		case 13: abilityname = "工作效率";break;
+		case 14: abilityname = "携带资源量";break;
+		case 15: abilityname = "基本装甲";break;
+		case 16: abilityname = "投射物编号";break;
+		case 17: abilityname = "图示";break;
+		case 18: abilityname = "地形防御系数";break;
+		case 19: abilityname = "弹道学";break;
+		case 20: abilityname = "最小射程";break;
+		case 21: abilityname = "储存资源量";break;
+		case 22: abilityname = "波及半径";break;
+		case 23: abilityname = "索敌半径";break;
+		case 80: abilityname = "登舰气力回复速度";break;
+		case 100: abilityname = "花费成本";break;
+		case 101: abilityname = "建造时间";break;
+		case 102: abilityname = "进驻发射箭数";break;
+		case 103: abilityname = "食物成本";break;
+		case 104: abilityname = "木材成本";break;
+		case 105: abilityname = "黄金成本";break;
+		case 106: abilityname = "石料成本";break;
+		case 107: abilityname = "最大副投射物数量";break;
+		case 108: abilityname = "驻守单位回复速率";break;
+		case 30: abilityname = "接受进驻类型";break;
+		case 31: abilityname = "接纳进驻资源";break;
+		case 40: abilityname = "英雄模式";break;
+		case 41: abilityname = "帧延迟";break;
+		case 42: abilityname = "训练位置";break;
+		case 43: abilityname = "训练按钮";break;
+		case 44: abilityname = "攻击波及等级";break;
+		case 45: abilityname = "自愈间隔";break;
+		case 46: abilityname = "显示攻击力";break;
+		case 47: abilityname = "显示射程";break;
+		case 48: abilityname = "显示近战装甲";break;
+		case 49: abilityname = "显示远程装甲";break;
+		case 50: abilityname = "名称字串";break;
+		case 51: abilityname = "介绍字串";break;
+		case 53: abilityname = "地形限制";break;
+		case 54: abilityname = "特殊能力";break;
+		case 57: abilityname = "尸体单位";break;
+		default: abilityname = "<未知能力>";break;
+	}
+	return abilityname;
+}
+
+std::string ArmorType(int armor) //可修改能力列表
+{
+	std::string armortypename;
+	switch ( armor ) {
+		case -1: armortypename = "<无>";break;
+		case 0: armortypename = "<0>";break;
+		case 1: armortypename = "步兵";break;
+		case 2: armortypename = "龟船";break;
+		case 3: armortypename = "远程";break;
+		case 4: armortypename = "近战";break;
+		case 5: armortypename = "战象";break;
+		case 6: armortypename = "<6>";break;
+		case 7: armortypename = "<7>";break;
+		case 8: armortypename = "骑兵";break;
+		case 9: armortypename = "<9>";break;
+		case 10: armortypename = "<无用>";break;
+		case 11: armortypename = "建筑物";break;
+		case 12: armortypename = "<12>";break;
+		case 13: armortypename = "防御建筑";break;
+		case 14: armortypename = "猛兽";break;
+		case 15: armortypename = "弓兵";break;
+		case 16: armortypename = "船舰";break;
+		case 17: armortypename = "冲车";break;
+		case 18: armortypename = "树木";break;
+		case 19: armortypename = "特色单位";break;
+		case 20: armortypename = "攻城武器";break;
+		case 21: armortypename = "标准建筑";break;
+		case 22: armortypename = "城墙";break;
+		case 23: armortypename = "火药";break;
+		case 24: armortypename = "野猪";break;
+		case 25: armortypename = "僧侣";break;
+		case 26: armortypename = "城堡";break;
+		case 27: armortypename = "长枪兵";break;
+		case 28: armortypename = "骑射手";break;
+		case 29: armortypename = "鹰勇士";break;
+		case 30: armortypename = "骆驼";break;
+		case 31: armortypename = "<31>";break;
+		case 32: armortypename = "佣兵";break;
+		case 33: armortypename = "风琴炮弹";break;
+		case 34: armortypename = "渔船";break;
+		case 35: armortypename = "马穆鲁克";break;
+		default: armortypename = "<未知护甲>";break;
+	}
+	return armortypename;
+}
+
+std::string UpTranslate(std::string text, bool full, bool is_attribute) //up系列效果翻译 虽然想写得不那么硬 还是下次吧（
+{
+	std::ostringstream temp;	//原文
+	std::string trans;			//译文
+	char up_value_str[10];		//参数缓存
+	int loc = 0;				//字节计数
+	int i,j;
+	char t = 0;					//行计数
+	bool param_missed = 0;		//参数缺失记号
+	int tech_attacktype;		//攻击护甲类型
+
+	if(!is_attribute) {
+
+	//==============================up-effect效果====================================================
+
+		bool is_gaia;							//盖亚效果记号
+		int tech_para[]={ 0, 0, 0, 0, 0, 0 };	//玩家，科技，对象，属性，数值，比例
+		char tech_diplomacy;					//外交状态
+
+		while( loc != text.npos + 10 && t < (full?9:3) ) {
+			loc = text.find("up-effect ", loc) + 10;
+			if ( loc == text.npos + 10 ) break;
+			//==============================参数的取得====================================================
+			for(j=0; j<6; j++) {
+				while(!(text[loc] == '-' || ( text[loc] >= '0' && text[loc] <= '9' ))) {
+					loc++;
+					if (text[loc] == '\0' || text[loc] == '\n') {
+						param_missed = 1;
+						break;
+					}
+				}
+				if (param_missed) {
+					param_missed = 0;
+					break;
+				}
+				for( i=0 ; i<10 ; i++)
+					up_value_str[i] = '\0';
+				for( i=0 ; text[loc + i] == '-' || ( text[loc + i] >= '0' && text[loc + i] <= '9' ) ; i++) {
+					if ( i==10 ) { trans="<参数非法>";return trans; }
+					up_value_str[i]=text[loc + i];
+				}
+				loc += i;
+				tech_para[j] = atoi(up_value_str);
+			}
+			if (param_missed) temp << "<参数缺失>";
+	
+			//==============================参数的分析====================================================
+			//判定盖亚
+			if (tech_para[1] < 0) {
+				is_gaia = 1;
+				tech_para[1] = tech_para[1]*(-1) - 1;
+			}
+			else {
+				is_gaia = 0;
+			}
+			//判定组队
+			if (tech_para[1] > 9 && tech_para[1] < 40) {
+				tech_diplomacy = tech_para[1] / 10;
+				tech_para[1] %= 10;
+			}
+	
+			//判定参数1=======================================================================================
+			if (!tech_para[0]) {
+				if (is_gaia) {
+					temp << "盖亚";
+					tech_para[0] = 9;
+				}
+				else
+				{
+					temp << "所有人";
+				}
+			}
+			else {
+				temp << "玩家" << tech_para[0];
+			}
+			//判定参数2=====================================================================================
+			switch ( tech_diplomacy ) {
+			case 1: temp << "和盟友";break;
+			case 2: temp << "和中立";break;
+			case 3: temp << "和敌军";break;
+			default: break;
+			}
+			temp << " ";
+			switch ( tech_para[1] ) {
+			case 0:
+			case 4:
+			case 5: break;
+			case 3: temp << "升级 ";break;
+			case 2: 
+				if (!tech_para[3]) {
+					temp << "禁用 ";
+					break;
+				}
+				else {
+					temp << "启用 ";
+					break;
+				}
+			case 1:
+			case 6:
+			case 100:
+			case 101:
+			case 103: break;
+			case 102: temp << "禁用科技 ";break;
+			case 7: 
+				switch(tech_para[3]) {
+				case 0: temp << "禁用";break;
+				case 1: temp << "启用";break;
+				case 2: temp << "强制启用";break;
+				}
+				temp << "科技 ";
+				break;
+			case 8: 
+				switch(tech_para[3]) {
+				case -1:
+				case 0:
+				case 1:
+				case 2:
+				case 3: temp << "设定 ";break;
+				case -2:
+				case 16384:
+				case 16385:
+				case 16386:
+				case 16387: temp << "增加 ";break;
+				}
+				break;
+			case 9: temp << "玩家名称 ";break;
+			default: temp << "<未知> ";break;
+			}
+			//判定参数3=====================================================================================
+			switch ( tech_para[1] ) {
+			case 0:
+			case 4:
+			case 5://单位列表
+			case 2:
+				if ( tech_para[2] < 1000 && tech_para[2] >= 900 ) {
+					temp << groups[tech_para[2] - 900 + 1].name << "种属 ";
+				}
+				else {
+					temp << UnicodeToANSI(esdata.units.getByIdSafe(tech_para[2])->name()) << " ";
+				}
+				break;
+			case 3:temp << UnicodeToANSI(esdata.units.getByIdSafe(tech_para[2])->name()) << " ";break;
+			case 1:
+			case 6://资源列表
+				if (tech_para[2] >= 0) {
+					const Link * list = esdata.resources.head();
+		            for (int i=0; list; list = list->next(), i++)
+		            {
+						if (i == tech_para[2]) {
+							std::string resname(UnicodeToANSI(list->name()));
+							temp << std::string( resname.begin(), resname.end() );
+							break;
+			            }
+		            }
+		        }
+				temp << " ";
+				break;
+			case 100:
+			case 101:
+			case 103:
+			case 102:
+			case 7://科技列表
+			case 8: {
+				std::string wtechname;
+	            std::string techname;
+	            wtechname = std::string(UnicodeToANSI(esdata.techs.getByIdSafe(tech_para[2])->name()));
+				techname = std::string(wtechname.begin(), wtechname.end());
+				temp << techname;
+				   }
+				temp << " ";
+				break;
+			case 9: break;
+			default: temp << "<未知> ";break;
+			}
+			//判定参数4=====================================================================================
+			switch ( tech_para[1] ) {
+			case 0:
+			case 4:
+			case 5: {
+				switch ( tech_para[3] ) {
+				case 8:
+				case 9:break;
+				default: temp << AbilityType( tech_para[3] );
+				}
+					}
+			case 1:
+			case 103:
+			case 9:break;
+			case 100:
+			case 101: {
+				if (tech_para[3] >= 0) {
+					const Link * list = esdata.resources.head();
+		            for (int i=0; list; list = list->next(), i++) {
+						if (i == tech_para[3]) {
+							std::string resname(UnicodeToANSI(list->name()));
+							temp << std::string( resname.begin(), resname.end() );
+							break;
+			            }
+		            }
+				}
+					  }
+					temp << " ";break;
+			case 3: temp << "为 " << UnicodeToANSI(esdata.units.getByIdSafe(tech_para[3])->name()) << " ";//升级
+			case 2://启用/禁用物件
+			case 102://禁用科技
+			case 7: break;//启用科技
+			case 8://修改科技
+				switch(tech_para[3]) {
+				case -2:
+				case -1:temp << " 研发时间";break;
+				case 16384:
+				case 0: temp << " 食物成本 ";break;
+				case 16385:
+				case 1: temp << " 木材成本 ";break;
+				case 16386:
+				case 2: temp << " 石料成本 ";break;
+				case 16387:
+				case 3: temp << " 黄金成本 ";break;
+				}
+				break;
+			case 6: break;
+			default: temp << "<未知> ";break;
+			}
+			//参数5=====================================================================================
+			switch ( tech_para[1] ) {
+			case 0:
+			case 4:
+			case 5: {
+						if ( tech_para[3] == 9 || tech_para[3] == 8) {
+							tech_attacktype = tech_para[4] / 256;
+							tech_para[4] %= 256;
+							temp << ArmorType(tech_attacktype);
+							if ( tech_para[3] == 9 )
+								temp << "攻击";
+							else 
+								temp << "护甲";
+						}
+						switch ( tech_para[1] ) {
+						case 0:temp << " 设为 ";break;
+						case 4:temp << " 增加 ";break;
+						case 5:temp << " 乘以 ";break;
+						}
+						if (tech_para[5] != 2)temp << tech_para[4];
+					} break;
+			case 1:
+				if ( tech_para[3] ) {
+					temp << "增加 ";
+					if (tech_para[5] != 2)temp << tech_para[4];
+				}
+				else {
+					temp << "设为 ";
+					if (tech_para[5] != 2)temp << tech_para[4];
+				}
+				break;
+			case 6:temp << "乘以 "; if (tech_para[5] != 2)temp << tech_para[4];break;
+			case 103:temp << "研发时间设为 ";
+					 if (tech_para[5] != 2)
+						 temp << tech_para[4] / 100 << "." << (tech_para[4]%100<10&&tech_para[4]%100>-10?"0":"") << (tech_para[4] % 100);
+					 else 
+						 temp << tech_para[4];
+					 temp << "s";break;
+			case 9:temp << "设为字串" << tech_para[4] << "号";break;
+			case 100:temp << "成本设为 "; if (tech_para[5] != 2)temp << tech_para[4];break;
+			case 101:temp << "成本增加 "; if (tech_para[5] != 2)temp << tech_para[4];break;
+			case 7:
+			case 102: break;
+			case 8:temp << "为 "; if (tech_para[5] != 2)temp << tech_para[4];break;
+			case 3:
+			case 2: break;
+			default: temp << "<未知>";break;
+			}
+			//参数6=====================================================================================
+			if (tech_para[5] == 2)
+				if (tech_para[1] == 103)
+					temp << "<未知>";
+				else if (tech_para[1] == 8 || tech_para[1] == 102 || tech_para[1] == 7 || tech_para[1] == 3 || tech_para[1] == 2) ;
+				else 
+					temp << tech_para[4] / 100 << "." << (tech_para[4]%100<10&&tech_para[4]%100>-10?"0":"") << (tech_para[4] % 100);
+			t++;
+			if (full)
+				temp << "\r\n";
+			else
+				temp << " | ";
+		}
+	}
+	else {
+
+	//==============================up-attribute效果====================================================
+		
+		int tech_para[]={ 0, 0, 0, 0 };//模式，属性，数值，比例
+
+		while( loc != text.npos + 13 && t < (full?9:3) ) {
+			loc = text.find("up-attribute ", loc) + 13;
+			if ( loc == text.npos + 13 ) break;
+			//==============================参数的取得====================================================
+			for(j=0; j<4; j++) {
+				while(!(text[loc] == '-' || ( text[loc] >= '0' && text[loc] <= '9' ))) {
+					loc++;
+					if (text[loc] == '\0' || text[loc] == '\n') {
+						param_missed = 1;
+						break;
+					}
+				}
+				if (param_missed) {
+					param_missed = 0;
+					break;
+				}
+				for( i=0 ; i<10 ; i++)
+					up_value_str[i] = '\0';
+				for( i=0 ; text[loc + i] == '-' || ( text[loc + i] >= '0' && text[loc + i] <= '9' ) ; i++) {
+					if ( i==10 ) { trans="<参数非法>";return trans; }
+					up_value_str[i]=text[loc + i];
+				}
+				loc += i;
+				tech_para[j] = atoi(up_value_str);
+			}
+			if (param_missed) temp << "<参数缺失>";
+
+			//判定参数1=====================================================================================
+			switch ( tech_para[0] ) {
+			case 0: //设定单位能力
+			case 1: //增减单位能力
+			case 2: break;//乘除单位能力
+			default: temp << "<未知> ";break;
+			}
+
+			//判定参数2=====================================================================================
+			switch ( tech_para[0] ) {
+			case 0:
+			case 1:
+			case 2: {
+				switch ( tech_para[1] ) {
+				case 8:
+				case 9:break;
+				default: temp << AbilityType( tech_para[1] );
+				}
+					}
+					break;
+			default: temp << "<未知> ";break;
+			}
+
+			//参数3=====================================================================================
+			switch ( tech_para[0] ) {
+			case 0:
+			case 1:
+			case 2: {
+						if ( tech_para[1] == 9 || tech_para[1] == 8) {
+							tech_attacktype = tech_para[2] / 256;
+							tech_para[2] %= 256;
+							temp << ArmorType(tech_attacktype);
+							if ( tech_para[1] == 9 )
+								temp << "攻击";
+							else 
+								temp << "护甲";
+						}
+						switch ( tech_para[0] ) {
+						case 0:temp << " 设为 ";break;
+						case 1:temp << " 增加 ";break;
+						case 2:temp << " 乘以 ";break;
+						}
+						if (tech_para[3] != 2)temp << tech_para[2];break;
+					} break;
+			default: temp << "<未知>";break;
+			}
+			//参数4=====================================================================================
+			if (tech_para[3] == 2)
+				temp << tech_para[2] / 100 << "." << (tech_para[2]%100<10&&tech_para[2]%100>-10?"0":"") << (tech_para[2] % 100);
+			t++;
+			if (full)
+				temp << "\r\n";
+			else
+				temp << " | ";
+		}
+	}
+	if ( t == (full?9:3) ) temp << " ...";
+	trans = temp.str();
+	return trans;
+}
+
 std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) const
 {
     //printf_log("effect getName() parent trigger= %d.\n",parent_trigger_id);
     if (!tip) {
-	    return (type < scen.pergame->max_effect_types) ? getTypeName(type, false) : "Unknown!";
+	    return (type < scen.pergame->max_effect_types) ? getTypeName(type, false) : "<未知>!";
 	} else {
         std::string stype = std::string("");
         std::ostringstream convert;
@@ -311,49 +831,54 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
             break;
         case EffectType::ChangeDiplomacy:
             convert << playerPronoun(s_player);
+			convert << " 更改对 ";
+            convert << playerPronoun(t_player);
+			convert << " 的外交关系为 ";
             switch (diplomacy) {
             case 0:
-                convert << " allies with ";
+                convert << "联盟";
                 break;
             case 1:
-                convert << " becomes neutral to ";
+                convert << "中立";
                 break;
             case 2:
-                convert << " <INVALID DIPLOMACY> to ";
+                convert << "<无效外交关系>";
                 break;
             case 3:
-                convert << " declares war on ";
+                convert << "敌对";
                 break;
             }
-            convert << playerPronoun(t_player);
             stype.append(convert.str());
             break;
         case EffectType::ResearchTechnology:
             {
                 bool hastech = pTech && pTech->id();
-                std::wstring wtechname;
+                std::string wtechname;
                 std::string techname;
                 if (hastech) {
-                    wtechname = std::wstring(pTech->name());
+                    wtechname = std::string(UnicodeToANSI(pTech->name()));
                     techname = std::string(wtechname.begin(), wtechname.end());
                     if (panel >= 1 && panel <= 3) {
                         switch (panel) {
                         case 1:
-                            convert << "enable " << playerPronoun(s_player) << " to research " << techname;
+                            convert << playerPronoun(s_player) << "启用科技" << techname;
                             break;
                         case 2:
-                            convert << "disable " << playerPronoun(s_player) << " to research " << techname;
+                            convert << playerPronoun(s_player) << "禁用科技" << techname;
                             break;
                         case 3:
-                            convert << "enable " << playerPronoun(s_player) << " to research " << techname << " regardless of civ";
+                            convert << playerPronoun(s_player) << "无视文明启用科技" << techname;
+                            break;
+                        case 5:
+                            convert << playerPronoun(s_player) << "强行启用科技和按钮" << techname;
                             break;
                         }
                     } else {
                         convert << playerPronoun(s_player);
-                        convert << " researches " << techname;
+                        convert << "研究科技 " << techname;
                     }
                 } else {
-                    convert << "INVALID";
+                    convert << " <无效> ";
                 }
             }
             stype.append(convert.str());
@@ -362,16 +887,16 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
             switch (s_player) {
             case -1:
             case 0:
-                convert << "tell everyone";
+                convert << "向盖亚";
                 break;
             default:
-                convert << "tell p" << s_player;
+                convert << "向玩家" << s_player << " ";
             }
-            convert << " \"" << text.c_str() << "\"";
+            convert << "送出讯息「" << text.c_str() << "」";
             stype.append(convert.str());
             break;
         case EffectType::Sound:
-            convert << "play sound " << sound.c_str();
+            convert << "播放音效 " << sound.c_str();
             stype.append(convert.str());
             break;
         case EffectType::SendTribute:
@@ -389,44 +914,40 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                 if (amount >= 0) {
                     convert << playerPronoun(s_player);
                     if (t_player == 0) {
-                        convert << " loses";
+                        convert << "失去";
                     } else {
-                        convert << " gives ";
-                        convert << "p" << t_player;
+                        convert << "进贡";
+                        convert << "玩家" << t_player;
                     }
-                    convert << " " << amount_string << " ";
+                    convert << " " << amount_string;
                 } else {
                     if (t_player == 0) {
                         if (res_type < 4) {
-                            convert << "p" << s_player << " silently gets " << amount_string << " ";
+                            convert << "玩家" << s_player << "获得 " << amount_string;
                         } else {
-                            convert << "p" << s_player << " gets " << amount_string << " ";
+                            convert << "玩家" << s_player << "获得 " << amount_string;
                         }
                     } else {
-                        convert << "p" << t_player << " silently gives ";
+                        convert << "玩家" << t_player << "静默进贡";
                         convert << playerPronoun(s_player);
-                        convert << " " << amount_string << " ";
+                        convert << " " << amount_string;
                     }
                 }
                 switch (res_type) {
                 case 0: // Food
-                    convert << "food";
+                    convert << "食物";
                     break;
                 case 1: // Wood
-                    convert << "wood";
+                    convert << "木材";
                     break;
                 case 2: // Stone
-                    convert << "stone";
+                    convert << "石料";
                     break;
                 case 3: // Gold
-                    convert << "gold";
+                    convert << "黄金";
                     break;
                 case 20: // Units killed
-                    if (amount == 1) {
-                        convert << "kill";
-                    } else {
-                        convert << "kills";
-                    }
+                    convert << "杀敌";
                     break;
                 default:
                     //convert << types_short[type];
@@ -435,7 +956,7 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	                    for (int i=0; list; list = list->next(), i++)
 	                    {
 		                    if (i == res_type) {
-                                std::wstring resname(list->name());
+                                std::string resname(UnicodeToANSI(list->name()));
                                 convert << std::string( resname.begin(), resname.end());
 		                        break;
 		                    }
@@ -444,7 +965,7 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                     break;
                 }
                 if (amount >= 0 && t_player > 0 && res_type < 4) {
-                    convert << " (displays tribute alert)";
+                    convert << "（播放进贡音效）";
                 }
                 stype.append(convert.str());
             }
@@ -457,29 +978,29 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                     if (trig_index == parent_trigger_id) {
                         switch (type) {
                         case EffectType::ActivateTrigger:
-                            stype.append("repeat");
+                            stype.append("重复");
                             break;
                         case EffectType::DeactivateTrigger:
-                            stype.append("don't repeat");
+                            stype.append("不再重复");
                             break;
                         }
                     } else {
                         if (scen.triggers.at(trig_index).loop) {
                             switch (type) {
                             case EffectType::ActivateTrigger:
-                                stype.append("resume");
+                                stype.append("继续");
                                 break;
                             case EffectType::DeactivateTrigger:
-                                stype.append("pause");
+                                stype.append("暂停");
                                 break;
                             }
                         } else {
                             switch (type) {
                             case EffectType::ActivateTrigger:
-                                stype.append("activate");
+                                stype.append("激活");
                                 break;
                             case EffectType::DeactivateTrigger:
-                                stype.append("deactivate");
+                                stype.append("关闭");
                                 break;
                             }
                         }
@@ -493,10 +1014,10 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                 } else {
                     switch (type) {
                     case EffectType::ActivateTrigger:
-                        stype.append("activate ");
+                        stype.append("激活 ");
                         break;
                     case EffectType::DeactivateTrigger:
-                        stype.append("deactivate ");
+                        stype.append("关闭 ");
                         break;
                     }
                     stype.append("<?>");
@@ -510,21 +1031,26 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
             default:
                 if (ai_goal >= -258 && ai_goal <= -3) {
                     // AI Shared Goal
-                    convert << "complete AI shared goal " << ai_goal + 258;
+                    convert << "完成 AI 共享信号 " << ai_goal + 258;
                 } else if (ai_goal >= 774 && ai_goal <= 1029) {
 	                // Set AI Signal
-                    convert << "signal AI? " << ai_goal - 774;
+                    convert << "发送 AI 信号(?) " << ai_goal - 774;
                 } else {
-                    convert << "signal AI " << ai_goal;
+                    convert << "发送 AI 信号 " << ai_goal;
                 }
             }
             stype.append(convert.str());
             break;;
         case EffectType::ChangeView:
             if (location.x >= 0 && location.y >= 0 && s_player >= 1) {
-                convert << "change view for p" << s_player << " to " << location.x << "," << location.y;
+				if ( (scen.game == UP || scen.game == ETP) && panel == 1) {
+					convert << "设定玩家" << s_player << " 的视角为 (" << location.x << "," << location.y << ") ";
+				}
+				else {
+					convert << "改变玩家" << s_player << " 的视角到 (" << location.x << "," << location.y << ") ";
+				}
             } else {
-                convert << "INVALID";
+                convert << " <无效> ";
             }
             stype.append(convert.str());
             break;
@@ -532,88 +1058,100 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
         case EffectType::LockGate:
         case EffectType::KillObject:
         case EffectType::RemoveObject:
-        case EffectType::FreezeUnit:
             switch (type) {
             case EffectType::UnlockGate:
-                convert << "unlock";
+                convert << "解锁";
                 break;
             case EffectType::LockGate:
-                convert << "lock";
+                convert << "锁定";
                 break;
             case EffectType::KillObject:
-                convert << "kill";
+                convert << "摧毁";
                 break;
             case EffectType::RemoveObject:
-                convert << "remove";
+                convert << "移除";
                 break;
-            case EffectType::Unload:
-                convert << "unload";
-                break;
-            case EffectType::FreezeUnit:
-                if (scen.game == UP) {
-                    switch (panel) {
-                    case 1:
-                        convert << "aggressive stance";
-                        break;
-                    case 2:
-                        convert << "defensive stance";
-                        break;
-                    case 3:
-                        convert << "stand ground";
-                        break;
-                    case 4:
-                        convert << "no attack stance (no halt)";
-                        break;
-                    default:
-                        convert << "no attack stance";
-                        break;
-                    }
-                } else {
-                    convert << "no attack stance";
-                }
-                break;
-            }
-            convert << " " << selectedUnits();
+			}
+			convert << selectedUnits();
+            stype.append(convert.str());
+			break;
+        case EffectType::FreezeUnit:
+            convert << "设" << selectedUnits() << "为";
+			if (scen.game == UP || scen.game == ETP) {
+				switch (panel) {
+				case 1:
+					convert << "进攻状态";
+					break;
+				case 2:
+					convert << "防卫状态";
+					break;
+				case 3:
+					convert << "坚守状态";
+					break;
+				case 4:
+					convert << "不还击状态（无停止效果）";
+					break;
+				default:
+					convert << "不还击状态";
+					break;
+				}
+			} else {
+				convert << "不还击状态";
+			}
             stype.append(convert.str());
             break;
         case EffectType::Unload:
-            convert << "unload " << selectedUnits() << " to " << location.x << "," << location.y;
+            convert << "卸载" << selectedUnits() << "到 (" << location.x << "," << location.y << ") ";
             stype.append(convert.str());
             break;
 
         case EffectType::StopUnit:
             if (panel >= 1 && panel <= 9) {
-                convert << "place" << " " << selectedUnits() << " into control group " << panel;
+                convert << "将" << selectedUnits() << "编入" << panel << "号编队";
             } else {
-                convert << "stop " << selectedUnits();
-                stype.append(convert.str());
-                break;
+                convert << "停止" << selectedUnits();
             }
             stype.append(convert.str());
             break;
         case EffectType::PlaceFoundation:
-            convert << "place " << playerPronoun(s_player);
+            convert << "放置" << playerPronoun(s_player);
             if (pUnit && pUnit->id()) {
-                std::wstring unitname(pUnit->name());
+                std::string unitname(UnicodeToANSI(pUnit->name()));
                 std::string un(unitname.begin(), unitname.end());
-                convert << " " << un;
+                convert << "的" << un;
             } else {
-                convert << " INVALID EFFECT";
+                convert << " <无效效果> ";
             }
-            convert << " foundation at " << location.x << "," << location.y;
+            convert << "地基于 (" << location.x << "," << location.y << ") ";
             stype.append(convert.str());
             break;
         case EffectType::CreateObject:
-            convert << "create";
-            convert << " " << playerPronoun(s_player);
-            if (pUnit && pUnit->id()) {
-                std::wstring unitname(pUnit->name());
-                std::string un(unitname.begin(), unitname.end());
-                convert << " " << un;
-            } else {
-                convert << " INVALID EFFECT";
-            }
-            convert << " at " << location.x << "," << location.y;
+			if (panel == 1 || panel == 2) {
+				convert << playerPronoun(s_player);
+				if (panel == 1)
+					convert << "启用";
+				else
+					convert << "禁用";
+				if (pUnit && pUnit->id()) {
+				    std::string unitname(UnicodeToANSI(pUnit->name()));
+				    std::string un(unitname.begin(), unitname.end());
+				    convert << un;
+				} else {
+				    convert << " <无效> ";
+				}
+			}
+			else {
+				convert << "产生";
+				convert << playerPronoun(s_player);
+				if (pUnit && pUnit->id()) {
+				    std::string unitname(UnicodeToANSI(pUnit->name()));
+				    std::string un(unitname.begin(), unitname.end());
+				    convert << "的" << un;
+				} else {
+				    convert << " <无效> ";
+				}
+				convert << "于 (" << location.x << "," << location.y << ") ";
+			}
             stype.append(convert.str());
             break;
         case EffectType::Patrol:
@@ -639,14 +1177,14 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                     std::vector<PlayersUnit> other (num_sel);
 
                     std::vector<PlayersUnit>::iterator it;
-                    it = copy_if (all.begin(), all.end(), farms.begin(), playersunit_ucnst_equals(50) );
+                    it = std::copy_if (all.begin(), all.end(), farms.begin(), playersunit_ucnst_equals(50) );
                     farms.resize(std::distance(farms.begin(),it));  // shrink container to new size
 
-                    it = copy_if (all.begin(), all.end(), other.begin(), playersunit_ucnst_notequals(50) );
+                    it = std::copy_if (all.begin(), all.end(), other.begin(), playersunit_ucnst_notequals(50) );
                     other.resize(std::distance(other.begin(),it));  // shrink container to new size
 
                     if (farms.size() > 0) {
-                        convert << "reseed ";
+                        convert << "再生 ";
                         for(std::vector<PlayersUnit>::iterator it = farms.begin(); it != farms.end(); ++it) {
                             convert << it->u->ident << " (" <<
                                 get_unit_full_name(it->u->ident)
@@ -656,9 +1194,9 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 
                     if (other.size() > 0) {
                         if (!valid_location_coord() && null_location_unit()) {
-                            convert << "stop ";
+                            convert << "停止 ";
                         } else {
-                            convert << "patrol ";
+                            convert << "巡逻 ";
                         }
                         for(std::vector<PlayersUnit>::iterator it = other.begin(); it != other.end(); ++it) {
                             convert << it->u->ident << " (" <<
@@ -667,7 +1205,7 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                         }
 	                }
 	            } else {
-                    convert << "patrol / reseed " << selectedUnits();
+                    convert << "巡逻 / 再生 " << selectedUnits();
 	            }
                 stype.append(convert.str());
             }
@@ -677,55 +1215,81 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	        }
             break;
         case EffectType::ChangeOwnership:
-            convert << playerPronoun(t_player) << " now owns " << selectedUnits();
+			if (panel == 1 && (scen.game == UP || scen.game == ETP) ) {
+				convert << "闪烁提示";
+			}
+			else {
+				convert << playerPronoun(t_player) << "获得";
+			}
+			convert << selectedUnits();
             stype.append(convert.str());
             break;
         case EffectType::TaskObject:
             if (!valid_location_coord() && null_location_unit()) {
-                convert << "stop" << " " << selectedUnits();
+                convert << selectedUnits() << "停止动作";
                 stype.append(convert.str());
                 break;
             }
-
-            convert << "task";
-            convert << " " << selectedUnits();
+			if (panel == 1 && (scen.game == UP || scen.game == ETP) ) {
+				convert << "传送";
+			}
+			else {
+				convert << "指派";
+			}
+            convert << selectedUnits();
             if (valid_location_coord()) {
-                convert << " to " << location.x << "," << location.y;
+                convert << "到 (" << location.x << "," << location.y << ") ";
             } else {
-                convert << " to unit " << uid_loc << " (" << get_unit_full_name(uid_loc) << ")";
+                convert << "到物件" << uid_loc << " (" << get_unit_full_name(uid_loc) << ")";
             }
             stype.append(convert.str());
             break;
         case EffectType::DeclareVictory:
-            convert << "p" << s_player << " victory";
+			convert << "玩家" << s_player;
+			if (panel == 1 && (scen.game == UP || scen.game == ETP) ) {
+				convert << " 投降";
+			}
+			else {
+				convert << " 宣布胜利";
+			}
             stype.append(convert.str());
             break;
         case EffectType::DisplayInstructions:
-            convert << "instruct players \"" << text.c_str() << "\"";
+			if ( panel >=9 && disp_time >= 99999 && strstr(text.c_str(),"up-effect ") != NULL && strrchr(text.c_str(), ',') != NULL && *(strrchr(text.c_str(), ',') + 1) != '\0' ) {
+				convert << "up-effect " << " |" << strrchr(text.c_str(), ',') + 2 << "| " << UpTranslate(text.c_str(),FALSE,FALSE);
+			}
+			else {
+				convert << "显示信息「" << text.c_str() << "」";
+			}
             stype.append(convert.str());
             break;
         case EffectType::ChangeObjectName:
-            stype.append("rename '");
-            stype.append(text.c_str());
-            stype.append("'");
-            convert << " " << selectedUnits();
+			if ( panel >=1 && strrchr(text.c_str(), ',') != NULL && strstr(text.c_str(),"up-attribute ") != NULL && *(strrchr(text.c_str(), ',') + 1) != '\0' ) {
+				convert << "up-attribute 对 " << selectedUnits() << " |" << strrchr(text.c_str(), ',') + 2 << "| " << UpTranslate(text.c_str(),FALSE,TRUE);
+			}
+			else {
+				stype.append("改名为「");
+				stype.append(text.c_str());
+				stype.append("」");
+				convert << " " << selectedUnits();
+			}
             stype.append(convert.str());
             break;
         case EffectType::DamageObject:
             {
                 if (amount == TS_LONG_MAX) {
-                    convert << "min health for " << selectedUnits();
+                    convert << selectedUnits() << "生命值最小化";
                 } else if (amount == TS_LONG_MIN) {
-                    convert << "make " << selectedUnits() << " invincible";
+                    convert << "将" << selectedUnits() << "设为无敌";
                 } else if (isFloorAmount()) {
-                    convert << "cap health of " << selectedUnits() << " to " << (amount - TS_FLOAT_MIN) << " HP (Part 1 of 2)";
+                    convert << selectedUnits() << "英雄式回血" << (amount - TS_FLOAT_MIN) << "点（第一步/共两步）";
                 } else if (isCeilAmount()) {
-                    convert << "cap health of " << selectedUnits() << " to " << (TS_FLOAT_MAX - amount) << " HP (Part 2 of 2)";
+                    convert << selectedUnits() << "英雄式回血" << (TS_FLOAT_MAX - amount) << "点（第二步/共两步）";
                 } else {
                     if (amount < 0) {
-                        convert << "buff " << selectedUnits() << " with " << -amount << " HP";
+                        convert << "追加" << -amount << "点当前生命值到 " << selectedUnits();
                     } else {
-                        convert << "damage " << selectedUnits() << " by " << amount << " HP";
+                        convert << "损害" << amount << "点当前生命值到" << selectedUnits();
                     }
                 }
                 stype.append(convert.str());
@@ -733,27 +1297,44 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
             break;
         case EffectType::ChangeObjectHP:
         case EffectType::ChangeObjectAttack:
-            if (amount > 0) {
-                convert << "+";
-            }
-            convert << amount << " " << getTypeName(type, true) << " to "  << selectedUnits();
+			//if (panel > 0 && (scen.game == UP || scen.game == ETP) ) 
+			switch (panel) {
+			case 1: 
+				if (scen.game == UP || scen.game == ETP) {
+					convert << "设为 ";
+					break;
+				}
+			case 2: 
+				if (type == EffectType::ChangeObjectHP && (scen.game == UP || scen.game == ETP) ) {
+					convert << "治疗 ";
+					break;
+				}
+			default:
+				if (amount > 0) {
+				    convert << "+";
+				}
+				break;
+			}
+			convert << amount << " " << getTypeName(type, true);
+			convert << " 到"  << selectedUnits();
             stype.append(convert.str());
             break;
         case EffectType::ChangeSpeed_UP: // SnapView_SWGB, AttackMove_HD
             switch (scen.game) {
+			case ETP:
             case UP:
                 if (amount > 0) {
                     convert << "+";
                 }
-                convert << amount << " " << getTypeName(type, true) << " to "  << selectedUnits();
+                convert << amount << " " << getTypeName(type, true) << " 到"  << selectedUnits();
                 stype.append(convert.str());
                 break;
             case SWGB:
             case SWGBCC:
                 if (location.x >= 0 && location.y >= 0 && s_player >= 1) {
-                    convert << "snap view for p" << s_player << " to " << location.x << "," << location.y;
+                    convert << "snap view for p" << s_player << " to " << location.x << "," << location.y << ") ";
                 } else {
-                    convert << "INVALID";
+                    convert << " <无效> ";
                 }
                 stype.append(convert.str());
                 break;
@@ -764,22 +1345,22 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
             case AOHD6:
             case AOF6:
                 if (!valid_location_coord() && null_location_unit()) {
-                    convert << "stop?" << " " << selectedUnits();
+                    convert << "停止" << selectedUnits();
                     stype.append(convert.str());
                     break;
                 }
 
-                convert << "attack-move";
-                convert << " " << selectedUnits();
+                convert << selectedUnits();
                 if (valid_location_coord()) {
-                    convert << " to " << location.x << "," << location.y;
+					convert << "攻击移动到 (" << location.x << "," << location.y << ") ";
                 } else {
-                    convert << " to unit " << uid_loc << " (" << get_unit_full_name(uid_loc) << ")";
+                    convert << "向" << uid_loc << " (" << get_unit_full_name(uid_loc) << ")";
+					convert << "攻击移动";
                 }
                 stype.append(convert.str());
                 break;
             default:
-                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                 break;
             }
             break;
@@ -793,11 +1374,12 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	        case AOF4:
 	        case AOHD6:
 	        case AOF6:
+			case ETP:
             case UP:
                 if (amount > 0) {
                     convert << "+";
                 }
-                convert << amount << " " << getTypeName(type, true) << " to "  << selectedUnits();
+                convert << amount << " " << getTypeName(type, true) << " 到"  << selectedUnits();
                 stype.append(convert.str());
                 break;
             case SWGB:
@@ -805,7 +1387,7 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                 {
                     switch (type) {
                     case EffectType::DisableAdvancedButtons_SWGB:
-                        stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                        stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                         break;
                     case EffectType::EnableTech_SWGB:
                     case EffectType::DisableTech_SWGB:
@@ -818,14 +1400,14 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                                 techname = std::string(wtechname.begin(), wtechname.end());
                                 switch (type) {
                                 case EffectType::EnableTech_SWGB:
-                                    convert << "enable " << playerPronoun(s_player) << " to research " << techname;
+                                    convert << "允许 " << playerPronoun(s_player) << " 研发科技 " << techname;
                                     break;
                                 case EffectType::DisableTech_SWGB:
-                                    convert << "disable " << playerPronoun(s_player) << " to research " << techname;
+                                    convert << "禁止 " << playerPronoun(s_player) << " 研发科技 " << techname;
                                     break;
                                 }
                             } else {
-                                convert << "INVALID TECHNOLOGY";
+                                convert << " <无效科技> ";
                             }
                         }
                         break;
@@ -834,7 +1416,7 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
                 stype.append(convert.str());
                 break;
             default:
-                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                 break;
             }
             break;
@@ -846,11 +1428,11 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	        case AOF4:
 	        case AOHD6:
 	        case AOF6:
-                convert << "heal " << selectedUnits() << " by " << amount;
+                convert << selectedUnits() << "恢复" << amount << "点生命";
                 stype.append(convert.str());
 	            break;
 	        default:
-                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                 break;
 	        }
             break;
@@ -862,28 +1444,28 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	        case AOF4:
 	        case AOHD6:
 	        case AOF6:
+                convert << "设" << selectedUnits() << "为";
                 switch (stance) {
                 case -1:
-                    convert << "NULL stance";
+                    convert << "空状态";
                     break;
                 case 0:
-                    convert << "aggressive stance";
+                    convert << "进攻状态";
                     break;
                 case 1:
-                    convert << "defensive stance";
+                    convert << "防卫状态";
                     break;
                 case 2:
-                    convert << "stand ground";
+                    convert << "坚守状态";
                     break;
                 case 3:
-                    convert << "no attack stance";
+                    convert << "不还击状态";
                     break;
                 }
-                convert << " " << selectedUnits();
                 stype.append(convert.str());
                 break;
 	        default:
-                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                 break;
 	        }
 	        break;
@@ -895,20 +1477,20 @@ std::string Effect::getName(bool tip, NameFlags::Value flags, int recursion) con
 	        case AOF4:
 	        case AOHD6:
 	        case AOF6:
-                convert << "teleport one of " << selectedUnits() << " to " << location.x << "," << location.y;
+                convert << "将" << selectedUnits() << "之一传送到 (" << location.x << "," << location.y << ") ";
                 stype.append(convert.str());
 	            break;
 	        default:
-                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+                stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
                 break;
 	        }
             break;
 	    case EffectType::InputOff_CC:
 	    case EffectType::InputOn_CC:
-            stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+            stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
             break;
         default:
-            stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "Unknown!");
+            stype.append((type < scen.pergame->max_effect_types) ? getTypeName(type, true) : "<未知>!");
         }
 
         return flags&NameFlags::LIMITLEN?stype.substr(0,MAX_CHARS):stype;
@@ -922,12 +1504,93 @@ const char * Effect::getTypeName(size_t type, bool concise) const
 
 int Effect::getPlayer() const
 {
-	return s_player;
+	extern bool bysource;
+	extern bool byauto;
+	extern bool changemessage;
+	extern bool delcurrent;
+	char s_up[] = "up-effect 0"; //源玩家
+	char i_up[] = "up-effect 0"; //目标玩家
+	std::string text_up; // 显示信息内容
+	int up_effect_loc; //查找up-effect效果
+	int change_loc; //查找玩家变量
+	text_up = (text).c_str();
+	up_effect_loc = text_up.find("up-effect ", 0);
+	
+	if (up_effect_loc != text_up.npos && text_up[up_effect_loc + 10] != '0' && panel >=9 && disp_time >= 99999 )
+		return text_up[up_effect_loc + 10];
+	else {
+		if (changemessage) {
+		change_loc = text_up.find("<COLOR>", 0);
+		if (change_loc != text_up.npos) {
+			delcurrent = 1;
+			return 0;
+		}
+		change_loc = text_up.find("[%p]", 0);
+		if (change_loc != text_up.npos) {
+			delcurrent = 1;
+			return 0;
+		}
+		}
+		else delcurrent = 0;
+		if (bysource && !byauto || (t_player == -1 || t_player == 0) && byauto)
+			return s_player;
+		else
+			return t_player;
+	}
 }
 
 void Effect::setPlayer(int player)
 {
-	s_player = player;
+	extern bool bysource;
+	extern bool byauto;
+	if (bysource && !byauto || ( (t_player == -1 || t_player == 0) || s_player != 0 && s_player != -1 ) && byauto)
+		s_player = player;
+	else
+		t_player = player;
+}
+
+char * ColorText(int player)
+{
+	switch (player) {
+	case 1: return "<BLUE>" ;
+	case 2: return "<RED>" ;
+	case 3: return "<GREEN>" ;
+	case 4: return "<YELLOW>" ;
+	case 5: return "<AQUA>" ;
+	case 6: return "<PURPLE>" ;
+	case 7: return "<GREY>" ;
+	case 8: return "<ORANGE>" ;
+	default:return "<COLOR>";
+	}
+}
+
+void Effect::setText(int player, bool change)
+{
+	char s_up[] = "up-effect 0"; //源玩家
+	char i_up[] = "up-effect 0"; //目标玩家
+	char pchar[2];
+	pchar[0] = '0' + player;
+	pchar[1] = '\0';
+	std::string text_up; // 显示信息内容
+	int up_effect_loc; //查找up-effect效果
+	bool is_up_effect; //是单独玩家的up-effect效果
+	text_up = (text).c_str();
+
+	//玩家up-effect效果判定
+	up_effect_loc = text_up.find("up-effect ", 0);
+	is_up_effect = up_effect_loc != text_up.npos && text_up[up_effect_loc + 10] != '0' && panel >=9 && disp_time >= 99999;
+
+	if (is_up_effect) {
+		s_up[10] = text_up[up_effect_loc + 10];
+		i_up[10] = player + '0';
+		replaceAll(text_up,s_up,i_up);
+		text.set(text_up.c_str());
+	}
+	else if (change) {
+		replaceAll(text_up,"<COLOR>",ColorText(player));
+		replaceAll(text_up,"[%p]",pchar);
+		text.set(text_up.c_str());
+	}
 }
 
 inline bool Effect::valid_full_map() const {
@@ -1126,6 +1789,7 @@ bool Effect::check() const
 
 	case EffectType::ChangeSpeed_UP: // SnapView_SWGB // AttackMove_HD
 	    switch (scen.game) {
+		case ETP:
 	    case UP:
 		    return (has_valid_selected || valid_area_selection) && valid_points();
 	    case AOHD:
@@ -1144,6 +1808,7 @@ bool Effect::check() const
 
 	case EffectType::ChangeRange_UP: // DisableAdvancedButtons_SWGB // ChangeArmor_HD
 	    switch (scen.game) {
+		case ETP:
 	    case UP:
 	    case AOHD:
 	    case AOF:
@@ -1161,6 +1826,7 @@ bool Effect::check() const
 	case EffectType::ChangeMeleArmor_UP: // ChangeRange_HD // EnableTech_SWGB
 	case EffectType::ChangePiercingArmor_UP: // ChangeSpeed_HD // DisableTech_SWGB
 	    switch (scen.game) {
+		case ETP:
 	    case UP:
 	    case AOHD:
 	    case AOF:
@@ -1208,99 +1874,164 @@ void Effect::accept(TriggerVisitor& tv)
 
 const char *Effect::types_aok[] = {
 	"",
-	"Change Diplomacy",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Send Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units / Reseed Farms",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Use Advanced Buttons"
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
 };
 
 const char *Effect::types_aoc[] = {
 	"",
-	"Change Diplomacy",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Send Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units / Reseed Farms",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Use Advanced Buttons",
-	"Damage Object",
-	"Place Foundation",
-	"Change Object Name",
-	"Change Object HP (Change Max)",
-	"Change Object Attack",
-	"Stop Unit"
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
 };
 
 const char *Effect::types_up[] = {
 	"",
-	"Change Diplomacy",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Send Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units / Reseed Farms",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Use Advanced Buttons",
-	"Damage Object",
-	"Place Foundation",
-	"Change Object Name",
-	"Change Object HP (Change Max)",
-	"Change Object Attack",
-	"Stop Unit",
-	"Change Speed",
-	"Change Range",
-	"Change Mele Armor",
-	"Change Piercing Armor"
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
+	"改变物件的速度",
+	"改变物件的射程",
+	"改变物件的近战防御",
+	"改变物件的远程防御"
+};
+
+const char *Effect::types_etp[] = {
+	"",
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
+	"改变物件速度",
+	"改变物件射程",
+	"改变物件近战护甲",
+	"改变物件远程护甲",
+	"改变物件攻击间隔",
+	"关闭高级按钮",
+	"改变物件指定类型护甲",
+	"改变物件指定类型攻击",
+	"改变物件基础护甲",
+	"改变资源量",
+	"改变物件资源量",
+	"改变物件视野",
+	"改变物件工作效率",
+	"设置物件英雄状态",
+	"设置物件图标",
+	"停止发送AI信号",
+	"改变变量值",
+	"清零所有变量",
+	"改变资源与变量值",
+	"保存变量为文件",
+	"从文件中读取变量",
+	"警戒",
+	"跟随",
+	"侦察",
+	"显示带参数的信息",
+	"送出带参数的交谈讯息",
+	"设置带参数的物件名称",
+	"生成随机值",
+	"从数组抽取随机值",
+	"将数值保存到变量",
+	"从变量产生物件",
+	"改变物件图像",
 };
 
 const char *Effect::types_swgb[] = {
@@ -1345,35 +2076,35 @@ const char *Effect::types_swgb[] = {
 
 const char *Effect::types_cc[] = {
 	"",
-	"Change Alliance",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Scroll View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Enable Advanced Buttons",
-	"Damage Object (Change Health)",
-	"Place Foundation",
-	"Change Object Name",
-	"Change Object HP (Change Max)",
-	"Change Object Attack",
-	"Stop Unit",
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
 	"Snap View",
 	"Disable Advanced Buttons",
 	"Enable Tech",
@@ -1387,259 +2118,324 @@ const char *Effect::types_cc[] = {
 
 const char *Effect::types_aohd[] = {
 	"",
-	"Change Diplomacy",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Send Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units / Reseed Farms",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Use Advanced Buttons",
-	"Damage Object (Change Health)",
-	"Place Foundation",
-	"Change Object Name",
-	"Change Object HP (Change Max)",
-	"Change Object Attack",
-	"Stop Unit",
-	"Attack-Move",
-	"Change Armor",
-	"Change Range",
-	"Change Speed",
-	"Heal Object",
-	"Teleport One Object",
-	"Change Unit Stance"
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
+	"攻击移动",
+	"改变物件护甲值",
+	"改变物件的射程",
+	"改变物件的速度",
+	"治疗物件",
+	"传送单个物件",
+	"改变单位姿态"
 };
 
 const char *Effect::types_aof[] = {
 	"",
-	"Change Diplomacy",
-	"Research Technology",
-	"Send Chat",
-	"Play Sound",
-	"Send Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate Trigger",
-	"Deactivate Trigger",
-	"AI Script Goal",
-	"Create Object",
-	"Task Object",
-	"Declare Victory",
-	"Kill Object (Health=0,deselect)",
-	"Remove Object",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol Units / Reseed Farms",
-	"Display Instructions",
-	"Clear Instructions",
-	"Freeze Unit (No Attack Stance)",
-	"Use Advanced Buttons",
-	"Damage Object (Change Health)",
-	"Place Foundation",
-	"Change Object Name",
-	"Change Object HP (Change Max)",
-	"Change Object Attack",
-	"Stop Unit",
-	"Attack-Move",
-	"Change Armor",
-	"Change Range",
-	"Change Speed",
-	"Heal Object",
-	"Teleport One Object",
-	"Change Unit Stance"
+	"改变外交态度",
+	"研究科技",
+	"送出交谈讯息",
+	"播放音效文件",
+	"进贡属性",
+	"开启城门",
+	"锁闭城门",
+	"激活触发",
+	"关闭触发",
+	"发送AI信号",
+	"产生物件",
+	"指派物件",
+	"宣布胜利",
+	"摧毁物件",
+	"移除物件",
+	"改变视角",
+	"卸载单位",
+	"改变所有权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结单位",
+	"开启高级按钮",
+	"损害物件",
+	"放置地基",
+	"改变物件名称",
+	"改变物件生命值上限",
+	"改变物件攻击力",
+	"停止单位",
+	"攻击移动",
+	"改变物件护甲值",
+	"改变物件的射程",
+	"改变物件的速度",
+	"治疗物件",
+	"传送单个物件",
+	"改变单位姿态"
 };
 
 const char *Effect::types_short_aok[] = {
 	"",
-	"Change Diplomacy",
-	"Research",
-	"Chat",
-	"Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate",
-	"Deactivate",
-	"AI Script Goal",
-	"Create",
-	"Task",
-	"Declare Victory",
-	"Kill",
-	"Remove",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol / Reseed",
-	"Instructions",
-	"Clear Instructions",
-	"Freeze (No Attack)",
-	"Use Advanced Buttons"
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
 };
 
 const char *Effect::types_short_aoc[] = {
 	"",
-	"Change Diplomacy",
-	"Research",
-	"Chat",
-	"Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate",
-	"Deactivate",
-	"AI Script Goal",
-	"Create",
-	"Task",
-	"Declare Victory",
-	"Kill",
-	"Remove",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol / Reseed",
-	"Instructions",
-	"Clear Instructions",
-	"Freeze (No Attack)",
-	"Use Advanced Buttons",
-	"Damage",
-	"Place Foundation",
-	"Rename",
-	"HP",
-	"Attack",
-	"Stop Unit",
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
+	"损害",
+	"地基",
+	"改名",
+	"生命值",
+	"攻击力",
+	"停止",
 };
 
 const char *Effect::types_short_up[] = {
 	"",
-	"Change Diplomacy",
-	"Research",
-	"Chat",
-	"Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate",
-	"Deactivate",
-	"AI Script Goal",
-	"Create",
-	"Task",
-	"Declare Victory",
-	"Kill",
-	"Remove",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol / Reseed",
-	"Instructions",
-	"Clear Instructions",
-	"Freeze (No Attack)",
-	"Use Advanced Buttons",
-	"Damage",
-	"Place Foundation",
-	"Rename",
-	"HP",
-	"Attack",
-	"Stop Unit",
-	"Speed",
-	"Range",
-	"Mele Armor",
-	"Piercing Armor"
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
+	"损害",
+	"地基",
+	"改名",
+	"生命值",
+	"攻击力",
+	"停止",
+	"速度",
+	"射程",
+	"近战防御",
+	"远程防御"
+};
+
+const char *Effect::types_short_etp[] = {
+	"",
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
+	"损害",
+	"地基",
+	"改名",
+	"生命值",
+	"攻击力",
+	"停止",
+	"速度",
+	"射程",
+	"近战防御",
+	"远程防御",
+	"攻击间隔",
+	"关闭高级按钮",
+	"指定类型护甲",
+	"指定类型攻击",
+	"基础护甲",
+	"资源量",
+	"物件资源量",
+	"视野",
+	"工作效率",
+	"英雄状态",
+	"图标",
+	"停止AI信号",
+	"变量",
+	"清零变量",
+	"资源与变量",
+	"保存文件",
+	"读取文件",
+	"警戒",
+	"跟随",
+	"侦察",
+	"参数显示信息",
+	"参数讯息",
+	"参数改名",
+	"随机",
+	"数组随机",
+	"数值到变量",
+	"变量产生物件",
+	"物件图像"
 };
 
 const char *Effect::types_short_aohd[] = {
 	"",
-	"Change Diplomacy",
-	"Research",
-	"Chat",
-	"Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate",
-	"Deactivate",
-	"AI Script Goal",
-	"Create",
-	"Task",
-	"Declare Victory",
-	"Kill",
-	"Remove",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol / Reseed",
-	"Instructions",
-	"Clear Instructions",
-	"Freeze (No Attack)",
-	"Use Advanced Buttons",
-	"Damage",
-	"Place Foundation",
-	"Rename",
-	"HP",
-	"Attack",
-	"Stop Unit",
-	"Attack-Move",
-	"Armor",
-	"Range",
-	"Speed",
-	"Heal",
-	"Teleport One",
-	"Change Stance"
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
+	"损害",
+	"地基",
+	"改名",
+	"生命值",
+	"攻击力",
+	"停止",
+	"攻击移动",
+	"护甲",
+	"射程",
+	"速度",
+	"治疗",
+	"传送",
+	"改变姿态"
 };
 
 const char *Effect::types_short_aof[] = {
 	"",
-	"Change Diplomacy",
-	"Research",
-	"Chat",
-	"Sound",
-	"Tribute",
-	"Unlock Gate",
-	"Lock Gate",
-	"Activate",
-	"Deactivate",
-	"AI Script Goal",
-	"Create",
-	"Task",
-	"Declare Victory",
-	"Kill",
-	"Remove",
-	"Change View",
-	"Unload",
-	"Change Ownership",
-	"Patrol / Reseed",
-	"Instructions",
-	"Clear Instructions",
-	"Freeze (No Attack)",
-	"Use Advanced Buttons",
-	"Damage",
-	"Place Foundation",
-	"Rename",
-	"HP",
-	"Attack",
-	"Stop Unit",
-	"Attack-Move",
-	"Armor",
-	"Range",
-	"Speed",
-	"Heal",
-	"Teleport One",
-	"Change Stance"
+	"改变外交",
+	"研究",
+	"讯息",
+	"音效",
+	"进贡",
+	"开门",
+	"锁门",
+	"激活",
+	"关闭",
+	"AI信号",
+	"产生",
+	"指派",
+	"宣布胜利",
+	"摧毁",
+	"移除",
+	"改变视角",
+	"卸载",
+	"改权",
+	"巡逻",
+	"显示信息",
+	"清除信息",
+	"冻结",
+	"高级按钮",
+	"损害",
+	"地基",
+	"改名",
+	"生命值",
+	"攻击力",
+	"停止",
+	"攻击移动",
+	"护甲",
+	"射程",
+	"速度",
+	"治疗",
+	"传送",
+	"改变姿态"
 };
 
 const char *Effect::types_short_swgb[] = {
@@ -1726,91 +2522,134 @@ const char *Effect::types_short_cc[] = {
 
 const char *Effect::virtual_types_up[] = {
     "",
-    "Enable Object",
-    "Disable Object",
-    "Enable Technology",
-    "Disable Technology",
-    "Enable Tech (Any Civ)",
-    "Set HP",
-    "Heal Object",
-    "Aggressive Stance",
-    "Defensive Stance",
-    "Stand Ground",
-    "No Attack Stance",
-    "Resign",
-    "Flash Objects",
-    "Set AP",
-    "Set Control Group 1",
-    "Set Control Group 2",
-    "Set Control Group 3",
-    "Set Control Group 4",
-    "Set Control Group 5",
-    "Set Control Group 6",
-    "Set Control Group 7",
-    "Set Control Group 8",
-    "Set Control Group 9",
-    "Snap View",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Set AI Signal",
-    "Set AI Shared Goal",
-    "Enable Cheats",
+    "启用物件",
+    "禁用物件",
+    "启用科技",
+    "禁用科技",
+    "启用科技（无视文明）",
+    "启用科技和按钮（无视文明）",
+	"传送物件",
+    "设定生命值",
+    "治疗物件",
+    "进攻状态",
+    "防卫状态",
+    "坚守状态",
+    "不还击状态",
+    "投降",
+    "闪烁物件",
+    "设定攻击力",
+    "编入编队 1",
+    "编入编队 2",
+    "编入编队 3",
+    "编入编队 4",
+    "编入编队 5",
+    "编入编队 6",
+    "编入编队 7",
+    "编入编队 8",
+    "编入编队 9",
+    "设定视角",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+	"up-attribute 扩展效果",
+	"up-effect 扩展效果",
+    "设定 AI 信号",
+    "设定 AI 共享目标",
+    "允许作弊",
+};
+
+const char *Effect::virtual_types_etp[] = {
+    "",
+    "启用物件",
+    "禁用物件",
+    "启用科技",
+    "禁用科技",
+    "启用科技（无视文明）",
+    "启用科技和按钮（无视文明）",
+	"传送物件",
+    "设定生命值",
+    "治疗物件",
+    "进攻状态",
+    "防卫状态",
+    "坚守状态",
+    "不还击状态",
+    "投降",
+    "闪烁物件",
+    "设定攻击力",
+    "编入编队 1",
+    "编入编队 2",
+    "编入编队 3",
+    "编入编队 4",
+    "编入编队 5",
+    "编入编队 6",
+    "编入编队 7",
+    "编入编队 8",
+    "编入编队 9",
+    "设定视角",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+	"up-attribute 扩展效果",
+	"up-effect 扩展效果",
+    "设定 AI 信号",
+    "设定 AI 共享目标",
+    "允许作弊",
 };
 
 const char *Effect::virtual_types_aoc[] = {
     "",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Set AI Signal",
-    "Set AI Shared Goal",
-    "Enable Cheats",
-    "Freeze unit",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+    "设定 AI 信号",
+    "设定 AI 共享目标",
+    "允许作弊",
+    "冻结单位",
 };
 
 const char *Effect::virtual_types_aohd[] = {
     "",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Freeze unit",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+    "冻结单位",
 };
 
 const char *Effect::virtual_types_aof[] = {
     "",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Freeze unit",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+    "冻结单位",
 };
 
 const char *Effect::virtual_types_swgb[] = {
     "",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Freeze unit",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+    "冻结单位",
 };
 
 const char *Effect::virtual_types_cc[] = {
     "",
-    "Max Amount",
-    "Min Amount",
-    "Cap Health Part 1 of 2",
-    "Cap Health Part 2 of 2",
-    "Freeze unit",
+    "最大数量",
+    "最小数量",
+    "英雄式回血第 1 步",
+    "英雄式回血第 2 步",
+    "冻结单位",
 };
 
 const char *Effect::virtual_types_aok[] = {
     "",
-    "Max Amount",
-    "Min Amount",
+    "最大数量",
+    "最小数量",
 };
 
 bool Effect::isCeilAmount() const {

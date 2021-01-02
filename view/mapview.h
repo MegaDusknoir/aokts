@@ -12,7 +12,7 @@
 
 extern class Scenario scen;
 
-const char MapClass[] = "AOKTSMapView";
+const char MapClass[] = "AOKTSµÿÕº‘§¿¿";
 
 /**
  * Creates a mapview window with specified owner and at specified position. The

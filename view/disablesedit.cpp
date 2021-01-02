@@ -23,9 +23,9 @@ extern class Scenario scen;
 enum DTypes
 { DIS_bldg, DIS_unit, DIS_tech };
 
-const char *dtypes[NUM_TYPES] = { "Buildings", "Units", "Techs" };
+const char *dtypes[NUM_TYPES] = { "建筑", "单位", "科技" };
 
-const char d_title[] = "Disables Editor";
+const char d_title[] = "禁用编辑器";
 
 // function prototypes
 static void MoveToDisabled(HWND dialog, int index);
@@ -54,9 +54,9 @@ static void MoveToDisabled(HWND dialog, int index)
 	if (link == NULL)
 	{
 	    const size_t BUFSIZE = 60;
-	    char text[BUFSIZE] = "Outside boundaries";
-	    sprintf(text, "Disables unknown unit %d. Please report this.", index);
-		MessageBox( dialog, text, "Disables editor", MB_ICONWARNING);
+	    char text[BUFSIZE] = "超过边界";
+	    sprintf(text, "禁用单位 %d 未知。请报告此错误。", index);
+		MessageBox( dialog, text, "禁用编辑器", MB_ICONWARNING);
 		return;
 	}
 
@@ -112,8 +112,8 @@ void DisableSelectedItem(HWND dialog)
 		// No selection! There should have been, so alert the user.
 		MessageBox(
 				dialog,
-				"No selection! Please report this error.",
-				"Disables Editor",
+				"未选取！请报告此错误。",
+				"禁用编辑器",
 				MB_ICONWARNING);
 	}
 }
@@ -175,7 +175,7 @@ void LoadDisables(HWND dialog)
 		    //assert(list_all);
 		    UnitList_FillGroup(list_all, esdata.ug_buildings);
 		} else
-			MessageBox(dialog, "Could not load building list.", d_title, MB_ICONWARNING);
+			MessageBox(dialog, "无法加载建筑列表。", d_title, MB_ICONWARNING);
 
 		d_parse = propdata.p->dis_bldg;
 		for (i = 0; i < propdata.p->ndis_b; i++)
@@ -201,7 +201,7 @@ void LoadDisables(HWND dialog)
 		if (esdata.ug_units)
 			UnitList_FillGroup(list_all, esdata.ug_units);
 		else
-			MessageBox(dialog, "Could not load unit list.", d_title, MB_ICONWARNING);
+			MessageBox(dialog, "无法加载单位列表。", d_title, MB_ICONWARNING);
 
 		d_parse = propdata.p->dis_unit;
 		for (i = 0; i < propdata.p->ndis_u; i++)
@@ -268,8 +268,8 @@ void CopyDisables(HWND dialog, int src_pindex, int target_pindex)
 		// Error message to user to nofify them something went wrong.
 		MessageBox(
 			dialog,
-			"ERROR! The source player was NULL! Please report this as a bug to the developer.",
-			"Disables Editor",
+			"错误！来源玩家为空！请将此错误报告给开发人员。",
+			"禁用编辑器",
 			MB_ICONWARNING);
 		return;
 	}
@@ -277,8 +277,8 @@ void CopyDisables(HWND dialog, int src_pindex, int target_pindex)
 		// Error message to user to nofify them something went wrong.
 		MessageBox(
 			dialog,
-			"ERROR! The target player was NULL! Please report this as a bug to the developer.",
-			"Disables Editor",
+			"错误！目标玩家为空！请将此错误报告给开发人员。",
+			"禁用编辑器",
 			MB_ICONWARNING);
 		return;
 	}

@@ -950,8 +950,8 @@ void HighlightPoint(HWND window, int x, int y)
 
 #define NUM_SB_SIZES 2
 int sb_sizes[NUM_SB_SIZES] =
-{ 120, -1 };
-const char *sb_msg = "Keys: R Space - = S O";
+{ 140, -1 };
+const char *sb_msg = "快捷键：空格 R - = S O";
 
 HWND makestatus(HWND parent)
 {
@@ -1029,7 +1029,7 @@ void OnWM_MOUSEMOVE(HWND, int x, int y)
 {
 	const size_t BUFSIZE = 20;
 
-	char text[BUFSIZE] = "Outside boundaries";
+	char text[BUFSIZE] = "超过边界";
 	unsigned rx, ry;	//un-rotated
 
 	x -= data.offsetx;
@@ -1300,7 +1300,7 @@ LRESULT CALLBACK MapWndProc(HWND window, UINT msg, WPARAM wParam, LPARAM lParam)
 		    Refresh(window, FALSE);
 		    break;
 		case 0x53: // S key
-		    MessageBox(NULL, "Saving map viewer to preview.bmp", "", MB_ICONWARNING);
+		    MessageBox(NULL, "保存地图预览到 preview.bmp", "", MB_ICONWARNING);
 	        SaveToFile(data.mapbmp, "preview.bmp");
 	        break;
 		case 0x4F: // O key
@@ -1481,7 +1481,7 @@ HWND CreateMapView(HWND owner, int x, int y, Scenario * scenario)
 		registered = true;
 	}
 
-	HWND mapview = CreateWindowEx(WS_EX_TOOLWINDOW, MapClass, "Map Viewer",
+	HWND mapview = CreateWindowEx(WS_EX_TOOLWINDOW, MapClass, "地图预览",
 		WS_OVERLAPPEDWINDOW | WS_HSCROLL | WS_VSCROLL,
 		x, y,
 		0, 0,   // width, height are calculated in OnWM_CREATE

@@ -12,7 +12,7 @@
 #include "utilui.h"
 
 const char errorImpExpFail[] =
-"Error. Please make sure the file you selected is valid.";
+"错误。请确保所选文件有效。";
 
 BOOL PlayersVC_Init(HWND dialog)
 {
@@ -87,7 +87,7 @@ void Players_ManageVC(HWND dialog, bool import)
 		*path = '\0';
 		ofn.lpstrFileTitle = propdata.p->vc;
 		ofn.nMaxFileTitle = _MAX_FNAME;
-		ofn.lpstrTitle = "Import VC Script";
+		ofn.lpstrTitle = "导入 VC 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_HIDEREADONLY;
 		ofn.lpstrDefExt = "vc";
 
@@ -98,16 +98,16 @@ void Players_ManageVC(HWND dialog, bool import)
 				= '\0';
 			//do it
 			if (propdata.p->import_vc(path))
-				SetWindowText(propdata.statusbar, "VC successfully imported.");
+				SetWindowText(propdata.statusbar, "VC 已成功导入。");
 			else
-				MessageBox(dialog, errorImpExpFail, "VC Import", MB_OK);
+				MessageBox(dialog, errorImpExpFail, "VC 导入", MB_OK);
 		}
 	}
 	else if (propdata.p->aifile.length()) //export, so check for existence
 	{
 		strcpy(path, propdata.p->vc);
 		ofn.lpstrFileTitle = NULL;
-		ofn.lpstrTitle = "Export VC Script";
+		ofn.lpstrTitle = "导出 VC 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_NOREADONLYRETURN | OFN_OVERWRITEPROMPT;
 		ofn.lpstrDefExt = "vc";
 
@@ -115,13 +115,13 @@ void Players_ManageVC(HWND dialog, bool import)
 		{
 			//do it
 			if (propdata.p->export_vc(path))
-				SetWindowText(propdata.statusbar, "VC successfully exported.");
+				SetWindowText(propdata.statusbar, "VC 已成功导出。");
 			else
-				MessageBox(dialog, errorImpExpFail, "VC Export Warning", MB_ICONWARNING);
+				MessageBox(dialog, errorImpExpFail, "VC 导出警告", MB_ICONWARNING);
 		}
 	}
 	else
-		MessageBox(dialog, "Sorry, that player doesn't have an VC File.", "VC Export", MB_OK);
+		MessageBox(dialog, "抱歉，该玩家没有 VC 文件。", "VC 导出", MB_OK);
 }
 
 void Vict_DisableControls(HWND dialog, int mode)

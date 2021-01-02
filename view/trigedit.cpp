@@ -52,6 +52,9 @@ WNDPROC TVWndProc = NULL;
 HFONT treefont;
 
 bool bysource = true;
+bool changemessage = false;
+bool delcurrent = false;
+bool byauto = true;
 
 /*	c_trig: pointer to current trigger.
 	Set this to NULL to prevent saving of data on TVN_SELCHANGED.
@@ -71,33 +74,40 @@ enum Timers
 
 /* Strings! */
 
-const char szTrigTitle[] = "Trigger Editor";
+void TrigTree_Reset(HWND, bool);
+void TrigTree_HandleDelete(HWND, HWND);
+
+const char szTrigTitle[] = "触发编辑器";
 
 const char noticeNoDelete[] =
-"Sorry, you may not delete a trigger while effect or condition editors are open. "
-"Deletion cancelled.";
+"抱歉，在效果编辑器或条件编辑器打开时，不能删除触发。删除操作已取消。";
 const char noteNoTrigInTrig[] =
-"Sorry mate, can\'t place a trigger inside another trigger.";
+"抱歉，不能放置触发到另一个触发中。";
 const char help_msg[] =
-"Single-click a trigger's name to edit it. Press Delete to delete a trigger.";
+"单击触发名称进行编辑。按 Delete 删除触发。";
 const char errorEditorsOpen[] =
-"Sorry, you may not switch tabs with open effects or conditions. Maybe in a later version.";
+"抱歉，您不能在效果或条件打开时切换选项卡。或许将来的版本可以。";
 const char warningEditorsClosing[] =
-"Warning: Switching tabs will cancel all open effects or conditions. Continue Anyway?";
+"警告：切换选项卡将取消所有打开的效果或条件。仍然继续？";
 const char errorNoEditTrig[] = //removed
-"Error: No condition or effect selected. I honestly don\'t know how you clicked that.";
+"错误：未选择条件或效果。请确认操作无误。";
 const char warningNoSelection[] = //removed
-"Warning: I could not locate the current selection in the Tree-View, and thus "
-"cancelled any pending operation. I may now be unstable, so it is recommended that "
-"you restart me after saving the scenario to a different file.";
+"警告：无法在树状图中定位当前选择，因此取消了任何将要进行的操作。程序可能不稳定，建议将场景另存为后重新启动。";
 const char warningInconsistentPlayer[] =
-"Warning: This trigger appears to have conditions and/or effects \n"
-"for multiple players. The duplicates will have all players replaced. \n"
-"Is this what you want to do?";
+"警告：该触发似乎具有多个不同玩家的条件或效果。继续复制将替换所有玩家。\n"
+"你确定要这样做吗？";
 const char warningNoPlayer[] =
-"Warning: This trigger appears to have no player assigned, meaning \n"
-"that this operation will just produce copies of the source trigger. \n"
-"Is this what you want to do?";
+"警告：该触发似乎没有分配玩家，这意味着此操作将只生成来源触发的副本。\n"
+"你确定要这样做吗？";
+const char warningReplaceMessage[] =
+"警告：你正要对文本信息进行变换，当前触发将被删除，并替换为对应每个玩家的多个触发，单个触发内不同的玩家设定将会被统一。\n"
+"你确定要这样做吗？";
+const char warningDeDuplicateTrigMessage[] =
+"警告：你正进行「复制到所有玩家」的逆向操作，根据场景的玩家人数，这之后的数个触发将被删除，操作无法撤销。\n请确保目标触发组全部相邻，且已选中首个触发。\n"
+"你确定要这样做吗？";
+const char warningDeDuplicateMessage[] =
+"警告：你正进行「复制到所有玩家」的逆向操作，根据场景的玩家人数，这之后的数个条件/效果将被删除，操作无法撤销。\n请确保目标条件/效果组全部相邻，且已选中首个条件/效果。\n"
+"你确定要这样做吗？";
 
 /*	editor_count: number of condition/effect editors currently opened */
 unsigned editor_count = 0;
@@ -184,6 +194,7 @@ public:
 	virtual bool Delete(HWND treeview, HTREEITEM target);
 	virtual void GetName(char *buffer);
 	virtual void DuplicatePlayers(HWND treeview, HTREEITEM item);
+	virtual void DeDuplicatePlayers(HWND treeview, HTREEITEM item);
 
 	/* ModifyIndex: simply adds operand to the index, necessary for effect/condition items */
 	virtual void ModifyIndex(int operand);
@@ -261,15 +272,22 @@ void ItemData::DuplicatePlayers(HWND treeview, HTREEITEM item)
 	Trigger *t_dup;
 
 	player = t_source->get_player();
-	if (player == -1)
+	player = player<'0'?player:player-'0';
+	if (player == -1 && !delcurrent)
 	{
 		if (MessageBox(treeview, warningInconsistentPlayer,
-			"Duplication Warning", MB_ICONWARNING | MB_YESNO) == IDNO)
+			"复制警告", MB_ICONWARNING | MB_YESNO) == IDNO)
 			return;
 	}
-	if (player == 0)
+	if (player == 0 && !delcurrent)
 	{
-		if (MessageBox(treeview, warningNoPlayer, "Duplication Warning",
+		if (MessageBox(treeview, warningNoPlayer, "复制警告",
+			MB_ICONWARNING | MB_YESNO) == IDNO)
+			return;
+	}
+	if (delcurrent)
+	{
+		if (MessageBox(treeview, warningReplaceMessage, "复制警告",
 			MB_ICONWARNING | MB_YESNO) == IDNO)
 			return;
 	}
@@ -277,8 +295,9 @@ void ItemData::DuplicatePlayers(HWND treeview, HTREEITEM item)
 	n_index = index;	//n_index is used for the positioning of the inserted trigger
 	for (i = 1; i <= 8; i++)
 	{
-		if (i == player || !scen.players[i - 1].enable)	//i-1: weird player ordering again...
+		if (!delcurrent && (i == player || !scen.players[i - 1].enable) ) {	//i-1: weird player ordering again...
 			continue;
+		}
 
 		n_index = scen.insert_trigger(t_source, n_index);
 		t_source = &scen.triggers.at(index);	//might have changed
@@ -286,10 +305,30 @@ void ItemData::DuplicatePlayers(HWND treeview, HTREEITEM item)
 		t_dup->accept(ChangePlayerVisitor(i));
 
 		//new name!
-		_snprintf(t_dup->name, sizeof(t_dup->name), "%s (p%d)", t_source->name, i);
+		if (delcurrent && i == 1)
+			_snprintf(t_dup->name, sizeof(t_dup->name), "%s", t_source->name);
+		else
+			_snprintf(t_dup->name, sizeof(t_dup->name), "%s (p%d)", t_source->name, i);
 
 		item = TrigTree_AddTrig(treeview, n_index, item);	//keep updating item for a chain
 	}
+	if (delcurrent) {
+		TrigTree_HandleDelete(treeview, treeview);
+		delcurrent = 0;
+	}
+    TrigTree_Reset(GetDlgItem(treeview, IDC_T_TREE), true);//刷新一次来消除触发列表乱数
+}
+
+void ItemData::DeDuplicatePlayers(HWND treeview, HTREEITEM item)
+{
+	if (MessageBox(treeview, warningDeDuplicateTrigMessage, "逆复制警告",
+		MB_ICONWARNING | MB_YESNO) == IDNO)
+		return;
+
+	TreeView_Select(treeview, TreeView_GetNextItem(treeview, TreeView_GetNextItem(treeview, 0, TVGN_CARET), TVGN_NEXT), TVGN_CARET);
+	for (int i = 2; i <= 8; i++)
+		if (scen.players[i - 1].enable)
+			TrigTree_HandleDelete(treeview, treeview);
 }
 
 void ItemData::ModifyIndex(int operand)
@@ -339,6 +378,7 @@ public:
 	bool Delete(HWND treeview, HTREEITEM target);
 	void GetName(char *buffer);
 	void DuplicatePlayers(HWND treeview, HTREEITEM target);
+	void DeDuplicatePlayers(HWND treeview, HTREEITEM target);
 	Effect *GetEffect();
 	void ModifyIndex(int operand);
 	void OpenEditor(HWND parent, HTREEITEM item);
@@ -392,27 +432,79 @@ void EffectItemData::DuplicatePlayers(HWND treeview, HTREEITEM target)
 	tvis.item.iSelectedImage = BitmapIcons::EFFECT_BAD;
 	tvis.item.mask = TVIF_IMAGE | TVIF_TEXT | TVIF_PARAM | TVIF_SELECTEDIMAGE;
 	tvis.item.pszText = (LPSTR)LPSTR_TEXTCALLBACK;
+	
+	extern char * ColorText(int);
+	char s_up[] = "up-effect 0"; //源玩家
+	char i_up[] = "up-effect 0"; //目标玩家
+	char pchar[2];
+	pchar[1] = '\0';
+	int up_effect_loc; //查找up-effect效果
+	int change_loc; //查找信息参数
+	bool is_up_effect = 0; //是单独玩家的up-effect效果
+	bool is_changemessage = 0; //是含参信息
+	std::string text_origin = (t->effects[this->index].text).c_str();
+	std::string text_up = text_origin; // 提取信息内容
+	
+	//玩家up-effect效果判定
+	up_effect_loc = text_up.find("up-effect ", 0);
+	is_up_effect = up_effect_loc != text_up.npos && text_up[up_effect_loc + 10] != '0' && t->effects[this->index].panel >=9 && t->effects[this->index].disp_time >= 99999;
+		
+	//玩家含参信息判定
+	if(changemessage && !is_up_effect) {
+		change_loc = text_up.find("<COLOR>", 0); if (change_loc != text_up.npos) is_changemessage = 1;
+		change_loc = text_up.find("[%p]", 0); if (change_loc != text_up.npos) is_changemessage = 1;
+	}
 
 	for (int i = 1; i <= 8; i++) //weird e/c player indexes
 	{
 		Effect &source = t->effects[this->index]; // get it new each iteration
+		long source_player;
+		bool autosource = 0;
+
+		if(is_up_effect) s_up[10] = text_up[up_effect_loc + 10];
+
+		if ( (source.t_player == -1 || source.t_player == 0) && (source.s_player == 0 || source.s_player == -1) )
+			source_player = 0;
+		else if (bysource && !byauto || byauto && (source.s_player != -1 && source.s_player != 0) ) {
+			source_player = source.s_player;
+			autosource = 0;
+		}
+		else {
+			source_player = source.t_player;
+			autosource = 1;
+		}
 
 		// Skip if we're on the source effect's player.
-        if (bysource) {
-		    if (i == source.s_player)
-			    continue;
-		} else {
-		    if (i == source.t_player)
-			    continue;
-		}
+        if ( (i == source_player && !is_up_effect && !is_changemessage) || (is_up_effect && i == text_up[up_effect_loc + 10] - '0') )
+			continue;
 
 		t->effects.push_back(source);
 
 		// Set proper player on the duplicate.
-        if (bysource) {
-		    t->effects.back().s_player = i;
-		} else {
-		    t->effects.back().t_player = i;
+		if (!is_up_effect) {
+			if (bysource && !byauto || byauto && (!autosource || source_player == 0) ) {
+			    t->effects.back().s_player = i;
+			} else {
+			    t->effects.back().t_player = i;
+			}
+		}
+		
+		//复制到全部玩家up-effect
+		else {
+			t->effects.back().s_player = 0;
+			t->effects.back().t_player = 0;
+			i_up[10] = i + '0';
+			replaceAll(text_up,s_up,i_up);
+			t->effects.back().text.set(text_up.c_str());
+			//测试用 SetWindowText(propdata.statusbar, text_up.c_str());
+		}
+
+		if (is_changemessage) {
+			pchar[0] = '0' + i;
+			text_up = text_origin;
+			replaceAll(text_up,"<COLOR>",ColorText(i));
+			replaceAll(text_up,"[%p]",pchar);
+			t->effects.back().text.set(text_up.c_str());
 		}
 
 		tvis.item.lParam = (LPARAM)new EffectItemData( // FIXME: ugly cast
@@ -420,6 +512,18 @@ void EffectItemData::DuplicatePlayers(HWND treeview, HTREEITEM target)
 			trig_index);
 		TreeView_InsertItem(treeview, &tvis);
 	}
+}
+
+void EffectItemData::DeDuplicatePlayers(HWND treeview, HTREEITEM target)
+{
+	if (MessageBox(treeview, warningDeDuplicateMessage, "逆复制警告",
+		MB_ICONWARNING | MB_YESNO) == IDNO)
+		return;
+	
+	TreeView_Select(treeview, TreeView_GetNextItem(treeview, TreeView_GetNextItem(treeview, 0, TVGN_CARET), TVGN_NEXT), TVGN_CARET);
+	for (int i = 2; i <= 8; i++)
+		if (scen.players[i - 1].enable)
+			TrigTree_HandleDelete(treeview, treeview);
 }
 
 Effect *EffectItemData::GetEffect()
@@ -529,6 +633,7 @@ public:
 	bool Delete(HWND treeview, HTREEITEM target);
 	void GetName(char *buffer);
 	void DuplicatePlayers(HWND treeview, HTREEITEM target);
+	void DeDuplicatePlayers(HWND treeview, HTREEITEM target);
 	Condition *GetCondition();
 	void ModifyIndex(int operand);
 	void OpenEditor(HWND parent, HTREEITEM item);
@@ -569,9 +674,9 @@ void ConditionItemData::GetName(char *buffer)
 	assert(t);
 
 	if (index == 0) {
-	    sprintf(buffer, "If %s", t->conds[index].getName(setts.displayhints,NameFlags::NONE).c_str());
+	    sprintf(buffer, "若 %s", t->conds[index].getName(setts.displayhints,NameFlags::NONE).c_str());
 	} else {
-	    sprintf(buffer, "and %s", t->conds[index].getName(setts.displayhints,NameFlags::NONE).c_str());
+	    sprintf(buffer, "且 %s", t->conds[index].getName(setts.displayhints,NameFlags::NONE).c_str());
 	}
 }
 
@@ -602,6 +707,18 @@ void ConditionItemData::DuplicatePlayers(HWND treeview, HTREEITEM target)
 			t->conds.size() - 1, trig_index); // size() - 1 is index of back
 		TreeView_InsertItem(treeview, &tvis);
 	}
+}
+
+void ConditionItemData::DeDuplicatePlayers(HWND treeview, HTREEITEM target)
+{
+	if (MessageBox(treeview, warningDeDuplicateMessage, "逆复制警告",
+		MB_ICONWARNING | MB_YESNO) == IDNO)
+		return;
+	
+	TreeView_Select(treeview, TreeView_GetNextItem(treeview, TreeView_GetNextItem(treeview, 0, TVGN_CARET), TVGN_NEXT), TVGN_CARET);
+	for (int i = 2; i <= 8; i++)
+		if (scen.players[i - 1].enable)
+			TrigTree_HandleDelete(treeview, treeview);
 }
 
 Condition *ConditionItemData::GetCondition()
@@ -672,7 +789,7 @@ bool ConditionItemData::Copy(HWND treeview, HTREEITEM, HTREEITEM target)
 		tvis.hInsertAfter = TVI_LAST;
 		break;
 	default:
-		throw std::logic_error("No idea what the target type is.");
+		throw std::logic_error("目标类型不确定。");
 	}
 
 	/* Get source item's image */
@@ -759,6 +876,7 @@ HTREEITEM TrigTree_AddTrig(HWND treeview, int index, HTREEITEM after)
 	TVINSERTSTRUCT tvis;
 	HTREEITEM trignode;	//parent of condition/effect nodes
 	Trigger *t = &scen.triggers.at(index);
+	t->id = index; // 添加这条来避免新触发ID乱数
 	bool good = true;
 
 	/* These paramters are for both triggers and conditions/effects */
@@ -850,7 +968,7 @@ HTREEITEM TrigTree_AddTrig(HWND treeview, int index, HTREEITEM after)
 	    }
 	}
 	TreeView_SetItem(treeview, &tvis.item);
-
+	
 	return trignode;
 }
 
@@ -923,7 +1041,7 @@ void Triggers_EditMenu(HMENU menu, bool state)
 		EnableMenuItem(menu, ID_TS_EDIT_COPY, MF_ENABLED);
 		EnableMenuItem(menu, ID_TS_EDIT_CUT, MF_ENABLED);
 		EnableMenuItem(menu, ID_EDIT_DELETE, MF_ENABLED);
-		if (GetPriorityClipboardFormat(&propdata.tformat, NUM_FORMATS) > 0)
+		if (GetPriorityClipboardFormat(&propdata.tformat, NUM_FORMATS) > 0 || editor_count)
 			EnableMenuItem(menu, ID_TS_EDIT_PASTE, MF_ENABLED);
 		EnableMenuItem(menu, ID_EDIT_RENAME, MF_ENABLED);
 	}
@@ -1129,11 +1247,11 @@ void TrigTree_Paste(HWND dialog)
 			catch (std::exception &ex)
 			{
 				printf("Paste: %s\n", ex.what());
-				MessageBox(dialog, "Error placing trigger.", szTrigTitle, MB_ICONWARNING);
+				MessageBox(dialog, "放置触发时出错。", szTrigTitle, MB_ICONWARNING);
 			}
 		}
 		else
-			MessageBox(dialog, "Could not get clipboard data.", szTrigTitle, MB_ICONWARNING);
+			MessageBox(dialog, "无法获取剪贴板数据。", szTrigTitle, MB_ICONWARNING);
 	}
 	else if (format == propdata.ecformat)
 	{
@@ -1142,7 +1260,7 @@ void TrigTree_Paste(HWND dialog)
 
 		// no reasonable default for no-selection paste
 		if (!selected)
-			MessageBox(dialog, "Please select an item first. Pasting aborted.",
+			MessageBox(dialog, "请先选择一个项目。粘贴已中止。",
 				szTrigTitle, MB_ICONWARNING);
 
 		t = &scen.triggers.at(index_sel);
@@ -1177,13 +1295,14 @@ void TrigTree_Paste(HWND dialog)
 			catch (std::exception &ex)
 			{
 				printf("Paste: %s\n", ex.what());
-				MessageBox(dialog, "Error placing condition/effect.", szTrigTitle, MB_ICONWARNING);
+				MessageBox(dialog, "放置条件/效果时出错。", szTrigTitle, MB_ICONWARNING);
 			}
 		}
 		GlobalUnlock(clip_data);
 	}
 
 	CloseClipboard();
+    TrigTree_Reset(GetDlgItem(treeview, IDC_T_TREE), true);//刷新触发列表消除乱数（虽然没找出为什么乱数，总之先刷新好了）
 }
 
 /*
@@ -1201,6 +1320,18 @@ void TrigTree_DuplicatePlayers(HWND treeview)
 	data->DuplicatePlayers(treeview, selected);
 }
 
+void TrigTree_DeDuplicatePlayers(HWND treeview)
+{
+	HTREEITEM selected;
+	class ItemData *data;
+
+	selected = TreeView_GetSelection(treeview);
+	data = (ItemData*)GetItemParam(treeview, selected);
+	if (!selected || !data)
+		return;
+	data->DeDuplicatePlayers(treeview, selected);
+}
+
 /*
 	TrigTree_Reset: Deletes all items in the trigger tree, and optionally refreshes
 */
@@ -1216,7 +1347,6 @@ void TrigTree_Reset(HWND treeview, bool refresh)
 	TreeView_DeleteItem(treeview, TVI_ROOT);
 	LockWindowUpdate(NULL);
 	SetCursor(previous);
-
 	if (refresh)
 	{
 		for (vector<unsigned long>::const_iterator i = scen.t_order.begin();
@@ -1253,14 +1383,13 @@ void TrigTree_AddNew(HWND treeview)
 	}
 
 	//add the trigger to the vector
-	sprintf(t.name, "New Trigger %d", scen.triggers.size());
+	sprintf(t.name, "新建触发 %d", scen.triggers.size());
 	index_new = scen.insert_trigger(&t, index_sibling);
-
 	//add the node to the treeview
 	newitem = TrigTree_AddTrig(treeview, index_new, sibling);
 	TreeView_SelectItem(treeview, newitem);
-
 	SetFocus(treeview);
+    TrigTree_Reset(GetDlgItem(treeview, IDC_T_TREE), true);//刷新触发列表消除乱数（虽然没找出为什么乱数，总之先刷新好了）
 }
 
 /*
@@ -1374,10 +1503,16 @@ BOOL Handle_WM_INITDIALOG(HWND dialog)
 	CheckDlgButton(dialog, IDC_T_SHOWDISPLAYORDER, setts.showdisplayorder);
 	CheckDlgButton(dialog, IDC_T_SHOWFIREORDER, setts.showtrigids);
 
-    if (bysource) {
-	    CheckRadioButton(dialog, IDC_T_SOURCE, IDC_T_TARGET, IDC_T_SOURCE);
-	} else {
-	    CheckRadioButton(dialog, IDC_T_SOURCE, IDC_T_TARGET, IDC_T_TARGET);
+	if (byauto) {
+		bysource = true;
+		CheckRadioButton(dialog, IDC_T_SOURCE, IDC_T_AUTO, IDC_T_AUTO);
+	}
+	else {
+		if (bysource) {
+		    CheckRadioButton(dialog, IDC_T_SOURCE, IDC_T_AUTO, IDC_T_SOURCE);
+		} else {
+		    CheckRadioButton(dialog, IDC_T_SOURCE, IDC_T_AUTO, IDC_T_TARGET);
+		}
 	}
 
     //SendDlgItemMessage(dialog, IDC_T_SHOWDISPLAYORDER, BM_SETCHECK, setts.showdisplayorder, 0);
@@ -1438,10 +1573,11 @@ void TrigTree_HandleSelChanged(NMTREEVIEW *treehdr, HWND dialog)
 		ENABLE_WND(IDC_T_NEFFECT, true);
 		ENABLE_WND(IDC_T_NCOND, true);
 		ENABLE_WND(IDC_T_DUPP, true);
+		ENABLE_WND(IDC_T_DEDUPP, true);
 		if (data_new->type == TRIGGER) {
-		    SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("Rename (Enter)"));
+		    SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("重命名"));
 		} else {
-		    SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("Edit... (Enter)"));
+		    SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("编辑..."));
 		}
 		ENABLE_WND(IDC_T_EDIT, true);
 		Triggers_EditMenu(propdata.menu, true);
@@ -1454,7 +1590,8 @@ void TrigTree_HandleSelChanged(NMTREEVIEW *treehdr, HWND dialog)
 		ENABLE_WND(IDC_T_NEFFECT, false);
 		ENABLE_WND(IDC_T_NCOND, false);
 		ENABLE_WND(IDC_T_DUPP, false);
-		SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("Edit / Rename"));
+		ENABLE_WND(IDC_T_DEDUPP, false);
+		SendMessage(editbutton, WM_SETTEXT, 0, (LPARAM) _T("编辑 / 重命名"));
 		ENABLE_WND(IDC_T_EDIT, false);
 		Triggers_EditMenu(propdata.menu, false);
 
@@ -1697,10 +1834,23 @@ INT_PTR Handle_WM_COMMAND(HWND dialog, WORD code, WORD id, HWND)
 		{
 		case IDC_T_SOURCE:
 		    bysource = true;
+		    byauto = false;
 		    break;
 		case IDC_T_TARGET:
 		    bysource = false;
+		    byauto = false;
 		    break;
+		case IDC_T_AUTO:
+		    bysource = true;
+		    byauto = true;
+		    break;
+		case IDC_T_MESSAGE:
+            if (SendMessage(GetDlgItem(dialog, IDC_T_MESSAGE),BM_GETCHECK,0,0)) {
+                changemessage = true;
+            } else {
+                changemessage = false;
+            }
+			break;
 		case IDC_T_SHOWFIREORDER:
             if (SendMessage(GetDlgItem(dialog, IDC_T_SHOWFIREORDER),BM_GETCHECK,0,0)) {
                 setts.showtrigids = true;
@@ -1768,7 +1918,14 @@ INT_PTR Handle_WM_COMMAND(HWND dialog, WORD code, WORD id, HWND)
 				SendMessage(GetFocus(), WM_PASTE, 0, 0);
 			break;
 
+		case ID_TS_EDIT_REFRESH:
+		    TrigTree_Reset(GetDlgItem(dialog, IDC_T_TREE), true);
+			break;
+
 		case IDC_T_EDIT:
+			EnableMenuItem(propdata.menu, ID_TS_EDIT_COPY, MF_ENABLED);
+			EnableMenuItem(propdata.menu, ID_TS_EDIT_CUT, MF_ENABLED);
+			EnableMenuItem(propdata.menu, ID_TS_EDIT_PASTE, MF_ENABLED);
 		    TrigTree_HandleEdit(treeview, dialog);
 	        TreeView_EditLabel(treeview, TreeView_GetSelection(treeview));
 			break;
@@ -1868,13 +2025,18 @@ INT_PTR Handle_WM_COMMAND(HWND dialog, WORD code, WORD id, HWND)
 			SAFETY();
 			TrigTree_DuplicatePlayers(treeview);
 			break;
+
+		case IDC_T_DEDUPP:
+			SAFETY();
+			TrigTree_DeDuplicatePlayers(treeview);
+			break;
 		}
 		break;
 
 	case EN_SETFOCUS:
 		EnableMenuItem(propdata.menu, ID_TS_EDIT_COPY, MF_ENABLED);
 		EnableMenuItem(propdata.menu, ID_TS_EDIT_CUT, MF_ENABLED);
-		if (IsClipboardFormatAvailable(CF_TEXT))
+		if (IsClipboardFormatAvailable(CF_TEXT) || editor_count)
 			EnableMenuItem(propdata.menu, ID_TS_EDIT_PASTE, MF_ENABLED);
 
         PaintCurrent();
@@ -2021,7 +2183,7 @@ INT_PTR Handle_WM_LBUTTONUP(HWND dialog, WPARAM wParam, int x, int y)
 		}
 		catch (std::exception &ex) // don't let it propagate to Win32 code
 		{
-			MessageBox(dialog, ex.what(), "Drag operation failed.",
+			MessageBox(dialog, ex.what(), "拖动操作失败。",
 					MB_ICONWARNING);
 		}
 	}

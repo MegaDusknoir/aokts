@@ -70,11 +70,23 @@ struct ConditionType {
 	    ResearchingTechnology,
 	    UnitsGarrisoned,
 	    DifficultyLevel,
-	    OwnFewerFoundations_SWGB,
-	        Chance_HD = OwnFewerFoundations_SWGB,
-	    SelectedObjectsInArea_SWGB,
-	    PoweredObjectsInArea_SWGB,
-	    UnitsQueuedPastPopCap_SWGB,
+	    Civilization_UP,
+	        Chance_HD = Civilization_UP,
+			OwnFewerFoundations_SWGB = Civilization_UP,
+	    Chance_UP,
+			SelectedObjectsInArea_SWGB = Chance_UP,
+			Chance_ETP = Chance_UP,
+	    OwnFewerFoundations_ETP,
+			PoweredObjectsInArea_SWGB = OwnFewerFoundations_ETP,
+	    OwnFewerRubble_ETP,
+			UnitsQueuedPastPopCap_SWGB = OwnFewerRubble_ETP,
+		RoomSetting_ETP,
+			UnusedCondition24 = RoomSetting_ETP,
+		TriggerActive_ETP,
+		ComputerPlayer_ETP,
+		VariableValue_ETP,
+		VariableValueLowerThan_ETP,
+		TechnologyState_ETP,
 	};
 };
 
@@ -131,10 +143,13 @@ public:
     static const int NUM_CONDITIONS_AOF4 = 21;
     static const int NUM_CONDITIONS_SWGB = 22;
     static const int NUM_CONDITIONS_CC = 24;
+    static const int NUM_CONDITIONS_UP = 23;
+    static const int NUM_CONDITIONS_ETP = 31;
 
     static const int NUM_VIRTUAL_CONDITIONS_AOK = 6;
     static const int NUM_VIRTUAL_CONDITIONS_AOC = 13;
     static const int NUM_VIRTUAL_CONDITIONS_UP = 13;
+    static const int NUM_VIRTUAL_CONDITIONS_ETP = 13;
     static const int NUM_VIRTUAL_CONDITIONS_AOHD = 6;
     static const int NUM_VIRTUAL_CONDITIONS_AOF = 6;
     static const int NUM_VIRTUAL_CONDITIONS_SWGB = 6;
@@ -143,13 +158,18 @@ public:
 	static const char* types_aok[NUM_CONDITIONS_AOHD4];
 	static const char* types_swgb[NUM_CONDITIONS_SWGB];
 	static const char* types_cc[NUM_CONDITIONS_CC];
+	static const char* types_up[NUM_CONDITIONS_UP];
+	static const char* types_etp[NUM_CONDITIONS_ETP];
 	static const char* types_short_aok[NUM_CONDITIONS_AOHD4];
+	static const char* types_short_up[NUM_CONDITIONS_UP];
+	static const char* types_short_etp[NUM_CONDITIONS_ETP];
 	static const char* types_short_swgb[NUM_CONDITIONS_SWGB];
 	static const char* types_short_cc[NUM_CONDITIONS_CC];
 
 	static const char* virtual_types_aok[NUM_VIRTUAL_CONDITIONS_AOK];
 	static const char* virtual_types_aoc[NUM_VIRTUAL_CONDITIONS_AOC];
 	static const char* virtual_types_up[NUM_VIRTUAL_CONDITIONS_UP];
+	static const char* virtual_types_etp[NUM_VIRTUAL_CONDITIONS_ETP];
 	static const char* virtual_types_aohd[NUM_VIRTUAL_CONDITIONS_AOHD];
 	static const char* virtual_types_aof[NUM_VIRTUAL_CONDITIONS_AOF];
 	static const char* virtual_types_swgb[NUM_VIRTUAL_CONDITIONS_SWGB];

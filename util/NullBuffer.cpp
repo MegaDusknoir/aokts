@@ -15,12 +15,12 @@ NullBuffer::NullBuffer()
 
 void NullBuffer::read(void * dest, const size_t length)
 {
-	throw logic_error("NullBuffer does not support reads");
+	throw logic_error("NullBuffer不支持读取");
 }
 
 void NullBuffer::reads(char * dest, const size_t lensize)
 {
-	throw logic_error("NullBuffer does not support reads");
+	throw logic_error("NullBuffer不支持读取");
 }
 
 void NullBuffer::skip(const size_t offset)

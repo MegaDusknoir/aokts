@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE geniedata>
- 
+
 <geniedata>
 <!--
 Updated by JustTesting1234 - 02/01/12
@@ -30,242 +30,243 @@ Updated by DoctorWillCU, 19/02/16.
 
 <techs>
 <!--
-(A) - Make available
-(H) - Hidden tech
-(U) - Unimplemented/Unknown/Unused
-(REV) - Reverse Condition
-(CIV) - Only available for that civilization
-AP - Attack Points
-HP - Hit Points
-MA - Melee Armor
-PA - Pierce Armor
-AS - Attack Speed
-MS - Move Speed
-WS - Work Speed
+(A) - 激活
+(H) - 隐藏科技
+(U) - 未生效/未知/未使用
+(REV) - 反向条件
+(D) - 无效
+(CIV) - 仅特定文明有效
+AP - 攻击力
+HP - 生命值
+MA - 近战护甲
+PA - 远程护甲
+AS - 攻击速度
+MS - 移动速度
+WS - 工作效率
 -->
 <tech id="0" name="New Research 0 (U)(GAI)" />
-<tech id="1" name="Tarkan (A)(HUN)" />
-<tech id="2" name="Elite Tarkan (HUN)" />
-<tech id="3" name="Yeomen (BRI)"  />
-<tech id="4" name="El Dorado (MAY)" />
-<tech id="5" name="Furor Celtica (CEL)" />
-<tech id="6" name="Drill (MON)" />
-<tech id="7" name="Mahouts (PER)" />
-<tech id="8" name="Town Watch" />
-<tech id="9" name="Zealotry (SAR)" />
-<tech id="10" name="Artillery (TUR)" />
-<tech id="11" name="Crenellations (TEU)" />
-<tech id="12" name="Crop Rotation" />
-<tech id="13" name="Heavy Plow" />
-<tech id="14" name="Horse Collar" />
-<tech id="15" name="Guilds" />
-<tech id="16" name="Anarchy (GOT)" />
-<tech id="17" name="Banking" />
-<tech id="18" name="Barracks Huskarl (GOT)" />
-<tech id="19" name="Cartography" />
-<tech id="20" name="Currency (U)" />
-<tech id="21" name="Atheism (HUN)" />
-<tech id="22" name="Loom" />
-<tech id="23" name="Coinage" />
-<tech id="24" name="Garland Wars (AZT)" />
-<tech id="25" name="Stable (A)" />
-<tech id="26" name="Plumed Archer (A)(MAY)" />
-<tech id="27" name="Elite Plumed Archer (MAY)" />
-<tech id="28" name="Compass (U)" />
-<tech id="29" name="Atonement +5 Monk HP (AZT)" />
-<tech id="30" name="Sanctity +5 Monk HP (AZT)" />
-<tech id="31" name="Fervor +5 Monk HP (AZT)" />
-<tech id="32" name="Redemption +5 Monk HP (AZT)" />
-<tech id="33" name="Faith +5 Monk HP (AZT)" />
-<tech id="34" name="War Galley" />
-<tech id="35" name="Galleon" />
-<tech id="36" name="Illumination +5 Monk HP (AZT)" />
-<tech id="37" name="Cannon Galleon" />
-<tech id="38" name="Block Printing +5 Monk HP (AZT)" />
-<tech id="39" name="Husbandry" />
-<tech id="40" name="Heresy +5 Monk HP (AZT)" />
-<tech id="41" name="Theocracy +5 Monk HP (AZT)" />
-<tech id="42" name="Infantry +1 attack (U)(AZT)" />
-<tech id="43" name="Infantry +2 attack (U)(AZT)" />
-<tech id="44" name="Infantry +3 attack (U)(AZT)" />
-<tech id="45" name="Faith" />
-<tech id="46" name="Block printing (U)" />
-<tech id="47" name="Chemistry" />
-<tech id="48" name="Caravan" />
-<tech id="49" name="Berserkergang (VIK)" />
-<tech id="50" name="Masonry" />
-<tech id="51" name="Architecture" />
-<tech id="52" name="Rocketry (CHI)" />
-<tech id="53" name="Archers -20% Cost (MAY)" />
-<tech id="54" name="Treadmill Crane" />
-<tech id="55" name="Gold Mining" />
-<tech id="56" name="Archers -30% Cost (MAY)" />
-<tech id="57" name="Spanish Cannon Galleon (U)" />
-<tech id="58" name="Conquistador (A)(SPA)" />
-<tech id="59" name="Kataparuto (JAP)" />
-<tech id="60" name="Elite Conquistador (SPA)" />
-<tech id="61" name="Logistica (BYZ)" />
-<tech id="62" name="Upgrade Castle to Fortress (U)(GAI)" />
-<tech id="63" name="Keep" />
-<tech id="64" name="Bombard Tower" />
-<tech id="65" name="Gillnets" />
+<tech id="1" name="鞑靼骑兵 (A)(HUN)" />
+<tech id="2" name="精锐鞑靼骑兵 (HUN)" />
+<tech id="3" name="菁英侍卫 (BRI)"  />
+<tech id="4" name="黄金国 (MAY)" />
+<tech id="5" name="凯尔特狂热 (CEL)" />
+<tech id="6" name="操练 (MON)" />
+<tech id="7" name="象夫 (PER)" />
+<tech id="8" name="城镇瞭望" />
+<tech id="9" name="狂热 (SAR)" />
+<tech id="10" name="火炮术 (TUR)" />
+<tech id="11" name="垛口 (TEU)" />
+<tech id="12" name="轮作" />
+<tech id="13" name="重犁" />
+<tech id="14" name="马轭" />
+<tech id="15" name="行会" />
+<tech id="16" name="无政府状态 (GOT)" />
+<tech id="17" name="银行业" />
+<tech id="18" name="军营近卫军 (GOT)" />
+<tech id="19" name="制图学" />
+<tech id="20" name="货币 (U)" />
+<tech id="21" name="无神论 (HUN)" />
+<tech id="22" name="织布机" />
+<tech id="23" name="铸币术" />
+<tech id="24" name="荣冠战争 (AZT)" />
+<tech id="25" name="马厩 (A)" />
+<tech id="26" name="羽箭手 (A)(MAY)" />
+<tech id="27" name="精锐羽箭手 (MAY)" />
+<tech id="28" name="罗盘 (U)" />
+<tech id="29" name="赎罪 +5 僧侣 HP (AZT)" />
+<tech id="30" name="圣洁 +5 僧侣 HP (AZT)" />
+<tech id="31" name="热忱 +5 僧侣 HP (AZT)" />
+<tech id="32" name="救赎 +5 僧侣 HP (AZT)" />
+<tech id="33" name="信念 +5 僧侣 HP (AZT)" />
+<tech id="34" name="弩炮战船" />
+<tech id="35" name="重型弩炮战船" />
+<tech id="36" name="启蒙 +5 僧侣 HP (AZT)" />
+<tech id="37" name="火炮战船" />
+<tech id="38" name="雕版印刷术 +5 僧侣 HP (AZT)" />
+<tech id="39" name="畜养" />
+<tech id="40" name="异端邪说 +5 僧侣 HP (AZT)" />
+<tech id="41" name="神权政治 +5 僧侣 HP (AZT)" />
+<tech id="42" name="步兵 +1 攻击 (U)(AZT)" />
+<tech id="43" name="步兵 +2 攻击 (U)(AZT)" />
+<tech id="44" name="步兵 +3 攻击 (U)(AZT)" />
+<tech id="45" name="信念" />
+<tech id="46" name="雕版印刷术 (U)" />
+<tech id="47" name="化学" />
+<tech id="48" name="大篷车" />
+<tech id="49" name="狂战士之怒 (VIK)" />
+<tech id="50" name="石匠" />
+<tech id="51" name="建筑学" />
+<tech id="52" name="火箭学 (CHI)" />
+<tech id="53" name="弓兵 -20% 花费 (MAY)" />
+<tech id="54" name="踏旋起重机" />
+<tech id="55" name="采金术" />
+<tech id="56" name="弓兵 -30% 花费 (MAY)" />
+<tech id="57" name="西班牙火炮战船 (U)" />
+<tech id="58" name="征服者 (A)(SPA)" />
+<tech id="59" name="投石器 (JAP)" />
+<tech id="60" name="精锐征服者 (SPA)" />
+<tech id="61" name="后勤学 (BYZ)" />
+<tech id="62" name="升级城堡至堡垒 (U)(GAI)" />
+<tech id="63" name="要塞" />
+<tech id="64" name="火炮塔" />
+<tech id="65" name="捕鱼刺网" />
 <tech id="66" name="New Research 66 (U)(GAI)" />
-<tech id="67" name="Forging" />
-<tech id="68" name="Iron Casting" />
-<tech id="69" name="Villagers +30 AP vs Animals (MAG)" />
-<tech id="70" name="Start with eagle (U)(INC)" />
-<tech id="71" name="Stone Wall / Gate x2 HP" />
-<tech id="72" name="Fortified Wall / Gate x2 HP (U)" />
-<tech id="73" name="Inf, 2H Swordsman, Pikeman, Spearman +1 MA (U)(GAI)" />
-<tech id="74" name="Scale Mail Armor" />
-<tech id="75" name="Blast Furnace" />
-<tech id="76" name="Chain Mail Armor" />
-<tech id="77" name="Plate Mail Armor" />
+<tech id="67" name="锻造" />
+<tech id="68" name="铸铁" />
+<tech id="69" name="村民+30 对动物攻击 (MAG)" />
+<tech id="70" name="起始鹰勇士 (U)(INC)" />
+<tech id="71" name="石墙/城门 x2 HP" />
+<tech id="72" name="垛墙/城门 x2 HP (U)" />
+<tech id="73" name="Inf 双手剑士 长枪兵 长矛兵 +1 近程护甲 (U)(GAI)" />
+<tech id="74" name="步兵鳞甲" />
+<tech id="75" name="鼓风高炉" />
+<tech id="76" name="步兵锁甲" />
+<tech id="77" name="步兵板甲" />
 <tech id="78" name="New Research 78 (U)(GAI)" />
-<tech id="79" name="Cavalry, Cav Archers +1/+1 Armor (U)(GAI)" />
-<tech id="80" name="Plate Barding Armor" />
-<tech id="81" name="Scale Barding Armor" />
-<tech id="82" name="Chain Barding Armor" />
-<tech id="83" name="Bearded Axe (FRA)" />
-<tech id="84" name="Missionary (A)(SPA)" />
-<tech id="85" name="Hand Cannoneer (A)" />
-<tech id="86" name="Allow Formations (U)(GAI)" />
-<tech id="87" name="Spearman (A)" />
+<tech id="79" name="骑兵 骑射手 +1/+1 护甲 (U)(GAI)" />
+<tech id="80" name="骑兵板甲" />
+<tech id="81" name="骑兵鳞甲" />
+<tech id="82" name="骑兵锁甲" />
+<tech id="83" name="芒刺斧 (FRA)" />
+<tech id="84" name="传教士 (A)(SPA)" />
+<tech id="85" name="火枪兵 (A)" />
+<tech id="86" name="允许编队结构 (U)(GAI)" />
+<tech id="87" name="长矛兵 (A)" />
 <tech id="88" name="New Research 88 (U)(GAI)" />
-<tech id="89" name="Siege Weapons +20% AP vs Buildings (U)(GAI)" />
-<tech id="90" name="Tracking" />
+<tech id="89" name="攻城武器+20% 对建筑攻击  (U)(GAI)" />
+<tech id="90" name="追踪术" />
 <tech id="91" name="New Research 91 (U)(GAI)" />
 <tech id="92" name="New Research 92 (U)(GAI)" />
-<tech id="93" name="Ballistics" />
-<tech id="94" name="Scorpion (A)" />
-<tech id="95" name="Free Hussar (U)(TUR)" />
-<tech id="96" name="Capped Ram" />
+<tech id="93" name="弹道学" />
+<tech id="94" name="弩炮 (A)" />
+<tech id="95" name="免费翼骑兵 (U)(TUR)" />
+<tech id="96" name="中型冲撞车" />
 <tech id="97" name="New Research 97 (U)(GAI)" />
-<tech id="98" name="Elite Skirmisher" />
-<tech id="99" name="Skirmisher (A)" />
-<tech id="100" name="Crossbowman" />
-<tech id="101" name="Feudal Age" />
-<tech id="102" name="Castle Age" />
-<tech id="103" name="Imperial Age" />
-<tech id="104" name="Dark Age" />
+<tech id="98" name="精锐掷矛兵" />
+<tech id="99" name="掷矛兵 (A)" />
+<tech id="100" name="弩手" />
+<tech id="101" name="封建时代" />
+<tech id="102" name="城堡时代" />
+<tech id="103" name="帝王时代" />
+<tech id="104" name="黑暗时代" />
 <tech id="105" name="New Research 105 (U)(GAI)" />
-<tech id="106" name="Shadow Blacksmith Age 1 (U)" />
-<tech id="107" name="Shadow Monastery Age 1 (U)" />
-<tech id="108" name="Shadow Dock Age 1 (U)" />
-<tech id="109" name="Shadow Farm Age 1 (U)" />
-<tech id="110" name="Shadow Mill Age 1 (U)" />
-<tech id="111" name="Camelry (H)" />
-<tech id="112" name="Fishing Ship (U)" />
+<tech id="106" name="阴影 铁匠铺 黑暗时代 (U)" />
+<tech id="107" name="阴影 修道院 黑暗时代 (U)" />
+<tech id="108" name="阴影 船坞 黑暗时代 (U)" />
+<tech id="109" name="阴影 农田 黑暗时代 (U)" />
+<tech id="110" name="阴影 磨坊 黑暗时代 (U)" />
+<tech id="111" name="骆驼骑兵 (H)" />
+<tech id="112" name="渔船 (U)" />
 <tech id="113" name="New Research 113 (U)(GAI)" />
-<tech id="114" name="Spearman (U)" />
+<tech id="114" name="长矛兵 (U)" />
 <tech id="115" name="New Research 115 (U)(GAI)" />
-<tech id="116" name="Villager (U)" />
-<tech id="117" name="Palisade Wall (U)" />
-<tech id="118" name="Shadow Town Center Age 1 (U)" />
+<tech id="116" name="村民 (U)" />
+<tech id="117" name="木墙 (U)" />
+<tech id="118" name="阴影 城镇中心 黑暗时代 (U)" />
 <tech id="119" name="New Research 119 (U)(GAI)" />
-<tech id="120" name="Shadow Node Age 2 (U)" />
+<tech id="120" name="阴影 Node Age 2 (U)" />
 <tech id="121" name="New Research 121 (U)(GAI)" />
-<tech id="122" name="Shadow Barracks Age 2 (U)" />
-<tech id="123" name="Shadow Blacksmith Age 2 (U)" />
-<tech id="124" name="Shadow Monastery Age 2 (U)" />
-<tech id="125" name="Shadow Dock Age 2 (U)" />
-<tech id="126" name="Shadow Farm Age 2 (U)" />
-<tech id="127" name="Watch Tower (A)" />
-<tech id="128" name="Shadow Market Age 2 (U)" />
-<tech id="129" name="Shadow Mill Age 2 (U)" />
-<tech id="130" name="Shadow Stable Age 2 (U)" />
-<tech id="131" name="Shadow Trade WorkShop Age 2 (U)" />
-<tech id="132" name="Shadow Archery Range Age 2 (U)" />
-<tech id="133" name="Upgrade Palisade Wall to Stone Wall (U)" />
-<tech id="134" name="Upgrade Barracks to Archery Range (U)" />
-<tech id="135" name="Shadow Node Age 3 (U)" />
-<tech id="136" name="Castle (U)(GAI)" />
-<tech id="137" name="Castle (A)" />
-<tech id="138" name="Shadow Siege Workshop Age 3 (U)" />
-<tech id="139" name="Fortified Wall (U)(GAI)" />
-<tech id="140" name="Guard Tower" />
-<tech id="141" name="Castles +10 MA, +20% HP, +2 Armor (U)(GAI)" />
-<tech id="142" name="Shadow Node Age 4 (U)" />
-<tech id="143" name="Shadow Tower Age 4 (U)" />
-<tech id="144" name="Wonder (A)" />
+<tech id="122" name="阴影 军营 封建时代 (U)" />
+<tech id="123" name="阴影 铁匠铺 封建时代 (U)" />
+<tech id="124" name="阴影 修道院 封建时代 (U)" />
+<tech id="125" name="阴影 船坞 封建时代 (U)" />
+<tech id="126" name="阴影 农田 封建时代 (U)" />
+<tech id="127" name="瞭望塔 (A)" />
+<tech id="128" name="阴影 市场 封建时代 (U)" />
+<tech id="129" name="阴影 磨坊 封建时代 (U)" />
+<tech id="130" name="阴影 马厩 封建时代 (U)" />
+<tech id="131" name="阴影 贸易工坊 封建时代 (U)" />
+<tech id="132" name="阴影 靶场 封建时代 (U)" />
+<tech id="133" name="升级木墙至石墙 (U)" />
+<tech id="134" name="升级军营至靶场 (U)" />
+<tech id="135" name="阴影 Node 城堡时代 (U)" />
+<tech id="136" name="城堡 (U)(GAI)" />
+<tech id="137" name="城堡 (A)" />
+<tech id="138" name="阴影 攻城武器厂 城堡时代 (U)" />
+<tech id="139" name="垛墙 (U)(GAI)" />
+<tech id="140" name="警戒塔" />
+<tech id="141" name="城堡 +10 近程护甲 +20% HP +2 护甲 (U)(GAI)" />
+<tech id="142" name="阴影 Node 帝王时代 (U)" />
+<tech id="143" name="阴影 塔 帝王时代 (U)" />
+<tech id="144" name="奇观 (A)" />
 <tech id="145" name="New Research 145 (U)(GAI)" />
-<tech id="146" name="Shadow University Age 3 (U)" />
-<tech id="147" name="Archery Range (A)" />
-<tech id="148" name="Market (A)" />
-<tech id="149" name="Siege Workshop (A)" />
-<tech id="150" name="University (A)" />
-<tech id="151" name="Archer (A)" />
-<tech id="152" name="Cavalry Archer (U)(GAI)" />
-<tech id="153" name="Trade Cog (U)(GAI)" />
-<tech id="154" name="Skirmisher (U)(GAI)" />
-<tech id="155" name="War Galley (U)(GAI)" />
-<tech id="156" name="Light Camel (U)" />
-<tech id="157" name="Monk (A)" />
-<tech id="158" name="Spearman (U)" />
-<tech id="159" name="Bandit (U)(GAI)" />
-<tech id="160" name="Man-At-Arms (U)" />
-<tech id="161" name="Trade Cart (A)" />
-<tech id="162" name="Battering Ram (A)" />
-<tech id="163" name="Crossbowman (U)(GAI)" />
-<tech id="164" name="Elite Skirmisher (U)(GAI)" />
-<tech id="165" name="Heavy Swordsman (U)(GAI)" />
-<tech id="166" name="Knight (A)" />
-<tech id="167" name="Mangonel (U)(GAI)" />
+<tech id="146" name="阴影 大学 城堡时代 (U)" />
+<tech id="147" name="靶场 (A)" />
+<tech id="148" name="市场 (A)" />
+<tech id="149" name="攻城武器厂 (A)" />
+<tech id="150" name="大学 (A)" />
+<tech id="151" name="步弓手 (A)" />
+<tech id="152" name="骑射手 (U)(GAI)" />
+<tech id="153" name="贸易船 (U)(GAI)" />
+<tech id="154" name="掷矛兵 (U)(GAI)" />
+<tech id="155" name="弩炮战船 (U)(GAI)" />
+<tech id="156" name="轻装骆驼骑兵 (U)" />
+<tech id="157" name="僧侣 (A)" />
+<tech id="158" name="长矛兵 (U)" />
+<tech id="159" name="强盗 (U)(GAI)" />
+<tech id="160" name="剑士 (U)" />
+<tech id="161" name="贸易车 (A)" />
+<tech id="162" name="轻型冲撞车 (A)" />
+<tech id="163" name="弩手 (U)(GAI)" />
+<tech id="164" name="精锐掷矛兵 (U)(GAI)" />
+<tech id="165" name="重装剑士 (U)(GAI)" />
+<tech id="166" name="骑士 (A)" />
+<tech id="167" name="轻型投石车 (U)(GAI)" />
 <tech id="168" name="OMTBO (U)(GAI)" />
-<tech id="169" name="Scorpion (U)(GAI)" />
-<tech id="170" name="Galleon (U)(GAI)" />
-<tech id="171" name="Capped Ram (U)(GAI)" />
-<tech id="172" name="Bombard Cannon (U)" />
-<tech id="173" name="Cannon Galleon (U)(GAI)" />
-<tech id="174" name="Hand Cannoner (U)" />
-<tech id="175" name="Cavalier (U)" />
+<tech id="169" name="弩炮 (U)(GAI)" />
+<tech id="170" name="重型弩炮战船 (U)(GAI)" />
+<tech id="171" name="中型冲撞车 (U)(GAI)" />
+<tech id="172" name="火炮 (U)" />
+<tech id="173" name="火炮战船 (U)(GAI)" />
+<tech id="174" name="火枪兵 (U)" />
+<tech id="175" name="重装骑士 (U)" />
 <tech id="176" name="PMANG (U)(GAI)" />
-<tech id="177" name="Trade Boats Carry +50% (U)(GAI)" />
-<tech id="178" name="All Ages (U)" />
+<tech id="177" name="贸易船载量 +50% (U)(GAI)" />
+<tech id="178" name="所有时代 (U)" />
 <tech id="179" name="New Research 179 (U)(GAI)" />
-<tech id="180" name="Trade Cog (A)" />
+<tech id="180" name="贸易船 (A)" />
 <tech id="181" name="New Research 181 (U)(GAI)" />
-<tech id="182" name="Gold Shaft Mining" />
+<tech id="182" name="钻井采金术" />
 <tech id="183" name="New Research 183 (U)(GAI)" />
-<tech id="184" name="Port (U)(GAI)" />
-<tech id="185" name="Cathedral (U)(GAI)" />
-<tech id="186" name="Long Swordsman (H)" />
-<tech id="187" name="Town Center (A)" />
-<tech id="188" name="Bombard Cannon (A)" />
-<tech id="189" name="Stone Wall / Gate (A)" />
+<tech id="184" name="港口 (U)(GAI)" />
+<tech id="185" name="大教堂 (U)(GAI)" />
+<tech id="186" name="长剑士 (H)" />
+<tech id="187" name="城镇中心 (A)" />
+<tech id="188" name="火炮 (A)" />
+<tech id="189" name="石墙 / 城门 (A)" />
 <tech id="190" name="New Research 190 (U)(GAI)" />
 <tech id="191" name="New Research 191 (U)(GAI)" />
-<tech id="192" name="Cavalry Archer (A)" />
+<tech id="192" name="骑射手 (A)" />
 <tech id="193" name="New Research 193 (U)(GAI)" />
-<tech id="194" name="Fortified Walls" />
+<tech id="194" name="垛墙" />
 <tech id="195" name="New Research 195 (U)(GAI)" />
 <tech id="196" name="New Research 196 (U)(GAI)" />
-<tech id="197" name="Pikeman" />
+<tech id="197" name="长枪兵" />
 <tech id="198" name="New Research 198 (U)(GAI)" />
-<tech id="199" name="Fletching" />
-<tech id="200" name="Bodkin Arrow" />
-<tech id="201" name="Bracer" />
-<tech id="202" name="Double-Bit Axe" />
-<tech id="203" name="Bow Saw" />
-<tech id="204" name="Scout Cavalry (A)" />
+<tech id="199" name="箭羽" />
+<tech id="200" name="锥箭簇" />
+<tech id="201" name="护腕" />
+<tech id="202" name="双刃斧" />
+<tech id="203" name="弓形锯" />
+<tech id="204" name="斥候骑兵 (A)" />
 <tech id="205" name="New Research 205 (U)(GAI)" />
 <tech id="206" name="New Research 206 (U)(GAI)" />
-<tech id="207" name="Long Swordsman" />
+<tech id="207" name="长剑士" />
 <tech id="208" name="New Research 208 (U)(GAI)" />
-<tech id="209" name="Cavalier" />
-<tech id="210" name="Monastery (A)" />
-<tech id="211" name="Padded Archer Armor" />
-<tech id="212" name="Leather Archer Armor" />
-<tech id="213" name="Wheel Barrow" />
+<tech id="209" name="重装骑士" />
+<tech id="210" name="修道院 (A)" />
+<tech id="211" name="弓兵软甲" />
+<tech id="212" name="弓兵皮甲" />
+<tech id="213" name="独轮手推车" />
 <tech id="214" name="New Research 214 (U)(GAI)" />
-<tech id="215" name="Squires" />
-<tech id="216" name="Farm (A)" />
-<tech id="217" name="Two-Handed Swordsman" />
-<tech id="218" name="Heavy Cavalry Archer" />
-<tech id="219" name="Ring Archer Armor" />
-<tech id="220" name="Barracks (A)" />
-<tech id="221" name="Two-Man Saw" />
-<tech id="222" name="Man-at-Arms" />
+<tech id="215" name="扈从" />
+<tech id="216" name="农田 (A)" />
+<tech id="217" name="双手剑士" />
+<tech id="218" name="重装骑射手" />
+<tech id="219" name="弓兵环甲" />
+<tech id="220" name="军营 (A)" />
+<tech id="221" name="双人锯" />
+<tech id="222" name="剑士" />
 <tech id="223" name="New Research 223 (U)(GAI)" />
 <tech id="224" name="New Research 224 (U)(GAI)" />
 <tech id="225" name="New Research 225 (U)(GAI)" />
@@ -273,1768 +274,1792 @@ WS - Work Speed
 <tech id="227" name="New Research 227 (U)(GAI)" />
 <tech id="228" name="New Research 228 (U)(GAI)" />
 <tech id="229" name="New Research 229 (U)(GAI)" />
-<tech id="230" name="Block Printing" />
-<tech id="231" name="Sanctity" />
+<tech id="230" name="雕版印刷术" />
+<tech id="231" name="圣洁" />
 <tech id="232" name="New Research 232 (U)(GAI)" />
-<tech id="233" name="Illumination" />
-<tech id="234" name="Conversion Enabler (H)" />
-<tech id="235" name="Camel (A)" />
-<tech id="236" name="Heavy Camel" />
-<tech id="237" name="Arbalest" />
+<tech id="233" name="启蒙" />
+<tech id="234" name="启用转化 (H)" />
+<tech id="235" name="骆驼骑兵 (A)" />
+<tech id="236" name="重装骆驼骑兵" />
+<tech id="237" name="劲弩手" />
 <tech id="238" name="New Research 238 (U)(GAI)" />
-<tech id="239" name="Heavy Scorpion" />
-<tech id="240" name="Galley (A)" />
+<tech id="239" name="重型弩炮" />
+<tech id="240" name="箭船 (A)" />
 <tech id="241" name="New Research 241 (U)(GAI)" />
-<tech id="242" name="Demolition Ship (A)" />
-<tech id="243" name="Fire Ship (A)" />
-<tech id="244" name="Heavy Demolition Ship" />
+<tech id="242" name="爆破船 (A)" />
+<tech id="243" name="喷火舰 (A)" />
+<tech id="244" name="重型爆破船" />
 <tech id="245" name="New Research 245 (U)(GAI)" />
-<tech id="246" name="Fast Fire Ship" />
+<tech id="246" name="快速喷火舰" />
 <tech id="247" name="New Research 247 (U)(GAI)" />
 <tech id="248" name="New Research 248 (U)(GAI)" />
-<tech id="249" name="Hand Cart" />
+<tech id="249" name="二轮手推车" />
 <tech id="250" name="New Research 250 (U)(GAI)" />
 <tech id="251" name="New Research 251 (U)(GAI)" />
-<tech id="252" name="Fervor" />
+<tech id="252" name="热忱" />
 <tech id="253" name="New Research 253 (U)(GAI)" />
-<tech id="254" name="Light Cavalry" />
-<tech id="255" name="Siege Ram" />
-<tech id="256" name="Trebuchet, Packed (A)" />
-<tech id="257" name="Onager" />
-<tech id="258" name="Shadow Saw Mill 1 (U)" />
+<tech id="254" name="轻骑兵" />
+<tech id="255" name="重装冲撞车" />
+<tech id="256" name="巨型投石机 组装的 (A)" />
+<tech id="257" name="中型投石车" />
+<tech id="258" name="阴影 锯木场 1 (U)" />
 <tech id="259" name="New Research 259 (U)(GAI)" />
 <tech id="260" name="New Research 260 (U)(GAI)" />
-<tech id="261" name="Transport Ship (A)" />
-<tech id="262" name="Samurai (A)(JAP)" />
-<tech id="263" name="Longbowman (A)(BRI)" />
-<tech id="264" name="Champion" />
-<tech id="265" name="Paladin" />
-<tech id="266" name="Castle Built (U)" />
-<tech id="267" name="Cataphract (A)(BYZ)" />
-<tech id="268" name="Chu Ko Nu (A)(CHI)" />
-<tech id="269" name="Mameluke (A)(SAR)" />
-<tech id="270" name="Berserker (U)(GOT)" />
-<tech id="271" name="Jannisary (A)(TUR)" />
-<tech id="272" name="Longboat (A)(VIK)" />
-<tech id="273" name="Mangudai (A)(MON)" />
-<tech id="274" name="War Elephant (A)(PER)" />
-<tech id="275" name="Throwing Axemen (A)(FRA)" />
-<tech id="276" name="Teutonic Knight (A)(TEU)" />
-<tech id="277" name="Woad Raider (A)(CEL)" />
-<tech id="278" name="Stone Mining" />
-<tech id="279" name="Stone Shaft Mining" />
-<tech id="280" name="Town Patrol" />
-<tech id="281" name="Blacksmith (A)" />
-<tech id="282" name="Mine has been built (U)" />
-<tech id="283" name="Buildings +10% HP (BYZ)" />
-<tech id="284" name="Trash Units Cost -25% (BYZ)" />
-<tech id="285" name="Free Chemistry (U)(TUR)" />
-<tech id="286" name="Cannon Galleons +25% HP (TUR)" />
-<tech id="287" name="Free Horse Collar (U)(FRA)" />
-<tech id="288" name="Free Heavy Plow (U)(FRA)" />
-<tech id="289" name="Free Crop Rotation (U)(FRA)" />
-<tech id="290" name="Knights +20% HP (FRA)" />
-<tech id="291" name="Infantry Cost -50% (H)" />
+<tech id="261" name="运输船 (A)" />
+<tech id="262" name="日本武士 (A)(JAP)" />
+<tech id="263" name="长弓兵 (A)(BRI)" />
+<tech id="264" name="冠军剑士" />
+<tech id="265" name="圣骑士" />
+<tech id="266" name="已建造城堡 (U)" />
+<tech id="267" name="甲胄骑兵 (A)(BYZ)" />
+<tech id="268" name="诸葛弩 (A)(CHI)" />
+<tech id="269" name="马穆鲁克 (A)(SAR)" />
+<tech id="270" name="狂战士 (U)(GOT)" />
+<tech id="271" name="苏丹亲兵 (A)(TUR)" />
+<tech id="272" name="维京长船 (A)(VIK)" />
+<tech id="273" name="蒙古突骑 (A)(MON)" />
+<tech id="274" name="战象 (A)(PER)" />
+<tech id="275" name="掷斧兵 (A)(FRA)" />
+<tech id="276" name="条顿武士 (A)(TEU)" />
+<tech id="277" name="菘蓝突击者 (A)(CEL)" />
+<tech id="278" name="采石术" />
+<tech id="279" name="钻井采石术" />
+<tech id="280" name="城镇巡逻" />
+<tech id="281" name="铁匠铺 (A)" />
+<tech id="282" name="采矿场已建造 (U)" />
+<tech id="283" name="建筑 +10% HP (BYZ)" />
+<tech id="284" name="垃圾单位花费 -25% (BYZ)" />
+<tech id="285" name="免费 化学 (U)(TUR)" />
+<tech id="286" name="火炮战船 +25% HP (TUR)" />
+<tech id="287" name="免费 马轭 (U)(FRA)" />
+<tech id="288" name="免费 重犁 (U)(FRA)" />
+<tech id="289" name="免费 轮作 (U)(FRA)" />
+<tech id="290" name="骑士 +20% HP (FRA)" />
+<tech id="291" name="步兵花费 -50% (H)" />
 <tech id="292" name="New Research 292 (U)(GAI)" />
-<tech id="293" name="Fishing Ships, Trade Cogs +20% MS (H)" />
-<tech id="294" name="Units 2 Conversion Resistance (H)" />
+<tech id="293" name="渔船 贸易船 +20% 移动速度 (H)" />
+<tech id="294" name="单位 2 转化抵抗力 (H)" />
 <tech id="295" name="New Research 295 (U)(GAI)" />
 <tech id="296" name="New Research 296 (U)(GAI)" />
 <tech id="297" name="New Research 297 (U)(GAI)" />
 <tech id="298" name="New Research 298 (U)(GAI)" />
 <tech id="299" name="New Research 299 (U)(GAI)" />
-<tech id="300" name="Gold Miners +15% WS (TUR)" />
-<tech id="301" name="Gunpowder Units +25% HP (TUR)" />
-<tech id="302" name="Start With 6 Villagers (CHI)" />
+<tech id="300" name="金矿工 +15% 工作速度 (TUR)" />
+<tech id="301" name="火药单位 +25% HP (TUR)" />
+<tech id="302" name="起始6村民 (CHI)" />
 <tech id="303" name="New Research 303 (U)(GAI)" />
-<tech id="304" name="Techs Cost -0% (CHI)" />
+<tech id="304" name="科技花费 -0% (CHI)" />
 <tech id="305" name="New Research 305 (U)(GAI)" />
-<tech id="306" name="Fishing Ships X2 HP, +5% WS, +2 PA (JAP)" />
+<tech id="306" name="渔船 X2 HP +5% 工作速度 +2 远程护甲 (JAP)" />
 <tech id="307" name="New Research 307 (U)(GAI)" />
 <tech id="308" name="New Research 308 (U)(GAI)" />
 <tech id="309" name="New Research 309 (U)(GAI)" />
 <tech id="310" name="New Research 310 (U)(GAI)" />
-<tech id="311" name="Transport Ships x2 HP, x2 Garrison (U)" />
-<tech id="312" name="Cav Archers +4 AP vs Buildings (SAR)" />
+<tech id="311" name="运输船 x2 HP x2 载量 (U)" />
+<tech id="312" name="骑射手+4 对建筑攻击  (SAR)" />
 <tech id="313" name="New Research 313 (U)(GAI)" />
-<tech id="314" name="Farms Cost -33% (TEU)" />
-<tech id="315" name="Conscription" />
-<tech id="316" name="Redemption" />
-<tech id="317" name="Boarding (H)" />
+<tech id="314" name="农田花费 -33% (TEU)" />
+<tech id="315" name="征募" />
+<tech id="316" name="救赎" />
+<tech id="317" name="围板 (H)" />
 <tech id="318" name="New Research 318 (U)(GAI)" />
-<tech id="319" name="Atonement" />
-<tech id="320" name="Siege Onager" />
-<tech id="321" name="Sappers" />
-<tech id="322" name="Murder Holes" />
+<tech id="319" name="赎罪" />
+<tech id="320" name="重型投石车" />
+<tech id="321" name="工兵" />
+<tech id="322" name="射击孔" />
 <tech id="323" name="New Research 323 (U)(GAI)" />
 <tech id="324" name="New Research 324 (U)(GAI)" />
-<tech id="325" name="Castles Cost -25% (FRA)" />
+<tech id="325" name="城堡花费 -25% (FRA)" />
 <tech id="326" name="New Research 326 (U)(GAI)" />
-<tech id="327" name="Infantry +1 AP vs Buildings (GOT)" />
+<tech id="327" name="步兵+1 对建筑攻击 (GOT)" />
 <tech id="328" name="New Research 328 (U)(GAI)" />
 <tech id="329" name="New Research 329 (U)(GAI)" />
 <tech id="330" name="New Research 330 (U)(GAI)" />
-<tech id="331" name="Houses Cost, Creation Time 1/3 (U)(GOT)" />
-<tech id="332" name="Outpost (A)" />
-<tech id="333" name="Towers +4 Max Arrows (U)(TEU)" />
+<tech id="331" name="房屋花费 建造时间 1/3 (U)(GOT)" />
+<tech id="332" name="哨站 (A)" />
+<tech id="333" name="塔 +4 最大箭矢数 (U)(TEU)" />
 <tech id="334" name="New Research 334 (U)(GAI)" />
 <tech id="335" name="New Research 335 (U)(GAI)" />
-<tech id="336" name="Town Centers +10 Garrison (TEU)" />
-<tech id="337" name="Transport Ships x2 HP, x2 Garrison (SAR)" />
-<tech id="338" name="Archers 87% Accuracy (H)" />
-<tech id="339" name="Galleys x2 LoS (U)(JAP)" />
-<tech id="340" name="Mills, Lumber/Mining Camps Cost -50% (JAP)" />
-<tech id="341" name="Infantry +25% AS (JAP)" />
-<tech id="342" name="Town Center x2 HP (PER)" />
-<tech id="343" name="Infantry Cost -0% (GOT)" />
-<tech id="344" name="Infantry Cost -25% (GOT)" />
-<tech id="345" name="Infantry Cost -35% (U)(GOT)" />
-<tech id="346" name="Infantry Cost -50% (U)(GOT)" />
-<tech id="347" name="Monks 8 Healing Range (TEU)" />
+<tech id="336" name="城镇中心 +10 驻扎量 (TEU)" />
+<tech id="337" name="运输船 x2 HP x2 载量 (SAR)" />
+<tech id="338" name="弓兵 87% 准确度 (H)" />
+<tech id="339" name="箭船 x2 视野 (U)(JAP)" />
+<tech id="340" name="磨坊 伐木场/采矿场花费 -50% (JAP)" />
+<tech id="341" name="步兵 +25% 攻击速度 (JAP)" />
+<tech id="342" name="城镇中心 x2 HP (PER)" />
+<tech id="343" name="步兵花费 -0% (GOT)" />
+<tech id="344" name="步兵花费 -25% (GOT)" />
+<tech id="345" name="步兵花费 -35% (U)(GOT)" />
+<tech id="346" name="步兵花费 -50% (U)(GOT)" />
+<tech id="347" name="僧侣 8 治疗范围 (TEU)" />
 <tech id="348" name="New Research 348 (U)(GAI)" />
-<tech id="349" name="Docks x2 HP (PER)" />
-<tech id="350" name="Techs Cost -10% (CHI)" />
-<tech id="351" name="Techs Cost -15% (CHI)" />
-<tech id="352" name="Techs Cost -20% (CHI)" />
-<tech id="353" name="Towers +5 Garrison, +4 Max Arrows (TEU)" />
-<tech id="354" name="Castle (A)(TUR)" />
-<tech id="355" name="Markets Tax 5%, Cost -75 Wood (SAR)" />
-<tech id="356" name="Techs Cost -50% (U)" />
-<tech id="357" name="Fish Trap (A)" />
-<tech id="358" name="Mangonel (A)" />
-<tech id="359" name="Sub-Shadow Age4 (U)" />
-<tech id="360" name="Elite Longbowman (BRI)" />
-<tech id="361" name="Elite Cataphract (BYZ)" />
-<tech id="362" name="Elite Chu Ko Nu (CHI)" />
-<tech id="363" name="Elite Throwing Axeman (FRA)" />
-<tech id="364" name="Elite Teutonic Knight (TEU)" />
-<tech id="365" name="Elite Huskarl (GOT)" />
-<tech id="366" name="Elite Samurai (JAP)" />
-<tech id="367" name="Elite War Elephant (PER)" />
-<tech id="368" name="Elite Mameluke (SAR)" />
-<tech id="369" name="Elite Janissary (TUR)" />
-<tech id="370" name="Elite Woad Raider (CEL)" />
-<tech id="371" name="Elite Mangudai (MON)" />
-<tech id="372" name="Elite Longboat (VIK)" />
-<tech id="373" name="Shipwright" />
-<tech id="374" name="Careening" />
-<tech id="375" name="Dry Dock" />
-<tech id="376" name="Elite Cannon Galleon" />
-<tech id="377" name="Siege Engineers" />
+<tech id="349" name="船坞 x2 HP (PER)" />
+<tech id="350" name="科技花费 -10% (CHI)" />
+<tech id="351" name="科技花费 -15% (CHI)" />
+<tech id="352" name="科技花费 -20% (CHI)" />
+<tech id="353" name="塔 +5 驻扎量 +4 最大箭矢数 (TEU)" />
+<tech id="354" name="城堡 (A)(TUR)" />
+<tech id="355" name="市场 税率 5% 花费 -75 木材 (SAR)" />
+<tech id="356" name="科技花费 -50% (U)" />
+<tech id="357" name="渔网 (A)" />
+<tech id="358" name="轻型投石车 (A)" />
+<tech id="359" name="副-阴影 帝王时代 (U)" />
+<tech id="360" name="精锐长弓兵 (BRI)" />
+<tech id="361" name="精锐甲胄骑兵 (BYZ)" />
+<tech id="362" name="精锐诸葛弩 (CHI)" />
+<tech id="363" name="精锐掷斧兵 (FRA)" />
+<tech id="364" name="精锐条顿武士 (TEU)" />
+<tech id="365" name="精锐近卫军 (GOT)" />
+<tech id="366" name="精锐日本武士 (JAP)" />
+<tech id="367" name="精锐战象 (PER)" />
+<tech id="368" name="精锐马穆鲁克 (SAR)" />
+<tech id="369" name="精锐苏丹亲兵 (TUR)" />
+<tech id="370" name="精锐菘蓝突击者 (CEL)" />
+<tech id="371" name="精锐蒙古突骑 (MON)" />
+<tech id="372" name="精锐维京长船 (VIK)" />
+<tech id="373" name="船匠" />
+<tech id="374" name="修船厂" />
+<tech id="375" name="干船坞" />
+<tech id="376" name="精锐火炮战船" />
+<tech id="377" name="攻城技师" />
 <tech id="378" name="New Research 378 (U)(GAI)" />
-<tech id="379" name="Hoardings" />
-<tech id="380" name="Heated Shot" />
-<tech id="381" name="TCs Cost -50% Wood (BRI)" />
-<tech id="382" name="Foot Archers +1 Range (BRI)" />
-<tech id="383" name="Shepherds +25% WS (BRI)" />
-<tech id="384" name="Eagle Warrior" />
-<tech id="385" name="Lumberjacks +15% WS (CEL)" />
-<tech id="386" name="Siege Weapons +20% AS (CEL)" />
-<tech id="387" name="Eagle Scout extra AP (INC)" />
-<tech id="388" name="Light Cavalry, Hussar +30% HP (MON)" />
-<tech id="389" name="Hunters +50% WS (MON)" />
-<tech id="390" name="Fortifications Built 25% Faster (KOR)" />
-<tech id="391" name="Infantry +20% HP (VIK)" />
-<tech id="392" name="Free Wheelbarrow (U)(VIK)" />
-<tech id="393" name="Infantry +15% MS (CEL)" />
-<tech id="394" name="Cav Archers +20% AS (MON)" />
-<tech id="395" name="Boats 10% Cheaper (VIK)" />
-<tech id="396" name="Demolition Ships +50% HP (CHI)" />
-<tech id="397" name="Fire Ships +20% AS (BYZ)" />
-<tech id="398" name="Elite Berserk (VIK)" />
-<tech id="399" name="Berserk (A)(VIK)" />
-<tech id="400" name="Free Hand Cart (U)(VIK)" />
-<tech id="401" name="Farmers +15% WS (U)(BYZ)" />
-<tech id="402" name="Hunters +5 AP vs Boars, Carry +15 (GOT)" />
-<tech id="403" name="Foot Archers +2 Range (BRI)" />
-<tech id="404" name="Galleys +20% AS (SAR)" />
-<tech id="405" name="Sheep Conversion Resistance (CEL)" />
-<tech id="406" name="Bonus Population +10 (GOT)" />
-<tech id="407" name="Monks 4 Healing Range (H)" />
-<tech id="408" name="Spies/Treason" />
-<tech id="409" name="TCs +10%/+15%/+20% WS (PER)" />
-<tech id="410" name="TCs +15% WS (U)(PER)" />
-<tech id="411" name="TCs +20% WS (U)(PER)" />
-<tech id="412" name="Docks +10/+15%/+20% WS (PER)" />
-<tech id="413" name="Docks +15% WS (U)(PER)" />
-<tech id="414" name="Docks +20% WS (U)(PER)" />
-<tech id="415" name="Infantry +15% HP (VIK)" />
-<tech id="416" name="Infantry +10% HP (VIK)" />
-<tech id="417" name="Buildings +20% HP (BYZ)" />
-<tech id="418" name="Buildings +30% HP (BYZ)" />
-<tech id="419" name="Buildings +40% HP (BYZ)" />
-<tech id="420" name="Infantry +15% AS (U)(JAP)" />
-<tech id="421" name="Infantry +20% AS (U)(JAP)" />
-<tech id="422" name="Fishing Ships +10% WS (JAP)" />
-<tech id="423" name="Fishing Ships +15% WS (JAP)" />
-<tech id="424" name="Fishing Ships +20% WS (JAP)" />
-<tech id="425" name="Town Centers +5 Pop (CHI)" />
-<tech id="426" name="Petard (A)" />
-<tech id="427" name="Genitour (A)" />
-<tech id="428" name="Hussar" />
-<tech id="429" name="Halberdier" />
-<tech id="430" name="Elite Genitour" />
-<tech id="431" name="Jaguar Warrior (A)(AZT)" />
-<tech id="432" name="Elite Jaguar Warrior (AZT)" />
-<tech id="433" name="Eagle Scout (A)" />
-<tech id="434" name="Elite Eagle Warrior" />
-<tech id="435" name="Bloodlines" />
-<tech id="436" name="Parthian Tactics" />
-<tech id="437" name="Thumb Ring" />
-<tech id="438" name="Theocracy" />
-<tech id="439" name="Heresy" />
-<tech id="440" name="Supremacy (SPA)" />
-<tech id="441" name="Herbal Medicine" />
-<tech id="442" name="Free Guard Tower (KOR)" />
-<tech id="443" name="Free Keep (KOR)" />
-<tech id="444" name="Free Bombard Tower (KOR)" />
-<tech id="445" name="Shinkichon (KOR)" />
-<tech id="446" name="Huskarl (A)(GOT)" />
-<tech id="447" name="Turtle Ship (A)(KOR)" />
-<tech id="448" name="Elite Turtle Ship (KOR)" />
-<tech id="449" name="War Wagon (A)(KOR)" />
-<tech id="450" name="Elite War Wagon (KOR)" />
-<tech id="451" name="Tower +1 range (U)(KOR)" />
-<tech id="452" name="Tower +2 range (KOR)" />
-<tech id="453" name="Tower +3 range (KOR)" />
-<tech id="454" name="Eagle Scout extra AP (AZT)" />
-<tech id="455" name="Eagle Scout extra AP (MAY)" />
-<tech id="456" name="Herbal Medicine +5 Monk HP (AZT)" />
-<tech id="457" name="Perfusion (GOT)" />
-<tech id="458" name="Cav Archers Cost -25% (HUN)" />
-<tech id="459" name="Cav Archers Cost -30% (HUN)" />
-<tech id="460" name="Atlatl (AZT)" />
-<tech id="461" name="Warwolf (BRI)" />
-<tech id="462" name="Great Wall (CHI)" />
-<tech id="463" name="Chieftains (VIK)" />
-<tech id="464" name="Greek Fire (BYZ)" />
-<tech id="465" name="Cartography (U)" />
-<tech id="466" name="Free War Galley (ITA)" />
-<tech id="467" name="Genoese Crossbowman (A)(ITA)" />
-<tech id="468" name="Elite Genoese Crossbowman (ITA)" />
+<tech id="379" name="围板" />
+<tech id="380" name="加热射击" />
+<tech id="381" name="城镇中心花费 -50% 木材 (BRI)" />
+<tech id="382" name="徒步弓兵 +1 射程 (BRI)" />
+<tech id="383" name="牧羊人 +25% 工作速度 (BRI)" />
+<tech id="384" name="鹰勇士" />
+<tech id="385" name="伐木工 +15% 工作速度 (CEL)" />
+<tech id="386" name="攻城武器 +20% 攻击速度 (CEL)" />
+<tech id="387" name="鹰斥候额外 攻击 (INC)" />
+<tech id="388" name="轻骑兵 翼骑兵 +30% HP (MON)" />
+<tech id="389" name="猎人 +50% 工作速度 (MON)" />
+<tech id="390" name="防御工事 建造快 25% (KOR)" />
+<tech id="391" name="步兵 +20% HP (VIK)" />
+<tech id="392" name="免费独轮手推车 (U)(VIK)" />
+<tech id="393" name="步兵 +15% 移动速度 (CEL)" />
+<tech id="394" name="骑射手 +20% 攻击速度 (MON)" />
+<tech id="395" name="舰船便宜 10% (VIK)" />
+<tech id="396" name="爆破船 +50% HP (CHI)" />
+<tech id="397" name="喷火舰 +20% 攻击速度 (BYZ)" />
+<tech id="398" name="精锐狂战士 (VIK)" />
+<tech id="399" name="狂战士 (A)(VIK)" />
+<tech id="400" name="免费 二轮手推车 (U)(VIK)" />
+<tech id="401" name="农夫 +15% 工作速度 (U)(BYZ)" />
+<tech id="402" name="猎人 +5 对野猪攻击  载量 +15 (GOT)" />
+<tech id="403" name="徒步弓兵 +2 射程 (BRI)" />
+<tech id="404" name="箭船 +20% 攻击速度 (SAR)" />
+<tech id="405" name="绵羊转化抵抗力 (CEL)" />
+<tech id="406" name="额外人口 +10 (GOT)" />
+<tech id="407" name="僧侣 4 治疗范围 (H)" />
+<tech id="408" name="间谍/叛国者" />
+<tech id="409" name="城镇中心 +10%/+15%/+20% 工作速度 (PER)" />
+<tech id="410" name="城镇中心 +15% 工作速度 (U)(PER)" />
+<tech id="411" name="城镇中心 +20% 工作速度 (U)(PER)" />
+<tech id="412" name="船坞 +10/+15%/+20% 工作速度 (PER)" />
+<tech id="413" name="船坞 +15% 工作速度 (U)(PER)" />
+<tech id="414" name="船坞 +20% 工作速度 (U)(PER)" />
+<tech id="415" name="步兵 +15% HP (VIK)" />
+<tech id="416" name="步兵 +10% HP (VIK)" />
+<tech id="417" name="建筑 +20% HP (BYZ)" />
+<tech id="418" name="建筑 +30% HP (BYZ)" />
+<tech id="419" name="建筑 +40% HP (BYZ)" />
+<tech id="420" name="步兵 +15% 攻击速度 (U)(JAP)" />
+<tech id="421" name="步兵 +20% 攻击速度 (U)(JAP)" />
+<tech id="422" name="渔船 +10% 工作速度 (JAP)" />
+<tech id="423" name="渔船 +15% 工作速度 (JAP)" />
+<tech id="424" name="渔船 +20% 工作速度 (JAP)" />
+<tech id="425" name="城镇中心 +5 人口 (CHI)" />
+<tech id="426" name="爆破兵 (A)" />
+<tech id="427" name="龙骑兵 (A)" />
+<tech id="428" name="翼骑兵" />
+<tech id="429" name="长戟兵" />
+<tech id="430" name="精锐龙骑兵" />
+<tech id="431" name="豹勇士 (A)(AZT)" />
+<tech id="432" name="精锐豹勇士 (AZT)" />
+<tech id="433" name="鹰斥候 (A)" />
+<tech id="434" name="精锐鹰勇士" />
+<tech id="435" name="血统" />
+<tech id="436" name="安息人战术" />
+<tech id="437" name="指环" />
+<tech id="438" name="神权政治" />
+<tech id="439" name="异端邪说" />
+<tech id="440" name="霸权 (SPA)" />
+<tech id="441" name="草药学" />
+<tech id="442" name="免费 警戒塔 (KOR)" />
+<tech id="443" name="免费 要塞 (KOR)" />
+<tech id="444" name="免费 火炮塔 (KOR)" />
+<tech id="445" name="神机箭 (KOR)" />
+<tech id="446" name="近卫军 (A)(GOT)" />
+<tech id="447" name="龟甲船 (A)(KOR)" />
+<tech id="448" name="精锐龟甲船 (KOR)" />
+<tech id="449" name="战车 (A)(KOR)" />
+<tech id="450" name="精锐战车 (KOR)" />
+<tech id="451" name="塔 +1 射程 (U)(KOR)" />
+<tech id="452" name="塔 +2 射程 (KOR)" />
+<tech id="453" name="塔 +3 射程 (KOR)" />
+<tech id="454" name="鹰斥候 额外 攻击 (AZT)" />
+<tech id="455" name="鹰斥候 额外 攻击 (MAY)" />
+<tech id="456" name="草药学 +5 僧侣 HP (AZT)" />
+<tech id="457" name="灌注 (GOT)" />
+<tech id="458" name="骑射手花费 -25% (HUN)" />
+<tech id="459" name="骑射手花费 -30% (HUN)" />
+<tech id="460" name="掷矛器 (AZT)" />
+<tech id="461" name="战狼号 (BRI)" />
+<tech id="462" name="长城 (CHI)" />
+<tech id="463" name="酋长 (VIK)" />
+<tech id="464" name="希腊之火 (BYZ)" />
+<tech id="465" name="制图学 (U)" />
+<tech id="466" name="免费 弩炮战船 (ITA)" />
+<tech id="467" name="热那亚弩手 (A)(ITA)" />
+<tech id="468" name="精锐热那亚弩手 (ITA)" />
 <tech id="469" name="New Research (U)(GAI)" />
-<tech id="470" name="Wonder Built (U)(GAI)" />
-<tech id="471" name="Magyar Huszar (A)(MAG)" />
-<tech id="472" name="Elite Magyar Huszar (MAG)" />
-<tech id="473" name="Scouts 10% Cheaper (MAG)" />
-<tech id="474" name="Vil Forging (INC)" />
-<tech id="475" name="Vil Iron Casting (INC)" />
-<tech id="476" name="Vil Blast Furnace (INC)" />
-<tech id="477" name="Vil Scale Armor (INC)" />
-<tech id="478" name="Vil Chain Armor (INC)" />
-<tech id="479" name="Vil Plate Armor (INC)" />
-<tech id="480" name="Elephant Archer (A)(IND)" />
-<tech id="481" name="Elite Elephant Archer (IND)" />
-<tech id="482" name="Stronghold (CEL)" />
-<tech id="483" name="Marauders (HUN)" />
-<tech id="484" name="Yasama (JAP)" />
-<tech id="485" name="Tlatoani (MAY)" />
-<tech id="486" name="Panokseon (KOR)" />
-<tech id="487" name="Nomads (MON)" />
-<tech id="488" name="Boiling Oil (PER)" />
-<tech id="489" name="Ironclad (TEU)" />
-<tech id="490" name="Madrasah (SARA)" />
-<tech id="491" name="Sipahi (TUR)" />
-<tech id="492" name="Inquisition (SPA)" />
-<tech id="493" name="Chivalry (FRA)" />
-<tech id="494" name="Pavise (ITA)" />
-<tech id="495" name="Houses +5 pop (INC)" />
-<tech id="496" name="Villager Cost -10% (IND)" />
-<tech id="497" name="Villager Cost -20% (IND)" />
-<tech id="498" name="Villager Cost -30% (IND)" />
-<tech id="499" name="Silk Road (ITA)" />
-<tech id="500" name="Gunpowder Units 15% Cheaper (ITA)" />
-<tech id="501" name="Boats 15% Cheaper (VIK)" />
-<tech id="502" name="Boats 20% Cheaper (VIK)" />
-<tech id="503" name="Boyar (A)(SLA)" />
-<tech id="504" name="Elite Boyar (SLA)" />
-<tech id="505" name="Camels +1/+1 Armor (IND)" />
-<tech id="506" name="Sultans (IND)" />
-<tech id="507" name="Shatagni (IND)" />
-<tech id="508" name="Kamayuk (A)(INC)" />
-<tech id="509" name="Elite Kamayuk (INC)" />
-<tech id="510" name="Siege Tower (U)" />
-<tech id="511" name="Siege 15% Cheaper (SLA)" />
-<tech id="512" name="Orthodoxy (SLA)" />
-<tech id="513" name="Druzhina (SLA)" />
-<tech id="514" name="Mercenaries (MAG)" />
-<tech id="515" name="Recurve Bow (MAG)" />
-<tech id="516" name="Andean Sling (INC)" />
-<tech id="517" name="Couriers (INC)" />
-<tech id="518" name="Fisher Carry +25 (IND)" />
-<tech id="519" name="Buildings Cost -20% Stone (INC)" />
-<tech id="520" name="Archer HP (U)(MAG)" />
-<tech id="521" name="Imperial Camel (IND)" />
-<tech id="522" name="Condottiero (A)" />
-<tech id="523" name="Palisade Gate (A)" />
-<tech id="524" name="Foragers +25% WS (FRA)" />
-<tech id="525" name="Revetments (H)" />
-<tech id="526" name="Hunting Dogs" />
-<tech id="527" name="Fire Tower (A)(H)" />
-<tech id="528" name="Slinger (A)(INC)" />
-<tech id="529" name="Civ: Britons (BRI)" />
-<tech id="530" name="Civ: Franks (FRA)" />
-<tech id="531" name="Civ: Goths (GOT)" />
-<tech id="532" name="Civ: Teutons (TEU)" />
-<tech id="533" name="Civ: Japanese (JAP)" />
-<tech id="534" name="Civ: Chinese (CHI)" />
-<tech id="535" name="Civ: Byzantines (BYZ)" />
-<tech id="536" name="Civ: Persians (PER)" />
-<tech id="537" name="Civ: Saracens (SAR)" />
-<tech id="538" name="Civ: Turks (TUR)" />
-<tech id="539" name="Civ: Vikings (VIK)" />
-<tech id="540" name="Civ: Mongols (MON)" />
-<tech id="541" name="Civ: Celts (CEL)" />
-<tech id="542" name="Civ: Spanish (SPA)" />
-<tech id="543" name="Civ: Aztecs (AZT)" />
-<tech id="544" name="Civ: Mayans (MAY)" />
-<tech id="545" name="Civ: Huns (HUN)" />
-<tech id="546" name="Civ: Koreans (KOR)" />
-<tech id="547" name="Civ: Italians (ITA)" />
-<tech id="548" name="Civ: Indians (IND)" />
-<tech id="549" name="Civ: Incas (INC)" />
-<tech id="550" name="Civ: Magyars (MAG)" />
-<tech id="551" name="Civ: Slavs (SLA)" />
-<tech id="552" name="Hunting Dogs (MON)" />
-<tech id="553" name="Villager cost -25% (IND)" />
-<tech id="554" name="C-Bonus, Start w/ 4 villagers (MAY)" />
-<tech id="555" name="Enable Sheep" />
-<tech id="556" name="Enable Llamas" />
-<tech id="557" name="Enable Cows" />
-<tech id="558" name="Enable Turkeys" />
-<tech id="559" name="All units -15% gold (POR)" />
-<tech id="560" name="Ships +10% HP (POR)" />
-<tech id="561" name="University +80% faster (POR)" />
-<tech id="562" name="Organ Gun (A) (POR)" />
-<tech id="563" name="Elite Organ Gun (POR)" />
-<tech id="564" name="Camel Archer (A) (BER)" />
-<tech id="565" name="Elite Camel Archer (BER)" />
-<tech id="566" name="Gbeto (A) (MAL)" />
-<tech id="567" name="Elite Gbeto (MAL)" />
-<tech id="568" name="Shotel Warrior (A) (ETH)" />
-<tech id="569" name="Elite Shotel Warrior (ETH)" />
-<tech id="570" name="Feitoria (A)" />
-<tech id="571" name="Animals Decay (U)" />
-<tech id="572" name="Carrack (POR)" />
-<tech id="573" name="Arquebus (POR)" />
-<tech id="574" name="Royal Heirs (ETH)" />
-<tech id="575" name="Torsion Engines (ETH)" />
-<tech id="576" name="Tigui (MAL)" />
-<tech id="577" name="Farimba(MAL)" />
-<tech id="578" name="Kasbah (BER)" />
-<tech id="579" name="Maghrabi Camels (BER)" />
-<tech id="580" name="Civ: Portuguese (POR)" />
-<tech id="581" name="Civ: Ethiopians (ETH)" />
-<tech id="582" name="Civ: Malians (MAL)" />
-<tech id="583" name="Civ: Berbers (BER)" />
-<tech id="584" name="Villagers +10% faster (BER)" />
-<tech id="585" name="Ships +10% faster (BER)" />
-<tech id="586" name="Stable units cost -20% (BER)" />
-<tech id="587" name="+100 gold/food, Feudal (ETH)" />
-<tech id="588" name="+100 gold/food, Castle (ETH)" />
-<tech id="589" name="+100 gold/food, Imperial (ETH)" />
-<tech id="590" name="Free spear-line upgrades (ETH)" />
-<tech id="591" name="+1 pierce armor infantry, Feudal (MAL)" />
-<tech id="592" name="+1 pierce armor infantry, Castle (MAL)" />
-<tech id="593" name="+1 pierce armor infantry, Imperial (MAL)" />
-<tech id="594" name="Free mining upgrades (MAL)" />
-<tech id="595" name="Buildings cost -25% wood (MAL)" />
-<tech id="596" name="Caravel (A) (POR)" />
-<tech id="597" name="Elite Caravel (POR)" />
-<tech id="598" name="Berbers Genitour (A) (U) (BER)" />
-<tech id="599" name="Elite Berbers Genitour (BER)" />
-<tech id="600" name="Dark Cartography (T) (POR)" />
-<tech id="601" name="Berbers Genitour, Dummy (A)" />
-<tech id="602" name="Arson" />
-<tech id="603" name="Siege Tower (A)" />
-<tech id="604" name="Fire Galley (A)" />
-<tech id="605" name="Demolition Galley (A)" />
-<tech id="606" name="Elite Berbers Genitour (REV)" />
-<tech id="607" name="Archers fire +15% faster (ETH)" />
-<tech id="608" name="Arrowslits" />
-<tech id="614" name="Ballisita Elephant (A) (KHM)" />
-<tech id="615" name="Elite Ballisita Elephant (KHM)" />
-<tech id="616" name="Karambit Warrior (A) (MLY)" />
-<tech id="617" name="Elite Karambit Warrior (MLY)" />
-<tech id="618" name="Arambai (A) (BUR)" />
-<tech id="619" name="Elite Arambai (BUR)" />
-<tech id="620" name="Rattan Archer (A) (VIT)" />
-<tech id="621" name="Elite Rattan Archer (VIT)" />
-<tech id="622" name="Tusk Swords (KHM)" />
-<tech id="623" name="Double Crossbow (KHM)" />
-<tech id="624" name="Thalassocracy (MLY)" />
-<tech id="625" name="Forced Levy (MLY)" />
-<tech id="626" name="Howdah (BUR)" />
-<tech id="627" name="Manipur Cavalry (BUR)" />
-<tech id="628" name="Chatras (VIT)" />
-<tech id="629" name="Paper Money (VIT)" />
-<tech id="630" name="Battle Elephant (A)" />
-<tech id="631" name="Elite Battle Elephant" />
-<tech id="632" name="Archer HP +10% (VIT)" />
-<tech id="633" name="Infantry +1 Attack, Dark Age (BUR)" />
-<tech id="634" name="Age up Faster (MLY)" />
-<tech id="635" name="Fishing Ships Fish Traps -33% Cheaper (MLY)" />
-<tech id="645" name="Free Lumberjack Upgrade (BUR)" />
-<tech id="646" name="Infantry +1 Attack, Fedual Age (BUR)" />
-<tech id="647" name="Infantry +1 Attack, Castle Age (BUR)" />
-<tech id="648" name="Infantry +1 Attack, Imperial Age (BUR)" />
-<tech id="649" name="Monastery Techs -50% Cheaper (BUR)" />
-<tech id="650" name="Civ: Khmer (KHM)" />
-<tech id="651" name="Civ: Malay (MLY)" />
-<tech id="652" name="Civ: Burmese (BUR)" />
-<tech id="653" name="Civ: Vietnamese (VIT)" />
-<tech id="655" name="Imperial Skirmisher" />
-<tech id="656" name="Imperial Skirmisher (REV)" />
-<tech id="657" name="Houses Garrison (KHM)" />
-<tech id="662" name="Age up Faster (MLY)" />
-<tech id="663" name="Archer HP +15% (VIT)" />
-<tech id="664" name="Archer HP +20% (VIT)" />
-<tech id="665" name="Disable Vietnamese Vision (VIT)" />
-<tech id="672" name="Battle Elephant +15% Faster (KHM)" />
-
+<tech id="470" name="已建造奇观 (U)(GAI)" />
+<tech id="471" name="马扎尔骠骑 (A)(MAG)" />
+<tech id="472" name="精锐马扎尔骠骑 (MAG)" />
+<tech id="473" name="侦察兵便宜 10% (MAG)" />
+<tech id="474" name="村民 锻造 (INC)" />
+<tech id="475" name="村民 铸铁 (INC)" />
+<tech id="476" name="村民 鼓风高炉 (INC)" />
+<tech id="477" name="村民 鳞甲 (INC)" />
+<tech id="478" name="村民 锁甲 (INC)" />
+<tech id="479" name="村民 板甲 (INC)" />
+<tech id="480" name="骑象射手 (A)(IND)" />
+<tech id="481" name="精锐骑象射手 (IND)" />
+<tech id="482" name="堡垒 (CEL)" />
+<tech id="483" name="掠夺者 (HUN)" />
+<tech id="484" name="射箭孔 (JAP)" />
+<tech id="485" name="黑曜石之箭 (MAY)" />
+<tech id="486" name="板屋船 (KOR)" />
+<tech id="487" name="游牧 (MON)" />
+<tech id="488" name="沸油 (PER)" />
+<tech id="489" name="重装甲 (TEU)" />
+<tech id="490" name="清真学堂 (SARA)" />
+<tech id="491" name="突厥骑射 (TUR)" />
+<tech id="492" name="宗教法庭 (SPA)" />
+<tech id="493" name="骑士精神 (FRA)" />
+<tech id="494" name="大盾 (ITA)" />
+<tech id="495" name="房屋 +5 人口 (INC)" />
+<tech id="496" name="村民花费 -10% (IND)" />
+<tech id="497" name="村民花费 -20% (IND)" />
+<tech id="498" name="村民花费 -30% (IND)" />
+<tech id="499" name="丝绸之路 (ITA)" />
+<tech id="500" name="火药单位便宜 15% (ITA)" />
+<tech id="501" name="舰船便宜 15% (VIK)" />
+<tech id="502" name="舰船便宜 20% (VIK)" />
+<tech id="503" name="贵族铁骑 (A)(SLA)" />
+<tech id="504" name="精锐贵族铁骑 (SLA)" />
+<tech id="505" name="骆驼骑兵 +1/+1 护甲 (IND)" />
+<tech id="506" name="苏丹王 (IND)" />
+<tech id="507" name="印度火铳 (IND)" />
+<tech id="508" name="印加枪兵长 (A)(INC)" />
+<tech id="509" name="精锐印加枪兵长 (INC)" />
+<tech id="510" name="攻城塔 (U)" />
+<tech id="511" name="攻城武器便宜 15% (SLA)" />
+<tech id="512" name="东正教 (SLA)" />
+<tech id="513" name="皇家卫队 (SLA)" />
+<tech id="514" name="意大利佣兵 (MAG)" />
+<tech id="515" name="反曲弓 (MAG)" />
+<tech id="516" name="安第斯弹弓 (INC)" />
+<tech id="517" name="信使 (INC)" />
+<tech id="518" name="渔夫载量 +25 (IND)" />
+<tech id="519" name="建筑花费 -20% 石料 (INC)" />
+<tech id="520" name="弓兵 HP (U)(MAG)" />
+<tech id="521" name="帝王骆驼骑兵 (IND)" />
+<tech id="522" name="意大利佣兵 (A)" />
+<tech id="523" name="木城门 (A)" />
+<tech id="524" name="采集者 +25% 工作速度 (FRA)" />
+<tech id="525" name="护墙 (H)" />
+<tech id="526" name="猎犬" />
+<tech id="527" name="喷火塔 (A)(H)" />
+<tech id="528" name="投石手 (A)(INC)" />
+<tech id="529" name="Civ: 不列颠 (BRI)" />
+<tech id="530" name="Civ: 法兰克 (FRA)" />
+<tech id="531" name="Civ: 哥特 (GOT)" />
+<tech id="532" name="Civ: 条顿 (TEU)" />
+<tech id="533" name="Civ: 日本 (JAP)" />
+<tech id="534" name="Civ: 中国 (CHI)" />
+<tech id="535" name="Civ: 拜占庭 (BYZ)" />
+<tech id="536" name="Civ: 波斯 (PER)" />
+<tech id="537" name="Civ: 萨拉森 (SAR)" />
+<tech id="538" name="Civ: 土耳其 (TUR)" />
+<tech id="539" name="Civ: 维京 (VIK)" />
+<tech id="540" name="Civ: 蒙古 (MON)" />
+<tech id="541" name="Civ: 凯尔特 (CEL)" />
+<tech id="542" name="Civ: 西班牙 (SPA)" />
+<tech id="543" name="Civ: 阿兹特克 (AZT)" />
+<tech id="544" name="Civ: 玛雅 (MAY)" />
+<tech id="545" name="Civ: 匈族 (HUN)" />
+<tech id="546" name="Civ: 高丽 (KOR)" />
+<tech id="547" name="Civ: 意大利 (ITA)" />
+<tech id="548" name="Civ: 印度 (IND)" />
+<tech id="549" name="Civ: 印加 (INC)" />
+<tech id="550" name="Civ: 马扎尔 (MAG)" />
+<tech id="551" name="Civ: 斯拉夫 (SLA)" />
+<tech id="552" name="猎犬 (MON)" />
+<tech id="553" name="村民花费 -25% (IND)" />
+<tech id="554" name="C-Bonus 起始以 4 村民 (MAY)" />
+<tech id="555" name="启用绵羊" />
+<tech id="556" name="启用羊驼" />
+<tech id="557" name="启用奶牛" />
+<tech id="558" name="启用火鸡" />
+<tech id="559" name="所有单位花费 -15% 黄金 (POR)" />
+<tech id="560" name="舰船 +10% HP (POR)" />
+<tech id="561" name="大学研究速度 +80% (MAL)" />
+<tech id="562" name="风琴炮 (A) (POR)" />
+<tech id="563" name="精锐风琴炮 (POR)" />
+<tech id="564" name="骆驼骑射手 (A) (BER)" />
+<tech id="565" name="精锐骆驼骑射手 (BER)" />
+<tech id="566" name="飞刀女兵 (A) (MAL)" />
+<tech id="567" name="精锐飞刀女兵 (MAL)" />
+<tech id="568" name="弯刀勇士 (A) (ETH)" />
+<tech id="569" name="精锐弯刀勇士 (ETH)" />
+<tech id="570" name="大商站 (A)" />
+<tech id="571" name="舰船 +1/1 护甲 (BER)" />
+<tech id="572" name="巨桅大帆船 (POR)" />
+<tech id="573" name="火绳枪 (POR)" />
+<tech id="574" name="龙脉 (ETH)" />
+<tech id="575" name="扭绞机 (ETH)" />
+<tech id="576" name="蛮王 (MAL)" />
+<tech id="577" name="死士 (MAL)" />
+<tech id="578" name="土堡 (BER)" />
+<tech id="579" name="马格里布骆驼 (BER)" />
+<tech id="580" name="Civ: 葡萄牙 (POR)" />
+<tech id="581" name="Civ: 埃塞俄比亚 (ETH)" />
+<tech id="582" name="Civ: 马里 (MAL)" />
+<tech id="583" name="Civ: 柏柏尔 (BER)" />
+<tech id="584" name="村民移动速度 +10% (BER)" />
+<tech id="585" name="舰船移动速度 +10% (BER)" />
+<tech id="586" name="马厩单位花费 -20% (BER)" />
+<tech id="587" name="+100 黄金/食物 封建时代 (ETH)" />
+<tech id="588" name="+100 黄金/食物 城堡时代 (ETH)" />
+<tech id="589" name="+100 黄金/食物 帝王时代 (ETH)" />
+<tech id="590" name="免费长枪兵系升级 (ETH)" />
+<tech id="591" name="步兵 +1 远程护甲 封建时代 (MAL)" />
+<tech id="592" name="步兵 +1 远程护甲 城堡时代 (MAL)" />
+<tech id="593" name="步兵 +1 远程护甲 帝王时代 (MAL)" />
+<tech id="594" name="免费采矿术升级 (MAL)" />
+<tech id="595" name="建筑花费 -25% 木材 (MAL)" />
+<tech id="596" name="葡式纵帆船 (A) (POR)" />
+<tech id="597" name="精锐葡式纵帆船 (POR)" />
+<tech id="598" name="标枪骑兵 (A) (U) (BER)" />
+<tech id="599" name="精锐标枪骑兵 (BER)" />
+<tech id="600" name="黑暗时代制图学 (T) (POR)" />
+<tech id="601" name="标枪骑兵 假 (A)" />
+<tech id="602" name="纵火" />
+<tech id="603" name="攻城塔 (A)" />
+<tech id="604" name="喷火船 (A)" />
+<tech id="605" name="爆破舰 (A)" />
+<tech id="606" name="精锐标枪骑兵 (D)" />
+<tech id="607" name="弓兵开火快+15% (ETH)" />
+<tech id="608" name="射箭槽" />
+<tech id="614" name="重弩战象 (A) (KHM)" />
+<tech id="615" name="精锐重弩战象 (KHM)" />
+<tech id="616" name="爪刀勇士 (A) (MLY)" />
+<tech id="617" name="精锐爪刀勇士 (MLY)" />
+<tech id="618" name="飞镖骑兵 (A) (BUR)" />
+<tech id="619" name="精锐飞镖骑兵 (BUR)" />
+<tech id="620" name="藤弓兵 (A) (VIT)" />
+<tech id="621" name="精锐藤弓兵 (VIT)" />
+<tech id="622" name="獠牙剑 (KHM)" />
+<tech id="623" name="双箭弩 (KHM)" />
+<tech id="624" name="海上霸主 (MLY)" />
+<tech id="625" name="强征兵役 (MLY)" />
+<tech id="626" name="象轿 (BUR)" />
+<tech id="627" name="曼尼普尔马 (BUR)" />
+<tech id="628" name="宝伞 (VIT)" />
+<tech id="629" name="纸币 (VIT)" />
+<tech id="630" name="象兵 (A)" />
+<tech id="631" name="精锐象兵" />
+<tech id="632" name="弓兵 HP +10% (VIT)" />
+<tech id="633" name="步兵 +1 攻击, 黑暗时代 (BUR)" />
+<tech id="634" name="时代升级加快 (MLY)" />
+<tech id="635" name="渔网成本 -33% (MLY)" />
+<tech id="645" name="伐木科技免费升级 (BUR)" />
+<tech id="646" name="步兵 +1 攻击, 封建时代 (BUR)" />
+<tech id="647" name="步兵 +1 攻击, 城堡时代 (BUR)" />
+<tech id="648" name="步兵 +1 攻击, 帝王时代 (BUR)" />
+<tech id="649" name="修道院科技成本 -50% (BUR)" />
+<tech id="650" name="Civ: 高棉 (KHM)" />
+<tech id="651" name="Civ: 马来 (MLY)" />
+<tech id="652" name="Civ: 缅甸 (BUR)" />
+<tech id="653" name="Civ: 越南 (VIT)" />
+<tech id="655" name="帝王掷矛兵" />
+<tech id="656" name="帝王掷矛兵 (REV)" />
+<tech id="657" name="村民可以进驻房屋 (KHM)" />
+<tech id="662" name="时代升级加快 (MLY)" />
+<tech id="663" name="弓兵 HP +15% (VIT)" />
+<tech id="664" name="弓兵 HP +20% (VIT)" />
+<tech id="665" name="停用越南民族的窥探视野技能 (VIT)" />
+<tech id="672" name="象兵 +15% 移动速度 (KHM)" />
 </techs>
- 
+
 <pcolors>
 <!-- Player colors. Note that the ref attribute is reverse-order. -->
-<color id="0" name="Blue"
-    color="FF3300" />
-<color id="1" name="Red"
-    color="0000FF" />
-<color id="2" name="Green"
-    color="00FF00" />
-<color id="3" name="Yellow"
-    color="00FFFF" />
-<color id="4" name="Cyan"
-    color="FFFF00" />
-<color id="5" name="Purple"
-    color="FF00FF" />
-<color id="6" name="White"
-    color="FFFFFF" />
-<color id="7" name="Orange"
-    color="0077FF" />
-<color id="8" name="BlackGreen"
-    color="004400" />
+<color id="0" name="蓝色"
+color="FF3300" />
+<color id="1" name="红色"
+color="0000FF" />
+<color id="2" name="绿色"
+color="00FF00" />
+<color id="3" name="黄色"
+color="00FFFF" />
+<color id="4" name="青色"
+color="FFFF00" />
+<color id="5" name="紫色"
+color="FF00FF" />
+<color id="6" name="灰色"
+color="FFFFFF" />
+<color id="7" name="橙色"
+color="0077FF" />
+<color id="8" name="暗绿色"
+color="004400" />
 </pcolors>
- 
+
 <units>
-<protounit id="0" name="Academy, Disabled" />
-<protounit id="1" name="Legionary" />
-<protounit id="2" name="Legionary, D" />
-<protounit id="3" name="Archer, D" />
-<protounit id="4" name="Archer" />
-<protounit id="5" name="Hand Cannoneer" />
-<protounit id="6" name="Elite Skirmisher" />
-<protounit id="7" name="Skirmisher" />
-<protounit id="8" name="Longbowman" />
-<protounit id="9" name="Arrow" />
-<protounit id="10" name="Archery Range 3" />
-<protounit id="11" name="Mangudai" />
-<protounit id="12" name="Barracks" />
-<protounit id="13" name="Fishing Ship" />
-<protounit id="14" name="Archery Range 4" />
-<protounit id="15" name="Junk" />
-<protounit id="16" name="Bombard Cannon, D" />
-<protounit id="17" name="Trade Cog" />
-<protounit id="18" name="Blacksmith 3" />
-<protounit id="19" name="Blacksmith 4" />
-<protounit id="20" name="Barracks 4" />
-<protounit id="21" name="War Galley" />
-<protounit id="22" name="Berserk, D" />
-<protounit id="23" name="Battering Ram, D" />
-<protounit id="24" name="Crossbowman" />
-<protounit id="25" name="Teutonic Knight" />
-<protounit id="26" name="Crossbowman, D" />
-<protounit id="27" name="Cataphract, D" />
-<protounit id="28" name="Cho-Ko-Nu, D" />
-<protounit id="29" name="Trading Cog, D" />
-<protounit id="30" name="Monastery 2" />
-<protounit id="31" name="Monastery 3" />
-<protounit id="32" name="Monastery 4" />
-<protounit id="33" name="Fortress" />
-<protounit id="34" name="Cavalry Archer, D" />
-<protounit id="35" name="Battering Ram" />
-<protounit id="36" name="Bombard Cannon" />
-<protounit id="37" name="LANCE" />
-<protounit id="38" name="Knight" />
-<protounit id="39" name="Cavalry Archer" />
-<protounit id="40" name="Cataphract" />
-<protounit id="41" name="Huskarl" />
-<protounit id="42" name="Trebuchet, Unpacked" />
-<protounit id="43" name="Deer, D" />
-<protounit id="44" name="Mameluke, D" />
-<protounit id="45" name="Dock" />
-<protounit id="46" name="Janissary" />
-<protounit id="47" name="Dock 3" />
-<protounit id="48" name="Wild Boar / Boar" />
-<protounit id="49" name="Siege Workshop" />
-<protounit id="50" name="Farm" />
-<protounit id="51" name="Dock 4" />
-<protounit id="52" name="Royal Janissary" />
-<protounit id="53" name="Fish (Perch)" />
-<protounit id="54" name="Proj, VOL" />
-<protounit id="55" name="Fishing Ship, D" />
-<protounit id="56" name="Fisher, M" />
-<protounit id="57" name="Fisher, F" />
-<protounit id="58" name="Fisher, M D" />
-<protounit id="59" name="Forage Bush" />
-<protounit id="60" name="Fisher, F D" />
-<protounit id="61" name="Trireme / Dolphin" />
-<protounit id="62" name="Huskarl, D" />
-<protounit id="63" name="Gate, AA3" />
-<protounit id="64" name="Gate, AA2" />
-<protounit id="65" name="Deer" />
-<protounit id="66" name="Gold Mine" />
-<protounit id="67" name="Gate, AB3" />
-<protounit id="68" name="Mill" />
-<protounit id="69" name="Fish, Shore" />
-<protounit id="70" name="House" />
-<protounit id="71" name="Town Center 2 (REV)" />
-<protounit id="72" name="Wall, Palisade" />
-<protounit id="73" name="Chu Ko Nu" />
-<protounit id="74" name="Militia" />
-<protounit id="75" name="Man At Arms" />
-<protounit id="76" name="Heavy Swordsman" />
-<protounit id="77" name="Long Swordsman" />
-<protounit id="78" name="Gate, AB2" />
-<protounit id="79" name="Watch Tower" />
-<protounit id="80" name="Gate, AC3" />
-<protounit id="81" name="Gate, AC2" />
-<protounit id="82" name="Castle" />
-<protounit id="83" name="Villager, Male" />
-<protounit id="84" name="Market" />
-<protounit id="85" name="Gate, BA3" />
-<protounit id="86" name="Stable 3" />
-<protounit id="87" name="Archery Range" />
-<protounit id="88" name="Gate, BA2" />
-<protounit id="89" name="Dire Wolf" />
-<protounit id="90" name="Gate, BB3" />
-<protounit id="91" name="Gate, BB2" />
-<protounit id="92" name="Gate, BC3" />
-<protounit id="93" name="Spearman" />
-<protounit id="94" name="Hoplite" /><!-- Berserk 2 -->
-<protounit id="95" name="Gate, BC2" />
-<protounit id="96" name="Hawk" />
-<protounit id="97" name="Arrow 1" />
-<protounit id="98" name="Hand Cannoneer, D" />
-<protounit id="99" name="Heavy Swordsman, D" />
-<protounit id="100" name="Elite Skirmisher, D" />
-<protounit id="101" name="Stable" />
-<protounit id="102" name="Stone Mine" />
-<protounit id="103" name="Blacksmith" />
-<protounit id="104" name="Monastery" />
-<protounit id="105" name="Blacksmith 2" />
-<protounit id="106" name="Infiltrator, D" />
-<protounit id="107" name="Janissary, D" />
-<protounit id="108" name="Junk, D" />
-<protounit id="109" name="Town Center" />
-<protounit id="110" name="Trade Workshop" />
-<protounit id="111" name="Knight, D" />
-<protounit id="112" name="Flare" />
-<protounit id="113" name="Lance, D" />
-<protounit id="114" name="Longboat, D" />
-<protounit id="115" name="Longbowman, D" />
-<protounit id="116" name="Market 3" />
-<protounit id="117" name="Wall, Stone" />
-<protounit id="118" name="Builder, M" />
-<protounit id="119" name="Wall, Palisade 2" />
-<protounit id="120" name="Forager, M" />
-<protounit id="121" name="Mangonel, D" />
-<protounit id="122" name="Hunter, M" />
-<protounit id="123" name="Lumberjack, M" />
-<protounit id="124" name="Stone Miner, M" />
-<protounit id="125" name="Monk" />
-<protounit id="126" name="Wolf" />
-<protounit id="127" name="Explorer, Old" />
-<protounit id="128" name="Trade Cart, Empty" />
-<protounit id="129" name="Mill 2" />
-<protounit id="130" name="Mill 3" />
-<protounit id="131" name="Mill 4" />
-<protounit id="132" name="Barracks 3" />
-<protounit id="133" name="Dock 2" />
-<protounit id="134" name="Monk, D" />
-<protounit id="135" name="Mangudai, D" />
-<protounit id="136" name="War Elephant, D" />
-<protounit id="137" name="Market 4" />
-<protounit id="138" name="Spy" />
-<protounit id="139" name="Paladin, D" />
-<protounit id="140" name="Spearman, D" />
-<protounit id="141" name="Town Center 3 (REV)" />
-<protounit id="142" name="Town Center 4 (REV)" />
-<protounit id="143" name="Rubble 1 X 1" />
-<protounit id="144" name="Rubble 2 X 2" />
-<protounit id="145" name="Rubble 3 X 3" />
-<protounit id="146" name="Rubble 4 X 4" />
-<protounit id="147" name="Rubble 6" />
-<protounit id="148" name="Rubble 5 X 5" />
-<protounit id="149" name="Scorpion, D" />
-<protounit id="150" name="Siege Workshop 4" />
-<protounit id="151" name="Samurai, D" />
-<protounit id="152" name="Militia, D" />
-<protounit id="153" name="Stable 4" />
-<protounit id="154" name="Man-At-Arms, D" />
-<protounit id="155" name="Wall, Fortified" />
-<protounit id="156" name="Repairer, M" />
-<protounit id="157" name="Throwing Axeman, D" />
-<protounit id="158" name="Rain" />
-<protounit id="159" name="Relic Cart" />
-<protounit id="160" name="Richard The Lionharted" />
-<protounit id="161" name="The Black Prince" />
+<protounit id="0" name="学院 Disabled" />
+<protounit id="1" name="罗马军" />
+<protounit id="2" name="罗马军 D" />
+<protounit id="3" name="步弓手 D" />
+<protounit id="4" name="步弓手" />
+<protounit id="5" name="火枪兵" />
+<protounit id="6" name="精锐掷矛兵" />
+<protounit id="7" name="掷矛兵" />
+<protounit id="8" name="长弓兵" />
+<protounit id="9" name="箭矢" />
+<protounit id="10" name="靶场 3" />
+<protounit id="11" name="蒙古突骑" />
+<protounit id="12" name="军营" />
+<protounit id="13" name="渔船" />
+<protounit id="14" name="靶场 4" />
+<protounit id="15" name="中国帆船" />
+<protounit id="16" name="火炮 D" />
+<protounit id="17" name="贸易船" />
+<protounit id="18" name="铁匠铺 3" />
+<protounit id="19" name="铁匠铺 4" />
+<protounit id="20" name="军营 4" />
+<protounit id="21" name="弩炮战船" />
+<protounit id="22" name="狂战士 D" />
+<protounit id="23" name="轻型冲撞车 D" />
+<protounit id="24" name="弩手" />
+<protounit id="25" name="条顿武士" />
+<protounit id="26" name="弩手 D" />
+<protounit id="27" name="甲胄骑兵 D" />
+<protounit id="28" name="诸葛弩 D" />
+<protounit id="29" name="贸易船 D" />
+<protounit id="30" name="修道院 2" />
+<protounit id="31" name="修道院 3" />
+<protounit id="32" name="修道院 4" />
+<protounit id="33" name="堡垒" />
+<protounit id="34" name="骑射手 D" />
+<protounit id="35" name="轻型冲撞车" />
+<protounit id="36" name="火炮" />
+<protounit id="37" name="轻骑兵(隐藏)" />
+<protounit id="38" name="骑士" />
+<protounit id="39" name="骑射手" />
+<protounit id="40" name="甲胄骑兵" />
+<protounit id="41" name="近卫军" />
+<protounit id="42" name="巨型投石机 展开的" />
+<protounit id="43" name="鹿 D" />
+<protounit id="44" name="马穆鲁克 D" />
+<protounit id="45" name="船坞" />
+<protounit id="46" name="苏丹亲兵" />
+<protounit id="47" name="船坞 3" />
+<protounit id="48" name="野猪" />
+<protounit id="49" name="攻城武器厂" />
+<protounit id="50" name="农田" />
+<protounit id="51" name="船坞 4" />
+<protounit id="52" name="皇家亲兵" />
+<protounit id="53" name="鱼群 (鲈鱼)" />
+<protounit id="54" name="Proj VOL" />
+<protounit id="55" name="渔船 D" />
+<protounit id="56" name="渔夫 M" />
+<protounit id="57" name="渔夫 F" />
+<protounit id="58" name="渔夫 M D" />
+<protounit id="59" name="浆果丛" />
+<protounit id="60" name="渔夫 F D" />
+<protounit id="61" name="弩炮战船 D" />
+<protounit id="62" name="近卫军 D" />
+<protounit id="63" name="城门 AA3" />
+<protounit id="64" name="城门 AA2" />
+<protounit id="65" name="鹿" />
+<protounit id="66" name="金矿" />
+<protounit id="67" name="城门 AB3" />
+<protounit id="68" name="磨坊" />
+<protounit id="69" name="沿海鱼群" />
+<protounit id="70" name="房屋" />
+<protounit id="71" name="城镇中心 2" />
+<protounit id="72" name="木墙 " />
+<protounit id="73" name="诸葛弩" />
+<protounit id="74" name="民兵" />
+<protounit id="75" name="剑士" />
+<protounit id="76" name="重剑兵" />
+<protounit id="77" name="长剑士" />
+<protounit id="78" name="城门 AB2" />
+<protounit id="79" name="瞭望塔" />
+<protounit id="80" name="城门 AC3" />
+<protounit id="81" name="城门 AC2" />
+<protounit id="82" name="城堡" />
+<protounit id="83" name="村民 Male" />
+<protounit id="84" name="市场" />
+<protounit id="85" name="城门 BA3" />
+<protounit id="86" name="马厩 3" />
+<protounit id="87" name="靶场" />
+<protounit id="88" name="城门 BA2" />
+<protounit id="89" name="豺狼" />
+<protounit id="90" name="城门 BB3" />
+<protounit id="91" name="城门 BB2" />
+<protounit id="92" name="城门 BC3" />
+<protounit id="93" name="长矛兵" />
+<protounit id="94" name="狂战士 (隐藏)" /><!-- 狂战士 2 -->
+<protounit id="95" name="城门 BC2" />
+<protounit id="96" name="鹰" />
+<protounit id="97" name="箭矢 1" />
+<protounit id="98" name="火枪兵 D" />
+<protounit id="99" name="重剑兵 D" />
+<protounit id="100" name="精锐掷矛兵 D" />
+<protounit id="101" name="马厩" />
+<protounit id="102" name="石矿" />
+<protounit id="103" name="铁匠铺" />
+<protounit id="104" name="修道院" />
+<protounit id="105" name="铁匠铺 2" />
+<protounit id="106" name="间谍 D" />
+<protounit id="107" name="苏丹亲兵 D" />
+<protounit id="108" name="中国帆船 D" />
+<protounit id="109" name="城镇中心" />
+<protounit id="110" name="贸易工坊" />
+<protounit id="111" name="骑士 D" />
+<protounit id="112" name="闪光" />
+<protounit id="113" name="轻骑兵(隐藏) D" />
+<protounit id="114" name="维京长船 D" />
+<protounit id="115" name="长弓兵 D" />
+<protounit id="116" name="市场 3" />
+<protounit id="117" name="石墙 " />
+<protounit id="118" name="建筑工 M" />
+<protounit id="119" name="硬木墙" />
+<protounit id="120" name="采集者 M" />
+<protounit id="121" name="轻型投石车 D" />
+<protounit id="122" name="猎人 M" />
+<protounit id="123" name="伐木工 M" />
+<protounit id="124" name="石矿工 M" />
+<protounit id="125" name="僧侣" />
+<protounit id="126" name="狼" />
+<protounit id="127" name="探索者 Old" />
+<protounit id="128" name="贸易车 空载" />
+<protounit id="129" name="磨坊 2" />
+<protounit id="130" name="磨坊 3" />
+<protounit id="131" name="磨坊 4" />
+<protounit id="132" name="军营 3" />
+<protounit id="133" name="船坞 2" />
+<protounit id="134" name="僧侣 D" />
+<protounit id="135" name="蒙古突骑 D" />
+<protounit id="136" name="战象 D" />
+<protounit id="137" name="市场 4" />
+<protounit id="138" name="间谍" />
+<protounit id="139" name="圣骑士 D" />
+<protounit id="140" name="长矛兵 D" />
+<protounit id="141" name="城镇中心 3" />
+<protounit id="142" name="城镇中心 4" />
+<protounit id="143" name="碎石 1 X 1" />
+<protounit id="144" name="碎石 2 X 2" />
+<protounit id="145" name="碎石 3 X 3" />
+<protounit id="146" name="碎石 4 X 4" />
+<protounit id="147" name="碎石 6" />
+<protounit id="148" name="碎石 5 X 5" />
+<protounit id="149" name="弩炮 D" />
+<protounit id="150" name="攻城武器厂 4" />
+<protounit id="151" name="日本武士 D" />
+<protounit id="152" name="民兵 D" />
+<protounit id="153" name="马厩 4" />
+<protounit id="154" name="剑士 D" />
+<protounit id="155" name="垛墙 " />
+<protounit id="156" name="修理工 M" />
+<protounit id="157" name="掷斧兵 D" />
+<protounit id="158" name="雨" />
+<protounit id="159" name="圣物推车" />
+<protounit id="160" name="狮心王理查" />
+<protounit id="161" name="黑太子" />
 <protounit id="162" name="FLAGX" />
-<protounit id="163" name="Friar Tuck" />
-<protounit id="164" name="Sherrif Of Notingham" />
-<protounit id="165" name="Charlemagne" />
-<protounit id="166" name="Roland" />
-<protounit id="167" name="Belisarius" />
-<protounit id="168" name="Theodoric The Goth" />
-<protounit id="169" name="Aethelfirth" />
-<protounit id="170" name="Siegfried" />
-<protounit id="171" name="Erik The Red" />
-<protounit id="172" name="Tamerlane" />
-<protounit id="173" name="King Arthur" />
-<protounit id="174" name="Lancelot" />
-<protounit id="175" name="Gawain" />
-<protounit id="176" name="Mordred" />
-<protounit id="177" name="Archbishop" />
-<protounit id="178" name="Trade Cart, D" />
-<protounit id="179" name="Trade Workshop 4" />
-<protounit id="180" name="Long Swordsman, D" />
-<protounit id="181" name="Teutonic Knight, D" />
+<protounit id="163" name="塔克修士" />
+<protounit id="164" name="诺丁汉的郡长" />
+<protounit id="165" name="查理曼" />
+<protounit id="166" name="罗兰" />
+<protounit id="167" name="贝利撒留" />
+<protounit id="168" name="哥特人狄奥多里克" />
+<protounit id="169" name="艾息尔弗力夫" />
+<protounit id="170" name="齐格菲" />
+<protounit id="171" name="红发埃里克" />
+<protounit id="172" name="帖木儿" />
+<protounit id="173" name="亚瑟王" />
+<protounit id="174" name="兰斯洛特" />
+<protounit id="175" name="高文" />
+<protounit id="176" name="莫德雷德" />
+<protounit id="177" name="大主教" />
+<protounit id="178" name="贸易车 D" />
+<protounit id="179" name="贸易工坊 4" />
+<protounit id="180" name="长剑士 D" />
+<protounit id="181" name="条顿武士 D" />
 <protounit id="182" name="WNDR" />
 <protounit id="183" name="TMISB" />
-<protounit id="184" name="Condottiero 2" />
-<protounit id="185" name="Slinger" />
-<protounit id="186" name="Slinger, D" />
-<protounit id="187" name="Slinger, Proj." />
-<protounit id="188" name="Flamethrower" />
-<protounit id="189" name="Dragon, D / Flamethrower, D" />
-<protounit id="190" name="Fire Tower" />
-<protounit id="191" name="Rubble 2 x 2" />
-<protounit id="192" name="Rubble 2 x 2" />
-<protounit id="193" name="Vlad Dracula / TMISL" />
-<protounit id="194" name="Trebuchet, D" />
-<protounit id="195" name="Kitabatake" />
-<protounit id="196" name="Minamoto" />
-<protounit id="197" name="Alexander Nevski" />
-<protounit id="198" name="El Cid" />
-<protounit id="199" name="Fish Trap" />
-<protounit id="200" name="Robin Hood" />
+<protounit id="184" name="意大利佣兵 2" />
+<protounit id="185" name="投石手" />
+<protounit id="186" name="投石手 D" />
+<protounit id="187" name="投石手 Proj." />
+<protounit id="188" name="喷火龙" />
+<protounit id="189" name="喷火龙 D" />
+<protounit id="190" name="喷火塔" />
+<protounit id="191" name="碎石 2 X 2" />
+<protounit id="192" name="碎石 2 X 2" />
+<protounit id="193" name="TMISL" />
+<protounit id="194" name="巨型投石机 D" />
+<protounit id="195" name="北畠氏" />
+<protounit id="196" name="源氏" />
+<protounit id="197" name="亚历山大·涅夫斯基" />
+<protounit id="198" name="熙德 (步行)" />
+<protounit id="199" name="渔网" />
+<protounit id="200" name="罗宾汉" />
 <protounit id="201" name="FLR_R" />
-<protounit id="202" name="Rabid Wolf" />
-<protounit id="203" name="Rabid Wolf, D" />
-<protounit id="204" name="Trade Cart, Full" />
-<protounit id="205" name="Trade Cart, Full D" />
+<protounit id="202" name="恶狼" />
+<protounit id="203" name="恶狼 D" />
+<protounit id="204" name="贸易车 满载" />
+<protounit id="205" name="贸易车 满载 D" />
 <protounit id="206" name="VDML" />
-<protounit id="207" name="Imperial Camel" />
+<protounit id="207" name="VDML D" />
 <protounit id="208" name="TWAL" />
-<protounit id="209" name="University" />
-<protounit id="210" name="University 4" />
-<protounit id="211" name="Villager, F D" />
-<protounit id="212" name="Builder, F" />
-<protounit id="213" name="Builder, F D" />
-<protounit id="214" name="Farmer, F" />
-<protounit id="215" name="Farmer, F D" />
-<protounit id="216" name="Hunter, F" />
-<protounit id="217" name="Hunter, F D" />
-<protounit id="218" name="Lumberjack, F" />
-<protounit id="219" name="Lumberjack, F D" />
-<protounit id="220" name="Stone Miner, F" />
-<protounit id="221" name="Stone Miner, F D" />
-<protounit id="222" name="Repairer, F" />
-<protounit id="223" name="Repairer, F D" />
-<protounit id="224" name="Villager, M D" />
-<protounit id="225" name="Builder, M D" />
-<protounit id="226" name="Farmer, M D" />
-<protounit id="227" name="Hunter, M D" />
-<protounit id="228" name="Lumberjack, M D" />
-<protounit id="229" name="Stone Miner, M D" />
-<protounit id="230" name="Repairer, M D" />
-<protounit id="231" name="Aqueduct" />
-<protounit id="232" name="Woad Raider" />
-<protounit id="233" name="Woad Raider, D" />
-<protounit id="234" name="Guard Tower" />
-<protounit id="235" name="Keep" />
-<protounit id="236" name="Bombard Tower" />
-<protounit id="237" name="Wolf, D" />
-<protounit id="238" name="Skirmisher, D" />
-<protounit id="239" name="War Elephant" />
+<protounit id="209" name="大学" />
+<protounit id="210" name="大学 4" />
+<protounit id="211" name="村民 F D" />
+<protounit id="212" name="建筑工 F" />
+<protounit id="213" name="建筑工 F D" />
+<protounit id="214" name="农夫 F" />
+<protounit id="215" name="农夫 F D" />
+<protounit id="216" name="猎人 F" />
+<protounit id="217" name="猎人 F D" />
+<protounit id="218" name="伐木工 F" />
+<protounit id="219" name="伐木工 F D" />
+<protounit id="220" name="石矿工 F" />
+<protounit id="221" name="石矿工 F D" />
+<protounit id="222" name="修理工 F" />
+<protounit id="223" name="修理工 F D" />
+<protounit id="224" name="村民 M D" />
+<protounit id="225" name="建筑工 M D" />
+<protounit id="226" name="农夫 M D" />
+<protounit id="227" name="猎人 M D" />
+<protounit id="228" name="伐木工 M D" />
+<protounit id="229" name="石矿工 M D" />
+<protounit id="230" name="修理工 M D" />
+<protounit id="231" name="水渠" />
+<protounit id="232" name="菘蓝突击者" />
+<protounit id="233" name="菘蓝突击者 D" />
+<protounit id="234" name="警戒塔" />
+<protounit id="235" name="要塞" />
+<protounit id="236" name="火炮塔" />
+<protounit id="237" name="狼 D" />
+<protounit id="238" name="掷矛兵 D" />
+<protounit id="239" name="战象" />
 <protounit id="240" name="TERRC" />
-<protounit id="241" name="Cracks" />
-<protounit id="242" name="Stone, Catapult" />
+<protounit id="241" name="裂隙" />
+<protounit id="242" name="石弹 投石车" />
 <protounit id="243" name="DOPL" />
-<protounit id="244" name="Stone, Catapult F" />
-<protounit id="245" name="Bolt (Scorpion Proj.)" />
-<protounit id="246" name="Bolt, F" />
-<protounit id="247" name="Smoke" />
-<protounit id="248" name="Pile Of Stone" />
+<protounit id="244" name="石弹 投石车 F" />
+<protounit id="245" name="弩箭 (弩炮 Proj.)" />
+<protounit id="246" name="弩箭 F" />
+<protounit id="247" name="烟" />
+<protounit id="248" name="一堆石矿" />
 <protounit id="249" name="POREX" />
-<protounit id="250" name="Longboat" />
-<protounit id="251" name="Amphitheatre" />
-<protounit id="252" name="Pile Of Gold" />
-<protounit id="253" name="Pile Of Wood" />
+<protounit id="250" name="维京长船" />
+<protounit id="251" name="罗马圆形竞技场" />
+<protounit id="252" name="一堆金矿" />
+<protounit id="253" name="一堆木材" />
 <protounit id="254" name="PILE1" />
 <protounit id="255" name="PILE2" />
 <protounit id="256" name="PILE3" />
 <protounit id="257" name="PILE4" />
 <protounit id="258" name="PILE6" />
-<protounit id="259" name="Farmer, M" />
-<protounit id="260" name="Fish3, Disabled" />
+<protounit id="259" name="农夫 M" />
+<protounit id="260" name="鱼3 Disabled" />
 <protounit id="261" name="PILE8" />
-<protounit id="262" name="Pile Of Food" />
-<protounit id="263" name="Colosseum" />
-<protounit id="264" name="Cliff 1" />
-<protounit id="265" name="Cliff 2" />
-<protounit id="266" name="Cliff 3" />
-<protounit id="267" name="Cliff 4" />
-<protounit id="268" name="Cliff 5" />
-<protounit id="269" name="Cliff 6" />
-<protounit id="270" name="Cliff 7" />
-<protounit id="271" name="Cliff 8" />
-<protounit id="272" name="Cliff 9" />
-<protounit id="273" name="Cliff 10" />
-<protounit id="274" name="Flare 2" />
-<protounit id="275" name="Centurion" />
-<protounit id="276" name="Wonder" />
-<protounit id="277" name="Centurion, D" />
-<protounit id="278" name="Fishtrap, D" />
-<protounit id="279" name="Scorpion" />
-<protounit id="280" name="Mangonel" />
-<protounit id="281" name="Throwing Axeman" />
-<protounit id="282" name="Mameluke" />
-<protounit id="283" name="Cavalier" />
-<protounit id="284" name="Tree TD" />
-<protounit id="285" name="Relic" />
-<protounit id="286" name="Monk with Relic" />
-<protounit id="287" name="British Relic" />
-<protounit id="288" name="Byzantine Relic" />
-<protounit id="289" name="Chinese Relic" />
-<protounit id="290" name="Frankish Relic" />
-<protounit id="291" name="Samurai" />
-<protounit id="292" name="Gothic Relic" />
-<protounit id="293" name="Villager, Female" />
-<protounit id="294" name="Japanese Relic" />
-<protounit id="295" name="Persian Relic" />
-<protounit id="296" name="Saracen Relic" />
-<protounit id="297" name="Teutonic Relic" />
-<protounit id="298" name="Turkish Relic" />
-<protounit id="299" name="Bandit" />
-<protounit id="300" name="Imperial Camel, D" />
-<protounit id="301" name="Grass Patch" />
-<protounit id="302" name="Bush" />
-<protounit id="303" name="Seagulls" />
-<protounit id="304" name="Bonfire" />
-<protounit id="305" name="Llama / Cactus" />
-<protounit id="306" name="Black Tile / Shadow" />
-<protounit id="307" name="Cuauhtemoc / Cactus" />
-<protounit id="308" name="Cactus / INDESTRUCT (?)" />
-<protounit id="309" name="Monk With Turkish Relic" />
-<protounit id="310" name="Mountain 1" />
-<protounit id="311" name="Mountain 2" />
-<protounit id="312" name="Arrow 2" />
-<protounit id="313" name="Stone, Treb" />
-<protounit id="314" name="Stone, Mangonel" />
-<protounit id="315" name="Arrow 3" />
-<protounit id="316" name="Arrow 4" />
-<protounit id="317" name="Arrow 5" />
-<protounit id="318" name="Arrow 6" />
-<protounit id="319" name="Arrow 7" />
-<protounit id="320" name="Arrow 8" />
-<protounit id="321" name="Arrow 9" />
-<protounit id="322" name="Arrow 10" />
-<protounit id="323" name="Stone, Catapult 1" />
-<protounit id="324" name="Stone, Catapult 2" />
-<protounit id="325" name="Stone, Catapult 3" />
-<protounit id="326" name="Stone, Catapult 4" />
-<protounit id="327" name="Stone, Catapult 5" />
-<protounit id="328" name="Arrow, F" />
-<protounit id="329" name="Camel" />
-<protounit id="330" name="Heavy Camel" />
-<protounit id="331" name="Trebuchet, P" />
-<protounit id="332" name="Flare 3" />
-<protounit id="333" name="Deer, Nomeat" />
-<protounit id="334" name="Flowers 1" />
-<protounit id="335" name="Flowers 2" />
-<protounit id="336" name="Flowers 3" />
-<protounit id="337" name="Flowers 4" />
-<protounit id="338" name="Path 4" />
-<protounit id="339" name="Path 1" />
-<protounit id="340" name="Path 2" />
-<protounit id="341" name="Path 3" />
+<protounit id="262" name="一堆食物" />
+<protounit id="263" name="罗马斗兽场" />
+<protounit id="264" name="峭壁 1" />
+<protounit id="265" name="峭壁 2" />
+<protounit id="266" name="峭壁 3" />
+<protounit id="267" name="峭壁 4" />
+<protounit id="268" name="峭壁 5" />
+<protounit id="269" name="峭壁 6" />
+<protounit id="270" name="峭壁 7" />
+<protounit id="271" name="峭壁 8" />
+<protounit id="272" name="峭壁 9" />
+<protounit id="273" name="峭壁 10" />
+<protounit id="274" name="闪光 2" />
+<protounit id="275" name="百夫长" />
+<protounit id="276" name="奇观" />
+<protounit id="277" name="百夫长 D" />
+<protounit id="278" name="渔网 D" />
+<protounit id="279" name="弩炮" />
+<protounit id="280" name="轻型投石车" />
+<protounit id="281" name="掷斧兵" />
+<protounit id="282" name="马穆鲁克" />
+<protounit id="283" name="重装骑士" />
+<protounit id="284" name="树 TD" />
+<protounit id="285" name="圣物" />
+<protounit id="286" name="持圣物的僧侣" />
+<protounit id="287" name="不列颠圣物" />
+<protounit id="288" name="拜占庭圣物" />
+<protounit id="289" name="中国圣物" />
+<protounit id="290" name="法兰克圣物" />
+<protounit id="291" name="日本武士" />
+<protounit id="292" name="哥特圣物" />
+<protounit id="293" name="村民 Female" />
+<protounit id="294" name="日本圣物" />
+<protounit id="295" name="波斯圣物" />
+<protounit id="296" name="萨拉森圣物" />
+<protounit id="297" name="条顿圣物" />
+<protounit id="298" name="土耳其圣物" />
+<protounit id="299" name="间谍" />
+<protounit id="300" name="帝王骆驼骑兵 D" />
+<protounit id="301" name="草地" />
+<protounit id="302" name="灌木丛" />
+<protounit id="303" name="海鸥" />
+<protounit id="304" name="篝火" />
+<protounit id="305" name="仙人掌" />
+<protounit id="306" name="阴影" />
+<protounit id="307" name="仙人掌" />
+<protounit id="308" name="仙人掌" />
+<protounit id="309" name="持土耳其圣物的僧侣" />
+<protounit id="310" name="山脉 1" />
+<protounit id="311" name="山脉 2" />
+<protounit id="312" name="箭矢 2" />
+<protounit id="313" name="石弹 巨型投石机" />
+<protounit id="314" name="石弹 轻型投石车" />
+<protounit id="315" name="箭矢 3" />
+<protounit id="316" name="箭矢 4" />
+<protounit id="317" name="箭矢 5" />
+<protounit id="318" name="箭矢 6" />
+<protounit id="319" name="箭矢 7" />
+<protounit id="320" name="箭矢 8" />
+<protounit id="321" name="箭矢 9" />
+<protounit id="322" name="箭矢 10" />
+<protounit id="323" name="石弹 投石车 1" />
+<protounit id="324" name="石弹 投石车 2" />
+<protounit id="325" name="石弹 投石车 3" />
+<protounit id="326" name="石弹 投石车 4" />
+<protounit id="327" name="石弹 投石车 5" />
+<protounit id="328" name="箭矢 F" />
+<protounit id="329" name="骆驼骑兵" />
+<protounit id="330" name="重装骆驼骑兵" />
+<protounit id="331" name="巨型投石机 P" />
+<protounit id="332" name="闪光 3" />
+<protounit id="333" name="鹿 Nomeat" />
+<protounit id="334" name="花朵 1" />
+<protounit id="335" name="花朵 2" />
+<protounit id="336" name="花朵 3" />
+<protounit id="337" name="花朵 4" />
+<protounit id="338" name="小路 4" />
+<protounit id="339" name="小路 1" />
+<protounit id="340" name="小路 2" />
+<protounit id="341" name="小路 3" />
 <protounit id="342" name="TERRU" />
 <protounit id="343" name="TERRV" />
 <protounit id="344" name="TERRW" />
-<protounit id="345" name="Ruins" />
+<protounit id="345" name="废墟" />
 <protounit id="346" name="TERRY" />
 <protounit id="347" name="TERRZ" />
-<protounit id="348" name="Forest, Bamboo" />
-<protounit id="349" name="Forest, Oak" />
-<protounit id="350" name="Forest, Pine" />
-<protounit id="351" name="Forest, Palm" />
+<protounit id="348" name="竹林" />
+<protounit id="349" name="橡树" />
+<protounit id="350" name="松树" />
+<protounit id="351" name="棕榈树" />
 <protounit id="352" name="OREMN" />
-<protounit id="353" name="Forager, M D" />
-<protounit id="354" name="Forager, F" />
-<protounit id="355" name="Forager, F D" />
-<protounit id="356" name="Board, D" />
-<protounit id="357" name="Farm, D Crash" />
-<protounit id="358" name="Pikeman" />
-<protounit id="359" name="Halberdier" />
-<protounit id="360" name="Arrow 2, F" />
-<protounit id="361" name="Nordic Swordsman" />
-<protounit id="362" name="Nordic Swordsman, D" />
-<protounit id="363" name="Proj, Archer" />
-<protounit id="364" name="Proj, Crossbowman" />
-<protounit id="365" name="Proj, Skirmisher" />
-<protounit id="366" name="Proj, Elite Skirmisher" />
-<protounit id="367" name="Proj, Scorpion" />
-<protounit id="368" name="Proj, Bombard Cannon" />
-<protounit id="369" name="Proj, Mangonel" />
-<protounit id="370" name="City Wall" />
-<protounit id="371" name="Proj, Trebuchet" />
-<protounit id="372" name="Proj, Galleon" />
-<protounit id="373" name="Proj, War Galley" />
-<protounit id="374" name="Proj, Cannon Galleon" />
-<protounit id="375" name="Proj, Crossbowman F" />
-<protounit id="376" name="Proj, Skirmisher F" />
-<protounit id="377" name="Proj, Elite Skirmisher F" />
-<protounit id="378" name="Proj, Scorpion F" />
+<protounit id="353" name="采集者 M D" />
+<protounit id="354" name="采集者 F" />
+<protounit id="355" name="采集者 F D" />
+<protounit id="356" name="板材 D" />
+<protounit id="357" name="农田 D Crash" />
+<protounit id="358" name="长枪兵" />
+<protounit id="359" name="长戟兵" />
+<protounit id="360" name="箭矢 2 F" />
+<protounit id="361" name="北欧剑士" />
+<protounit id="362" name="北欧剑士 D" />
+<protounit id="363" name="Proj 步弓手" />
+<protounit id="364" name="Proj 弩手" />
+<protounit id="365" name="Proj 掷矛兵" />
+<protounit id="366" name="Proj 精锐掷矛兵" />
+<protounit id="367" name="Proj 弩炮" />
+<protounit id="368" name="Proj 火炮" />
+<protounit id="369" name="Proj 轻型投石车" />
+<protounit id="370" name="城墙" />
+<protounit id="371" name="Proj 巨型投石机" />
+<protounit id="372" name="Proj 重型弩炮战船" />
+<protounit id="373" name="Proj 弩炮战船" />
+<protounit id="374" name="Proj 火炮战船" />
+<protounit id="375" name="Proj 弩手 F" />
+<protounit id="376" name="Proj 掷矛兵 F" />
+<protounit id="377" name="Proj 精锐掷矛兵 F" />
+<protounit id="378" name="Proj 弩炮 F" />
 <protounit id="379" name="Disabled (379)" />
-<protounit id="380" name="Proj, H Cannoneer" />
-<protounit id="381" name="Bolt, F" />
+<protounit id="380" name="Proj 火枪兵" />
+<protounit id="381" name="弩箭 F" />
 <protounit id="382" name="Disabled (382)" />
 <protounit id="383" name="Disabled (383)" />
 <protounit id="384" name="Disabled (384)" />
-<protounit id="385" name="Bolt 1, F" />
+<protounit id="385" name="弩箭 1 F" />
 <protounit id="386" name="Disabled (386)" />
 <protounit id="387" name="Disabled (387)" />
 <protounit id="388" name="Disabled (388)" />
-<protounit id="389" name="Sea Rocks 1" />
+<protounit id="389" name="礁石 1" />
 <protounit id="390" name="TERRB" />
 <protounit id="391" name="TERRD" />
 <protounit id="392" name="TERRE" />
 <protounit id="393" name="TERRF" />
 <protounit id="394" name="TERRH" />
 <protounit id="395" name="TERRI" />
-<protounit id="396" name="Sea Rocks 2" />
+<protounit id="396" name="礁石 2" />
 <protounit id="397" name="TERRK" />
 <protounit id="398" name="TERRL" />
-<protounit id="399" name="Tree A" />
-<protounit id="400" name="Tree B" />
-<protounit id="401" name="Tree C" />
-<protounit id="402" name="Tree D" />
-<protounit id="403" name="Tree E" />
-<protounit id="404" name="Tree F" />
-<protounit id="405" name="Tree G" />
-<protounit id="406" name="Tree H" />
-<protounit id="407" name="Tree I" />
-<protounit id="408" name="Tree J" />
-<protounit id="409" name="Tree K" />
-<protounit id="410" name="Tree L" />
-<protounit id="411" name="Forest Tree" />
+<protounit id="399" name="树 A" />
+<protounit id="400" name="树 B" />
+<protounit id="401" name="树 C" />
+<protounit id="402" name="树 D" />
+<protounit id="403" name="树 E" />
+<protounit id="404" name="树 F" />
+<protounit id="405" name="树 G" />
+<protounit id="406" name="树 H" />
+<protounit id="407" name="树 I" />
+<protounit id="408" name="树 J" />
+<protounit id="409" name="树 K" />
+<protounit id="410" name="树 L" />
+<protounit id="411" name="树林" />
 <protounit id="412" name="MONKX_DSARA" />
-<protounit id="413" name="Snow Pine Tree" />
-<protounit id="414" name="Jungle Tree" />
-<protounit id="415" name="Stump" />
-<protounit id="416" name="Debris" />
-<protounit id="417" name="Dust C" />
+<protounit id="413" name="雪松树" />
+<protounit id="414" name="丛林树木" />
+<protounit id="415" name="树桩" />
+<protounit id="416" name="残骸" />
+<protounit id="417" name="尘埃 C" />
 <protounit id="418" name="TROCK" />
-<protounit id="419" name="Debris B" />
-<protounit id="420" name="Cannon Galleon" />
-<protounit id="421" name="Cannon Galleon, D" />
-<protounit id="422" name="Capped Ram" />
-<protounit id="423" name="Capped Ram, D" />
-<protounit id="424" name="Charles Martel" />
-<protounit id="425" name="Francisco de Orellana / Charles Martel, D" />
-<protounit id="426" name="Harald Hardraade" />
-<protounit id="427" name="Gonzalo Pizarro / Harald Hardraade, D" />
-<protounit id="428" name="Hrolf The Ganger" />
-<protounit id="429" name="Frederick Barbarossa / Hrolf The Ganger, D" />
-<protounit id="430" name="Joan The Maid" />
-<protounit id="431" name="Joan The Maid, D" />
-<protounit id="432" name="William Wallace" />
-<protounit id="433" name="William Wallace, D" />
-<protounit id="434" name="King" />
-<protounit id="435" name="King, D" />
+<protounit id="419" name="残骸 B" />
+<protounit id="420" name="火炮战船" />
+<protounit id="421" name="火炮战船 D" />
+<protounit id="422" name="中型冲撞车" />
+<protounit id="423" name="中型冲撞车 D" />
+<protounit id="424" name="查理·马特" />
+<protounit id="425" name="查理·马特 D" />
+<protounit id="426" name="哈拉尔·哈德拉达" />
+<protounit id="427" name="哈拉尔·哈德拉达 D" />
+<protounit id="428" name="行者荷夫" />
+<protounit id="429" name="行者荷夫 D" />
+<protounit id="430" name="农家女贞德" />
+<protounit id="431" name="农家女贞德 D" />
+<protounit id="432" name="威廉·华莱士" />
+<protounit id="433" name="威廉·华莱士 D" />
+<protounit id="434" name="国王" />
+<protounit id="435" name="国王 D" />
 <protounit id="436" name="OMTBO" />
-<protounit id="437" name="Prithviraj / OMTBO, D" />
+<protounit id="437" name="OMTBO D" />
 <protounit id="438" name="STRBO" />
-<protounit id="439" name="Francesco Sforza / STRRBO, D" />
-<protounit id="440" name="Petard" />
-<protounit id="441" name="Hussar" />
-<protounit id="442" name="Galleon" />
-<protounit id="443" name="Galleon, Dead" />
+<protounit id="439" name="STRRBO D" />
+<protounit id="440" name="炸药筒" />
+<protounit id="441" name="翼骑兵" />
+<protounit id="442" name="重型弩炮战船" />
+<protounit id="443" name="重型弩炮战船 Dead" />
 <protounit id="444" name="PTWC" />
-<protounit id="445" name="Poenari Castle / Church 4" />
-<protounit id="446" name="Port" />
-<protounit id="447" name="Purple Spots" />
-<protounit id="448" name="Scout Cavalry" />
-<protounit id="449" name="Scout Cavalry, D" />
-<protounit id="450" name="Great Fish, Marlin 1" />
-<protounit id="451" name="Great Fish, Marlin 2" />
+<protounit id="445" name="教堂 4" />
+<protounit id="446" name="港口" />
+<protounit id="447" name="紫色 Spots" />
+<protounit id="448" name="斥候骑兵" />
+<protounit id="449" name="斥候骑兵 D" />
+<protounit id="450" name="旗鱼 1" />
+<protounit id="451" name="旗鱼 2" />
 <protounit id="452" name="DOLP3" />
 <protounit id="453" name="DOLP4" />
 <protounit id="454" name="DOLP5" />
-<protounit id="455" name="Fish, Dorado" />
-<protounit id="456" name="Fish, Salmon" />
-<protounit id="457" name="Fish, Tuna" />
-<protounit id="458" name="Fish, Snapper" />
+<protounit id="455" name="剑鱼" />
+<protounit id="456" name="鲑鱼" />
+<protounit id="457" name="金枪鱼" />
+<protounit id="458" name="食人鱼" />
 <protounit id="459" name="FISH5" />
 <protounit id="460" name="WHAL1" />
 <protounit id="461" name="WHAL2" />
-<protounit id="462" name="Proj, Mangonel F2" />
-<protounit id="463" name="House 2" />
-<protounit id="464" name="House 3" />
-<protounit id="465" name="House 4" />
-<protounit id="466" name="Proj, Archer F" />
-<protounit id="467" name="Disabled (467)" />
-<protounit id="468" name="Projectile, Mangonel F" />
-<protounit id="469" name="Projectile, Treb F" />
-<protounit id="470" name="Proj, Galleon F" />
-<protounit id="471" name="Proj, War Galley F" />
-<protounit id="472" name="Loot" />
-<protounit id="473" name="Two Handed Swordsman" />
-<protounit id="474" name="Heavy Cavalry Archer" />
-<protounit id="475" name="Proj, HAR F" />
-<protounit id="476" name="Proj, Harold Haraade F" />
-<protounit id="477" name="Proj, HAR" />
-<protounit id="478" name="Proj, Harold Haraade" />
+<protounit id="462" name="Proj 轻型投石车 F2" />
+<protounit id="463" name="房屋 2" />
+<protounit id="464" name="房屋 3" />
+<protounit id="465" name="房屋 4" />
+<protounit id="466" name="Proj 步弓手 F" />
+<protounit id="467" name="喷火舰(WK)" />
+<protounit id="468" name="Projectile 轻型投石车 F" />
+<protounit id="469" name="Projectile 巨型投石机 F" />
+<protounit id="470" name="Proj 重型弩炮战船 F" />
+<protounit id="471" name="Proj 弩炮战船 F" />
+<protounit id="472" name="战利品" />
+<protounit id="473" name="双手剑士" />
+<protounit id="474" name="重装骑射手" />
+<protounit id="475" name="Proj HAR F" />
+<protounit id="476" name="Proj 哈拉尔·哈德拉达 F" />
+<protounit id="477" name="Proj HAR" />
+<protounit id="478" name="Proj 哈拉尔·哈德拉达" />
 <protounit id="479" name="PMANG" />
-<protounit id="480" name="Hussar, D" />
-<protounit id="481" name="Town Center 3A (REV)" />
-<protounit id="482" name="Town Center 3B (REV)" />
-<protounit id="483" name="Town Center 3C (REV)" />
-<protounit id="484" name="Town Center 3X (REV)" />
-<protounit id="485" name="Arrow, Town Center" />
-<protounit id="486" name="Bear / Tiger" />
-<protounit id="487" name="Gate, AX2" />
-<protounit id="488" name="Gate, AX3" />
-<protounit id="489" name="Tiger, D / Bear, D" />
-<protounit id="490" name="Gate, BX2" />
-<protounit id="491" name="Gate, BX3" />
-<protounit id="492" name="Arbalest" />
-<protounit id="493" name="Adv Heavy Crossbowman" />
-<protounit id="494" name="Camel, D" />
-<protounit id="495" name="Heavy Camel, D" />
-<protounit id="496" name="Arbalest, D" />
-<protounit id="497" name="AH Crossbowman, D" />
-<protounit id="498" name="Barracks 2" />
-<protounit id="499" name="Torch" />
-<protounit id="500" name="Two-Handed Swordsman, D" />
-<protounit id="501" name="Pikeman, D" />
-<protounit id="502" name="Halberdier, D" />
-<protounit id="503" name="Proj, Watch Tower" />
-<protounit id="504" name="Proj, Guard Tower" />
-<protounit id="505" name="Proj, Keep" />
-<protounit id="506" name="Proj, Bombard Tower" />
-<protounit id="507" name="Proj, Arbalest" />
-<protounit id="508" name="Proj, AH Crossbowman" />
-<protounit id="509" name="Proj, Villager" />
-<protounit id="510" name="Proj, Chu Ko Nu" />
-<protounit id="511" name="Proj, Longbowman" />
-<protounit id="512" name="Proj, Longboat" />
-<protounit id="513" name="Proj, MSU" />
-<protounit id="514" name="Proj, MPC" />
-<protounit id="515" name="Proj, Axeman" />
-<protounit id="516" name="Proj, Watch Tower F" />
-<protounit id="517" name="Proj, Guard Tower F" />
-<protounit id="518" name="Proj, Keep F" />
-<protounit id="519" name="Proj, Arbalest F" />
-<protounit id="520" name="Proj, AH Crossbowman F" />
-<protounit id="521" name="Proj, Villager F" />
-<protounit id="522" name="Proj, Chu Ko Nu F" />
-<protounit id="523" name="Proj, Longbowman F" />
-<protounit id="524" name="Proj, Longboat F" />
-<protounit id="525" name="Proj, MPC F" />
-<protounit id="526" name="Proj, MSU F" />
-<protounit id="527" name="Demolition Ship" />
-<protounit id="528" name="Heavy Demolition Ship" />
-<protounit id="529" name="Fire Ship" />
-<protounit id="530" name="Elite Longbowman" />
-<protounit id="531" name="Elite Throwing Axeman" />
-<protounit id="532" name="Fast Fire Ship" />
-<protounit id="533" name="Elite Longboat" />
-<protounit id="534" name="Elite Woad Raider" />
+<protounit id="480" name="翼骑兵 D" />
+<protounit id="481" name="城镇中心 3A" />
+<protounit id="482" name="城镇中心 3B" />
+<protounit id="483" name="城镇中心 3C" />
+<protounit id="484" name="城镇中心 3X" />
+<protounit id="485" name="箭矢 城镇中心" />
+<protounit id="486" name="熊 / 虎" />
+<protounit id="487" name="城门 AX2" />
+<protounit id="488" name="城门 AX3" />
+<protounit id="489" name="虎 D / 熊 D" />
+<protounit id="490" name="城门 BX2" />
+<protounit id="491" name="城门 BX3" />
+<protounit id="492" name="劲弩手" />
+<protounit id="493" name="高级重装弩手" />
+<protounit id="494" name="骆驼骑兵 D" />
+<protounit id="495" name="重装骆驼骑兵 D" />
+<protounit id="496" name="劲弩手 D" />
+<protounit id="497" name="AH 弩手 D" />
+<protounit id="498" name="军营 2" />
+<protounit id="499" name="火炬" />
+<protounit id="500" name="双手剑士 D" />
+<protounit id="501" name="长枪兵 D" />
+<protounit id="502" name="长戟兵 D" />
+<protounit id="503" name="Proj 瞭望塔" />
+<protounit id="504" name="Proj 警戒塔" />
+<protounit id="505" name="Proj 要塞" />
+<protounit id="506" name="Proj 火炮塔" />
+<protounit id="507" name="Proj 劲弩手" />
+<protounit id="508" name="Proj AH 弩手" />
+<protounit id="509" name="Proj 村民" />
+<protounit id="510" name="Proj 诸葛弩" />
+<protounit id="511" name="Proj 长弓兵" />
+<protounit id="512" name="Proj 维京长船" />
+<protounit id="513" name="Proj MSU" />
+<protounit id="514" name="Proj MPC" />
+<protounit id="515" name="Proj 掷斧兵" />
+<protounit id="516" name="Proj 瞭望塔 F" />
+<protounit id="517" name="Proj 警戒塔 F" />
+<protounit id="518" name="Proj 要塞 F" />
+<protounit id="519" name="Proj 劲弩手 F" />
+<protounit id="520" name="Proj AH 弩手 F" />
+<protounit id="521" name="Proj 村民 F" />
+<protounit id="522" name="Proj 诸葛弩 F" />
+<protounit id="523" name="Proj 长弓兵 F" />
+<protounit id="524" name="Proj 维京长船 F" />
+<protounit id="525" name="Proj MPC F" />
+<protounit id="526" name="Proj MSU F" />
+<protounit id="527" name="爆破舰" />
+<protounit id="528" name="重型爆破舰" />
+<protounit id="529" name="喷火舰" />
+<protounit id="530" name="精锐长弓兵" />
+<protounit id="531" name="精锐掷斧兵" />
+<protounit id="532" name="快速喷火舰" />
+<protounit id="533" name="精锐维京长船" />
+<protounit id="534" name="精锐菘蓝突击者" />
 <protounit id="535" name="BDGAL" />
 <protounit id="536" name="ABGAL" />
-<protounit id="537" name="Proj, FRG" />
-<protounit id="538" name="Proj, HFG" />
-<protounit id="539" name="Galley" />
-<protounit id="540" name="Proj, Galley" />
-<protounit id="541" name="Proj, Galley F" />
-<protounit id="542" name="Heavy Scorpion" />
-<protounit id="543" name="Heavy Scorpion, D" />
+<protounit id="537" name="Proj FRG" />
+<protounit id="538" name="Proj HFG" />
+<protounit id="539" name="箭船" />
+<protounit id="540" name="Proj 箭船" />
+<protounit id="541" name="Proj 箭船 F" />
+<protounit id="542" name="重型弩炮" />
+<protounit id="543" name="重型弩炮 D" />
 <protounit id="544" name="FLDOG" />
-<protounit id="545" name="Transport Ship" />
-<protounit id="546" name="Light Cavalry" />
-<protounit id="547" name="Light Cavalry, D" />
-<protounit id="548" name="Siege Ram" />
-<protounit id="549" name="Siege Ram, D" />
-<protounit id="550" name="Onager" />
-<protounit id="551" name="Proj, Onager" />
-<protounit id="552" name="Proj, Onager F" />
-<protounit id="553" name="Elite Cataphract" />
-<protounit id="554" name="Elite Teutonic Knight" />
-<protounit id="555" name="Elite Huskarl" />
-<protounit id="556" name="Elite Mameluke" />
-<protounit id="557" name="Elite Janissary" />
-<protounit id="558" name="Elite War Elephant" />
-<protounit id="559" name="Elite Chu Ko Nu" />
-<protounit id="560" name="Elite Samurai" />
-<protounit id="561" name="Elite Mangudai" />
-<protounit id="562" name="Lumber Camp" />
-<protounit id="563" name="Lumber Camp 2" />
-<protounit id="564" name="Lumber Camp 3" />
-<protounit id="565" name="Lumber Camp 4" />
+<protounit id="545" name="运输船" />
+<protounit id="546" name="轻骑兵" />
+<protounit id="547" name="轻骑兵 D" />
+<protounit id="548" name="重装冲撞车" />
+<protounit id="549" name="重装冲撞车 D" />
+<protounit id="550" name="中型投石车" />
+<protounit id="551" name="Proj 中型投石车" />
+<protounit id="552" name="Proj 中型投石车 F" />
+<protounit id="553" name="精锐甲胄骑兵" />
+<protounit id="554" name="精锐条顿武士" />
+<protounit id="555" name="精锐近卫军" />
+<protounit id="556" name="精锐马穆鲁克" />
+<protounit id="557" name="精锐苏丹亲兵" />
+<protounit id="558" name="精锐战象" />
+<protounit id="559" name="精锐诸葛弩" />
+<protounit id="560" name="精锐日本武士" />
+<protounit id="561" name="精锐蒙古突骑" />
+<protounit id="562" name="伐木场" />
+<protounit id="563" name="伐木场 2" />
+<protounit id="564" name="伐木场 3" />
+<protounit id="565" name="伐木场 4" />
 <protounit id="566" name="WCTWR" />
-<protounit id="567" name="Champion" />
-<protounit id="568" name="Champion, Dead" />
-<protounit id="569" name="Paladin" />
-<protounit id="570" name="Paladin, D" />
+<protounit id="567" name="冠军剑士" />
+<protounit id="568" name="冠军剑士 Dead" />
+<protounit id="569" name="圣骑士" />
+<protounit id="570" name="圣骑士 D" />
 <protounit id="571" name="RFARC" />
-<protounit id="572" name="RFARC, D" />
+<protounit id="572" name="RFARC D" />
 <protounit id="573" name="RFSWD" />
-<protounit id="574" name="RFSWD, D" />
+<protounit id="574" name="RFSWD D" />
 <protounit id="575" name="RCSWD" />
-<protounit id="576" name="RCSWD, D" />
+<protounit id="576" name="RCSWD D" />
 <protounit id="577" name="RCARC" />
-<protounit id="578" name="RCARC, D" />
-<protounit id="579" name="Gold Miner, M" />
-<protounit id="580" name="Gold Miner, M D" />
-<protounit id="581" name="Gold Miner, F" />
-<protounit id="582" name="Gold Miner, F D" />
-<protounit id="583" name="Genitour" />
-<protounit id="584" name="Mining Camp" />
-<protounit id="585" name="Mining Camp 2" />
-<protounit id="586" name="Mining Camp 3" />
-<protounit id="587" name="Mining Camp 4" />
-<protounit id="588" name="Siege Onager" />
-<protounit id="589" name="Siege Onager, D" />
-<protounit id="590" name="Shepherd, F" />
-<protounit id="591" name="Shepherd, F D" />
-<protounit id="592" name="Shepherd, M" />
-<protounit id="593" name="Shepherd, M D" />
-<protounit id="594" name="Sheep" />
-<protounit id="595" name="Sheep, D" />
-<protounit id="596" name="Elite Genitour" />
-<protounit id="597" name="Town Center 4X (REV)" />
-<protounit id="598" name="Outpost" />
-<protounit id="599" name="Cathedral" />
-<protounit id="600" name="Flag A" />
-<protounit id="601" name="Flag B" />
-<protounit id="602" name="Flag C" />
-<protounit id="603" name="Flag D" />
-<protounit id="604" name="Flag E" />
-<protounit id="605" name="Bridge A Top" />
-<protounit id="606" name="Bridge A Middle" />
-<protounit id="607" name="Bridge A Bottom" />
-<protounit id="608" name="Bridge B Top" />
-<protounit id="609" name="Bridge B Middle" />
-<protounit id="610" name="Bridge B Bottom" />
-<protounit id="611" name="Town Center 4A (REV)" />
-<protounit id="612" name="Town Center 4B (REV)" />
-<protounit id="613" name="Town Center 4C (REV)" />
-<protounit id="614" name="Town Center 2A (REV)" />
-<protounit id="615" name="Town Center 2B (REV)" />
-<protounit id="616" name="Town Center 2C (REV)" />
-<protounit id="617" name="Town Center 2X (REV)" />
-<protounit id="618" name="Town Center 1A (REV)" />
-<protounit id="619" name="Town Center 1B (REV)" />
-<protounit id="620" name="Town Center 1C (REV)" />
-<protounit id="621" name="Town Center 1X" />
-<protounit id="622" name="D Iron Boar" />
-<protounit id="623" name="Rock" />
-<protounit id="624" name="Pavilion 1" />
-<protounit id="625" name="Pavilion 3" />
-<protounit id="626" name="Pavilion 2" />
-<protounit id="627" name="Proj, Heavy Scorpion" />
-<protounit id="628" name="Proj, Heavy Scorpion F" />
-<protounit id="629" name="Joan Of Arc" />
-<protounit id="630" name="Joan Of Arc, D" />
-<protounit id="631" name="Subotai, D" />
-<protounit id="632" name="Frankish Paladin" />
-<protounit id="633" name="Frankish Paladin, D" />
-<protounit id="634" name="Sieur De Metz" />
-<protounit id="635" name="Building Burned (unused?)" />
-<protounit id="636" name="Sieur Bertrand" />
-<protounit id="637" name="Sieur Bertrand, D" />
-<protounit id="638" name="Duke D'Alencon" />
-<protounit id="639" name="Penguin" />
-<protounit id="640" name="La Hire" />
-<protounit id="641" name="La Hire, D" />
-<protounit id="642" name="Lord De Graville" />
-<protounit id="643" name="Lord De Graville, D" />
-<protounit id="644" name="Jean De Lorrain" />
-<protounit id="645" name="Jean De Lorrain, D" />
-<protounit id="646" name="Constable Richemont" />
-<protounit id="647" name="Constable Richemont, D" />
-<protounit id="648" name="Guy Josselyne" />
-<protounit id="649" name="Guy Josselyne, D" />
-<protounit id="650" name="Jean Bureau" />
-<protounit id="651" name="Jean Bureau, D" />
-<protounit id="652" name="Sir John Fastolf" />
-<protounit id="653" name="Sir John Fastolf, D" />
+<protounit id="578" name="RCARC D" />
+<protounit id="579" name="金矿工 M" />
+<protounit id="580" name="金矿工 M D" />
+<protounit id="581" name="金矿工 F" />
+<protounit id="582" name="金矿工 F D" />
+<protounit id="583" name="龙骑兵" />
+<protounit id="584" name="采矿场" />
+<protounit id="585" name="采矿场 2" />
+<protounit id="586" name="采矿场 3" />
+<protounit id="587" name="采矿场 4" />
+<protounit id="588" name="重型投石车" />
+<protounit id="589" name="重型投石车 D" />
+<protounit id="590" name="牧羊人 F" />
+<protounit id="591" name="牧羊人 F D" />
+<protounit id="592" name="牧羊人 M" />
+<protounit id="593" name="牧羊人 M D" />
+<protounit id="594" name="绵羊" />
+<protounit id="595" name="绵羊 D" />
+<protounit id="596" name="精锐龙骑兵" />
+<protounit id="597" name="城镇中心 4X" />
+<protounit id="598" name="哨站" />
+<protounit id="599" name="大教堂" />
+<protounit id="600" name="旗帜 A" />
+<protounit id="601" name="旗帜 B" />
+<protounit id="602" name="旗帜 C" />
+<protounit id="603" name="旗帜 D" />
+<protounit id="604" name="旗帜 E" />
+<protounit id="605" name="石桥 A 顶端" />
+<protounit id="606" name="石桥 A 中端" />
+<protounit id="607" name="石桥 A 底端" />
+<protounit id="608" name="石桥 B 顶端" />
+<protounit id="609" name="石桥 B 中端" />
+<protounit id="610" name="石桥 B 底端" />
+<protounit id="611" name="城镇中心 4A" />
+<protounit id="612" name="城镇中心 4B" />
+<protounit id="613" name="城镇中心 4C" />
+<protounit id="614" name="城镇中心 2A" />
+<protounit id="615" name="城镇中心 2B" />
+<protounit id="616" name="城镇中心 2C" />
+<protounit id="617" name="城镇中心 2X" />
+<protounit id="618" name="城镇中心 1A" />
+<protounit id="619" name="城镇中心 1B" />
+<protounit id="620" name="城镇中心 1C" />
+<protounit id="621" name="城镇中心 1X" />
+<protounit id="622" name="精锐龙骑兵 D" />
+<protounit id="623" name="岩石" />
+<protounit id="624" name="大帐篷 1" />
+<protounit id="625" name="大帐篷 3" />
+<protounit id="626" name="大帐篷 2" />
+<protounit id="627" name="Proj 重型弩炮" />
+<protounit id="628" name="Proj 重型弩炮 F" />
+<protounit id="629" name="圣女贞德" />
+<protounit id="630" name="圣女贞德 D" />
+<protounit id="631" name="重装骑射手 D" />
+<protounit id="632" name="法兰克圣骑士" />
+<protounit id="633" name="法兰克圣骑士 D" />
+<protounit id="634" name="梅兹爵士" />
+<protounit id="635" name="烧毁的建筑 (unused?)" />
+<protounit id="636" name="贝查德爵士" />
+<protounit id="637" name="贝查德爵士 D" />
+<protounit id="638" name="阿朗松公爵" />
+<protounit id="639" name="阿朗松公爵 D" />
+<protounit id="640" name="拉海尔" />
+<protounit id="641" name="拉海尔 D" />
+<protounit id="642" name="格拉维尔勋爵" />
+<protounit id="643" name="格拉维尔勋爵 D" />
+<protounit id="644" name="让·洛兰" />
+<protounit id="645" name="让·洛兰 D" />
+<protounit id="646" name="利修蒙元帅" />
+<protounit id="647" name="利修蒙元帅 D" />
+<protounit id="648" name="盖伊·乔瑟林" />
+<protounit id="649" name="盖伊·乔瑟林 D" />
+<protounit id="650" name="让·比罗" />
+<protounit id="651" name="让·比罗 D" />
+<protounit id="652" name="约翰·法斯托尔夫爵士" />
+<protounit id="653" name="约翰·法斯托尔夫爵士 D" />
 <protounit id="654" name="S_SMOKE" />
-<protounit id="655" name="Mosque" />
-<protounit id="656" name="Proj, MNB" />
-<protounit id="657" name="Proj, GP1" />
-<protounit id="658" name="Proj, MNB F" />
-<protounit id="659" name="Gate, CA2" />
-<protounit id="660" name="Gate, CA3" />
-<protounit id="661" name="Gate, CB2" />
-<protounit id="662" name="Gate, CB3" />
-<protounit id="663" name="Gate, CC2" />
-<protounit id="664" name="Gate, CC3" />
-<protounit id="665" name="Gate, CX2" />
-<protounit id="666" name="Gate, CX3" />
-<protounit id="667" name="Gate, DA2" />
-<protounit id="668" name="Gate, DA3" />
-<protounit id="669" name="Gate, DB2" />
-<protounit id="670" name="Gate, DB3" />
-<protounit id="671" name="Gate, DC2" />
-<protounit id="672" name="Gate, DC3" />
-<protounit id="673" name="Gate, DX2" />
-<protounit id="674" name="Gate, DX3" />
-<protounit id="675" name="Onager, D" />
-<protounit id="676" name="Proj, FFG F" />
+<protounit id="655" name="清真寺" />
+<protounit id="656" name="Proj MNB" />
+<protounit id="657" name="Proj GP1" />
+<protounit id="658" name="Proj MNB F" />
+<protounit id="659" name="城门 CA2" />
+<protounit id="660" name="城门 CA3" />
+<protounit id="661" name="城门 CB2" />
+<protounit id="662" name="城门 CB3" />
+<protounit id="663" name="城门 CC2" />
+<protounit id="664" name="城门 CC3" />
+<protounit id="665" name="城门 CX2" />
+<protounit id="666" name="城门 CX3" />
+<protounit id="667" name="城门 DA2" />
+<protounit id="668" name="城门 DA3" />
+<protounit id="669" name="城门 DB2" />
+<protounit id="670" name="城门 DB3" />
+<protounit id="671" name="城门 DC2" />
+<protounit id="672" name="城门 DC3" />
+<protounit id="673" name="城门 DX2" />
+<protounit id="674" name="城门 DX3" />
+<protounit id="675" name="中型投石车 D" />
+<protounit id="676" name="Proj FFG F" />
 <protounit id="677" name="S_Fire" />
-<protounit id="678" name="Reynald De Chatillon" />
-<protounit id="679" name="Reynald De Chatillon, D" />
-<protounit id="680" name="Master Of The Templar" />
-<protounit id="681" name="Master Of The Templar, D" />
-<protounit id="682" name="Bad Neighbor" />
-<protounit id="683" name="Gods Own Sling" />
-<protounit id="684" name="The Accursed Tower" />
-<protounit id="685" name="The Tower Of Flies" />
-<protounit id="686" name="Archer Of The Eyes" />
-<protounit id="687" name="Archer Of The Eyes, D" />
-<protounit id="688" name="Piece Of The True Cross" />
-<protounit id="689" name="Pyramid" />
-<protounit id="690" name="Dome Of The Rock" />
-<protounit id="691" name="Elite Cannon Galleon" />
-<protounit id="692" name="Berserk" />
-<protounit id="693" name="Berserk, D" />
-<protounit id="694" name="Elite Berserk" />
-<protounit id="695" name="Elite Berserk, D" />
-<protounit id="696" name="Great Pyramid" />
-<protounit id="697" name="Flare 4" />
-<protounit id="698" name="Subotai" />
-<protounit id="699" name="Subotai, D" />
-<protounit id="700" name="Hunting Wolf" />
-<protounit id="701" name="Hunting Wolf, D" />
-<protounit id="702" name="Kushluk" />
-<protounit id="703" name="Kushluk, D" />
-<protounit id="704" name="Shah" />
-<protounit id="705" name="Cow" />
-<protounit id="706" name="Saboteur" />
-<protounit id="707" name="Ornlu The Wolf" />
-<protounit id="708" name="Ornlu The Wolf, D" />
-<protounit id="709" name="Cactus" />
-<protounit id="710" name="Skeleton" />
-<protounit id="711" name="Rugs" />
-<protounit id="712" name="Yurt" />
-<protounit id="713" name="Yurt 2" />
-<protounit id="714" name="Yurt 3" />
-<protounit id="715" name="Yurt 4" />
-<protounit id="716" name="Yurt 5" />
-<protounit id="717" name="Yurt 6" />
-<protounit id="718" name="Yurt 7" />
-<protounit id="719" name="Yurt 8" />
-<protounit id="720" name="Nine Bands" />
-<protounit id="721" name="Shipwreck" />
-<protounit id="722" name="Shipwreck 2" />
-<protounit id="723" name="Crater" />
-<protounit id="724" name="Genitour, Dead" />
-<protounit id="725" name="Jaguar Warrior" />
-<protounit id="726" name="Elite Jaguar Warrior" />
+<protounit id="678" name="沙蒂永的雷纳德" />
+<protounit id="679" name="沙蒂永的雷纳德 D" />
+<protounit id="680" name="圣殿骑士团大团长" />
+<protounit id="681" name="圣殿骑士团大团长 D" />
+<protounit id="682" name="坏邻居" />
+<protounit id="683" name="神之弓" />
+<protounit id="684" name="诅咒之塔" />
+<protounit id="685" name="腐败之塔" />
+<protounit id="686" name="神射手" />
+<protounit id="687" name="神射手 D" />
+<protounit id="688" name="真十字架的碎片" />
+<protounit id="689" name="金字塔" />
+<protounit id="690" name="圆顶清真寺" />
+<protounit id="691" name="精锐火炮战船" />
+<protounit id="692" name="狂战士" />
+<protounit id="693" name="狂战士 D" />
+<protounit id="694" name="精锐狂战士" />
+<protounit id="695" name="精锐狂战士 D" />
+<protounit id="696" name="大金字塔" />
+<protounit id="697" name="闪光 4" />
+<protounit id="698" name="速不台" />
+<protounit id="699" name="速不台 D" />
+<protounit id="700" name="猎狼" />
+<protounit id="701" name="猎狼 D" />
+<protounit id="702" name="屈出律" />
+<protounit id="703" name="屈出律 D" />
+<protounit id="704" name="沙阿" />
+<protounit id="705" name="奶牛" />
+<protounit id="706" name="破坏者" />
+<protounit id="707" name="灰狼柯鲁" />
+<protounit id="708" name="灰狼柯鲁 D" />
+<protounit id="709" name="仙人掌" />
+<protounit id="710" name="骷髅" />
+<protounit id="711" name="地毯" />
+<protounit id="712" name="蒙古包" />
+<protounit id="713" name="蒙古包 2" />
+<protounit id="714" name="蒙古包 3" />
+<protounit id="715" name="蒙古包 4" />
+<protounit id="716" name="蒙古包 5" />
+<protounit id="717" name="蒙古包 6" />
+<protounit id="718" name="蒙古包 7" />
+<protounit id="719" name="蒙古包 8" />
+<protounit id="720" name="九旄大纛" />
+<protounit id="721" name="沉船" />
+<protounit id="722" name="沉船 2" />
+<protounit id="723" name="弹坑" />
+<protounit id="724" name="龙骑兵 D" />
+<protounit id="725" name="豹勇士" />
+<protounit id="726" name="精锐豹勇士" />
 <protounit id="727" name="Disabled (727)" />
-<protounit id="728" name="Ice Spots" />
-<protounit id="729" name="Gods Own Sling, Packed" />
-<protounit id="730" name="Bad Neighbor, Packed" />
-<protounit id="731" name="Genghis Khan" />
-<protounit id="732" name="Genghis Khan, D" />
-<protounit id="733" name="Emperor In A Barrel" />
-<protounit id="734" name="Emperor In A Barrel, D" />
-<protounit id="735" name="Trebuchet, Packed D" />
-<protounit id="736" name="Proj, Mameluke" />
-<protounit id="737" name="Stump B" />
-<protounit id="738" name="Bridge A Middle Broken" />
-<protounit id="739" name="Bridge A Middle Broken 2" />
-<protounit id="740" name="Bridge A Middle Broken 3" />
-<protounit id="741" name="Bridge B Middle Broken" />
-<protounit id="742" name="Bridge B Middle Broken 2" />
-<protounit id="743" name="Bridge B Middle Broken 3" />
-<protounit id="744" name="Mountain 3" />
-<protounit id="745" name="Mountain 4" />
-<protounit id="746" name="Proj, Castle" />
-<protounit id="747" name="Proj, Castle Flaming" />
-<protounit id="748" name="Cobra Car" />
-<protounit id="749" name="Cobra, D" />
-<protounit id="750" name="Jaguar Warrior, D" />
-<protounit id="751" name="Eagle Scout" />
-<protounit id="752" name="Elite Eagle Warrior" />
-<protounit id="753" name="Eagle Warrior" />
-<protounit id="754" name="Eagle Warrior, D" />
-<protounit id="755" name="Tarkan" />
-<protounit id="756" name="Tarkan, D" />
-<protounit id="757" name="Elite Tarkan" />
-<protounit id="758" name="Burned Building" />
-<protounit id="759" name="Huskarl 2" />
-<protounit id="760" name="Huskarl 2, Dead" />
-<protounit id="761" name="Elite Huskarl" />
-<protounit id="762" name="Elite Huskarl, Dead" />
-<protounit id="763" name="Plumed Archer" />
-<protounit id="764" name="Plumed Archer, D" />
-<protounit id="765" name="Elite Plumed Archer" />
-<protounit id="766" name="Elite Plumed Archer, D" />
-<protounit id="767" name="Proj, Elite Cannon Galleon" />
+<protounit id="728" name="冰块" />
+<protounit id="729" name="神之弓 组装的" />
+<protounit id="730" name="坏邻居 组装的" />
+<protounit id="731" name="成吉思汗" />
+<protounit id="732" name="成吉思汗 D" />
+<protounit id="733" name="装在桶里的皇帝" />
+<protounit id="734" name="装在桶里的皇帝 D" />
+<protounit id="735" name="巨型投石机 组装的 D" />
+<protounit id="736" name="Proj 马穆鲁克" />
+<protounit id="737" name="树桩 B" />
+<protounit id="738" name="石桥 A 中端 损坏的" />
+<protounit id="739" name="石桥 A 中端 损坏的 2" />
+<protounit id="740" name="石桥 A 中端 损坏的 3" />
+<protounit id="741" name="石桥 B 中端 损坏的" />
+<protounit id="742" name="石桥 B 中端 损坏的 2" />
+<protounit id="743" name="石桥 B 中端 损坏的 3" />
+<protounit id="744" name="山脉 3" />
+<protounit id="745" name="山脉 4" />
+<protounit id="746" name="Proj 城堡" />
+<protounit id="747" name="Proj 城堡 Flaming" />
+<protounit id="748" name="眼镜蛇跑车" />
+<protounit id="749" name="眼镜蛇跑车 D" />
+<protounit id="750" name="豹勇士 D" />
+<protounit id="751" name="鹰斥候" />
+<protounit id="752" name="精锐鹰勇士" />
+<protounit id="753" name="鹰勇士" />
+<protounit id="754" name="鹰勇士 D" />
+<protounit id="755" name="鞑靼骑兵" />
+<protounit id="756" name="鞑靼骑兵 D" />
+<protounit id="757" name="精锐鞑靼骑兵" />
+<protounit id="758" name="烧毁的建筑" />
+<protounit id="759" name="近卫军 2" />
+<protounit id="760" name="近卫军 2 Dead" />
+<protounit id="761" name="精锐近卫军 2" />
+<protounit id="762" name="精锐近卫军 Dead" />
+<protounit id="763" name="羽箭手" />
+<protounit id="764" name="羽箭手 D" />
+<protounit id="765" name="精锐羽箭手" />
+<protounit id="766" name="精锐羽箭手 D" />
+<protounit id="767" name="Proj 精锐火炮战船" />
 <protounit id="768" name="Disabled (768)" />
 <protounit id="769" name="Disabled (769)" />
 <protounit id="770" name="Disabled (770)" />
-<protounit id="771" name="Conquistador" />
-<protounit id="772" name="Conquistador, D" />
-<protounit id="773" name="Elite Conquistador" />
-<protounit id="774" name="Elite Conquistador, D" />
-<protounit id="775" name="Missionary" />
-<protounit id="776" name="Missionary, D" />
-<protounit id="777" name="Attila The Hun" />
-<protounit id="778" name="Canoe / Atilla The Hun, D" />
-<protounit id="779" name="Bleda The Hun" />
-<protounit id="780" name="Bleda The Hun, D / Llama, D" />
-<protounit id="781" name="Pope Leo I" />
-<protounit id="782" name="Pope Leo I, D" />
-<protounit id="783" name="Scythian Wild Woman" />
-<protounit id="784" name="Scythian Wild Woman, D" />
-<protounit id="785" name="Sea Tower" />
-<protounit id="786" name="Proj, Sea Tower" />
-<protounit id="787" name="Proj, Sea Tower Flaming" />
-<protounit id="788" name="Sea Wall" />
-<protounit id="789" name="Palisade Gate, AA" />
-<protounit id="790" name="Palisade Gate, AB" />
-<protounit id="791" name="Palisade Gate, AC" />
-<protounit id="792" name="Palisade Gate, AX" />
-<protounit id="793" name="Palisade Gate, BA" />
-<protounit id="794" name="Palisade Gate, BB" />
-<protounit id="795" name="Palisade Gate, BC" />
-<protounit id="796" name="Palisade Gate, BX" />
-<protounit id="797" name="Palisade Gate, CA" />
-<protounit id="798" name="Palisade Gate, CB" />
-<protounit id="799" name="Palisade Gate, CC" />
-<protounit id="800" name="Palisade Gate, CX" />
-<protounit id="801" name="Palisade Gate, DA" />
-<protounit id="802" name="Palisade Gate, DB" />
-<protounit id="803" name="Palisade Gate, DC" />
-<protounit id="804" name="Palisade Gate, DX" />
-<protounit id="805" name="S Dock" />
-<protounit id="806" name="S Dock 2" />
-<protounit id="807" name="S Dock 3" />
-<protounit id="808" name="S Dock 4" />
-<protounit id="809" name="Stump 2" />
-<protounit id="810" name="Iron Boar" />
-<protounit id="811" name="Iron Boar, D" />
-<protounit id="812" name="Jaguar" />
-<protounit id="813" name="Jaguar, D" />
-<protounit id="814" name="Horse" />
-<protounit id="815" name="Horse, D" />
-<protounit id="816" name="Macaw" />
-<protounit id="817" name="Statue" />
-<protounit id="818" name="Plants" />
-<protounit id="819" name="Sign" />
-<protounit id="820" name="Grave" />
-<protounit id="821" name="Head" />
-<protounit id="822" name="Javelina" />
-<protounit id="823" name="Javelina, D" />
-<protounit id="824" name="El Cid Campeador" />
-<protounit id="825" name="Amazon Warrior / El Cid Campeador, D" />
-<protounit id="826" name="Monument (KotH)" />
-<protounit id="827" name="War Wagon" />
-<protounit id="828" name="War Wagon, D" />
-<protounit id="829" name="Elite War Wagon" />
-<protounit id="830" name="Elite War Wagon, D" />
-<protounit id="831" name="Turtle Ship" />
-<protounit id="832" name="Elite Turtle Ship" />
-<protounit id="833" name="Turkey" />
-<protounit id="834" name="Turkey, Dead" />
-<protounit id="835" name="Wild Horse" />
-<protounit id="836" name="Wild Horse, D" />
-<protounit id="837" name="Map Revealer" />
-<protounit id="838" name="King Sancho" />
-<protounit id="839" name="Rock (Stone) / King Sancho, D" />
-<protounit id="840" name="King Alfonso" />
-<protounit id="841" name="Rock (Gold) / King Alfonso, D" />
-<protounit id="842" name="Imam" />
-<protounit id="843" name="Imam, D / Cow, D" />
-<protounit id="844" name="Admiral Yi Sun Shin" />
-<protounit id="845" name="Nobunaga" />
-<protounit id="846" name="Donkey / Nobunaga, D" />
-<protounit id="847" name="Henry V" />
-<protounit id="848" name="Henry V, D / Donkey, D" />
-<protounit id="849" name="William The Conqueror" />
-<protounit id="850" name="Amazon Archer / William The Conqueror, D" />
-<protounit id="851" name="Flag, ES" />
-<protounit id="852" name="Scythian Scout" />
-<protounit id="853" name="Scythian Scout, D" />
-<protounit id="854" name="Torch (Converting) / Torch 2" />
-<protounit id="855" name="Old Stone Head" />
-<protounit id="856" name="Roman Ruins" />
-<protounit id="857" name="Hay Stack" />
-<protounit id="858" name="Broken Cart" />
-<protounit id="859" name="Flower Bed" />
-<protounit id="860" name="Furious The Monkey Boy" />
-<protounit id="861" name="Furious The Monkey Boy, D" />
-<protounit id="862" name="Stormy Dog" />
-<protounit id="863" name="Rubble 1 X 1" />
-<protounit id="864" name="Rubble 2 X 2" />
-<protounit id="865" name="Rubble 3 X 3" />
-<protounit id="866" name="Genoese Crossbowman" />
-<protounit id="867" name="Genoese Crossbowman, D" />
-<protounit id="868" name="Elite Genoese Crossbowman" />
-<protounit id="869" name="Magyar Huszar" />
-<protounit id="870" name="Magyar Huszar, D" />
-<protounit id="871" name="Elite Magyar Huszar" />
-<protounit id="872" name="Quimper Cathedral" />
-<protounit id="873" name="Elephant Archer" />
-<protounit id="874" name="Elephant Archer, D" />
-<protounit id="875" name="Elite Elephant Archer" />
-<protounit id="876" name="Boyar" />
-<protounit id="877" name="Boyar, D" />
-<protounit id="878" name="Elite Boyar" />
-<protounit id="879" name="Kamayuk" />
-<protounit id="880" name="Kamayuk, D" />
-<protounit id="881" name="Elite Kamayuk" />
-<protounit id="882" name="Condottiero" />
-<protounit id="883" name="Condottiero, D" />
-<protounit id="884" name="Wild Camel" />
-<protounit id="885" name="Siege Tower (AoFE)" />
-<protounit id="886" name="Tarkan 2" />
-<protounit id="887" name="Elite Tarkan 2" />
-<protounit id="888" name="Inca_Turkey+Eagle" />
-<protounit id="889" name="Inca_Eagle" />
-<protounit id="890" name="Inca_Turkey" />
-<protounit id="891" name="Siege Tower (AoFE), D" />
-<protounit id="892" name="Pikeman 2" />
-<protounit id="893" name="Pikeman 2, D" />
-<protounit id="894" name="Eastern Swordsman" />
-<protounit id="895" name="Eastern Swordsman, D" />
-<protounit id="896" name="Waterfall" />
-<protounit id="897" name="Camel 2 (Gaia)" />
-<protounit id="898" name="Camel 2, D" />
-<protounit id="899" name="Arch of Constantine" />
-<protounit id="900" name="Rain" />
-<protounit id="901" name="Flag F" />
-<protounit id="902" name="Smoke" />
-<protounit id="904" name="Wooden Bridge A Top" />
-<protounit id="905" name="Wooden Bridge A Middle" />
-<protounit id="906" name="Wooden Bridge A Bottom" />
-<protounit id="907" name="Wooden Bridge B Top" />
-<protounit id="908" name="Wooden Bridge B Middle" />
-<protounit id="909" name="Wooden Bridge B Bottom" />
-<protounit id="910" name="Impaled Corpse" />
-<protounit id="914" name="Quarry" />
-<protounit id="915" name="Lumber" />
-<protounit id="916" name="Goods" />
-<protounit id="917" name="Vulture" />
-<protounit id="918" name="Rock 2" />
-<protounit id="919" name="Amazon Warrior, D" />
-<protounit id="920" name="Amazon Warrior (archer), D" />
-<protounit id="921" name="Monk (ME), D" />
-<protounit id="922" name="Monk (ME) w/ relic" />
-<protounit id="923" name="Queen" />
-<protounit id="924" name="Queen, D" />
-<protounit id="925" name="Sanyogita" />
-<protounit id="926" name="Prithvi" />
-<protounit id="927" name="Chand Bhai" />
-<protounit id="928" name="Chand Bhai, D" />
-<protounit id="929" name="Saladin" />
-<protounit id="930" name="Khosrau" />
-<protounit id="931" name="Jarl" />
-<protounit id="932" name="Saravan" />
-<protounit id="933" name="Barrels" />
-<protounit id="934" name="Alfred the Alpaca" />
-<protounit id="935" name="Alfred the Alpaca, D" />
-<protounit id="936" name="Elephant" />
-<protounit id="937" name="Elephant, D" />
-<protounit id="938" name="Dragon Ship" />
-<protounit id="939" name="Flame 1" />
-<protounit id="940" name="Flame 2" />
-<protounit id="941" name="Flame 3" />
-<protounit id="942" name="Flame 4" />
-<protounit id="943" name="Osman" />
-<protounit id="944" name="Relic Cart (SCX2)" />
-<protounit id="945" name="Shah, D" />
-<protounit id="1001" name="Organ Gun" />
-<protounit id="1002" name="Organ Gun, D" />
-<protounit id="1003" name="Elite Organ Gun" />
-<protounit id="1004" name="Caravel" />
+<protounit id="771" name="征服者" />
+<protounit id="772" name="征服者 D" />
+<protounit id="773" name="精锐征服者" />
+<protounit id="774" name="精锐征服者 D" />
+<protounit id="775" name="传教士" />
+<protounit id="776" name="传教士 D" />
+<protounit id="777" name="匈人阿提拉" />
+<protounit id="778" name="匈人阿提拉 D" />
+<protounit id="779" name="匈人布莱达" />
+<protounit id="780" name="匈人布莱达 D" />
+<protounit id="781" name="教宗利奥一世" />
+<protounit id="782" name="教宗利奥一世 D" />
+<protounit id="783" name="西徐亚的野女人" />
+<protounit id="784" name="西徐亚的野女人 D" />
+<protounit id="785" name="海塔" />
+<protounit id="786" name="Proj 海塔" />
+<protounit id="787" name="Proj 海塔 Flaming" />
+<protounit id="788" name="海墙" />
+<protounit id="789" name="木城门 AA" />
+<protounit id="790" name="木城门 AB" />
+<protounit id="791" name="木城门 AC" />
+<protounit id="792" name="木城门 AX" />
+<protounit id="793" name="木城门 BA" />
+<protounit id="794" name="木城门 BB" />
+<protounit id="795" name="木城门 BC" />
+<protounit id="796" name="木城门 BX" />
+<protounit id="797" name="木城门 CA" />
+<protounit id="798" name="木城门 CB" />
+<protounit id="799" name="木城门 CC" />
+<protounit id="800" name="木城门 CX" />
+<protounit id="801" name="木城门 DA" />
+<protounit id="802" name="木城门 DB" />
+<protounit id="803" name="木城门 DC" />
+<protounit id="804" name="木城门 DX" />
+<protounit id="805" name="S 船坞" />
+<protounit id="806" name="S 船坞 2" />
+<protounit id="807" name="S 船坞 3" />
+<protounit id="808" name="S 船坞 4" />
+<protounit id="809" name="树桩 2" />
+<protounit id="810" name="铁野猪" />
+<protounit id="811" name="铁野猪 D" />
+<protounit id="812" name="美洲豹" />
+<protounit id="813" name="美洲豹 D" />
+<protounit id="814" name="马" />
+<protounit id="815" name="马 D" />
+<protounit id="816" name="金刚鹦鹉" />
+<protounit id="817" name="雕像" />
+<protounit id="818" name="植物" />
+<protounit id="819" name="标记" />
+<protounit id="820" name="坟墓" />
+<protounit id="821" name="头颅" />
+<protounit id="822" name="西猯" />
+<protounit id="823" name="西猯 D" />
+<protounit id="824" name="熙德" />
+<protounit id="825" name="熙德 D" />
+<protounit id="826" name="纪念碑 (KotH)" />
+<protounit id="827" name="战车" />
+<protounit id="828" name="战车 D" />
+<protounit id="829" name="精锐战车" />
+<protounit id="830" name="精锐战车 D" />
+<protounit id="831" name="龟甲船" />
+<protounit id="832" name="精锐龟甲船" />
+<protounit id="833" name="火鸡" />
+<protounit id="834" name="火鸡 Dead" />
+<protounit id="835" name="野马" />
+<protounit id="836" name="野马 D" />
+<protounit id="837" name="地图启示者" />
+<protounit id="838" name="桑乔国王" />
+<protounit id="839" name="桑乔国王 D" />
+<protounit id="840" name="阿方索国王" />
+<protounit id="841" name="阿方索国王 D" />
+<protounit id="842" name="伊玛目" />
+<protounit id="843" name="伊玛目 D" />
+<protounit id="844" name="李舜臣将军" />
+<protounit id="845" name="织田信长" />
+<protounit id="846" name="织田信长 D" />
+<protounit id="847" name="亨利五世" />
+<protounit id="848" name="亨利五世 D" />
+<protounit id="849" name="征服者威廉" />
+<protounit id="850" name="征服者威廉 D" />
+<protounit id="851" name="全效工作室旗帜" />
+<protounit id="852" name="西徐亚侦察兵" />
+<protounit id="853" name="西徐亚侦察兵 D" />
+<protounit id="854" name="火炬 (转变) / 火炬 2" />
+<protounit id="855" name="古石头像" />
+<protounit id="856" name="罗马遗址" />
+<protounit id="857" name="干草堆" />
+<protounit id="858" name="损坏的马车" />
+<protounit id="859" name="花坛" />
+<protounit id="860" name="狂猴" />
+<protounit id="861" name="狂猴 D" />
+<protounit id="862" name="暴风犬" />
+<protounit id="863" name="碎石 1 X 1" />
+<protounit id="864" name="碎石 2 X 2" />
+<protounit id="865" name="碎石 3 X 3" />
+<protounit id="866" name="热那亚弩手" />
+<protounit id="867" name="热那亚弩手 D" />
+<protounit id="868" name="精锐热那亚弩手" />
+<protounit id="869" name="马扎尔骠骑" />
+<protounit id="870" name="马扎尔骠骑 D" />
+<protounit id="871" name="精锐马扎尔骠骑" />
+<protounit id="872" name="坎佩尔大教堂" />
+<protounit id="873" name="骑象射手" />
+<protounit id="874" name="骑象射手 D" />
+<protounit id="875" name="精锐骑象射手" />
+<protounit id="876" name="贵族铁骑" />
+<protounit id="877" name="贵族铁骑 D" />
+<protounit id="878" name="精锐贵族铁骑" />
+<protounit id="879" name="印加枪兵长" />
+<protounit id="880" name="印加枪兵长 D" />
+<protounit id="881" name="精锐印加枪兵长" />
+<protounit id="882" name="意大利佣兵" />
+<protounit id="883" name="意大利佣兵 D" />
+<protounit id="884" name="野骆驼" />
+<protounit id="885" name="攻城塔 (AoFE)" />
+<protounit id="886" name="鞑靼骑兵 2" />
+<protounit id="887" name="精锐鞑靼骑兵 2" />
+<protounit id="888" name="印加火鸡+雕" />
+<protounit id="889" name="印加雕" />
+<protounit id="890" name="印加火鸡" />
+<protounit id="891" name="遗朝攻城塔 D" />
+<protounit id="892" name="重装长枪兵" />
+<protounit id="893" name="重装长枪兵 D" />
+<protounit id="894" name="东方剑士" />
+<protounit id="895" name="东方剑士 D" />
+<protounit id="896" name="瀑布" />
+<protounit id="897" name="骆驼" />
+<protounit id="898" name="骆驼 D" />
+<protounit id="899" name="君士坦丁凯旋门" />
+<protounit id="900" name="雨" />
+<protounit id="901" name="旗帜 F" />
+<protounit id="902" name="烟" />
+<protounit id="904" name="木桥 A 顶端" />
+<protounit id="905" name="木桥 A 中端" />
+<protounit id="906" name="木桥 A 底端" />
+<protounit id="907" name="木桥 B 顶端" />
+<protounit id="908" name="木桥 B 中端" />
+<protounit id="909" name="木桥 B 底端" />
+<protounit id="910" name="刺穿的尸体" />
+<protounit id="914" name="采石场" />
+<protounit id="915" name="木材" />
+<protounit id="916" name="货物" />
+<protounit id="917" name="秃鹫" />
+<protounit id="918" name="岩石 2" />
+<protounit id="919" name="亚马逊勇士 D" />
+<protounit id="920" name="亚马逊勇士 (弓兵) D" />
+<protounit id="921" name="僧侣 (ME) D" />
+<protounit id="922" name="持圣物的僧侣 (ME)" />
+<protounit id="923" name="皇后" />
+<protounit id="924" name="皇后 D" />
+<protounit id="925" name="姗悦姬妲" />
+<protounit id="926" name="布里陀毗" />
+<protounit id="927" name="金德·伯勒达伊" />
+<protounit id="928" name="金德·伯勒达伊 D" />
+<protounit id="929" name="萨拉丁" />
+<protounit id="930" name="霍斯劳" />
+<protounit id="931" name="贵族首领" />
+<protounit id="932" name="萨瓦兰重骑兵" />
+<protounit id="933" name="桶" />
+<protounit id="934" name="羊驼阿弗瑞德" />
+<protounit id="935" name="羊驼阿弗瑞德 D" />
+<protounit id="936" name="野象" />
+<protounit id="937" name="野象 D" />
+<protounit id="938" name="龙舟" />
+<protounit id="939" name="火焰 1" />
+<protounit id="940" name="火焰 2" />
+<protounit id="941" name="火焰 3" />
+<protounit id="942" name="火焰 4" />
+<protounit id="943" name="奥斯曼" />
+<protounit id="944" name="圣物推车 (SCX2)" />
+<protounit id="945" name="沙阿 D" />
+<protounit id="1001" name="风琴炮(HD)" />
+<protounit id="1002" name="风琴炮 D" />
+<protounit id="1003" name="精锐风琴炮(HD)" />
+<protounit id="1004" name="葡式纵帆船(HD)" />
 <protounit id="1005" name="Unused dead unit" />
-<protounit id="1006" name="Elite Caravel" />
-<protounit id="1007" name="Camel Archer" />
-<protounit id="1008" name="Camel Archer, D" />
-<protounit id="1009" name="Elite Camel Archer" />
-<protounit id="1010" name="Berber Genitour" />
-<protounit id="1011" name="Berber Genitour, D" />
-<protounit id="1012" name="Elite Berber Genitour" />
-<protounit id="1013" name="Gbeto" />
-<protounit id="1014" name="Gbeto, D" />
-<protounit id="1015" name="Elite Gbeto" />
-<protounit id="1016" name="Shotel Warrior" />
-<protounit id="1017" name="Shotel Warrior, D" />
-<protounit id="1018" name="Elite Shotel Warrior" />
-<protounit id="1019" name="Zebra" />
-<protounit id="1020" name="Zebra, D" />
-<protounit id="1021" name="Feitoria" />
+<protounit id="1006" name="精锐葡式纵帆船(HD)" />
+<protounit id="1007" name="骆驼骑射手(HD)" />
+<protounit id="1008" name="骆驼骑射手 D" />
+<protounit id="1009" name="精锐骆驼骑射手(HD)" />
+<protounit id="1010" name="标枪骑兵(HD)" />
+<protounit id="1011" name="标枪骑兵 D" />
+<protounit id="1012" name="精锐标枪骑兵(HD)" />
+<protounit id="1013" name="飞刀女兵(HD)" />
+<protounit id="1014" name="飞刀女兵 D" />
+<protounit id="1015" name="精锐飞刀女兵(HD)" />
+<protounit id="1016" name="弯刀勇士(HD)" />
+<protounit id="1017" name="弯刀勇士 D" />
+<protounit id="1018" name="精锐弯刀勇士(HD)" />
+<protounit id="1019" name="斑马" />
+<protounit id="1020" name="斑马 D" />
+<protounit id="1021" name="商站" />
 <protounit id="1022" name="Boarding Ship" />
-<protounit id="1023" name="Priest" />
-<protounit id="1024" name="Priest, D" />
-<protounit id="1025" name="Priest w/ Relic" />
-<protounit id="1026" name="Ostrich" />
-<protounit id="1027" name="Ostrich, D" />
-<protounit id="1028" name="Stork" />
-<protounit id="1029" name="Lion" />
-<protounit id="1030" name="Lion, D" />
-<protounit id="1031" name="Crocodile" />
-<protounit id="1032" name="Crocodile, D" />
-<protounit id="1033" name="Savannah Grass Patch" />
-<protounit id="1034" name="Musa" />
-<protounit id="1035" name="Sundjata" />
-<protounit id="1036" name="Tariq" />
-<protounit id="1037" name="Richard de Clare" />
-<protounit id="1038" name="Tristan" />
-<protounit id="1039" name="Princess Yodit" />
-<protounit id="1040" name="Henry II" />
-<protounit id="1041" name="Mountain 5" />
-<protounit id="1042" name="Mountain 6" />
-<protounit id="1043" name="Mountain 7" />
-<protounit id="1044" name="Mountain 8" />
-<protounit id="1045" name="Snow Mountain 1" />
-<protounit id="1046" name="Snow Mountain 2" />
-<protounit id="1047" name="Snow Mountain 3" />
-<protounit id="1048" name="Rock Formation 1" />
-<protounit id="1049" name="Rock Formation 2" />
-<protounit id="1050" name="Rock Formation 3" />
-<protounit id="1051" name="Dragon Tree" />
-<protounit id="1052" name="Baobab Tree" />
-<protounit id="1053" name="Bush 2" />
-<protounit id="1054" name="Bush 3" />
-<protounit id="1055" name="Projectile, Gbeto" />
-<protounit id="1056" name="Falcon, unused" />
+<protounit id="1023" name="牧师" />
+<protounit id="1024" name="牧师 D" />
+<protounit id="1025" name="持圣物的牧师" />
+<protounit id="1026" name="鸵鸟" />
+<protounit id="1027" name="鸵鸟 D" />
+<protounit id="1028" name="鹳" />
+<protounit id="1029" name="狮" />
+<protounit id="1030" name="狮 D" />
+<protounit id="1031" name="鳄" />
+<protounit id="1032" name="鳄 D" />
+<protounit id="1033" name="疏林草原草地" />
+<protounit id="1034" name="穆萨·伊本·努赛尔" />
+<protounit id="1035" name="松迪亚塔" />
+<protounit id="1036" name="塔里克·伊本·齐亚德" />
+<protounit id="1037" name="理查·德·克莱尔" />
+<protounit id="1038" name="特里斯坦" />
+<protounit id="1039" name="游娣特公主" />
+<protounit id="1040" name="亨利二世" />
+<protounit id="1041" name="山脉 5" />
+<protounit id="1042" name="山脉 6" />
+<protounit id="1043" name="山脉 7" />
+<protounit id="1044" name="山脉 8" />
+<protounit id="1045" name="雪山 1" />
+<protounit id="1046" name="雪山 2" />
+<protounit id="1047" name="雪山 3" />
+<protounit id="1048" name="岩石堆 1" />
+<protounit id="1049" name="岩石堆 2" />
+<protounit id="1050" name="岩石堆 3" />
+<protounit id="1051" name="龙血树" />
+<protounit id="1052" name="猴面包树" />
+<protounit id="1053" name="灌木丛 2" />
+<protounit id="1054" name="灌木丛 3" />
+<protounit id="1055" name="Projectile 飞刀女兵" />
+<protounit id="1056" name="隼 unused" />
 <protounit id="1057" name="Projectile" />
 <protounit id="1058" name="Projectile" />
-<protounit id="1059" name="Fruit Bush" />
-<protounit id="1060" name="Goat" />
-<protounit id="1061" name="Goat, D" />
-<protounit id="1062" name="Fence" />
-<protounit id="1063" name="Acacia" />
-<protounit id="1064" name="Yekuno Amlak" />
-<protounit id="1065" name="Rubble 1 x 1 (Fence)" />
-<protounit id="1066" name="Yodit" />
-<protounit id="1067" name="Itzcoatl" />
-<protounit id="1068" name="Mustafa Pasha" />
-<protounit id="1069" name="Pacal II" />
-<protounit id="1070" name="Babur" />
-<protounit id="1071" name="Abraha Elephant" />
-<protounit id="1072" name="Guglielmo Embriaco" />
-<protounit id="1073" name="Su Dingfang" />
-<protounit id="1074" name="Pachacuti" />
-<protounit id="1075" name="Huayna Capac" />
-<protounit id="1076" name="Miklos Toldi" />
-<protounit id="1077" name="Little John" />
-<protounit id="1078" name="Zawisza the Black" />
-<protounit id="1079" name="Berbers Genitour, Dummy" />
-<protounit id="1080" name="Sumanguru" />
-<protounit id="1081" name="Storage" />
-<protounit id="1082" name="Hut" />
-<protounit id="1083" name="Hut" />
-<protounit id="1084" name="Hut" />
-<protounit id="1085" name="Hut" />
-<protounit id="1086" name="Hut" />
-<protounit id="1087" name="Hut" />
-<protounit id="1088" name="Hut" />
-<protounit id="1089" name="Granary" />
-<protounit id="1090" name="Barricade" />
-<protounit id="1091" name="Animal Skeleton" />
-<protounit id="1092" name="Stelae A" />
-<protounit id="1093" name="Stelae B" />
-<protounit id="1094" name="Stelae C" />
-<protounit id="1095" name="Gallow" />
-<protounit id="1096" name="Palace" />
-<protounit id="1097" name="Tent" />
-<protounit id="1098" name="Tent" />
-<protounit id="1099" name="Tent" />
-<protounit id="1100" name="Tent" />
-<protounit id="1101" name="Tent" />
-<protounit id="1102" name="Sea Fortification" />
-<protounit id="1103" name="Fire Galley" />
-<protounit id="1104" name="Demolition Galley" />
-<protounit id="1105" name="Siege Tower" />
-<protounit id="1106" name="Dagnajan" />
-<protounit id="1107" name="Siege Tower, D" />
-<protounit id="1108" name="Dagnajan, D" />
-<protounit id="1109" name="Gidajan" />
-<protounit id="1110" name="Gidajan, D" />
-<protounit id="1120" name="Ballista Elephant" />
-<protounit id="1121" name="Ballista Elephant, D" />
-<protounit id="1122" name="Elite Ballista Elephant" />
-<protounit id="1123" name="Karambit Warrior" />
-<protounit id="1124" name="Karambit Warrior, D" />
-<protounit id="1125" name="Elite Karambit Warrior" />
-<protounit id="1126" name="Arambai" />
-<protounit id="1127" name="Arambai, D" />
-<protounit id="1128" name="Elite Arambai" />
-<protounit id="1129" name="Rattan Archer" />
-<protounit id="1130" name="Rattan Archer, D" />
-<protounit id="1131" name="Elite Rattan Archer" />
-<protounit id="1132" name="Battle Elephant" />
-<protounit id="1133" name="Battle Elephant, D" />
-<protounit id="1134" name="Elite Battle Elephant" />
-<protounit id="1135" name="Komodo Dragon" />
-<protounit id="1136" name="Komodo Dragon, D" />
-<protounit id="1137" name="Tiger" />
-<protounit id="1138" name="Tiger, D" />
-<protounit id="1139" name="Rhinoceros" />
-<protounit id="1140" name="Rhinoceros, D" />
-<protounit id="1141" name="Box Turtles" />
-<protounit id="1142" name="Water Buffalo" />
-<protounit id="1143" name="Water Buffalo, D" />
-<protounit id="1144" name="Mangrove Tree" />
-<protounit id="1146" name="Rainforest Tree" />
-<protounit id="1148" name="Rock (Beach)" />
-<protounit id="1149" name="Rock (Jungle)" />
-<protounit id="1150" name="Flag G" />
-<protounit id="1151" name="Flag H" />
-<protounit id="1152" name="Flag I" />
-<protounit id="1153" name="Flag J" />
-<protounit id="1155" name="Imperial Skirmisher" />
-<protounit id="1156" name="Imperial Skirmisher, D" />
-<protounit id="1157" name="Gajah Mada" />
-<protounit id="1158" name="Jayanegara" />
-<protounit id="1159" name="Raden Wijaya" />
-<protounit id="1160" name="Sunda Royal Fighter" />
-<protounit id="1161" name="Sunda Royal Fighter, D" />
-<protounit id="1162" name="Suryavarman I" />
-<protounit id="1163" name="Udayadityavarman I" />
-<protounit id="1164" name="Jayaviravarman" />
-<protounit id="1165" name="Bayinnaung" />
-<protounit id="1166" name="Tabinshwehti" />
-<protounit id="1171" name="Buddha Statue A" />
-<protounit id="1172" name="Buddha Statue B" />
-<protounit id="1173" name="Buddha Statue C" />
-<protounit id="1174" name="Buddha Statue D" />
-<protounit id="1175" name="Fern Patch" />
-<protounit id="1176" name="Trowulan Gate" />
-<protounit id="1177" name="Vases" />
-<protounit id="1178" name="Le Loi" />
-<protounit id="1179" name="Le Lai (Disguised)" />
-<protounit id="1180" name="Le Lai" />
-<protounit id="1181" name="Le Trien" />
-<protounit id="1182" name="Luu Nhan Chu" />
-<protounit id="1183" name="Bui Bi" />
-<protounit id="1184" name="Dinh Le" />
-<protounit id="1185" name="Wang Tong" />
-<protounit id="1186" name="Envoy" />
-<protounit id="1187" name="Rice Farm" />
-<protounit id="1188" name="Dead Rice Farm" />
-<protounit id="1189" name="Harbor" />
+<protounit id="1059" name="果树丛" />
+<protounit id="1060" name="山羊" />
+<protounit id="1061" name="山羊 D" />
+<protounit id="1062" name="篱笆" />
+<protounit id="1063" name="洋槐树" />
+<protounit id="1064" name="耶库诺·阿姆拉克" />
+<protounit id="1065" name="碎石 1 X 1 (篱笆)" />
+<protounit id="1066" name="游娣特" />
+<protounit id="1067" name="伊兹科阿图" />
+<protounit id="1068" name="穆斯塔法·帕夏" />
+<protounit id="1069" name="帕柯二世" />
+<protounit id="1070" name="巴布尔" />
+<protounit id="1071" name="阿伯哈拉战象" />
+<protounit id="1072" name="古列尔莫·安布里科" />
+<protounit id="1073" name="苏定方" />
+<protounit id="1074" name="帕查库提" />
+<protounit id="1075" name="瓦伊纳·卡帕克" />
+<protounit id="1076" name="米克罗斯·陶笛" />
+<protounit id="1077" name="小约翰" />
+<protounit id="1078" name="黑扎维沙" />
+<protounit id="1079" name="标枪骑兵 假" />
+<protounit id="1080" name="苏曼古鲁" />
+<protounit id="1081" name="仓库" />
+<protounit id="1082" name="棚屋" />
+<protounit id="1083" name="棚屋" />
+<protounit id="1084" name="棚屋" />
+<protounit id="1085" name="棚屋" />
+<protounit id="1086" name="棚屋" />
+<protounit id="1087" name="棚屋" />
+<protounit id="1088" name="棚屋" />
+<protounit id="1089" name="谷仓" />
+<protounit id="1090" name="路障" />
+<protounit id="1091" name="动物骨骼" />
+<protounit id="1092" name="石碑 A" />
+<protounit id="1093" name="石碑 B" />
+<protounit id="1094" name="石碑 C" />
+<protounit id="1095" name="托架" />
+<protounit id="1096" name="宫殿" />
+<protounit id="1097" name="帐篷" />
+<protounit id="1098" name="帐篷" />
+<protounit id="1099" name="帐篷" />
+<protounit id="1100" name="帐篷" />
+<protounit id="1101" name="帐篷" />
+<protounit id="1102" name="海上堡垒" />
+<protounit id="1103" name="喷火船" />
+<protounit id="1104" name="爆破船" />
+<protounit id="1105" name="攻城塔" />
+<protounit id="1106" name="达纳罕" />
+<protounit id="1107" name="攻城塔 D" />
+<protounit id="1108" name="达纳罕 D" />
+<protounit id="1109" name="极大汗" />
+<protounit id="1110" name="极大汗 D" />
+<protounit id="1120" name="重弩战象(HD)" />
+<protounit id="1121" name="重弩战象 D" />
+<protounit id="1122" name="精锐重弩战象(HD)" />
+<protounit id="1123" name="爪刀勇士(HD)" />
+<protounit id="1124" name="爪刀勇士 D" />
+<protounit id="1125" name="精锐爪刀勇士(HD)" />
+<protounit id="1126" name="飞镖骑兵(HD)" />
+<protounit id="1127" name="飞镖骑兵 D" />
+<protounit id="1128" name="精锐飞镖骑兵(HD)" />
+<protounit id="1129" name="藤弓兵(HD)" />
+<protounit id="1130" name="藤弓兵 D" />
+<protounit id="1131" name="精锐藤弓兵(HD)" />
+<protounit id="1132" name="象兵(HD)" />
+<protounit id="1133" name="象兵 D" />
+<protounit id="1134" name="精锐象兵(HD)" />
+<protounit id="1135" name="科莫多巨蜥" />
+<protounit id="1136" name="科莫多巨蜥 D" />
+<protounit id="1137" name="老虎" />
+<protounit id="1138" name="老虎 D" />
+<protounit id="1139" name="犀牛" />
+<protounit id="1140" name="犀牛 D" />
+<protounit id="1141" name="箱龟" />
+<protounit id="1142" name="水牛" />
+<protounit id="1143" name="水牛 D" />
+<protounit id="1144" name="红树林树" />
+<protounit id="1146" name="热带雨林树" />
+<protounit id="1148" name="石头(海滩)" />
+<protounit id="1149" name="石头(树林)" />
+<protounit id="1150" name="旗帜 G" />
+<protounit id="1151" name="旗帜 H" />
+<protounit id="1152" name="旗帜 I" />
+<protounit id="1153" name="旗帜 J" />
+<protounit id="1155" name="帝王掷矛兵(HD)" />
+<protounit id="1156" name="帝王掷矛兵 D" />
+<protounit id="1157" name="加扎·玛达" />
+<protounit id="1158" name="贾亚纳加拉" />
+<protounit id="1159" name="拉登甲亮" />
+<protounit id="1160" name="巽他皇家侍卫" />
+<protounit id="1161" name="巽他皇家侍卫 D" />
+<protounit id="1162" name="苏耶跋摩一世" />
+<protounit id="1163" name="乌达雅迭耶跋摩一世" />
+<protounit id="1164" name="阇耶毗罗跋摩" />
+<protounit id="1165" name="莽应龙" />
+<protounit id="1166" name="莽瑞体" />
+<protounit id="1171" name="佛像 A" />
+<protounit id="1172" name="佛像 B" />
+<protounit id="1173" name="佛像 C" />
+<protounit id="1174" name="佛像 D" />
+<protounit id="1175" name="羊齿植物丛" />
+<protounit id="1176" name="特鲁乌兰门" />
+<protounit id="1177" name="陶瓷花瓶" />
+<protounit id="1178" name="黎利" />
+<protounit id="1179" name="黎来 (替身)" />
+<protounit id="1180" name="黎来" />
+<protounit id="1181" name="李篆" />
+<protounit id="1182" name="刘仁澍" />
+<protounit id="1183" name="裴备" />
+<protounit id="1184" name="丁礼" />
+<protounit id="1185" name="王通" />
+<protounit id="1186" name="使者" />
+<protounit id="1187" name="水稻田" />
+<protounit id="1188" name="荒芜水稻田" />
+<protounit id="1189" name="海港" />
+<protounit id="1190" name="加扎·马达 D" />
+<protounit id="1191" name="舍利塔" />
+<protounit id="1196" name="帷幕 1" />
+<protounit id="1197" name="帷幕 2" />
+<protounit id="1198" name="帷幕 3" />
+<protounit id="1199" name="帷幕 4" />
+<protounit id="1200" name="帷幕 5" />
+<protounit id="1201" name="宝塔 1" />
+<protounit id="1202" name="宝塔 2" />
+<protounit id="1203" name="宝塔 3" />
+<protounit id="1204" name="桥 C--顶部" />
+<protounit id="1205" name="桥 C--中部" />
+<protounit id="1206" name="桥 C--底部" />
+<protounit id="1207" name="桥 D--顶部" />
+<protounit id="1208" name="桥 D--中部" />
+<protounit id="1209" name="桥 D--底部" />
+<protounit id="1210" name="桥 C--裂开" />
+<protounit id="1211" name="桥 C--顶部损坏" />
+<protounit id="1212" name="桥 C--底部损坏" />
+<protounit id="1213" name="桥 D--裂开" />
+<protounit id="1214" name="桥 D--顶部损坏" />
+<protounit id="1215" name="桥 D--底部损坏" />
+<protounit id="1216" name="桑奇佛塔" />
+<protounit id="1217" name="古尔墓庙" />
+<protounit id="1222" name="骑鲨圣猫" />
+<protounit id="1223" name="Proj 骑鲨圣猫" />
 
 </units>
-
 <resources>
 <!-- Thanks to everybody that researched on this list (scenario_t_c, Finaldeath, marathon, etc). -->
-<simple id="0" name="Food Storage" />
-<simple id="1" name="Wood Storage" />
-<simple id="2" name="Stone Storage" />
-<simple id="3" name="Gold Storage" />
-<simple id="4" name="Population Headroom" />
-<simple id="5" name="Conversion Range (Unused)" />
-<simple id="6" name="Current Age" />
-<simple id="7" name="Relics Captured" />
-<simple id="8" name="Trade Bonus (Unused?)" />
-<simple id="9" name="Trade Goods (Unused?)" />
-<simple id="10" name="Trade Production Rate (Unused?)" />
-<simple id="11" name="Population (Current and Headroom)" />
-<simple id="12" name="Corpse Decay Time (Unused?)" />
-<simple id="13" name="Discovery (Unused?)" />
-<simple id="14" name="Monuments/Ruins Captured" />
-<simple id="15" name="Animal Food (Unused)" />
-<simple id="16" name="Berries Food (Unused)" />
-<simple id="17" name="Fish Storage" />
-<simple id="18" name="Unknown" />
-<simple id="19" name="Total Units Created" />
-<simple id="20" name="Units Killed" />
-<simple id="21" name="Research Count" />
-<simple id="22" name="% Map Explored" />
-<simple id="23" name="Castle Age?" />
-<simple id="24" name="Imperial Age?" />
-<simple id="25" name="Feudal Age?" />
-<simple id="26" name="Unknown" />
-<simple id="27" name="Atonement" />
-<simple id="28" name="Redemption" />
-<simple id="29" name="Unknown" />
-<simple id="30" name="Building Limit" />
-<simple id="31" name="Food Limit" />
-<simple id="32" name="Bonus Population" />
-<simple id="33" name="Maintenance (Unused?)" />
-<simple id="34" name="Faith (Unused?)" />
-<simple id="35" name="Faith Recharging Rate" />
-<simple id="36" name="Farm Food Amount" />
-<simple id="37" name="Civilian Units (Villager High)" />
-<simple id="38" name="Unknown" />
-<simple id="39" name="All Techs Achieved" />
-<simple id="40" name="Military Units (Largest Army)" />
-<simple id="41" name="Units and Buildings Converted" />
-<simple id="42" name="Standing Wonders" />
-<simple id="43" name="Buildings Razed" />
-<simple id="44" name="Kill Ratio" />
-<simple id="45" name="Survival to Finish" />
-<simple id="46" name="Tribute Fee" />
-<simple id="47" name="Gold Mining Productivity" />
-<simple id="48" name="Town Center Unavailable" />
-<simple id="49" name="Gold Counter" />
-<simple id="50" name="Cartography" />
-<simple id="51" name="Houses (Unused)" />
-<simple id="52" name="Monastery Count" />
-<simple id="53" name="Tribute Sent" />
-<simple id="54" name="All Ruins Have Been Captured" />
-<simple id="55" name="All Relics Have Been Captured" />
-<simple id="56" name="Ore Storage (Unused)" />
-<simple id="57" name="Captured Units (Unused?)" />
-<simple id="58" name="Dark Age?" />
-<simple id="59" name="Trade Good Quality (Unused?)" />
-<simple id="60" name="Trade Market Level (Unused?)" />
-<simple id="61" name="Formations (Unused?)" />
-<simple id="62" name="Building Housing Rate" />
-<simple id="63" name="Gather Tax Rate" />
-<simple id="64" name="Gather Accumulator" />
-<simple id="65" name="Salvage Decay Rate" />
-<simple id="66" name="Allow Formations" />
-<simple id="67" name="Conversions" />
-<simple id="68" name="Hit Points Killed (Unused)" />
-<simple id="69" name="Killed P1" />
-<simple id="70" name="Killed P2" />
-<simple id="71" name="Killed P3" />
-<simple id="72" name="Killed P4" />
-<simple id="73" name="Killed P5" />
-<simple id="74" name="Killed P6" />
-<simple id="75" name="Killed P7" />
-<simple id="76" name="Killed P8" />
-<simple id="77" name="Conversion Resistance" />
-<simple id="78" name="Trade Fee" />
-<simple id="79" name="Stone Mining Productivity" />
-<simple id="80" name="Queued Units" />
-<simple id="81" name="Training Count" />
-<simple id="82" name="Start With Packed Town Center / Raider" />
-<simple id="83" name="Boarding Recharge Rate" />
-<simple id="84" name="Starting Villagers" />
-<simple id="85" name="Researches' Cost Multiplier" />
-<simple id="86" name="Researches' Time Multiplier" />
-<simple id="87" name="Boarding" />
-<simple id="88" name="Fish Trap Food Amount" />
-<simple id="89" name="Bonus Healing Rate" />
-<simple id="90" name="Healing Range" />
-<simple id="91" name="Bonus Starting Food" />
-<simple id="92" name="Bonus Starting Wood" />
-<simple id="93" name="Bonus Starting Stone" />
-<simple id="94" name="Bonus Starting Gold" />
-<simple id="95" name="Enable Town Center Packing / Raider Ability" />
-<simple id="96" name="Self Healing Seconds (Berserkers)" />
-<simple id="97" name="Sheep/Turkey Dominant LOS" />
-<simple id="98" name="Economy Score" />
-<simple id="99" name="Technology Score" />
-<simple id="100" name="Relic Gold (Collected)" />
-<simple id="101" name="Trade Profit" />
-<simple id="102" name="P1 Tribute" />
-<simple id="103" name="P2 Tribute" />
-<simple id="104" name="P3 Tribute" />
-<simple id="105" name="P4 Tribute" />
-<simple id="106" name="P5 Tribute" />
-<simple id="107" name="P6 Tribute" />
-<simple id="108" name="P7 Tribute" />
-<simple id="109" name="P8 Tribute" />
-<simple id="110" name="P1 Kill Score" />
-<simple id="111" name="P2 Kill Score" />
-<simple id="112" name="P3 Kill Score" />
-<simple id="113" name="P4 Kill Score" />
-<simple id="114" name="P5 Kill Score" />
-<simple id="115" name="P6 Kill Score" />
-<simple id="116" name="P7 Kill Score" />
-<simple id="117" name="P8 Kill Score" />
-<simple id="118" name="P1 Razings" />
-<simple id="119" name="P2 Razings" />
-<simple id="120" name="P3 Razings" />
-<simple id="121" name="P4 Razings" />
-<simple id="122" name="P5 Razings" />
-<simple id="123" name="P6 Razings" />
-<simple id="124" name="P7 Razings" />
-<simple id="125" name="P8 Razings" />
-<simple id="126" name="P1 Razing Score" />
-<simple id="127" name="P2 Razing Score" />
-<simple id="128" name="P3 Razing Score" />
-<simple id="129" name="P4 Razing Score" />
-<simple id="130" name="P5 Razing Score" />
-<simple id="131" name="P6 Razing Score" />
-<simple id="132" name="P7 Razing Score" />
-<simple id="133" name="P8 Razing Score" />
-<simple id="134" name="Standing Castles" />
-<simple id="135" name="Hit Points Razing (Unused)" />
-<simple id="136" name="Kills By P1" />
-<simple id="137" name="Kills By P2" />
-<simple id="138" name="Kills By P3" />
-<simple id="139" name="Kills By P4" />
-<simple id="140" name="Kills By P5" />
-<simple id="141" name="Kills By P6" />
-<simple id="142" name="Kills By P7" />
-<simple id="143" name="Kills By P8" />
-<simple id="144" name="Razings By P1" />
-<simple id="145" name="Razings By P2" />
-<simple id="146" name="Razings By P3" />
-<simple id="147" name="Razings By P4" />
-<simple id="148" name="Razings By P5" />
-<simple id="149" name="Razings By P6" />
-<simple id="150" name="Razings By P7" />
-<simple id="151" name="Razings By P8" />
-<simple id="152" name="Units Lost Score" />
-<simple id="153" name="Buildings Lost Score" />
-<simple id="154" name="Units Lost" />
-<simple id="155" name="Buildings Lost" />
-<simple id="156" name="Tribute From P1" />
-<simple id="157" name="Tribute From P2" />
-<simple id="158" name="Tribute From P3" />
-<simple id="159" name="Tribute From P4" />
-<simple id="160" name="Tribute From P5" />
-<simple id="161" name="Tribute From P6" />
-<simple id="162" name="Tribute From P7" />
-<simple id="163" name="Tribute From P8" />
-<simple id="164" name="Current Units Score" />
-<simple id="165" name="Current Buildings Score" />
-<simple id="166" name="Food Collected" />
-<simple id="167" name="Wood Collected" />
-<simple id="168" name="Stone Collected" />
-<simple id="169" name="Gold Collected" />
-<simple id="170" name="Score: Military" />
-<simple id="171" name="Tribute Received" />
-<simple id="172" name="Razing Score" />
-<simple id="173" name="Total Castles" />
-<simple id="174" name="Total Wonders" />
-<simple id="175" name="Score: Economy (Tribute)" />
-<simple id="176" name="Convert Min Adjustment" />
-<simple id="177" name="Convert Max Adjustment" />
-<simple id="178" name="Convert Resist Min Adjustment" />
-<simple id="179" name="Convert Resist Max Adjustment" />
-<simple id="180" name="Convert Building Min" />
-<simple id="181" name="Convert Building Max" />
-<simple id="182" name="Convert Building Chance" />
-<simple id="183" name="Spies" />
-<simple id="184" name="Society Score" />
-<simple id="185" name="Food Score" />
-<simple id="186" name="Wood Score" />
-<simple id="187" name="Stone Score" />
-<simple id="188" name="Gold Score" />
-<simple id="189" name="Chopping Productivity" />
-<simple id="190" name="Food-gathering Productivity" />
-<simple id="191" name="Relic Gold Production Rate" />
-<simple id="192" name="Heresy" />
-<simple id="193" name="Theocracy" />
-<simple id="194" name="Crenellations (Garrisoned Inf.)" />
-<simple id="195" name="Build Rate (Except Wonders)" />
-<simple id="196" name="Atheism (Wonder Bonus)" />
-<simple id="197" name="Atheism (Spies Discount)" />
+<simple id="0" name="食物储存" />
+<simple id="1" name="木材储存" />
+<simple id="2" name="石料储存" />
+<simple id="3" name="黄金储存" />
+<simple id="4" name="人口上限" />
+<simple id="5" name="转化距离 (未使用)" />
+<simple id="6" name="当前时代" />
+<simple id="7" name="捕获圣物" />
+<simple id="8" name="贸易奖励 (未使用?)" />
+<simple id="9" name="贸易商品 (未使用?)" />
+<simple id="10" name="贸易生产比率 (未使用?)" />
+<simple id="11" name="人口 (当前和上限)" />
+<simple id="12" name="尸体腐烂时间 (未使用?)" />
+<simple id="13" name="发现 (未使用?)" />
+<simple id="14" name="捕获纪念碑/遗迹" />
+<simple id="15" name="动物食物 (未使用)" />
+<simple id="16" name="浆果食物 (未使用)" />
+<simple id="17" name="鱼类储存" />
+<simple id="18" name="未知" />
+<simple id="19" name="总计生产单位" />
+<simple id="20" name="杀死单位" />
+<simple id="21" name="研发统计" />
+<simple id="22" name="% 地图探索" />
+<simple id="23" name="城堡时代?" />
+<simple id="24" name="帝王时代?" />
+<simple id="25" name="封建时代?" />
+<simple id="26" name="未知" />
+<simple id="27" name="赎罪" />
+<simple id="28" name="救赎" />
+<simple id="29" name="未知" />
+<simple id="30" name="建造上限" />
+<simple id="31" name="食物上限" />
+<simple id="32" name="奖励人口" />
+<simple id="33" name="维护 (未使用?)" />
+<simple id="34" name="信念 (未使用?)" />
+<simple id="35" name="信念回复比率" />
+<simple id="36" name="农田食物数量" />
+<simple id="37" name="平民单位 (最高村民数)" />
+<simple id="38" name="未知" />
+<simple id="39" name="完成所有科技" />
+<simple id="40" name="军事单位 (最大军队数)" />
+<simple id="41" name="转化单位和建筑" />
+<simple id="42" name="幸存奇观" />
+<simple id="43" name="摧毁建筑" />
+<simple id="44" name="杀敌比率" />
+<simple id="45" name="最终幸存" />
+<simple id="46" name="贡品费用" />
+<simple id="47" name="黄金开采生产率" />
+<simple id="48" name="城镇中心不可用" />
+<simple id="49" name="黄金筹码" />
+<simple id="50" name="制图学" />
+<simple id="51" name="房屋 (未使用)" />
+<simple id="52" name="修道院计数" />
+<simple id="53" name="送出贡品" />
+<simple id="54" name="捕获所有遗迹" />
+<simple id="55" name="捕获所有圣物" />
+<simple id="56" name="矿石储存 (未使用)" />
+<simple id="57" name="捕获单位 (未使用?)" />
+<simple id="58" name="黑暗时代?" />
+<simple id="59" name="贸易商品质量 (未使用?)" />
+<simple id="60" name="贸易市场等级 (未使用?)" />
+<simple id="61" name="编队结构 (未使用?)" />
+<simple id="62" name="建造房屋比率" />
+<simple id="63" name="收集税率" />
+<simple id="64" name="收集累加器" />
+<simple id="65" name="野兽腐烂比率" />
+<simple id="66" name="允许编队结构" />
+<simple id="67" name="转化" />
+<simple id="68" name="杀死单位生命值 (未使用)" />
+<simple id="69" name="杀死 P1 单位" />
+<simple id="70" name="杀死 P2 单位" />
+<simple id="71" name="杀死 P3 单位" />
+<simple id="72" name="杀死 P4 单位" />
+<simple id="73" name="杀死 P5 单位" />
+<simple id="74" name="杀死 P6 单位" />
+<simple id="75" name="杀死 P7 单位" />
+<simple id="76" name="杀死 P8 单位" />
+<simple id="77" name="转化抵抗力" />
+<simple id="78" name="贸易费用" />
+<simple id="79" name="石矿开采生产率" />
+<simple id="80" name="列队单位" />
+<simple id="81" name="训练计数" />
+<simple id="82" name="起始以组装的城镇中心 / 入侵者" />
+<simple id="83" name="登舰能力恢复率" />
+<simple id="84" name="起始村民数" />
+<simple id="85" name="研发花费乘数" />
+<simple id="86" name="研发时间乘数" />
+<simple id="87" name="允许登舰" />
+<simple id="88" name="渔网食物数量" />
+<simple id="89" name="奖励治疗比率" />
+<simple id="90" name="治疗范围" />
+<simple id="91" name="奖励起始食物" />
+<simple id="92" name="奖励起始木材" />
+<simple id="93" name="奖励起始石料" />
+<simple id="94" name="奖励起始黄金" />
+<simple id="95" name="启用城镇中心组装 / 入侵者能力" />
+<simple id="96" name="自我治疗秒数 (狂战士)" />
+<simple id="97" name="绵羊/火鸡显性视野" />
+<simple id="98" name="经济积分" />
+<simple id="99" name="科技积分" />
+<simple id="100" name="圣物黄金 (收集的)" />
+<simple id="101" name="贸易利润" />
+<simple id="102" name="P1 贡品" />
+<simple id="103" name="P2 贡品" />
+<simple id="104" name="P3 贡品" />
+<simple id="105" name="P4 贡品" />
+<simple id="106" name="P5 贡品" />
+<simple id="107" name="P6 贡品" />
+<simple id="108" name="P7 贡品" />
+<simple id="109" name="P8 贡品" />
+<simple id="110" name="P1 杀死单位积分" />
+<simple id="111" name="P2 杀死单位积分" />
+<simple id="112" name="P3 杀死单位积分" />
+<simple id="113" name="P4 杀死单位积分" />
+<simple id="114" name="P5 杀死单位积分" />
+<simple id="115" name="P6 杀死单位积分" />
+<simple id="116" name="P7 杀死单位积分" />
+<simple id="117" name="P8 杀死单位积分" />
+<simple id="118" name="P1 摧毁建筑" />
+<simple id="119" name="P2 摧毁建筑" />
+<simple id="120" name="P3 摧毁建筑" />
+<simple id="121" name="P4 摧毁建筑" />
+<simple id="122" name="P5 摧毁建筑" />
+<simple id="123" name="P6 摧毁建筑" />
+<simple id="124" name="P7 摧毁建筑" />
+<simple id="125" name="P8 摧毁建筑" />
+<simple id="126" name="P1 摧毁建筑积分" />
+<simple id="127" name="P2 摧毁建筑积分" />
+<simple id="128" name="P3 摧毁建筑积分" />
+<simple id="129" name="P4 摧毁建筑积分" />
+<simple id="130" name="P5 摧毁建筑积分" />
+<simple id="131" name="P6 摧毁建筑积分" />
+<simple id="132" name="P7 摧毁建筑积分" />
+<simple id="133" name="P8 摧毁建筑积分" />
+<simple id="134" name="幸存城堡" />
+<simple id="135" name="摧毁建筑生命值 (未使用)" />
+<simple id="136" name="杀死单位 由 P1" />
+<simple id="137" name="杀死单位 由 P2" />
+<simple id="138" name="杀死单位 由 P3" />
+<simple id="139" name="杀死单位 由 P4" />
+<simple id="140" name="杀死单位 由 P5" />
+<simple id="141" name="杀死单位 由 P6" />
+<simple id="142" name="杀死单位 由 P7" />
+<simple id="143" name="杀死单位 由 P8" />
+<simple id="144" name="摧毁建筑 由 P1" />
+<simple id="145" name="摧毁建筑 由 P2" />
+<simple id="146" name="摧毁建筑 由 P3" />
+<simple id="147" name="摧毁建筑 由 P4" />
+<simple id="148" name="摧毁建筑 由 P5" />
+<simple id="149" name="摧毁建筑 由 P6" />
+<simple id="150" name="摧毁建筑 由 P7" />
+<simple id="151" name="摧毁建筑 由 P8" />
+<simple id="152" name="失去单位积分" />
+<simple id="153" name="失去建筑积分" />
+<simple id="154" name="失去单位" />
+<simple id="155" name="失去建筑" />
+<simple id="156" name="贡品来自 P1" />
+<simple id="157" name="贡品来自 P2" />
+<simple id="158" name="贡品来自 P3" />
+<simple id="159" name="贡品来自 P4" />
+<simple id="160" name="贡品来自 P5" />
+<simple id="161" name="贡品来自 P6" />
+<simple id="162" name="贡品来自 P7" />
+<simple id="163" name="贡品来自 P8" />
+<simple id="164" name="当前单位积分" />
+<simple id="165" name="当前建筑积分" />
+<simple id="166" name="收集食物" />
+<simple id="167" name="收集木材" />
+<simple id="168" name="收集石料" />
+<simple id="169" name="收集黄金" />
+<simple id="170" name="积分: 军事" />
+<simple id="171" name="收到贡品" />
+<simple id="172" name="摧毁积分" />
+<simple id="173" name="城堡总数" />
+<simple id="174" name="奇观总数" />
+<simple id="175" name="积分: 经济 (贡品)" />
+<simple id="176" name="转化最小调节" />
+<simple id="177" name="转化最大调节" />
+<simple id="178" name="转化抵抗力最小调节" />
+<simple id="179" name="转化抵抗力最大调节" />
+<simple id="180" name="转化建筑最小" />
+<simple id="181" name="转化建筑最大" />
+<simple id="182" name="转化建筑几率" />
+<simple id="183" name="间谍" />
+<simple id="184" name="社会积分" />
+<simple id="185" name="食物积分" />
+<simple id="186" name="木材积分" />
+<simple id="187" name="石料积分" />
+<simple id="188" name="黄金积分" />
+<simple id="189" name="木材砍伐生产率" />
+<simple id="190" name="食物收集生产率" />
+<simple id="191" name="圣物黄金生产比率" />
+<simple id="192" name="异端邪说" />
+<simple id="193" name="神权政治" />
+<simple id="194" name="垛口 (驻扎步兵.)" />
+<simple id="195" name="建造比率 (除奇观)" />
+<simple id="196" name="无神论 (奇观奖励)" />
+<simple id="197" name="无神论 (间谍折扣)" />
 <simple id="198" name="Unk 198 (unused?)" />
 <simple id="199" name="Unk 199 (unused?)" />
 <simple id="200" name="Unk 200 (unused?)" />
@@ -2042,192 +2067,189 @@ WS - Work Speed
 <simple id="202" name="Unk 202 (unused?)" />
 <simple id="203" name="Unk 203 (unused?)" />
 <simple id="204" name="Unk 204 (unused?)" />
-<simple id="205" name="Feitoria Food Productivity" />
-<simple id="206" name="Feitoria Wood Productivity" />
-<simple id="207" name="Feitoria Stone Productivity" />
-<simple id="208" name="Feitoria Gold Productivity" />
+<simple id="205" name="商站食物生产率" />
+<simple id="206" name="商站木材生产率" />
+<simple id="207" name="商站石料生产率" />
+<simple id="208" name="商站黄金生产率" />
 </resources>
- 
+
 <aitypes>
-<simple id="2" name="Default" />
-<simple id="9" name="Arabia" />
-<simple id="10" name="Archipelago" />
-<simple id="11" name="Baltic" />
-<simple id="12" name="Black Forest" />
-<simple id="13" name="Coastal" />
-<simple id="14" name="Continental" />
-<simple id="15" name="Crater Lake" />
-<simple id="16" name="Fortress" />
-<simple id="17" name="Gold Rush" />
-<simple id="18" name="Highland" />
-<simple id="19" name="Islands" />
-<simple id="20" name="Mediterranean" />
-<simple id="21" name="Migration" />
-<simple id="22" name="Rivers" />
-<simple id="23" name="Team Islands" />
-<simple id="25" name="Scandinavia" />
-<simple id="26" name="Mongolia" />
-<simple id="27" name="Yucatan" />
-<simple id="28" name="Salt Marsh" />
-<simple id="29" name="Arena" />
-<simple id="30" name="King of the Hill" />
-<simple id="31" name="Oasis" />
-<simple id="32" name="Ghost Lake" />
-<simple id="33" name="Nomad" />
-<simple id="34" name="Real World, Spain" />
-<simple id="35" name="Real World, Britain" />
-<simple id="36" name="Real World, Mideast" />
-<simple id="37" name="Real World, Texas" />
-<simple id="38" name="Real World, Italy" />
-<simple id="39" name="Real World, Caribbean" />
-<simple id="40" name="Real World, France" />
-<simple id="41" name="Real World, Jutland" />
-<simple id="42" name="Real World, Nippon" />
-<simple id="43" name="Real World, Byzantium" />
-<simple id="44" name="Custom" />
+<simple id="2" name="默认" />
+<simple id="9" name="阿拉伯" />
+<simple id="10" name="群岛" />
+<simple id="11" name="波罗的海" />
+<simple id="12" name="黑森林" />
+<simple id="13" name="沿海" />
+<simple id="14" name="大陆" />
+<simple id="15" name="火山口湖" />
+<simple id="16" name="堡垒" />
+<simple id="17" name="淘金潮" />
+<simple id="18" name="高地" />
+<simple id="19" name="岛屿" />
+<simple id="20" name="地中海" />
+<simple id="21" name="移民" />
+<simple id="22" name="河流" />
+<simple id="23" name="岛屿 分组" />
+<simple id="25" name="斯堪的纳维亚" />
+<simple id="26" name="蒙古" />
+<simple id="27" name="尤卡坦" />
+<simple id="28" name="盐碱沼泽" />
+<simple id="29" name="竞技场" />
+<simple id="30" name="占山为王" />
+<simple id="31" name="绿洲" />
+<simple id="32" name="幽灵湖" />
+<simple id="33" name="游牧" />
+<simple id="34" name="真实世界 西班牙" />
+<simple id="35" name="真实世界 不列颠" />
+<simple id="36" name="真实世界 中东" />
+<simple id="37" name="真实世界 德克萨斯" />
+<simple id="38" name="真实世界 意大利" />
+<simple id="39" name="真实世界 加勒比" />
+<simple id="40" name="真实世界 法兰西" />
+<simple id="41" name="真实世界 日德兰" />
+<simple id="42" name="真实世界 日本" />
+<simple id="43" name="真实世界 拜占庭" />
+<simple id="44" name="定制" />
 <!--
-<simple id="45" name="Unknown (45)" />
-<simple id="46" name="Unknown (46)" />
-<simple id="47" name="Unknown (47)" />
-<simple id="48" name="Blind Random (Coastal)" />
-<simple id="49" name="Unknown (49)" />
+<simple id="45" name="未知 (45)" />
+<simple id="46" name="未知 (46)" />
+<simple id="47" name="未知 (47)" />
+<simple id="48" name="完全随机 (沿海)" />
+<simple id="49" name="未知 (49)" />
 -->
 </aitypes>
-
 <terrains>
 <!--
 Note: Due to my own laziness, these _must_ be in ID order, meaning
 also that you can't skip IDs. Also, ref is reverse-order (BGR) as
 usual.
 -->
-<terrain id="0"  color="339927" name="Grass 1 (default terrain)" />
-<terrain id="1"  color="007BBD" name="Water, Shallow" />
-<terrain id="2"  color="E1E372" name="Beach (no buildings)" />
-<terrain id="3"  color="AEB65E" name="Dirt 3 (grassy)" />
-<terrain id="4"  color="5492b0" name="Shallows" />
-<terrain id="5"  color="935047" name="Leaves" />
-<terrain id="6"  color="EE9B5E" name="Dirt 1 (brown with occasional cactus)" />
-<terrain id="7"  color="82884d" name="Farm" />
-<terrain id="8"  color="32381d" name="Dead Farm" />
-<terrain id="9"  color="93AC4C" name="Grass 3 (brownish)" />
-<terrain id="10" color="157615" name="Forest" />
-<terrain id="11" color="95A661" name="Dirt 2 (dirt grass mixture)" />
-<terrain id="12" color="40cc30" name="Grass 2 (lush / very green)" />
-<terrain id="13" color="FFE094" name="Palm Desert" />
-<terrain id="14" color="FFD094" name="Desert (sandy and light colored)" />
-<terrain id="15" color="3060a0" name="Water (not dockable)" />
-<terrain id="16" color="33C027" name="Looks like Grass 1 (can build, only siege can move)" />
-<terrain id="17" color="357615" name="Jungle" />
-<terrain id="18" color="557615" name="Bamboo" />
-<terrain id="19" color="208020" name="Pine Forest" />
-<terrain id="20" color="9C6800" name="Forest (says oak forest when clicking tree)" />
-<terrain id="21" color="258625" name="Snow Pine Forest" />
-<terrain id="22" color="003587" name="Water, Deep" />
-<terrain id="23" color="0054B0" name="Water, Medium" />
-<terrain id="24" color="c0b0b0" name="Road" />
-<terrain id="25" color="c0a5a0" name="Road, Broken" />
-<terrain id="26" color="BDD1FD" name="Ice (no ships)" />
-<terrain id="27" color="d59545" name="Dirt 2 (no beach, building residue, dockable)" />
-<terrain id="28" color="905db6" name="Water, Bridge (walkable, no ships)" />
-<terrain id="29" color="42482d" name="Farm 1" />
-<terrain id="30" color="62683d" name="Farm 2" />
-<terrain id="31" color="708040" name="Farm 3" />
-<terrain id="32" color="EAEDFF" name="Snow" />
-<terrain id="33" color="b8c8ef" name="Snow Dirt" />
-<terrain id="34" color="c8f8ff" name="Snow Grass" />
-<terrain id="35" color="D8DFFF" name="Ice (allows ships)" />
-<terrain id="36" color="c8d8e0" name="Snow Dirt (building residue)" />
-<terrain id="37" color="CFDAFF" name="Ice, Beach (allows ships, build walls only)" />
-<terrain id="38" color="d8d8ff" name="Road, Snow" />
-<terrain id="39" color="c8f8ef" name="Road, Fungus" />
-<terrain id="40" color="e4a290" name="Rock 1" />
-<terrain id="41" color="95A661" name="Savannah" />
-<terrain id="42" color="d59545" name="Dirt 4" />
-<terrain id="43" color="d49242" name="Desert Road" />
-<terrain id="44" color="93AC4C" name="Grass 4" />
-<terrain id="45" color="FFD094" name="Desert 2" />
-<terrain id="46" color="AEB65E" name="Quicksand" />
-<terrain id="47" color="000000" name="Black" />
-<terrain id="48" color="FFE094" name="Dragon Forest" />
-<terrain id="49" color="FFE094" name="Baobab Forest" />
-<terrain id="50" color="FFE094" name="Acacia Forest" />
-<terrain id="51" color="E1E372" name="Beach 2" />
-<terrain id="52" color="E1E372" name="Beach 3" />
-<terrain id="53" color="E1E372" name="Beach 4" />
-<terrain id="54" color="5492b0" name="Mangrove Shallow" />
-<terrain id="55" color="94ffe0" name="Mangrove Forest" />
-<terrain id="56" color="94ffe0" name="Rainforest" />
-<terrain id="60" color="339927" name="Jungle Grass" />
-<terrain id="61" color="e09545" name="Jungle Road" />
-<terrain id="62" color="339927" name="Jungle Leaves" />
-<terrain id="63" color="82884d" name="Rice Farm" />
-<terrain id="64" color="32381d" name="Dead Rice Farm" />
-<terrain id="65" color="42482d" name="Rice Farm 1" />
-<terrain id="66" color="62683d" name="Rice Farm 2" />
-<terrain id="67" color="708040" name="Rice Farm 3" />
-
+<terrain id="0"  color="339927" name="草地 1 (默认地形)" />
+<terrain id="1"  color="007BBD" name="水域, 浅" />
+<terrain id="2"  color="E1E372" name="海滩 (不允许建筑)" />
+<terrain id="3"  color="AEB65E" name="泥地 3 (多草的)" />
+<terrain id="4"  color="5492b0" name="浅滩" />
+<terrain id="5"  color="935047" name="树叶" />
+<terrain id="6"  color="EE9B5E" name="泥地 (棕色, 偶尔有仙人掌)" />
+<terrain id="7"  color="82884d" name="农田" />
+<terrain id="8"  color="32381d" name="荒芜农田" />
+<terrain id="9"  color="93AC4C" name="草地 3 (褐色)" />
+<terrain id="10" color="157615" name="森林" />
+<terrain id="11" color="95A661" name="泥地 2" />
+<terrain id="12" color="40cc30" name="草地 2 (草木茂盛 / 非常绿)" />
+<terrain id="13" color="FFE094" name="棕榈沙漠" />
+<terrain id="14" color="FFD094" name="沙漠 (浅沙褐色)" />
+<terrain id="15" color="3060a0" name="水域 (不允许船坞)" />
+<terrain id="16" color="33C027" name="看似 草 1" />
+<terrain id="17" color="357615" name="雨林" />
+<terrain id="18" color="557615" name="竹林" />
+<terrain id="19" color="208020" name="松树林" />
+<terrain id="20" color="9C6800" name="橡树林" />
+<terrain id="21" color="258625" name="雪松树林" />
+<terrain id="22" color="003587" name="水域, 深" />
+<terrain id="23" color="0054B0" name="水域, " />
+<terrain id="24" color="e09545" name="道路" />
+<terrain id="25" color="d49242" name="损坏的道路" />
+<terrain id="26" color="BDD1FD" name="冰 (不允许舰船)" />
+<terrain id="27" color="d59545" name="泥地 2 (无海滩, 建筑残骸, 允许船坞)" />
+<terrain id="28" color="905db6" name="水域, 桥梁 (可行走, 不允许舰船)" />
+<terrain id="29" color="42482d" name="农田 1" />
+<terrain id="30" color="62683d" name="农田 2" />
+<terrain id="31" color="708040" name="农田 3" />
+<terrain id="32" color="EAEDFF" name="雪地" />
+<terrain id="33" color="b8c8ef" name="雪泥地" />
+<terrain id="34" color="c8f8ff" name="雪草地" />
+<terrain id="35" color="D8DFFF" name="冰原 (允许舰船)" />
+<terrain id="36" color="c8d8e0" name="雪泥地 (建筑残骸)" />
+<terrain id="37" color="CFDAFF" name="冰原, 海滩 (允许舰船, 只可建造围墙)" />
+<terrain id="38" color="d8d8ff" name="积雪道路" />
+<terrain id="39" color="c8f8ef" name="道路, 真菌" />
+<terrain id="40" color="e4a290" name="岩石" />
+<terrain id="41" color="95A661" name="疏林草原" />
+<terrain id="42" color="d59545" name="泥地 4 (以下HD)" />
+<terrain id="43" color="d49242" name="沙漠道路" />
+<terrain id="44" color="93AC4C" name="草地 4" />
+<terrain id="45" color="FFD094" name="沙漠 2" />
+<terrain id="46" color="AEB65E" name="流沙" />
+<terrain id="47" color="000000" name="黑域" />
+<terrain id="48" color="FFE094" name="龙血树林" />
+<terrain id="49" color="FFE094" name="猴面包树林" />
+<terrain id="50" color="FFE094" name="洋槐树林" />
+<terrain id="51" color="E1E372" name="海滩 2" />
+<terrain id="52" color="E1E372" name="海滩 3" />
+<terrain id="53" color="E1E372" name="海滩 4" />
+<terrain id="54" color="5492b0" name="浅滩-红树林" />
+<terrain id="55" color="94ffe0" name="红树林" />
+<terrain id="56" color="94ffe0" name="热带雨林" />
+<terrain id="60" color="339927" name="雨林草地" />
+<terrain id="61" color="e09545" name="雨林道路" />
+<terrain id="62" color="339927" name="雨林树叶" />
+<terrain id="63" color="82884d" name="水稻田" />
+<terrain id="64" color="32381d" name="荒芜水稻田" />
+<terrain id="65" color="42482d" name="水稻田 1" />
+<terrain id="66" color="62683d" name="水稻田 2" />
+<terrain id="67" color="708040" name="水稻田 3" />
 </terrains>
- 
+
 <!-- The following are custom unit groups. They have no effect on the saved scenario,
-     just the editor itself. Feel free to add some more if you like. Also, make sure
-     this is after the specifications of the units themselves. -->
+just the editor itself. Feel free to add some more if you like. Also, make sure
+this is after the specifications of the units themselves. -->
 <unitgroups>
-<group name="Archers" units="4,5,24,39,474,492" />
-<group name="Arrows" units="54,97,245,246,315,316,317,318,319,320,321,322,328,360,363,364,367,372,375,378,381,385,466,470,471,475,476,477,478,485,503,504,505,507,509,510,511,512,514,516,517,518,519,521,522,523,524,525,537,538,540,541,627,628,746,747,786,787" />
-<group name="Betas" units="76,158,299,444,479,493,544,571,573,575,577,748,749" />
-<group name="Buildings" units="117,115,10,12,14,18,19,20,30,31,32,33,45,47,49,50,51,68,70,71,72,79,82,84,86,87,101,103,104,105,109,110,116,129,130,131,132,133,137,141,142,150,153,179,199,208,209,210,234,235,236,276,278,345,445,446,463,464,465,481,482,483,484,498,562,563,564,565,584,585,586,587,597,598,599,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,624,625,626,655,684,685,689,690,696,712,713,714,715,716,717,718,719,738,739,740,741,742,743,785,805,806,807,808,826,63,64,67,78,80,81,85,88,90,91,92,95,487,488,490,491,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,1021" />
-<group name="Castle" units="6,7,8,11,25,40,41,42,46,73,94,232,239,281,282,291,331,434,440,441,530,531,534,553,554,555,556,557,558,559,560,561,583,596,692,694,725,726,755,757,759,761,763,765,771,773,827,829" />
-<group name="Cavalry" units="37,38,283,329,330,448,546,569" />
-<group name="Cliffs" units="265,266,270,271,272,273" />
-<group name="Dead" units="3,16,22,23,26,27,28,34,43,44,58,60,62,98,99,100,107,111,113,115,121,134,135,136,138,139,140,149,151,152,154,157,178,180,181,194,205,211,213,215,217,219,221,223,224,225,226,227,228,229,230,233,237,238,353,355,356,423,425,431,435,449,480,494,495,496,497,501,502,543,547,549,568,570,572,574,576,578,580,582,589,591,593,595,622,630,631,633,675,687,693,695,705,708,735,750,754,756,762,764,772,776,778,780,784,811,813,815,823,825,828,839,841,843,853" />
-<group name="Heroes" units="160,161,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,195,196,197,198,200,202,424,426,428,430,432,629,632,634,636,638,640,642,644,646,648,650,652,678,680,682,683,686,698,700,702,704,706,707,729,730,731,733,777,779,781,783,824,838,840,842,844,845,847,849,852,860,861" />
-<group name="Infantry" units="74,75,77,93,358,359,473,567,751,752" />
-<group name="Market" units="84,110,116,128,137,204" />
-<group name="Misc" units="159,242,244,247,248,249,252,253,262,274,310,311,313,314,324,325,326,327,352,365,366,368,369,371,374,376,377,380,417,447,452,453,454,459,462,468,469,506,508,513,515,520,526,551,552,656,657,658,676,677,728,736,737,767" />
-<group name="Monastery" units="125,285,286,287,288,289,290,292,294,295,296,297,298,300,301,302,303,304,305,306,307,308,775" />
-<group name="Others" units="48,53,59,65,66,69,89,96,102,126,143,144,145,146,147,148,241,333,334,335,336,337,338,339,340,341,389,396,450,451,455,456,457,458,499,594,600,601,602,603,604,623,688,709,710,711,720,721,722,723,744,745,810,812,814,816,817,818,819,820,821,822,833,835,837,851,854,855,856,857,858,859,862,863,864,865" />
-<group name="Ships" units="13,15,17,21,61,250,420,436,438,443,527,528,529,532,533,535,536,539,545,691,831,832" />
-<group name="Siege" units="5,35,36,279,280,422,542,548,550,588" />
-<group name="Trees" units="284,348,349,350,351,399,400,401,402,403,404,405,406,407,408,409,410,411,413,414,415,809" />
-<group name="Units" units="4,5,5,6,7,8,11,13,17,21,24,25,35,36,38,39,40,41,42,46,73,74,75,77,83,93,94,125,204,232,239,242,244,250,279,280,281,282,283,291,331,358,359,420,422,434,440,441,442,448,473,474,492,527,528,529,530,531,532,533,534,539,542,545,546,548,550,553,554,555,556,557,558,559,560,561,567,569,583,588,596,691,692,694,725,726,751,752,755,757,759,761,763,765,771,773,775,827,829,831,832,866,868,869,871,873,875,876,878,879,881,882,1001,1003,1004,1006,1007,1009,1010,1012,1013,1015,1016,1018,1103,1104,1105,1120,1122,1123,1125,1126,1128,1129,1131,1132,1134,1155" />
-<group name="Villagers" units="56,57,83,118,120,122,123,124,156,206,207,212,214,216,218,220,222,259,293,354,579,581,590,592" />
-<group name="Walls" units="63,64,67,78,80,81,85,88,90,91,92,95,117,155,487,488,490,491,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804" />
+<group name="弓兵" units="4,5,6,7,24,39,185,223,230,474,492,762," />
+<group name="箭矢" units="54,97,245,246,315,316,317,318,319,320,321,322,328,360,363,364,367,372,375,378,381,385,466,470,471,475,476,477,478,485,503,504,505,507,509,510,511,512,514,516,517,518,519,521,522,523,524,525,537,538,540,541,627,628,746,747,786,787," />
+<group name="Beta单位" units="76,158,299,444,479,493,544,571,573,575,577,748,749," />
+<group name="建筑" units="117,115,10,12,14,18,19,20,30,31,32,33,45,47,49,50,51,68,70,71,72,79,82,84,86,87,101,103,104,105,109,110,116,129,130,131,132,133,137,141,142,150,153,179,199,208,209,210,234,235,236,276,278,345,445,446,463,464,465,481,482,483,484,498,562,563,564,565,584,585,586,587,597,598,599,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,624,625,626,655,684,685,689,690,696,712,713,714,715,716,717,718,719,738,739,740,741,742,743,785,805,806,807,808,826,63,64,67,78,80,81,85,88,90,91,92,95,487,488,490,491,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,1021," />
+<group name="城堡单位" units="8,11,25,40,41,42,46,73,94,232,239,281,282,291,331,434,440,441,530,531,534,553,554,555,556,557,558,559,560,561,583,596,692,694,725,726,755,757,759,761,763,765,771,773,827,829,106,114,869,871,203,208,784,782,260,418,879,881,823,811,453,459,836,830,866,868,873,875,876,878,760,891,848," />
+<group name="骑兵" units="37,38,283,329,330,448,546,569,207,441,766,774,886,887," />
+<group name="峭壁" units="265,266,270,271,272,273," />
+<group name="尸体" units="3,16,22,23,26,27,28,34,43,44,58,60,62,98,99,100,107,111,113,115,121,134,135,136,138,139,140,149,151,152,154,157,178,180,181,194,205,211,213,215,217,219,221,223,224,225,226,227,228,229,230,233,237,238,353,355,356,423,425,431,435,449,480,494,495,496,497,501,502,543,547,549,568,570,572,574,576,578,580,582,589,591,593,595,622,630,631,633,675,687,693,695,705,708,735,750,754,756,762,764,772,776,778,780,784,811,813,815,823,825,828,839,841,843,853," />
+<group name="英雄" units="160,161,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,195,196,197,198,200,202,424,426,428,430,432,629,632,634,636,638,640,642,644,646,648,650,652,678,680,682,683,686,698,700,702,704,706,707,729,730,731,733,777,779,781,783,824,838,840,842,844,845,847,849,852,860,861,193,307,425,427,429,437,439,923,925,926,927,929,930,931,932,943,1034,1035,1036,1037,1038,1039,1040,1064,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1080,1106,1109,1157,1158,1159,1160,1162,1163,1164,1165,1166,1178,1179,1180,1181,1182,1183,1184,1185,1186," />
+<group name="步兵" units="74,75,77,93,358,359,473,567,751,752,753,759,761,882," />
+<group name="市场" units="84,110,116,128,137,204,846," />
+<group name="杂项" units="159,242,244,247,248,249,252,253,262,274,310,311,313,314,324,325,326,327,352,365,366,368,369,371,374,376,377,380,417,447,452,453,454,459,462,468,469,506,508,513,515,520,526,551,552,656,657,658,676,677,728,736,737,767," />
+<group name="圣物" units="125,285,286,287,288,289,290,292,294,295,296,297,298,300,301,302,303,304,305,306,307,308,775," />
+<group name="其他" units="48,53,59,65,66,69,89,96,102,126,143,144,145,146,147,148,241,333,334,335,336,337,338,339,340,341,389,396,450,451,455,456,457,458,499,594,600,601,602,603,604,623,688,709,710,711,720,721,722,723,744,745,810,812,814,816,817,818,819,820,821,822,833,835,837,851,854,855,856,857,858,859,862,863,864,865,901,1150,1151,1152,1153,910,1091,1171,1172,1173,1174,939,940,941,942,916,933,896,1041,1042,1043,1044,758,1191,1092,1093,1094,1048,1049,1050,1148,1149,1033,1177,1176,1095,1045,1046,1047,1175,900,472,1201,1202,1203,914,301," />
+<group name="船舰" units="13,15,17,21,61,250,420,436,438,443,527,528,529,532,533,535,536,539,545,691,831,832,467,653,183,861," />
+<group name="攻城武器" units="35,36,279,280,422,542,548,550,588,494," />
+<group name="树木" units="284,348,349,350,351,399,400,401,402,403,404,405,406,407,408,409,410,411,413,414,415,809,1051,1052,1063,1144,1146," />
+<group name="单位" units="4,5,5,6,7,8,11,13,17,21,24,25,35,36,38,39,40,41,42,46,73,74,75,77,83,93,94,125,204,232,239,242,244,250,279,280,281,282,283,291,331,358,359,420,422,434,440,441,442,448,473,474,492,527,528,529,530,531,532,533,534,539,542,545,546,548,550,553,554,555,556,557,558,559,560,561,567,569,583,588,596,691,692,694,725,726,751,752,755,757,759,761,763,765,771,773,775,827,829,831,832,866,868,869,871,873,875,876,878,879,881,882,1001,1003,1004,1006,1007,1009,1010,1012,1013,1015,1016,1018,1103,1104,1105,1120,1122,1123,1125,1126,1128,1129,1131,1132,1134,1155," />
+<group name="村民" units="56,57,83,118,120,122,123,124,156,206,207,212,214,216,218,220,222,259,293,354,579,581,590,592," />
+<group name="城墙" units="63,64,67,78,80,81,85,88,90,91,92,95,117,155,487,488,490,491,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,72,119,231,788,1062," />
 </unitgroups>
 
 <civs>
 <civ id="0" name="" />
-<civ id="1" name="Britons" />
-<civ id="2" name="Franks" />
-<civ id="3" name="Goths" />
-<civ id="4" name="Teutons" />
-<civ id="5" name="Japanese" />
-<civ id="6" name="Chinese" />
-<civ id="7" name="Byzantines" />
-<civ id="8" name="Persians" />
-<civ id="9" name="Saracens" />
-<civ id="10" name="Turks" />
-<civ id="11" name="Vikings" />
-<civ id="12" name="Mongols" />
-<civ id="13" name="Celts" />
-<civ id="14" name="Spanish" />
-<civ id="15" name="Aztecs" />
-<civ id="16" name="Mayans" />
-<civ id="17" name="Huns" />
-<civ id="18" name="Koreans" />
-<civ id="19" name="Italians" />
-<civ id="20" name="Indians" />
-<civ id="21" name="Incas" />
-<civ id="22" name="Magyars" />
-<civ id="23" name="Slavs" />
-<civ id="24" name="Portuguese" />
-<civ id="25" name="Ethiopians" />
-<civ id="26" name="Malians" />
-<civ id="27" name="Berbers" />
-<civ id="28" name="Khmer" />
-<civ id="29" name="Malay" />
-<civ id="30" name="Burmese" />
-<civ id="31" name="Vietnamese" />
-
+<civ id="1" name="不列颠" />
+<civ id="2" name="法兰克" />
+<civ id="3" name="哥特" />
+<civ id="4" name="条顿" />
+<civ id="5" name="日本" />
+<civ id="6" name="中国" />
+<civ id="7" name="拜占庭" />
+<civ id="8" name="波斯" />
+<civ id="9" name="萨拉森" />
+<civ id="10" name="土耳其" />
+<civ id="11" name="维京" />
+<civ id="12" name="蒙古" />
+<civ id="13" name="凯尔特" />
+<civ id="14" name="西班牙" />
+<civ id="15" name="阿兹特克" />
+<civ id="16" name="玛雅" />
+<civ id="17" name="匈族" />
+<civ id="18" name="高丽" />
+<civ id="19" name="意大利" />
+<civ id="20" name="印度" />
+<civ id="21" name="印加" />
+<civ id="22" name="马扎尔" />
+<civ id="23" name="斯拉夫" />
+<civ id="24" name="葡萄牙" />
+<civ id="25" name="埃塞俄比亚" />
+<civ id="26" name="马里" />
+<civ id="27" name="柏柏尔" />
+<civ id="28" name="高棉" />
+<civ id="29" name="马来" />
+<civ id="30" name="缅甸" />
+<civ id="31" name="越南" />
 </civs>
 
 </geniedata>

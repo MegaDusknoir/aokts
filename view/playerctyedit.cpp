@@ -33,15 +33,17 @@ void LoadPlayerCTY(HWND dialog)
 
 void SavePlayerCTY(HWND dialog)
 {
+	if (scen.game == 7 || scen.game == 8) {
 	Player *p = propdata.p;
     HWND hCTY = GetDlgItem(dialog, IDC_P_CTY);
 
     GetDlgItemText(dialog, IDC_P_CTY, p->cty, _MAX_FNAME);
 	GetWindowText(GetDlgItem(dialog, IDC_P_CTYSCRIPT), p->ctyfile);
+	}
 }
 
 const char errorImpExpFail[] =
-"Error. Please make sure the file you selected is valid.";
+"错误。请确保所选文件有效。";
 
 
 // FIXME: separate this alternate cohesion crap
@@ -67,7 +69,7 @@ void Players_ManageCTY(HWND dialog, bool import)
 		*path = '\0';
 		ofn.lpstrFileTitle = propdata.p->cty;
 		ofn.nMaxFileTitle = _MAX_FNAME;
-		ofn.lpstrTitle = "Import CTY Script";
+		ofn.lpstrTitle = "导入 CTY 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_HIDEREADONLY;
 		ofn.lpstrDefExt = "cty";
 
@@ -78,16 +80,16 @@ void Players_ManageCTY(HWND dialog, bool import)
 				= '\0';
 			//do it
 			if (propdata.p->import_cty(path))
-				SetWindowText(propdata.statusbar, "CTY successfully imported.");
+				SetWindowText(propdata.statusbar, "CTY 已成功导入。");
 			else
-				MessageBox(dialog, errorImpExpFail, "CTY Import", MB_OK);
+				MessageBox(dialog, errorImpExpFail, "CTY 导入", MB_OK);
 		}
 	}
 	else if (propdata.p->ctyfile.length()) //export, so check for existence
 	{
 		strcpy(path, propdata.p->cty);
 		ofn.lpstrFileTitle = NULL;
-		ofn.lpstrTitle = "Export CTY Script";
+		ofn.lpstrTitle = "导出 CTY 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_NOREADONLYRETURN | OFN_OVERWRITEPROMPT;
 		ofn.lpstrDefExt = "cty";
 
@@ -95,13 +97,13 @@ void Players_ManageCTY(HWND dialog, bool import)
 		{
 			//do it
 			if (propdata.p->export_cty(path))
-				SetWindowText(propdata.statusbar, "CTY successfully exported.");
+				SetWindowText(propdata.statusbar, "CTY 已成功导出。");
 			else
-				MessageBox(dialog, errorImpExpFail, "CTY Export Warning", MB_ICONWARNING);
+				MessageBox(dialog, errorImpExpFail, "CTY 导出警告", MB_ICONWARNING);
 		}
 	}
 	else
-		MessageBox(dialog, "Sorry, that player doesn't have an CTY File.", "CTY Export", MB_OK);
+		MessageBox(dialog, "抱歉，该玩家不含有 CTY 文件。", "CTY 导出", MB_OK);
 }
 
 void PlayersCTY_HandleCommand(HWND dialog, WORD code, WORD id, HWND control)

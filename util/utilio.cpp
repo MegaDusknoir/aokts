@@ -26,7 +26,7 @@ AutoFile::AutoFile(const char * filename, const char * mode)
 :	_file(fopen(filename, mode))
 {
 	if (!_file)
-		throw io_error("Could not open file.");
+		throw io_error("无法打开文件。");
 }
 
 void AutoFile::close()
@@ -51,7 +51,7 @@ io_error::io_error(const std::string& what)
 }
 
 bad_data_error::bad_data_error(const std::string& what)
-:	runtime_error("There was a problem with the scenario data: " + what)
+:	runtime_error("场景数据有问题：" + what)
 {
 }
 

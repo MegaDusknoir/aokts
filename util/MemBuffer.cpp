@@ -105,5 +105,5 @@ void MemBuffer::fill(int value, size_t length)
 void MemBuffer::checkFits(size_t length) const
 {
 	if (pos + length > buffer + blen)
-		throw out_of_range("not enough space in MemBuffer");
+		throw out_of_range("MemBuffer¿Õ¼ä²»×ã");
 }

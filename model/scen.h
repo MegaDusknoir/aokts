@@ -194,6 +194,7 @@ public:
 	static const PerGame pgAOK;
 	static const PerGame pgAOC;
 	static const PerGame pgUP;
+	static const PerGame pgETP;
 	static const PerGame pgAOHD;
 	static const PerGame pgAOF;
 	static const PerGame pgAOHD4;
@@ -285,6 +286,7 @@ public:
 	bool exFile(const char *directory, long index);
 
 	bool is_userpatch();
+	bool is_etp();
 
     void fix_t_order();
 	/*

@@ -101,19 +101,22 @@ DLGPROC procs[NUM_PAGES] =
 
 /* Strings */
 const char * askSaveChanges =
-"Do you want to save your changes?";
+"是否保存更改？";
 
-const char *szTitle = "Trigger Studio";
+const char *szTitle = "触发工作室";
 const char welcome[] =
-"Welcome to AOKTS! Please open a scenario or make a new one.";
+"欢迎使用AOKTS！请打开一个场景或创建一个新场景。";
 const char extOpen[] =
-"AoE 2 Scenarios (*.scn, *.scx, *.scx2, *.aoe2scenario)\0*.scn;*.scx;*.scx2;*.aoe2scenario\0Star Wars Scenarios (*.scx, *.sc1)\0*.scx;*.sc1\0All files (*.*)\0*.*\0";
+"帝国时代 2 场景 (*.scn, *.scx, *.scx2, *.aoe2scenario)\0*.scn;*.scx;*.scx2;*.aoe2scenario\0星球大战场景 (*.scx, *.sc1)\0*.scx;*.sc1\0所有文件 (*.*)\0*.*\0";
 const char extSave[] =
-"AOK Scenarios (*.scn)\0*.scn\0AOC 1.0C Scenarios (*.scx)\0*.scx\0AOC 1.4RC Scenarios (*.scx)\0*.scx\0AOHD Scenarios (*.scx)\0*.scx\0AOF Scenarios (*.scx2)\0*.scx2\0AOAK Scenarios (*.aoe2scenario)\0*.aoe2scenario\0SWGB Scenarios (*.scx)\0*.scx\0Clone Campaigns Scenarios (*.sc1)\0*.sc1\0AOHD 4.3 (2F) (*.scx)\0*.scx\0AOF 4.3 (2F) (*.scx2)\0*.scx2\0All files (*.*)\0*.*\0";
+"国王时代场景 (*.scn)\0*.scn\0征服者 1.0c 场景 (*.scx)\0*.scx\0征服者 Userpatch 1.5RC 场景 (*.scx)\0*.scx\0征服者 ETP 1.7 场景 (*.scx)\0*.scx\0帝国时代 HD 场景 (*.scx)\0*.scx\0失落帝国场景 (*.scx2)\0*.scx2\0非洲王朝场景 (*.aoe2scenario)\0*.aoe2scenario\0星球大战场景 (*.scx)\0*.scx\0克隆战争场景 (*.sc1)\0*.sc1\0帝国时代 HD 4.3 (2F) (*.scx)\0*.scx\0失落帝国 4.3 (2F) (*.scx2)\0*.scx2\0所有文件 (*.*)\0*.*\0";
 const char datapath_aok[] = "data_aok.xml";
+const char datapath_wk[] = "data_wk.xml";
 const char datapath_swgb[] = "data_swgb.xml";
 
 /** Functions **/
+
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 const char *getFilenameFromPath(const char *path)
 {
@@ -192,8 +195,8 @@ void FileSave(HWND sheet, bool as, bool write)
 	Game conv = NOCONV;
     SaveFlags::Value flags = SaveFlags::NONE;
 
-    char w1[] = {84, 104, 105, 115, 32, 115, 99, 101, 110, 97, 114, 105, 111, 32, 105, 115, 32, 112, 114, 111, 116, 101, 99, 116, 101, 100, 0};
-    char w2[] = {83, 99, 101, 110, 97, 114, 105, 111, 32, 105, 115, 32, 112, 114, 111, 116, 101, 99, 116, 101, 100, 0};
+    char w1[] = "该场景是受保护的。";
+    char w2[] = "场景受保护";
     if (setts.disabletips) {
         MessageBox(sheet, w1, w2, MB_ICONWARNING);
         return;
@@ -223,7 +226,7 @@ void FileSave(HWND sheet, bool as, bool write)
 	    startver = scen.game;
 
 		if (scen.header.header_type == HT_AOE2SCENARIO) {
-		    ofn.nFilterIndex =	6;
+		    ofn.nFilterIndex =	7;
 		    ofn.lpstrDefExt =	"aoe2scenario";
 		} else {
 		    switch (scen.game) {
@@ -239,30 +242,34 @@ void FileSave(HWND sheet, bool as, bool write)
 		        ofn.nFilterIndex =	3;
 		        ofn.lpstrDefExt =	"scx";
 		        break;
+		    case ETP:
+		        ofn.nFilterIndex =	4;
+		        ofn.lpstrDefExt =	"scx";
+		        break;
 		    case AOHD:
 		    case AOHD4:
-		        ofn.nFilterIndex =	4;
+		        ofn.nFilterIndex =	5;
 		        ofn.lpstrDefExt =	"scx";
 		        break;
 		    case AOF:
 		    case AOF4:
-		        ofn.nFilterIndex =	5;
+		        ofn.nFilterIndex =	6;
 		        ofn.lpstrDefExt =	"scx2";
 		        break;
 		    case SWGB:
-		        ofn.nFilterIndex =	7;
+		        ofn.nFilterIndex =	8;
 		        ofn.lpstrDefExt =	"scx";
 		        break;
 		    case SWGBCC:
-		        ofn.nFilterIndex =	8;
+		        ofn.nFilterIndex =	9;
 		        ofn.lpstrDefExt =	"sc1";
 		        break;
 		    case AOHD6:
-		        ofn.nFilterIndex =	9;
+		        ofn.nFilterIndex =	10;
 		        ofn.lpstrDefExt =	"scx";
 		        break;
 		    case AOF6:
-		        ofn.nFilterIndex =	10;
+		        ofn.nFilterIndex =	11;
 		        ofn.lpstrDefExt =	"scx2";
 		        break;
 		    }
@@ -282,25 +289,28 @@ void FileSave(HWND sheet, bool as, bool write)
 		    conv = UP;
 		    break;
 		case 4:
-		    conv = AOHD4;
+		    conv = ETP;
 		    break;
 		case 5:
-		    conv = AOF4;
+		    conv = AOHD4;
 		    break;
 		case 6:
+		    conv = AOF4;
+		    break;
+		case 7:
 	        scen.header.header_type = HT_AOE2SCENARIO;
 		    conv = startver;
 		    break;
-		case 7:
+		case 8:
 		    conv = SWGB;
 		    break;
-		case 8:
+		case 9:
 		    conv = SWGBCC;
 		    break;
-		case 9:
+		case 10:
 		    conv = AOHD6;
 		    break;
-		case 10:
+		case 11:
 		    conv = AOF6;
 		    break;
 		}
@@ -318,14 +328,14 @@ void FileSave(HWND sheet, bool as, bool write)
 
     if (isHD(startver) && conv == UP) {
         if (setts.asktoconverteffects &&
-            MessageBox(sheet, "Also convert HD effects to UserPatch?", "Convert", MB_YESNOCANCEL) == IDYES) {
+            MessageBox(sheet, "同时转换 HD 效果到 UserPatch ？", "转换", MB_YESNOCANCEL) == IDYES) {
             flags = (SaveFlags::Value)(flags | SaveFlags::CONVERT_EFFECTS);
         }
     }
 
     if (startver == UP && isHD(conv)) {
         if (setts.asktoconverteffects &&
-            MessageBox(sheet, "Also convert UserPatch effects to HD?", "Convert", MB_YESNOCANCEL) == IDYES) {
+            MessageBox(sheet, "同时转换 UserPatch 效果到 HD ？", "转换", MB_YESNOCANCEL) == IDYES) {
             flags = (SaveFlags::Value)(flags | SaveFlags::CONVERT_EFFECTS);
         }
     }
@@ -376,7 +386,7 @@ void FileSave(HWND sheet, bool as, bool write)
 	{
 		// TODO: better atomic cursor handling?
 		SetCursor(previous);
-		MessageBox(sheet, ex.what(), "Scenario Save Error", MB_ICONWARNING);
+		MessageBox(sheet, ex.what(), "场景保存错误", MB_ICONWARNING);
 	}
 
 	//perform after-saving operations
@@ -424,7 +434,7 @@ void FileOpen(HWND sheet, bool ask, int recent)
 	//save the scenario if changes have been made (NOT FUNCTIONAL)
 	if (scen.needsave())
 	{
-		int sel = MessageBox(sheet, askSaveChanges, "Save", MB_YESNOCANCEL);
+		int sel = MessageBox(sheet, askSaveChanges, "保存", MB_YESNOCANCEL);
 
 		if (sel == IDYES)
 			FileSave(sheet, false, true);
@@ -452,8 +462,8 @@ void FileOpen(HWND sheet, bool ask, int recent)
 			else
 			{
 				MessageBox(sheet,
-					"Warning: Recent File open failed.",
-					"Open Warning", MB_ICONWARNING);
+					"警告：打开最近文件失败。",
+					"打开警告", MB_ICONWARNING);
 			}
 		}
 
@@ -466,7 +476,7 @@ void FileOpen(HWND sheet, bool ask, int recent)
 		struct RecentFile *r_parse;
 		char dir[_MAX_PATH];
 		strcpy(dir, setts.BasePath);
-		strcat(dir, "Scenario");
+		strcat(dir, "场景");
 
 		ofn.lStructSize =	sizeof(OPENFILENAME);
 		ofn.hwndOwner =		sheet;
@@ -489,6 +499,8 @@ void FileOpen(HWND sheet, bool ask, int recent)
 		    case AOC:
 		    case AOHD:
 		    case AOF:
+			case UP:
+			case ETP:
 		    case AOHD4:
 		    case AOF4:
 		    case AOHD6:
@@ -501,6 +513,9 @@ void FileOpen(HWND sheet, bool ask, int recent)
 		        ofn.nFilterIndex =	2;
 		        ofn.lpstrDefExt =	"scx";
 		        break;
+			default:
+		        ofn.nFilterIndex =	1;
+		        ofn.lpstrDefExt =	"scx";
 		    }
 		}
 
@@ -557,7 +572,7 @@ void FileOpen(HWND sheet, bool ask, int recent)
 		SetSaveState(sheet, ofn.Flags & OFN_READONLY ? MF_ENABLED : MF_ENABLED);
 
 		// set status bar text
-		SetWindowTextW(propdata.statusbar, L"Scenario loaded successfully.");
+		SetWindowTextW(propdata.statusbar, L"载入场景成功。");
 
 	    SendMessage(page, AOKTS_Loading, 0, 0);
         SendMessageW(propdata.mapview, MAP_Recreate, 0, 0);
@@ -579,26 +594,26 @@ void FileOpen(HWND sheet, bool ask, int recent)
 		SetWindowText(propdata.statusbar, ex.what());
 
 		// report error to user
-		std::string desc = "Failed to open as ";
+		std::string desc = "无法打开";
 
         desc.append(gameName(scen.game));
-		desc.append(" scenario file.\n");
+		desc.append("场景文件。\n");
 
 		switch (scen.game) {
 		case AOC:
-		    desc.append("Try opening as a SWGB scx file instead\nusing File->Open\n");
+		    desc.append("尝试作为星战 scx 场景文件打开\n");
 		    break;
 		case SWGB:
-		    desc.append("Try opening as a Conquerors scx file instead\nusing File->Open\n");
+		    desc.append("尝试作为征服者 scx 场景文件打开\n");
 		    break;
 		}
 
-		desc.append("\nThe problem: ");
+		desc.append("\n问题：");
 		desc.append(ex.what());
 
-		desc.append("\n\nIf the game is able to open the scenario,\nplease report this error. Thanks.");
+		desc.append("\n\n如果游戏能打开这个场景，请汇报这个问题。");
 		printf_log("User message: %s\n", desc.c_str());
-		MessageBox(sheet, desc.c_str(), "Scenario Load Error", MB_ICONWARNING);
+		MessageBox(sheet, desc.c_str(), "场景载入错误", MB_ICONWARNING);
 
 		// unless it's a debug build, clear the bad data
 	#ifndef _DEBUG
@@ -632,7 +647,7 @@ void FileClose(HWND sheet, HWND control)
 
 	if (scen.needsave())
 	{
-		sel = MessageBox(sheet, "Do you want to save your changes?", "Save", MB_YESNOCANCEL);
+		sel = MessageBox(sheet, "是否保存更改？", "保存", MB_YESNOCANCEL);
 		if (sel == IDYES)
 			FileSave(sheet, false, true);
 		else if (sel == IDCANCEL)
@@ -645,7 +660,7 @@ void FileClose(HWND sheet, HWND control)
 		SendMessage(page, AOKTS_Loading, 0, 0);
 
 	SetSaveState(sheet, MF_ENABLED);
-	SetWindowText(propdata.statusbar, "Scenario reset.");
+	SetWindowText(propdata.statusbar, "场景重置。");
 	SendMessage(propdata.mapview, MAP_Reset, 0, 0);
 
 	SetWindowText(sheet, szTitle);
@@ -731,7 +746,7 @@ int CALLBACK PropSheetProc(HWND sheet, UINT msgid, LPARAM lParam)
 			}
 
 			/* Add a tooltip window */
-			tooltip = CreateWindowEx(WS_EX_TOPMOST, TOOLTIPS_CLASS, "AOKTS Tooltip", WS_POPUP,
+			tooltip = CreateWindowEx(WS_EX_TOPMOST, TOOLTIPS_CLASS, "AOKTS 提示", WS_POPUP,
 				CW_USEDEFAULT, 0, CW_USEDEFAULT, 0,
 				sheet, NULL, aokts, NULL);
 			TooltipInit(tooltip);
@@ -798,6 +813,7 @@ HWND MakeSheet(HINSTANCE app)
 	sheet = (HWND)PropertySheet(&header);
 
 	//add status bar here (can't be done in PropertySheetProc)
+
 	propdata.statusbar = CreateWindow(STATUSCLASSNAME, welcome,
 		WS_CHILD | WS_VISIBLE, 0, 0, 0, 0,
 		sheet, (HMENU)IDS_MAIN, aokts, NULL);
@@ -919,6 +935,91 @@ INT_PTR CALLBACK StatsDialogProc(HWND dialog, UINT msg, WPARAM wParam, LPARAM lP
 	return 0;
 }
 
+BOOL DisplayPreference(HWND dialog,char * path)
+{
+	SendDlgItemMessage(dialog, IDC_P_ASKCONVERTEFFECTS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "AskConvertEffects", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DISPLAYHINTS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DisplayHints", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DISABLETIPS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DisableTips", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_FORCEENABLETIPS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "ForceEnableTips", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_SHOWTRIGGERNAMES, BM_SETCHECK, GetPrivateProfileInt("Advanced", "ShowTriggerNames", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_SHOWTRIGGERFUNCTION, BM_SETCHECK, GetPrivateProfileInt("Advanced", "ShowTriggerFunction", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_SHOWDISPLAYORDER, BM_SETCHECK, GetPrivateProfileInt("Advanced", "ShowDisplayOrder", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_SHOWTRIGGERIDS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "ShowTriggerIDs", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_WKMODE, BM_SETCHECK, GetPrivateProfileInt("Advanced", "WololokingdomsMode", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_EDITALL, BM_SETCHECK, GetPrivateProfileInt("Advanced", "EditAll", 0, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_NOWARNINGS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "NoWarnings", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWCONDS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawConds", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWEFFECTS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawEffects", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWLOCATIONS, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawLocations", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWTERRAIN, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawTerrain", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWELEVATION, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawElevation", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER1, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer1", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER2, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer2", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER3, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer3", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER4, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer4", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER5, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer5", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER6, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer6", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER7, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer7", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWPLAYER8, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawPlayer8", 1, path) != 0, 0);
+	SendDlgItemMessage(dialog, IDC_P_DRAWGAIA, BM_SETCHECK, GetPrivateProfileInt("Advanced", "DrawGaia", 1, path) != 0, 0);
+
+	return TRUE;
+}
+
+/* Preference Setting */
+INT_PTR CALLBACK Preference(HWND dialog, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	char path[_MAX_PATH];
+    strcpy(path, global::exedir);
+	strcat(path, "\\ts.ini");
+	switch (msg)
+	{
+	case WM_INITDIALOG:
+		return DisplayPreference(dialog,path);
+
+	case WM_CLOSE:
+		EndDialog(dialog, FALSE);
+		break;
+
+	case WM_COMMAND:
+		switch (wParam) {
+		case IDOK:
+			if (SendMessage(GetDlgItem(dialog, IDC_P_ASKCONVERTEFFECTS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "AskConvertEffects", "1", path); else WritePrivateProfileString("Advanced", "AskConvertEffects", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DISPLAYHINTS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DisplayHints", "1", path); else WritePrivateProfileString("Advanced", "DisplayHints", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DISABLETIPS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DisableTips", "1", path); else WritePrivateProfileString("Advanced", "DisableTips", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_FORCEENABLETIPS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "ForceEnableTips", "1", path); else WritePrivateProfileString("Advanced", "ForceEnableTips", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_SHOWTRIGGERNAMES),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "ShowTriggerNames", "1", path); else WritePrivateProfileString("Advanced", "ShowTriggerNames", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_SHOWTRIGGERFUNCTION),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "ShowTriggerFunction", "1", path); else WritePrivateProfileString("Advanced", "ShowTriggerFunction", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_SHOWDISPLAYORDER),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "ShowDisplayOrder", "1", path); else WritePrivateProfileString("Advanced", "ShowDisplayOrder", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_SHOWTRIGGERIDS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "ShowTriggerIDs", "1", path); else WritePrivateProfileString("Advanced", "ShowTriggerIDs", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_WKMODE),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "WololokingdomsMode", "1", path); else WritePrivateProfileString("Advanced", "WololokingdomsMode", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_EDITALL),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "EditAll", "1", path); else WritePrivateProfileString("Advanced", "EditAll", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_NOWARNINGS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "NoWarnings", "1", path); else WritePrivateProfileString("Advanced", "NoWarnings", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWCONDS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawConds", "1", path); else WritePrivateProfileString("Advanced", "DrawConds", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWEFFECTS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawEffects", "1", path); else WritePrivateProfileString("Advanced", "DrawEffects", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWLOCATIONS),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawLocations", "1", path); else WritePrivateProfileString("Advanced", "DrawLocations", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWTERRAIN),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawTerrain", "1", path); else WritePrivateProfileString("Advanced", "DrawTerrain", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWELEVATION),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawElevation", "1", path); else WritePrivateProfileString("Advanced", "DrawElevation", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER1),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer1", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer1", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER2),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer2", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer2", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER3),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer3", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer3", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER4),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer4", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer4", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER5),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer5", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer5", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER6),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer6", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer6", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER7),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer7", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer7", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWPLAYER8),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawPlayer8", "1", path); else WritePrivateProfileString("Advanced", "DrawPlayer8", "0", path);
+			if (SendMessage(GetDlgItem(dialog, IDC_P_DRAWGAIA),BM_GETCHECK,0,0) != 0) WritePrivateProfileString("Advanced", "DrawGaia", "1", path); else WritePrivateProfileString("Advanced", "DrawGaia", "0", path);
+			EndDialog(dialog, TRUE);
+			break;
+		case IDCANCEL:
+			EndDialog(dialog, FALSE);
+			break;
+		}
+		return 0;
+	}
+	return 0;
+}
+
 /* OnMenuSelect */
 void OnMenuSelect(WORD id, WORD flags, HMENU handle)
 {
@@ -960,11 +1061,11 @@ void OnCompressOrDecompress(HWND sheet, bool compress)
 	fOut.close();
 
 	if (ret >= 0)
-		MessageBox(sheet, "Operation completed successfully.",
-		"Raw Compression/Decompression", MB_OK);
+		MessageBox(sheet, "操作成功。",
+		"无损压缩/解压缩", MB_OK);
 	else
-		MessageBox(sheet, "Operation failed.",
-		"Raw Compression/Decompression", MB_ICONWARNING);
+		MessageBox(sheet, "操作失败。",
+		"无损压缩/解压缩", MB_ICONWARNING);
 }
 
 void SetDrawTriggerCheckboxes(HWND sheet)
@@ -1020,7 +1121,7 @@ bool Sheet_HandleCommand(HWND sheet, WORD code, WORD id, HWND control)
 	case ID_TS_APP_EXIT:
 		if (scen.needsave())
 		{
-			int sel = MessageBox(sheet, "Do you want to save your changes?", "Save", MB_YESNOCANCEL);
+			int sel = MessageBox(sheet, "是否保存更改？", "保存", MB_YESNOCANCEL);
 			if (sel == IDYES)
 				FileSave(sheet, false, true);
 			else if (sel == IDCANCEL)
@@ -1043,87 +1144,87 @@ bool Sheet_HandleCommand(HWND sheet, WORD code, WORD id, HWND control)
 	case ID_FILE_DUMP:
 		if (!scen.exFile("dump", -1))
 		{
-			MessageBox(sheet, "Dump failed.", "Scenario Dump", MB_ICONWARNING);
+			MessageBox(sheet, "转储失败。", "场景转储", MB_ICONWARNING);
 		} else {
-		    SetWindowText(propdata.statusbar, "Per files saved to disk");
+		    SetWindowText(propdata.statusbar, "Per 文件已转储到dump\\");
 		}
 		break;
 
 	case IDC_U_CLEARAICPVC:
 	    scen.clearaicpvc();
-		SetWindowText(propdata.statusbar, "Removed All AI, City Plan and VC files");
+		SetWindowText(propdata.statusbar, "已移除所有 AI，城市计划和胜利条件文件");
 	    SendMessage(PropSheet_GetCurrentPageHwnd(sheet), AOKTS_Loading, 0, 0);
 		break;
 
 	case IDC_U_RANDOMIZE_ROT:
 	    scen.randomize_unit_frames();
-		SetWindowText(propdata.statusbar, "Randomized unit frames and rotations");
+		SetWindowText(propdata.statusbar, "已随机化外观 (相位和帧)");
 		break;
 
 	case ID_UNITS_TERRAIN_ELEV:
 	    scen.set_unit_z_to_map_elev();
-		SetWindowText(propdata.statusbar, "Unit z positions set to terrain elevation");
+		SetWindowText(propdata.statusbar, "已设定单位 z 为地形海拔");
 		break;
 
 	case ID_UNITS_DELETE_ALL:
 		scen.delete_player_units(propdata.pindex);
-		SetWindowText(propdata.statusbar, "Player's units deleted");
+		SetWindowText(propdata.statusbar, "已删除所有玩家单位");
 	    SendMessage(propdata.mapview, MAP_Reset, 0, 0);
 		break;
 
 	case ID_MAP_WATER_CLIFF_INVISIBLE:
 		scen.water_cliffs_visibility(FALSE);
-		SetWindowText(propdata.statusbar, "Water cliffs are now invisible");
+		SetWindowText(propdata.statusbar, "水域悬崖现不可视");
 		break;
 
 	case ID_MAP_WATER_CLIFF_VISIBLE:
 		scen.water_cliffs_visibility(TRUE);
-		SetWindowText(propdata.statusbar, "Water cliffs are now visible");
+		SetWindowText(propdata.statusbar, "水域悬崖已可视");
 		break;
 
 	case ID_TRIGGERS_SORT_CONDS_EFFECTS:
 		scen.sort_conds_effects();
-		SetWindowText(propdata.statusbar, "Trigger contitions and effects sorted alphanumerically");
+		SetWindowText(propdata.statusbar, "已分类条件和效果");
 		break;
 
 	case ID_TRIGGERS_NOINSTRUCTIONSSOUND:
 		scen.instructions_sound_text_set();
-		SetWindowText(propdata.statusbar, "Sound text set to null");
+		SetWindowText(propdata.statusbar, "所有显示信息的声音文件已设置为 空");
 		break;
 
 	case ID_TRIGGERS_NOINSTRUCTIONSSOUNDID:
 		scen.instructions_sound_id_set(-1);
-		SetWindowText(propdata.statusbar, "Sound ID set to -1 for all display instructions effects");
+		SetWindowText(propdata.statusbar, "所有显示信息的声音 ID 已设置为 -1 (无)");
 		break;
 
 	case ID_TRIGGERS_ZEROINSTRUCTIONSSOUNDID:
 		scen.instructions_sound_id_set(0);
-		SetWindowText(propdata.statusbar, "Sound ID set to 0 for all display instructions effects");
+		SetWindowText(propdata.statusbar, "将所有显示信息的声音 ID 已设置为 0 (无)");
 		break;
 
 	case ID_TRIGGERS_NOPANEL:
 		scen.instructions_panel_set(-1);
-		SetWindowText(propdata.statusbar, "Panel ID removed from all display instructions effects");
+		SetWindowText(propdata.statusbar, "将所有显示信息的面板 ID 已设置为 -1 (无)");
 		break;
 
 	case ID_TRIGGERS_ZEROPANEL:
 		scen.instructions_panel_set(0);
-		SetWindowText(propdata.statusbar, "Panel ID set to 0 for all display instructions effects");
+		SetWindowText(propdata.statusbar, "将所有显示信息的面板 ID 已设置为 0 (任务目标)");
 		break;
 
 	case ID_TRIGGERS_ZERODI:
 		scen.instructions_string_zero();
-		SetWindowText(propdata.statusbar, "String ID set to 0 for all display instructions effects");
+		SetWindowText(propdata.statusbar, "将所有显示信息的字符串 ID 已设置为 0");
 		break;
 
 	case ID_TRIGGERS_RESETDI:
 		scen.instructions_string_reset();
-		SetWindowText(propdata.statusbar, "String ID set to -1 for all display instructions effects");
+		SetWindowText(propdata.statusbar, "将所有显示信息的字符串 ID 已设置为 -1");
 		break;
 
 	case ID_TRIGGERS_HIDENAMES:
 		scen.remove_trigger_names();
-		SetWindowText(propdata.statusbar, "Trigger names removed");
+		SetWindowText(propdata.statusbar, "已清除所有触发名");
 		break;
 
 	case ID_TRIGGERS_COPY_SCRAWL:
@@ -1142,38 +1243,38 @@ bool Sheet_HandleCommand(HWND sheet, WORD code, WORD id, HWND control)
             EmptyClipboard();
             SetClipboardData(CF_TEXT, hMem);
             CloseClipboard();
-		    SetWindowText(propdata.statusbar, "Copied trigger scrawl");
+		    SetWindowText(propdata.statusbar, "已复制概略到剪贴板");
 		}
 		break;
 
 	case ID_TRIGGERS_SAVE_PSEUDONYMS:
 		scen.save_pseudonyms();
-		SetWindowText(propdata.statusbar, "Pseudonyms saved");
+		SetWindowText(propdata.statusbar, "已覆盖触发名称");
 		break;
 
 	case ID_TRIGGERS_PREFIX_DISPLAY_ORDER:
 		scen.prefix_display_order();
-		SetWindowText(propdata.statusbar, "Prefixing display order to trigger names");
+		SetWindowText(propdata.statusbar, "触发名称已冠以显示顺序的前缀");
 		break;
 
 	case ID_TRIGGERS_REMOVE_DISPLAY_ORDER_PREFIX:
 		scen.remove_display_order_prefix();
-		SetWindowText(propdata.statusbar, "Prefixing display order to trigger names");
+		SetWindowText(propdata.statusbar, "显示顺序前缀已从触发名称移除");
 		break;
 
 	case ID_TRIGGERS_HIDE_DESCRIPTIONS:
 		scen.remove_trigger_descriptions();
-		SetWindowText(propdata.statusbar, "Trigger descriptions removed");
+		SetWindowText(propdata.statusbar, "触发描述已清除");
 		break;
 
 	case ID_TRIGGERS_SWAP_NAMES_DESCRIPTIONS:
 		scen.swap_trigger_names_descriptions();
-		SetWindowText(propdata.statusbar, "Trigger names swapped with descriptions");
+		SetWindowText(propdata.statusbar, "已交换名称和描述");
 		break;
 
 	case ID_TRIGGERS_FIXTRIGGEROUTLIERS:
 		scen.fix_trigger_outliers();
-		SetWindowText(propdata.statusbar, "Triggers outside of map have been put within the boundaries");
+		SetWindowText(propdata.statusbar, "地图外的触发已限制到地图边界");
 		break;
 
 	case ID_FILE_TRIGWRITE:
@@ -1185,30 +1286,30 @@ bool Sheet_HandleCommand(HWND sheet, WORD code, WORD id, HWND control)
 		break;
 
 	case IDC_P_TOUP:
-        if (MessageBox(sheet, "Normally, you will be asked to do this later when you save the scenario to a different format.\nThis menu for fixing broken scenarios. Are you sure you want to do this?", "Convert", MB_YESNOCANCEL) == IDYES) {
+        if (MessageBox(sheet, "你可能需要将场景保存为对应格式之后，再执行此操作。\n该选项用于修复损坏的场景。你确定要这样做吗？", "转换", MB_YESNOCANCEL) == IDYES) {
 		    scen.hd_to_up();
-		    SetWindowText(propdata.statusbar, "Trigger effects converted from AoHD to UserPatch");
+		    SetWindowText(propdata.statusbar, "从 AoHD 到 UserPatch 触发效果转换");
 		}
 		break;
 
 	case IDC_P_TOHD:
-        if (MessageBox(sheet, "Normally, you will be asked to do this later when you save the scenario to a different format.\nThis menu for fixing broken scenarios. Are you sure you want to do this?", "Convert", MB_YESNOCANCEL) == IDYES) {
+        if (MessageBox(sheet, "你可能需要将场景保存为对应格式之后，再执行此操作。\n该选项用于修复损坏的场景。你确定要这样做吗？", "转换", MB_YESNOCANCEL) == IDYES) {
 		    scen.up_to_hd();
-		    SetWindowText(propdata.statusbar, "Trigger effects converted from UserPatch to AoHD");
+		    SetWindowText(propdata.statusbar, "从 UserPatch 到 AoHD 触发效果转换");
 		}
 		break;
 
 	case IDC_P_TOAOFE:
-        if (MessageBox(sheet, "Normally, you will be asked to do this later when you save the scenario to a different format.\nThis menu for fixing broken scenarios. Are you sure you want to do this?", "Convert", MB_YESNOCANCEL) == IDYES) {
+        if (MessageBox(sheet, "你可能需要将场景保存为对应格式之后，再执行此操作。\n该选项用于修复损坏的场景。你确定要这样做吗？", "转换", MB_YESNOCANCEL) == IDYES) {
 		    scen.up_to_aofe();
-		    SetWindowText(propdata.statusbar, "Trigger effects converted from UserPatch to AoFE");
+		    SetWindowText(propdata.statusbar, "从 UserPatch 到 AoFE 触发效果转换");
 		}
 		break;
 
 	case IDC_P_TO1C:
-        if (MessageBox(sheet, "Normally, you will be asked to do this later when you save the scenario to a different format.\nThis menu for fixing broken scenarios. Are you sure you want to do this?", "Convert", MB_YESNOCANCEL) == IDYES) {
+        if (MessageBox(sheet, "你可能需要将场景保存为对应格式之后，再执行此操作。\n该选项用于修复损坏的场景。你确定要这样做吗？", "Convert", MB_YESNOCANCEL) == IDYES) {
 		    scen.up_to_10c();
-		    SetWindowText(propdata.statusbar, "Trigger effects converted from UserPatch to 1.0c");
+		    SetWindowText(propdata.statusbar, "从 UserPatch 到 1.0c 触发效果转换");
 		}
 		break;
 
@@ -1356,6 +1457,10 @@ bool Sheet_HandleCommand(HWND sheet, WORD code, WORD id, HWND control)
 		    setts.editall = true;
 			CheckMenuItem(GetMenu(sheet), ID_EDIT_ALL, MF_BYCOMMAND | MF_CHECKED);
 		}
+		break;
+		
+	case ID_PREFERENCE:
+			DialogBoxParam(aokts, MAKEINTRESOURCE(IDD_PREFERENCE), sheet, Preference, 0);//StatsDialogProc
 		break;
 
 	case ID_TOOLS_COMPRESS:
@@ -1506,9 +1611,9 @@ bool ProcessCmdline(char *cmdline)
 			break;
 
 		if (c == 'c')
-			printf("Compressing %s to %s... ", pathIn, pathOut);
+			printf("压缩 %s 到 %s... ", pathIn, pathOut);
 		else
-			printf("Decompressing %s to %s... ", pathIn, pathOut);
+			printf("解压缩 %s 到 %s... ", pathIn, pathOut);
 
 		size = fsize(pathIn);
 		buffer = new unsigned char[size];
@@ -1614,22 +1719,28 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE, LPTSTR cmdline, int cmdshow)
 		case AOC:
 		case AOHD:
 		case AOF:
-		    esdata.load(datapath_aok);
+			if ( (scen.game == AOC || scen.game == UP || scen.game == ETP) && setts.wkmode )
+				esdata.load(datapath_wk);
+			else
+				esdata.load(datapath_aok);
 		    break;
 		case SWGB:
 		case SWGBCC:
 		    esdata.load(datapath_swgb);
 		    break;
 		default:
-		    esdata.load(datapath_aok);
+			if ( (scen.game == AOC || scen.game == UP || scen.game == ETP) && setts.wkmode )
+				esdata.load(datapath_wk);
+			else
+				esdata.load(datapath_aok);
 		}
 	}
 	catch (std::exception& ex)
 	{
 		printf_log("Could not load data: %s\n", ex.what());
 		MessageBox(NULL,
-			"Could not read Genie Data from data.xml. Terminating...",
-			"Error", MB_ICONERROR);
+			"无法从data.xml中读取Genie数据。正在终止...",
+			"错误", MB_ICONERROR);
 		return 0;
 	}
 
@@ -1648,14 +1759,14 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE, LPTSTR cmdline, int cmdshow)
 	if (!accelerators)
 	{
 		MessageBox(sheet,
-			"Keyboard Accelerators failed to load. Keyboard shortcuts will not be available.",
-			"Warning", MB_ICONWARNING);
+			"快捷键加载失败。键盘快捷键将不可用。",
+			"警告", MB_ICONWARNING);
 	}
 	if (!propdata.tformat | !propdata.ecformat)
 	{
 		MessageBox(sheet,
-			"Could not register clipboard format. Clipboard operations will not function.",
-			"Warning", MB_ICONWARNING);
+			"无法注册剪贴板格式。剪贴板操作将不可用。",
+			"警告", MB_ICONWARNING);
 	}
 	//if (!ret)
 	//	MessageBox(sheet, warnNoAOEII, "Warning", MB_ICONWARNING);
@@ -1683,8 +1794,8 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE, LPTSTR cmdline, int cmdshow)
 		if (ret < 0)	//did GetMessage() fail?
 		{
 			MessageBox(sheet,
-				"Unable to retrieve messages from queue. Click OK to terminate.",
-				"AOKTS Fatal Error", MB_ICONERROR);
+				"无法从队列中检索消息。单击「确定」终止。",
+				"AOKTS 致命错误", MB_ICONERROR);
 			break;
 		}
 

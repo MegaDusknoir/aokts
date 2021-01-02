@@ -19,14 +19,13 @@
 /* Shared msgbox strings */
 
 const char errorOpenClipboard[] =
-"Could not open clipboard. Most likely another window is currently using it.";
+"无法打开剪贴板。可能被另一个窗口占用。";
 const char errorSetClipboard[] =
-"Could not set clipboard data.";
+"无法设置剪贴板数据。";
 const char errorAllocFailed[] =
-"Could not allocate the memory for this operation. This could be a sign that you are out of memory, "
-"but usually indicates a bug. Please contact DiGiT about this error.";
+"无法为此操作分配内存。这可能表示内存不足，但通常表示存在错误。有关此错误，请联系 DiGiT 。";
 const char warningNoFormat[] =
-"Specified clipboard data did not exist.\nPlease report this error to cyan.spam@gmail.com.";
+"指定的剪贴板数据不存在。\n请将此错误报告给 cyan.spam@gmail.com 。";
 
 
 /** Common functions **/

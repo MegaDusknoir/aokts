@@ -10,7 +10,5 @@ SWGB Release
 *.user
 *.aps
 *.suo
-aokts.vcxproj
-aokts.vcxproj.filters
 UpgradeLog.XML
 ts.GID

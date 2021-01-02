@@ -35,122 +35,122 @@ size_t Elevations[] =
 
 const char *message_names[] =
 {
-	"Instructions", "Hints", "Victory", "Loss", "History", "Scouts"
+	"场景指南", "提示", "胜利", "失败", "历史", "侦察"
 };
 
 const char *cinem_names[] =
 {
-	"Pre-Game Cinematic", "Victory Cinematic", "Loss Cinematic", "Instruction Background"
+	"开场动画", "胜利动画", "失败动画", "信息背景"
 };
 
 const char *difficulties_18[] =
 {
-	"Easiest", "Easy", "Moderate", "Hard", "Hardest"
+	"最易", "标准", "中等", "难", "极难"
 };
 
 const char *difficulties_21[] =
 {
-	"Easy", "Standard", "Moderate", "Hard", "Hardest"
+	"最易", "标准", "中等", "难", "极难"
 };
 
 const struct PAIR ages[] =
 {
 	{ -1, "" },
-	{  0, "Dark" },
-	{  1, "Feudal" },
-	{  2, "Castle" },
-	{  3, "Imperial" },
-	{  4, "Post-Imperial" }
+	{  0, "黑暗" },
+	{  1, "封建" },
+	{  2, "城堡" },
+	{  3, "帝王" },
+	{  4, "后帝王" }
 };
 
 const struct PAIR ages_hd6[] =
 {
-	{ -1, "Feudal" },
-	{  0, "Dark" },
-	{  1, "Feudal" },
-	{  2, "Castle" },
-	{  3, "Castle" },
-	{  4, "Castle" },
-	{  5, "Imperial" },
-	{  6, "Post-Imperial" }
+	{ -1, "封建" },
+	{  0, "黑暗" },
+	{  1, "封建" },
+	{  2, "城堡" },
+	{  3, "城堡" },
+	{  4, "城堡" },
+	{  5, "帝王" },
+	{  6, "后帝王" }
 };
 
 const struct PAIR groups[] =
 {
-	{ -1, "None" },
-	{  0, "Archer" },
-	{  1, "Artifact" },
-	{  2, "Trade Boat" },
-	{  3, "Building" },
-	{  4, "Civilian" },
-	{  5, "Sea Fish" },
-	{  6, "Infantry" },
-	{  7, "Forage Bush" },
-	{  8, "Stone Mine" },
-	{  9, "Prey Animal" },
-	{ 10, "Predator Animal" },
-	{ 11, "Other/Dead/Projectile" },
-	{ 12, "Cavalry" },
-	{ 13, "Siege Weapon" },
-	{ 14, "Map Decoration" },
-	{ 15, "Tree" },
-	{ 16, "?16" }, //Tree Stump
-	{ 17, "?17" },
-	{ 18, "Priest" },
-	{ 19, "Trade Cart" },
-	{ 20, "Transport Boat" },
-	{ 21, "Fishing Boat" },
-	{ 22, "War Boat" },
-	{ 23, "Conquistador" },
-	{ 24, "Monk" }, //War Elephant
-	{ 25, "?25" }, //Hero
-	{ 26, "?26" }, //Elephant Archer
-	{ 27, "Wall" },
-	{ 28, "?28" }, //Phalanx
-	{ 29, "?29" },
-	{ 30, "Flag" },
-	{ 31, "?31" },
-	{ 32, "Gold Mine" },
-	{ 33, "Shore Fish" },
-	{ 34, "Cliff" },
-	{ 35, "Petard" },
-	{ 36, "Cavalry Archer" },
-	{ 37, "Dolphin" },
-	{ 38, "Flying Dog" }, //Bird
-	{ 39, "Gate" },
-	{ 40, "Pile" },
-	{ 41, "Resource Pile" },
-	{ 42, "Relic" },
-	{ 43, "Monk with Relic" },
-	{ 44, "Hand Cannoneer" },
-	{ 45, "?45" }, //Two-Handed Swordsman
-	{ 46, "?46" }, //Pikeman
-	{ 47, "Scout Cavalry" },
-	{ 48, "Ore Mine" },
-	{ 49, "Farm / Fish Trap" },
-	{ 50, "?50" }, //Spearman
-	{ 51, "Packed Siege Units" },
-	{ 52, "Tower" },
-	{ 53, "Boarding Boat" },
-	{ 54, "Unpacked Siege Units" },
-	{ 55, "Scorpion" },
-	{ 56, "Raider" },
-	{ 57, "Cavalry Raider" },
-	{ 58, "Sheep/Turkey" },
-	{ 59, "King" },
-	{ 60, "?60" },
-	{ 61, "Horse" }
+	{ -1, "无" },
+	{  0, "弓兵" },
+	{  1, "文物" },
+	{  2, "商船" },
+	{  3, "建筑" },
+	{  4, "村民" },
+	{  5, "海洋鱼类" },
+	{  6, "步兵" },
+	{  7, "浆果丛" },
+	{  8, "石矿" },
+	{  9, "被捕食动物" },
+	{ 10, "攻击性动物" },
+	{ 11, "其他/死亡/投射物" },
+	{ 12, "骑兵" },
+	{ 13, "攻城武器" },
+	{ 14, "地形物" },
+	{ 15, "树木" },
+	{ 16, "树桩" },
+	{ 17, "? 治疗者" },
+	{ 18, "僧侣" },
+	{ 19, "贸易车" },
+	{ 20, "运输船" },
+	{ 21, "渔船" },
+	{ 22, "战船" },
+	{ 23, "征服者/飞镖骑兵" },
+	{ 24, "RoR:战象" },
+	{ 25, "RoR:英雄" },
+	{ 26, "RoR:象射手" },
+	{ 27, "城墙" },
+	{ 28, "RoR:方阵兵" },
+	{ 29, "RoR:驯化动物" },
+	{ 30, "旗帜" },
+	{ 31, "RoR:深海鱼类" },
+	{ 32, "金矿" },
+	{ 33, "沿海鱼类" },
+	{ 34, "悬崖" },
+	{ 35, "破坏者" },
+	{ 36, "骑射手" },
+	{ 37, "海豚" },
+	{ 38, "飞天犬" },
+	{ 39, "城门" },
+	{ 40, "废墟" },
+	{ 41, "资源堆" },
+	{ 42, "圣物" },
+	{ 43, "持物僧侣" },
+	{ 44, "火枪兵" },
+	{ 45, "? 双手剑士" },
+	{ 46, "? 长枪兵" },
+	{ 47, "斥候骑兵" },
+	{ 48, "矿石" },
+	{ 49, "农田/渔网" },
+	{ 50, "? 长矛兵" },
+	{ 51, "打包单位" },
+	{ 52, "高塔" },
+	{ 53, "登舰船" },
+	{ 54, "解包单位" },
+	{ 55, "弩炮" },
+	{ 56, "袭击者" },
+	{ 57, "袭击骑兵" },
+	{ 58, "牲畜" },
+	{ 59, "国王" },
+	{ 60, "? 杂项建筑" },
+	{ 61, "可控动物" },
 };
 
 const struct PAIR utypes[] =
 {
-	{ -1, "None" },
-	{  0, "Other" },
-	{  1, "Boar" },
-	{  2, "Building" },
-	{  3, "Civilian" },
-	{  4, "Military" },
-	{  5, "Monk w/o Relic" }
+	{ -1, "无" },
+	{  0, "其他" },
+	{  1, "野猪" },
+	{  2, "建筑" },
+	{  3, "平民" },
+	{  4, "军事" },
+	{  5, "持物僧侣" }
 };
 
 bool isHD(Game game) {
@@ -158,5 +158,5 @@ bool isHD(Game game) {
 }
 
 bool isAOE2(Game game) {
-    return game == AOK || game == AOC || isHD(game);
+    return game == AOK || game == AOC || game == UP || game == ETP || isHD(game);
 }

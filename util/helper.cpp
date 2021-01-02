@@ -57,38 +57,38 @@ std::string time_string(unsigned int seconds, bool shortened) {
     mins = mins - hours * 60;
 
     if (seconds + mins + hours == 0) {
-        convert << "no time";
+        convert << "0 秒";
     } else {
         if (hours > 0) {
             if (shortened) {
-                convert << hours << "h";
+                convert << hours << " 小时";
             } else {
-                convert << hours << " hr";
-                if (hours > 1) {
-                    convert << "s";
-                }
+                convert << hours << " 小时";
+                //if (hours > 1) {
+                //    convert << "s";
+                //}
             }
             input = true;
         }
         if (mins > 0) {
             if (shortened) {
-                convert << mins << "m";
+                convert << mins << " 分";
             } else {
                 if (input) {
                     convert << " ";
                 }
-                convert << mins << " min";
+                convert << mins << " 分钟";
             }
             input = true;
         }
         if (seconds > 0) {
             if (shortened) {
-                convert << seconds << "s";
+                convert << seconds << " 秒";
             } else {
                 if (input) {
                     convert << " ";
                 }
-                convert << seconds << " sec";
+                convert << seconds << " 秒";
             }
         }
     }
@@ -114,10 +114,10 @@ std::string playerPronoun(int p) {
     case -1:
         break;
     case 0:
-        convert << "gaia";
+        convert << "盖亚";
         break;
     default:
-        convert << "p" << p;
+        convert << "玩家" << p;
     }
     return convert.str();
 }

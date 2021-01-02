@@ -52,7 +52,7 @@ void SavePlayerAI(HWND dialog)
 }
 
 const char errorImpExpFail[] =
-"Error. Please make sure the file you selected is valid.";
+"错误。请确保选择的文件有效。";
 
 
 // FIXME: separate this alternate cohesion crap
@@ -78,7 +78,7 @@ void Players_ManageAI(HWND dialog, bool import)
 		*path = '\0';
 		ofn.lpstrFileTitle = propdata.p->ai;
 		ofn.nMaxFileTitle = _MAX_FNAME;
-		ofn.lpstrTitle = "Import AI Script";
+		ofn.lpstrTitle = "导入 AI 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_HIDEREADONLY;
 		ofn.lpstrDefExt = "per";
 
@@ -89,16 +89,16 @@ void Players_ManageAI(HWND dialog, bool import)
 				= '\0';
 			//do it
 			if (propdata.p->import_ai(path))
-				SetWindowText(propdata.statusbar, "AI successfully imported.");
+				SetWindowText(propdata.statusbar, "AI 已成功导入。");
 			else
-				MessageBox(dialog, errorImpExpFail, "AI Import", MB_OK);
+				MessageBox(dialog, errorImpExpFail, "AI 导入", MB_OK);
 		}
 	}
 	else if (propdata.p->aifile.length()) //export, so check for existence
 	{
 		strcpy(path, propdata.p->ai);
 		ofn.lpstrFileTitle = NULL;
-		ofn.lpstrTitle = "Export AI Script";
+		ofn.lpstrTitle = "导出 AI 脚本";
 		ofn.Flags = OFN_NOCHANGEDIR | OFN_NOREADONLYRETURN | OFN_OVERWRITEPROMPT;
 		ofn.lpstrDefExt = "per";
 
@@ -106,13 +106,13 @@ void Players_ManageAI(HWND dialog, bool import)
 		{
 			//do it
 			if (propdata.p->export_ai(path))
-				SetWindowText(propdata.statusbar, "AI successfully exported.");
+				SetWindowText(propdata.statusbar, "AI 已成功导出");
 			else
-				MessageBox(dialog, errorImpExpFail, "AI Export Warning", MB_ICONWARNING);
+				MessageBox(dialog, errorImpExpFail, "AI 导出警告", MB_ICONWARNING);
 		}
 	}
 	else
-		MessageBox(dialog, "Sorry, that player doesn't have an AI File.", "AI Export", MB_OK);
+		MessageBox(dialog, "抱歉，该玩家没有 AI 文件。", "AI 导出", MB_OK);
 }
 
 void PlayersAI_HandleCommand(HWND dialog, WORD code, WORD id, HWND control)
@@ -239,7 +239,7 @@ void PlayersAI_HandleCommand(HWND dialog, WORD code, WORD id, HWND control)
 }
 
 char ttAI[] =
-"Leave blank to have no AI.";
+"留空为无 AI 。";
 
 BOOL PlayersAI_Init(HWND dialog)
 {

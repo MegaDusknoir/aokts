@@ -23,11 +23,11 @@
 
 enum ediplo { NOT_DETERMINED, TEAM1, TEAM2, TEAM3, TEAM4, NEUTRAL, ALONE, FRIENDLY };
 
-const char *max_teams_names[] = { "2 Teams", "3 Teams", "4 Teams" };
-const char *num_players_names[] = { "INVALID", "1", "2", "3", "4", "5", "6", "7", "8" };
+const char *max_teams_names[] = { "2个队伍", "3个队伍", "4个队伍" };
+const char *num_players_names[] = { "无效", "1", "2", "3", "4", "5", "6", "7", "8" };
 const char *players_number_names[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-const char *team_names[] = { "Unclear", "Team 1", "Team 2", "Team 3", "Team 4", "Neutral", "No ally", "Friendly" };
-const char *gaia_team_names[] = { "Unclear", "Team 1", "Team 2", "Team 3", "Team 4", "Neutral", "Hostile", "Friendly" };
+const char *team_names[] = { "不确定", "队伍 1", "队伍 2", "队伍 3", "队伍 4", "中立", "无同盟", "友好" };
+const char *gaia_team_names[] = { "不确定", "队伍 1", "队伍 2", "队伍 3", "队伍 4", "中立", "敌意", "友好" };
 
 /*
  * Determines the teams based on the diplomacies.
@@ -390,12 +390,12 @@ BOOL Players_Init(HWND dialog)
 	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREX), L"Ore X:");
 	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREY), L"Goods:");
 	} else {
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_FOOD), L"Food:");
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_WOOD), L"Wood:");
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_GOLD), L"Gold:");
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_STONE), L"Stone:");
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREX), L"Ore X:");
-	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREY), L"Goods:");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_FOOD), L"食物：");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_WOOD), L"木材：");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_GOLD), L"黄金：");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_STONE), L"石料：");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREX), L"矿石 X:");
+	    Window_SetTextW(GetDlgItem(dialog, IDC_P_LBL_OREY), L"商品：");
 	}
 
 	return TRUE;

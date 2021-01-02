@@ -54,6 +54,69 @@ const char ctable_aok[Condition::NUM_CONDITIONS_AOHD4][EditCondition::N_CONTROLS
 	{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Chance
 };
 
+// Userpatch v1.5
+const char ctable_up[Condition::NUM_CONDITIONS_UP][EditCondition::N_CONTROLS] = // Using 0 instead of -1 to waste less space
+{	//0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// None
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0 },	// Bring Object to Area
+	{ 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Bring Object to Object
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Own Objects
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Own Fewer Objects
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 0 },	// Objects in Area
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Destroy Object
+	{ 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Capture Object
+	{ 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Accumulate Attribute
+	{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Research Technology
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Timer
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Selected
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },	// AI Signal
+	{ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Player Defeated
+	{ 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Object Has Target
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Visible
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Not Visible
+	{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Researching Tech
+	{ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Units Garrisoned
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },  // Difficulty Level
+	{ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Civilization
+	{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Chance
+};
+
+// ETP v1.7
+const char ctable_etp[Condition::NUM_CONDITIONS_ETP][EditCondition::N_CONTROLS] = // Using 0 instead of -1 to waste less space
+{	//0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// None
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0 },	// Bring Object to Area
+	{ 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Bring Object to Object
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Own Objects
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Own Fewer Objects
+	{ 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 0 },	// Objects in Area
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Destroy Object
+	{ 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Capture Object
+	{ 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Accumulate Attribute
+	{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Research Technology
+	{ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Timer
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Selected
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },	// AI Signal
+	{ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Player Defeated
+	{ 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0 },	// Object Has Target
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Visible
+	{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Object Not Visible
+	{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Researching Tech
+	{ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Units Garrisoned
+	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },  // Difficulty Level
+	{ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Civilization
+	{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Chance
+
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 地基数量小于等于
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 废墟数量小于等于
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 对战设定
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 触发激活
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 计算机玩家
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 变量值等于
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 变量值大于
+	{ 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 1 },	// 科技状态
+};
+
 // ../res/resource.h
 // go to IDC_C_AMOUNT
 
@@ -139,9 +202,14 @@ void ConditionControls(HWND dialog, int type)
 
 	const char *table;
 	switch (scen.game) {
+	case ETP:
+		table = ctable_etp[type];
+	    break;
+	case UP:
+		table = ctable_up[type];
+	    break;
 	case AOK:
 	case AOC:
-	case UP:
 	case AOHD:
 	case AOF:
 	case AOHD4:
@@ -177,8 +245,8 @@ const wchar_t *noselectc = L"<none>";
 
 void C_Init(HWND dialog)
 {
-    ENABLE_WND(IDC_C_REVERSE, scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6 || scen.game == UP || setts.editall);
-    ENABLE_WND(IDC_C_RESERVED, scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6 || scen.game == UP || setts.editall);
+    ENABLE_WND(IDC_C_REVERSE, scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6 || scen.game == UP || scen.game == ETP || setts.editall);
+    ENABLE_WND(IDC_C_RESERVED, scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6 || scen.game == UP || scen.game == ETP || setts.editall);
 	Combo_Fill(dialog, IDC_C_TYPE, Condition::types, scen.pergame->max_condition_types);
 	Combo_Fill(dialog, IDC_C_VTYPE, Condition::virtual_types, scen.pergame->max_virtual_condition_types + 1); // +1 for None option
 	Combo_Fill(dialog, IDC_C_PLAYER, players_ec, EC_NUM_PLAYERS + 1);
@@ -194,6 +262,7 @@ void LoadVirtualTypeConditions(HWND dialog, EditCondition *data) {
 
     switch (scen.game) {
     case AOC:
+    case ETP:
     case UP:
         switch (c->type) {
         case ConditionType::DifficultyLevel:
@@ -296,21 +365,21 @@ void LoadCond(HWND dialog, EditCondition *data)
 	LCombo_SelById(dialog, IDC_C_RESTYPE, c->res_type);
 	SetDlgItemInt(dialog, IDC_C_REVERSEHD, c->reverse_hd, TRUE);
 	SetDlgItemInt(dialog, IDC_C_UNKNOWNHD, c->unknown2, TRUE);
-	if (scen.game == UP) {
+	if (scen.game == UP || scen.game == ETP) {
 	    if (c->reserved == -1) {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reverse Condition"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("反向条件"));
 	    } else if (c->reserved == -256) {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Unreverse Condition"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("取消反向条件"));
 	    } else {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reset Value"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("重置"));
 	    }
 	} else if (scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6) {
 	    if (c->reverse_hd == 0) {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reverse Condition"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("反向条件"));
 	    } else if (c->reverse_hd == 1) {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Unreverse Condition"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("取消反向条件"));
 	    } else {
-	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reset Value"));
+	        SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("重置"));
 	    }
 	}
 	LoadVirtualTypeConditions(dialog, data);
@@ -439,6 +508,7 @@ void C_HandleChangeVType(HWND dialog, EditCondition *data)
 
     switch (scen.game) {
     case AOC:
+    case ETP:
     case UP:
         switch (newtype) {
         case ConditionVirtualTypeAOC::SinglePlayer:
@@ -554,7 +624,7 @@ void C_HandleChangeVType(HWND dialog, EditCondition *data)
 }
 
 const char warnInvalidC[] =
-"Watch out, this condition appears to be invalid.";
+"注意，该条件似乎是无效的。";
 
 void C_HandleCommand(HWND dialog, WORD id, WORD code, HWND)
 {
@@ -566,21 +636,21 @@ void C_HandleCommand(HWND dialog, WORD id, WORD code, HWND)
 		switch (id)
 		{
 		case IDC_C_REVERSE:
-		    if (scen.game == UP) {
+		    if (scen.game == UP || scen.game == ETP) {
 	            if (GetDlgItemInt(dialog, IDC_C_RESERVED, NULL, TRUE) == -1) {
 	                SetDlgItemInt(dialog, IDC_C_RESERVED, -256, TRUE);
-	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Unreverse Condition"));
+	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("取消反向条件"));
 	            } else {
 	                SetDlgItemInt(dialog, IDC_C_RESERVED, -1, TRUE);
-	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reverse Condition"));
+	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("反向条件"));
 	            }
 	        } else if (scen.game == AOHD4 || scen.game == AOF4 || scen.game == AOHD6 || scen.game == AOF6) {
 	            if (GetDlgItemInt(dialog, IDC_C_REVERSEHD, NULL, TRUE) == 0) {
 	                SetDlgItemInt(dialog, IDC_C_REVERSEHD, 1, TRUE);
-	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Unreverse Condition"));
+	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("取消反向条件"));
 	            } else {
 	                SetDlgItemInt(dialog, IDC_C_REVERSEHD, 0, TRUE);
-	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("Reverse Condition"));
+	                SendMessage(GetDlgItem(dialog, IDC_C_REVERSE), WM_SETTEXT, 0, (LPARAM) _T("反向条件"));
 	            }
 	        }
 	        break;
@@ -607,7 +677,7 @@ void C_HandleCommand(HWND dialog, WORD id, WORD code, HWND)
 		        valid = data->c.check_and_save();
 
 		        if (!valid && !setts.editall)
-			        ret = MessageBox(dialog, warnInvalidC, "Condition Editor", MB_OKCANCEL);
+			        ret = MessageBox(dialog, warnInvalidC, "条件编辑器", MB_OKCANCEL);
 
 		        if (ret == IDOK)
 		        {
@@ -688,7 +758,7 @@ void C_HandleCommand(HWND dialog, WORD id, WORD code, HWND)
 }
 
 const char errorNoDataC[] =
-"No Data! Functionality will be impaired.";
+"没有数据！功能将被损坏。";
 
 INT_PTR CALLBACK CondWndProc(HWND dialog, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -713,7 +783,7 @@ INT_PTR CALLBACK CondWndProc(HWND dialog, UINT msg, WPARAM wParam, LPARAM lParam
 			}
 			else
 			{
-				MessageBox(dialog, errorNoDataC, "Error", MB_ICONWARNING);
+				MessageBox(dialog, errorNoDataC, "错误", MB_ICONWARNING);
 				DestroyWindow(dialog);
 
 				ret = FALSE;

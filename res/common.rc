@@ -7,19 +7,16 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
-
+#include "afxres.h"
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// 中文(简体，中国) resources
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-#endif //_WIN32
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -70,7 +67,7 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904B0"
+        BLOCK "080404b0"
         BEGIN
             VALUE "CompanyName", "Created by David Tombs (DiGiT)"
             VALUE "FileDescription", "TS executable"
@@ -85,7 +82,7 @@ BEGIN
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x409, 1200
+        VALUE "Translation", 0x804, 1200
     END
 END
 
@@ -95,103 +92,105 @@ END
 // Menu
 //
 
-IDM_MAIN MENU 
+IDM_MAIN MENU
 BEGIN
-    POPUP "&File"
+    POPUP "&文件"
     BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_TS_FILE_NEW
-        MENUITEM "&Reopen\tCtrl+R",             ID_FILE_REOPEN
-        MENUITEM "&Open...\tCtrl+O",            ID_TS_FILE_OPEN
-        MENUITEM "&Save \tCtrl+S",              ID_TS_FILE_SAVE
-        MENUITEM "Save &As... \tCtrl+Shift+S",  ID_TS_FILE_SAVE_AS
-        MENUITEM "Save scendata.&tmp As... \tCtrl+T", ID_TS_FILE_SAVE_AS2
-        MENUITEM "&Close",                      ID_TS_FILE_CLOSE
+        MENUITEM "&新建\tCtrl+N",                 ID_TS_FILE_NEW
+        MENUITEM "&重新打开\tCtrl+R",               ID_FILE_REOPEN
+        MENUITEM "&打开...\tCtrl+O",              ID_TS_FILE_OPEN
+        MENUITEM "&保存 \tCtrl+S",                ID_TS_FILE_SAVE
+        MENUITEM "&另存为... \tCtrl+Shift+S",      ID_TS_FILE_SAVE_AS
+        MENUITEM "&保存 scendata.tmp 到... \tCtrl+T", ID_TS_FILE_SAVE_AS2
+        MENUITEM "&关闭",                         ID_TS_FILE_CLOSE
         MENUITEM SEPARATOR
-        MENUITEM "&1",                          ID_FILE_RECENT1, GRAYED
-        MENUITEM "&2",                          ID_FILE_RECENT2, GRAYED
-        MENUITEM "&3",                          ID_FILE_RECENT3, GRAYED
-        MENUITEM "&4",                          ID_FILE_RECENT4, GRAYED
+        MENUITEM "&1",                          ID_FILE_RECENT1
+        MENUITEM "&2",                          ID_FILE_RECENT2
+        MENUITEM "&3",                          ID_FILE_RECENT3
+        MENUITEM "&4",                          ID_FILE_RECENT4
         MENUITEM SEPARATOR
-        MENUITEM "&Exit",                       ID_TS_APP_EXIT
+        MENUITEM "&退出",                         ID_TS_APP_EXIT
     END
-    POPUP "&Edit"
+    POPUP "&编辑"
     BEGIN
-        MENUITEM "Cu&t\tCtrl+X",                ID_TS_EDIT_CUT, GRAYED
-        MENUITEM "&Copy\tCtrl+C",               ID_TS_EDIT_COPY, GRAYED
-        MENUITEM "&Paste\tCtrl+V",              ID_TS_EDIT_PASTE, GRAYED
-        MENUITEM "&Delete\tDel",                ID_EDIT_DELETE, GRAYED
-        MENUITEM "&Rename\tCtrl+M",             ID_EDIT_RENAME, GRAYED
-        MENUITEM "&Edit All",                   ID_EDIT_ALL, CHECKED
-    END
-    POPUP "&View"
-    BEGIN
-        MENUITEM "Status &Bar",                 ID_VIEW_STAT_BAR, CHECKED
-        MENUITEM "&Map Viewer",                 ID_VIEW_MAP, CHECKED
-        MENUITEM "&Draw Terrain (A)",           ID_DRAW_TERRAIN, CHECKED
-        MENUITEM "&Draw Elevation (V)",         ID_DRAW_ELEVATION, CHECKED
-        MENUITEM "&Draw Triggers (T)",          ID_DRAW_TRIGGERS, CHECKED
-        MENUITEM "&Draw Conditions (C)",        ID_DRAW_CONDITIONS, CHECKED
-        MENUITEM "&Draw Effects (E)",           ID_DRAW_EFFECTS, CHECKED
-        MENUITEM "&Draw Locations (L)",         ID_DRAW_LOCATIONS, CHECKED
+        MENUITEM "&剪切\tCtrl+X",                 ID_TS_EDIT_CUT
+        MENUITEM "&复制\tCtrl+C",                 ID_TS_EDIT_COPY
+        MENUITEM "&粘贴\tCtrl+V",                 ID_TS_EDIT_PASTE
+        MENUITEM "&删除\tDel",                    ID_EDIT_DELETE
+        MENUITEM "&重命名\tCtrl+M",                ID_EDIT_RENAME
+        MENUITEM "&启用所有编辑项",                    ID_EDIT_ALL, CHECKED
         MENUITEM SEPARATOR
-        MENUITEM "&Statistics...",              ID_VIEW_STATISTICS
+        MENUITEM "首选项...",                      ID_PREFERENCE
     END
-    POPUP "&Units"
+    POPUP "&视图"
     BEGIN
-        MENUITEM "Randomize look (rotation and frame)", IDC_U_RANDOMIZE_ROT
-        MENUITEM "Make water cliffs invisible (frame=1, rotation=1)", ID_MAP_WATER_CLIFF_INVISIBLE
-        MENUITEM "Make water cliffs visible (frame=0, rotation=0)", ID_MAP_WATER_CLIFF_VISIBLE
-        MENUITEM "Delete all player's units",   ID_UNITS_DELETE_ALL
-        MENUITEM "Set unit z to terrain elevation", ID_UNITS_TERRAIN_ELEV
+        MENUITEM "&状态栏",                        ID_VIEW_STAT_BAR, CHECKED
+        MENUITEM "&地图查看器",                      ID_VIEW_MAP, CHECKED
+        MENUITEM "&绘制地形 (A)",                   ID_DRAW_TERRAIN, CHECKED
+        MENUITEM "&绘制海拔 (V)",                   ID_DRAW_ELEVATION, CHECKED
+        MENUITEM "&绘制触发 (T)",                   ID_DRAW_TRIGGERS, CHECKED
+        MENUITEM "&绘制条件 (C)",                   ID_DRAW_CONDITIONS, CHECKED
+        MENUITEM "&绘制效果 (E)",                   ID_DRAW_EFFECTS, CHECKED
+        MENUITEM "&绘制位置 (L)",                   ID_DRAW_LOCATIONS, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "&统计...",                      ID_VIEW_STATISTICS
     END
-    POPUP "&Players"
+    POPUP "&单位"
     BEGIN
-        MENUITEM "Remove All AI, City Plan and VC files", IDC_U_CLEARAICPVC
+        MENUITEM "随机化外观 (相位和帧)",                IDC_U_RANDOMIZE_ROT
+        MENUITEM "使水域悬崖不可视 (帧=1, 相位=1)",        ID_MAP_WATER_CLIFF_INVISIBLE
+        MENUITEM "使水域悬崖可视 (帧=0, 相位=0)",         ID_MAP_WATER_CLIFF_VISIBLE
+        MENUITEM "删除所有玩家单位",                    ID_UNITS_DELETE_ALL
+        MENUITEM "设定单位 z 为地形海拔",                ID_UNITS_TERRAIN_ELEV
     END
-    POPUP "&Triggers"
+    POPUP "&玩家"
     BEGIN
-        MENUITEM "Expand all",                  ID_TRIGGERS_EXPAND_ALL
-        MENUITEM "Copy Scrawl",                 ID_TRIGGERS_COPY_SCRAWL
-        MENUITEM "Clear all trigger names",     ID_TRIGGERS_HIDENAMES
-        MENUITEM "Clear all trigger descriptions", ID_TRIGGERS_HIDE_DESCRIPTIONS
-        MENUITEM "Sort conditions and effects", ID_TRIGGERS_SORT_CONDS_EFFECTS
-        MENUITEM "Swap names with descriptions", ID_TRIGGERS_SWAP_NAMES_DESCRIPTIONS
-        MENUITEM "Overwrite trigger names with functionality (so can see in the in-game editor)", ID_TRIGGERS_SAVE_PSEUDONYMS
-        MENUITEM "Prefix trigger names with display order (so can find triggers in in-game editor)", ID_TRIGGERS_PREFIX_DISPLAY_ORDER
-        MENUITEM "Remove display order prefix from trigger names", ID_TRIGGERS_REMOVE_DISPLAY_ORDER_PREFIX
-        POPUP "Compatibility (for fixing scenarios only)"
+        MENUITEM "移除所有 AI，城市计划，和胜利条件文件",        IDC_U_CLEARAICPVC
+    END
+    POPUP "&触发"
+    BEGIN
+        MENUITEM "展开所有",                        ID_TRIGGERS_EXPAND_ALL
+        MENUITEM "复制概略",                        ID_TRIGGERS_COPY_SCRAWL
+        MENUITEM "清除所有触发名",                     ID_TRIGGERS_HIDENAMES
+        MENUITEM "清除所有触发描述",                    ID_TRIGGERS_HIDE_DESCRIPTIONS
+        MENUITEM "分类条件和效果",                     ID_TRIGGERS_SORT_CONDS_EFFECTS
+        MENUITEM "交换名称和描述",                     ID_TRIGGERS_SWAP_NAMES_DESCRIPTIONS
+        MENUITEM "以功能覆盖触发名称 (以在游戏内编辑器中可见)",     ID_TRIGGERS_SAVE_PSEUDONYMS
+        MENUITEM "将触发名称冠以显示顺序的前缀 (以在游戏内编辑器查找)", ID_TRIGGERS_PREFIX_DISPLAY_ORDER
+        MENUITEM "将显示顺序前缀从触发名称移除",              ID_TRIGGERS_REMOVE_DISPLAY_ORDER_PREFIX
+        POPUP "相容性 (仅供修正场景)"
         BEGIN
             MENUITEM "AoHD to UserPatch",           IDC_P_TOUP
             MENUITEM "UserPatch to AoHD",           IDC_P_TOHD
             MENUITEM "UserPatch to 1.0C",           IDC_P_TO1C
             MENUITEM "UserPatch to AOFE",           IDC_P_TOAOFE
         END
-        POPUP "Misc Refactoring"
+        POPUP "杂项重构"
         BEGIN
-            MENUITEM "Set sound file for all display instructions to null", ID_TRIGGERS_NOINSTRUCTIONSSOUND
-            MENUITEM "Set sound ID for all display instructions to 0 (None?)", ID_TRIGGERS_ZEROINSTRUCTIONSSOUNDID
-            MENUITEM "Set sound ID for all display instructions to -1 (None?)", ID_TRIGGERS_NOINSTRUCTIONSSOUNDID
-            MENUITEM "Set panel ID for all display instructions to -1 (None)", ID_TRIGGERS_NOPANEL
-            MENUITEM "Set panel ID for all display instructions to 0 (Objectives)", ID_TRIGGERS_ZEROPANEL
-            MENUITEM "Set panel ID for all display instructions to 1 (Hints)", ID_TRIGGERS_HINTSPANEL
-            MENUITEM "Set string ID for all display instructions to 0", ID_TRIGGERS_ZERODI
-            MENUITEM "Set string ID for all display instructions to -1", ID_TRIGGERS_RESETDI
+            MENUITEM "将所有显示信息的声音文件设置为 空",           ID_TRIGGERS_NOINSTRUCTIONSSOUND
+            MENUITEM "将所有显示信息的声音 ID 设置为 0 (无?)",    ID_TRIGGERS_ZEROINSTRUCTIONSSOUNDID
+            MENUITEM "将所有显示信息的声音 ID 设置为 -1 (无?)",   ID_TRIGGERS_NOINSTRUCTIONSSOUNDID
+            MENUITEM "将所有显示信息的面板 ID 设置为 -1 (无)",    ID_TRIGGERS_NOPANEL
+            MENUITEM "将所有显示信息的面板 ID 设置为 0 (任务目标)",  ID_TRIGGERS_ZEROPANEL
+            MENUITEM "将所有显示信息的面板 ID 设置为 1 (提示)",    ID_TRIGGERS_HINTSPANEL
+            MENUITEM "将所有显示信息的字符串 ID 设置为 0",        ID_TRIGGERS_ZERODI
+            MENUITEM "将所有显示信息的字符串 ID 设置为 -1",       ID_TRIGGERS_RESETDI
         END
-        MENUITEM "Confine to map boundaries",   ID_TRIGGERS_FIXTRIGGEROUTLIERS
+        MENUITEM "限制到地图边界",                     ID_TRIGGERS_FIXTRIGGEROUTLIERS
     END
-    POPUP "&Tools"
+    POPUP "&工具"
     BEGIN
-        MENUITEM "Raw &compress...",            ID_TOOLS_COMPRESS
-        MENUITEM "Raw &decompress....",         ID_TOOLS_DECOMPRESS
+        MENUITEM "&无损压缩...",                    ID_TOOLS_COMPRESS
+        MENUITEM "&无损解压缩....",                  ID_TOOLS_DECOMPRESS
         MENUITEM SEPARATOR
-        MENUITEM "Dump .&per files...",         ID_FILE_DUMP
-        MENUITEM "Write trigtext...",           ID_FILE_TRIGWRITE
+        MENUITEM "&转储 .per 文件...",              ID_FILE_DUMP
+        MENUITEM "编写触发文本...",                   ID_FILE_TRIGWRITE
     END
-    POPUP "&Help"
+    POPUP "&帮助"
     BEGIN
-        MENUITEM "&Help (F1)",                  ID_TS_HELP
+        MENUITEM "&帮助 (F1)",                    ID_TS_HELP
         MENUITEM SEPARATOR
-        MENUITEM "&About",                      ID_TS_APP_ABOUT
+        MENUITEM "&关于",                         ID_TS_APP_ABOUT
     END
 END
 
@@ -201,17 +200,18 @@ END
 // Accelerator
 //
 
-IDA_MAIN ACCELERATORS 
+IDA_MAIN ACCELERATORS
 BEGIN
-    "N",            ID_TS_FILE_NEW,         VIRTKEY, CONTROL
-    "R",            ID_FILE_REOPEN,         VIRTKEY, CONTROL
-    "O",            ID_TS_FILE_OPEN,        VIRTKEY, CONTROL
-    "S",            ID_TS_FILE_SAVE,        VIRTKEY, CONTROL
-    "S",            ID_TS_FILE_SAVE_AS,     VIRTKEY, SHIFT, CONTROL
-    "T",            ID_TS_FILE_SAVE_AS2,    VIRTKEY, CONTROL
-    "C",            ID_TS_EDIT_COPY,        VIRTKEY, CONTROL
-    "X",            ID_TS_EDIT_CUT,         VIRTKEY, CONTROL
-    "V",            ID_TS_EDIT_PASTE,       VIRTKEY, CONTROL
+    "R",            ID_FILE_REOPEN,         VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_TS_EDIT_COPY,        VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_TS_EDIT_CUT,         VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_TS_EDIT_PASTE,       VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          ID_TS_EDIT_REFRESH,     VIRTKEY, NOINVERT
+    "N",            ID_TS_FILE_NEW,         VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_TS_FILE_OPEN,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_TS_FILE_SAVE,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_TS_FILE_SAVE_AS,     VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "T",            ID_TS_FILE_SAVE_AS2,    VIRTKEY, CONTROL, NOINVERT
 END
 
 
@@ -220,97 +220,100 @@ END
 // Dialog
 //
 
-IDD_ABOUT DIALOGEX 0, 0, 237, 76
+IDD_ABOUT DIALOGEX 0, 0, 237, 84
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "关于"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
     CONTROL         1025,IDC_STATIC,"Static",SS_BITMAP,8,8,21,20
-    LTEXT           "Trigger Studio",IDC_STATIC,48,8,122,10
+    LTEXT           "Trigger Studio\n触发工作室",IDC_STATIC,48,8,122,16
     LTEXT           "Version:",IDC_STATIC,179,8,48,8
-    LTEXT           "1.2.2.79",IDC_STATIC,179,16,52,8
-    DEFPUSHBUTTON   "OK",IDOK,179,54,48,14
-    LTEXT           "Created by David Tombs (DiGiT)",IDC_STATIC,48,21,122,11
-    LTEXT           "1.0.2 by danielpereira",IDC_STATIC,48,34,122,9
+    LTEXT           "1.2.2.79d",IDC_STATIC,179,16,52,8
+    DEFPUSHBUTTON   "确定",IDOK,179,64,48,14
+    LTEXT           "Created by David Tombs (DiGiT)",IDC_STATIC,48,26,122,11
+    LTEXT           "1.0.2 by danielpereira",IDC_STATIC,48,36,122,9
     LTEXT           "1.1.0 by JustTesting1234",IDC_STATIC,48,47,122,9
-    LTEXT           "1.2.X by Shane Mulligan",IDC_STATIC,48,59,122,11
+    LTEXT           "1.2.X by Shane Mulligan",IDC_STATIC,48,58,122,11
+    LTEXT           "Localized by 夜游神",IDC_STATIC,48,69,122,11
 END
 
-IDD_CAMPAIGN DIALOGEX 0, 0, 543, 321
+IDD_CAMPAIGN DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
-CAPTION "Campaign"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "战役"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
     LISTBOX         IDC_G_SCENLIST,13,26,294,258,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
 END
 
-IDD_MSGS DIALOGEX 0, 0, 543, 321
+IDD_MSGS DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
-CAPTION "Info"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "信息"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    LTEXT           "Format Ver:",IDC_STATIC,10,9,36,10
-    LTEXT           "VERSION",IDC_G_VER,47,9,34,9
-    LTEXT           "Game:",IDC_STATIC,90,9,23,10
-    LTEXT           "GAME",IDC_G_GAME,112,9,149,9
-    LTEXT           "Timestamp:",IDC_STATIC,9,21,36,10
+    LTEXT           "格式版本：",IDC_STATIC,9,9,32,8
+    LTEXT           "VERSION",IDC_G_VER,46,9,34,9
+    LTEXT           "游戏：",IDC_STATIC,143,9,20,8
+    LTEXT           "GAME",IDC_G_GAME,164,9,97,9
+    LTEXT           "时间戳：",IDC_STATIC,9,21,26,8
     LTEXT           "TIMESTAMP",IDC_G_TIMESTAMP,46,21,93,8
-    LTEXT           "Trigger System Version:",IDC_STATIC,143,21,77,8
-    LTEXT           "TIMESTAMP",IDC_G_TRIGSYSVER,219,21,142,8
-    LTEXT           "Original Filename:",IDC_STATIC,9,33,56,8
-    LTEXT           "ORIGNAME",IDC_G_ONAME,67,33,243,8
+    LTEXT           "触发系统版本：",IDC_STATIC,143,21,45,8
+    LTEXT           "TIMESTAMP",IDC_G_TRIGSYSVER,191,21,99,8
+    LTEXT           "原始文件名：",IDC_STATIC,9,33,39,8
+    LTEXT           "ORIGNAME",IDC_G_ONAME,46,33,243,8
     COMBOBOX        IDC_M_SEL,9,46,76,75,CBS_DROPDOWNLIST | WS_TABSTOP
-    LTEXT           "String Table:",IDC_STATIC,94,48,41,8
+    LTEXT           "字符串表：",IDC_STATIC,94,48,41,8
     EDITTEXT        IDC_M_STABLE,137,46,58,12,ES_AUTOHSCROLL
-    EDITTEXT        IDC_M_MSGS,9,61,371,252,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    COMBOBOX        IDC_M_SELC,394,202,133,51,CBS_DROPDOWNLIST | WS_TABSTOP
-    EDITTEXT        IDC_M_CINEM,394,217,133,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Export Bitmap",IDC_M_EXPORT,467,233,60,27
-    CONTROL         "All Techs",IDC_G_ALLTECHS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,54,43,8
-    CONTROL         "Lock Teams",IDC_G_LOCKTEAMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,54,57,8
-    LTEXT           "Next object ID:",IDC_STATIC,212,48,48,8
+    EDITTEXT        IDC_M_MSGS,9,61,371,231,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    COMBOBOX        IDC_M_SELC,394,167,133,51,CBS_DROPDOWNLIST | WS_TABSTOP
+    EDITTEXT        IDC_M_CINEM,394,182,133,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "导出位图",IDC_M_EXPORT,467,200,60,15
+    CONTROL         "完整科技",IDC_G_ALLTECHS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,53,41,10
+    CONTROL         "锁定组队",IDC_G_LOCKTEAMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,53,41,10
+    LTEXT           "下一物件 ID：",IDC_STATIC,212,48,48,8
     EDITTEXT        IDC_G_NEXTID,260,46,50,12
-    CONTROL         "Enable UserPatch features",IDC_M_USERPATCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,271,9,99,10
-    CONTROL         "Choose Teams",IDC_G_CHOOSETEAMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,70,61,8
-    CONTROL         "Random Start Pos",IDC_G_RANDPOSITIONS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,70,72,8
-    GROUPBOX        "Game Options",IDC_STATIC,387,39,146,49
-    GROUPBOX        "Required Datasets",IDC_M_DSFRAME,387,95,146,78
-    CONTROL         "Age of Kings",IDC_DEP_AOK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,111,78,10
-    CONTROL         "The Conquerors",IDC_DEP_AOC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,126,78,10
-    CONTROL         "The Forgotten",IDC_DEP_AOF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,140,78,10
-    CONTROL         "The African Kingdoms",IDC_DEP_AOAK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,156,94,10
-    GROUPBOX        "Background Images",IDC_STATIC,387,186,146,79
-    GROUPBOX        "Editor View Coordinates",IDC_STATIC,387,274,146,39
-    LTEXT           "X:",IDC_STATIC,394,292,8,9
-    EDITTEXT        IDC_G_X,403,290,22,12
-    LTEXT           "Y:",IDC_STATIC,430,292,8,9
-    EDITTEXT        IDC_G_Y,440,290,23,12
+    CONTROL         "启用 UserPatch 功能",IDC_M_USERPATCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,299,9,75,10
+    CONTROL         "选择组队",IDC_G_CHOOSETEAMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,69,41,10
+    CONTROL         "随机起始位置",IDC_G_RANDPOSITIONS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,69,54,10
+    GROUPBOX        "游戏选项",IDC_STATIC,387,39,146,49
+    GROUPBOX        "需要的数据集",IDC_M_DSFRAME,387,95,146,49
+    CONTROL         "国王时代",IDC_DEP_AOK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,111,41,10
+    CONTROL         "征服者",IDC_DEP_AOC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,394,126,35,10
+    CONTROL         "失落帝国",IDC_DEP_AOF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,111,41,10
+    CONTROL         "非洲王朝",IDC_DEP_AOAK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,458,126,41,10
+    GROUPBOX        "背景图像",IDC_STATIC,387,151,146,69
+    GROUPBOX        "编辑器视野坐标",IDC_STATIC,387,227,146,65
+    LTEXT           "X 坐标：",IDC_STATIC,406,246,26,8
+    EDITTEXT        IDC_G_X,432,244,42,12
+    LTEXT           "Y 坐标：",IDC_STATIC,406,270,26,8
+    EDITTEXT        IDC_G_Y,432,268,42,12
+    CONTROL         "Wololokingdoms 数据库",IDC_M_WOLOLO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,299,33,88,10
+    CONTROL         "启用 ETP 触发拓展",IDC_M_ETP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,299,21,68,10
 END
 
-IDD_PLAYERS DIALOGEX 0, 0, 543, 321
+IDD_PLAYERS DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
-CAPTION "Players"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "玩家"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    LTEXT           "Num Players:",IDC_STATIC,6,9,41,10
+    LTEXT           "玩家数量：",IDC_STATIC,6,8,41,10
     COMBOBOX        IDC_P_NUM_PLAYERS,50,6,43,246,CBS_DROPDOWNLIST | WS_TABSTOP
     CONTROL         1002,IDC_STATIC,"Static",SS_BITMAP,97,6,351,84
-    LTEXT           "Max Teams:",IDC_STATIC,452,8,39,10
+    LTEXT           "最大队伍数：",IDC_STATIC,452,8,39,10
     COMBOBOX        IDC_P_MAX_TEAMS,493,6,44,246,CBS_DROPDOWNLIST | WS_TABSTOP
-    LTEXT           "Pop Limit:",IDC_STATIC,278,95,35,11
+    LTEXT           "人口上限：",IDC_STATIC,278,95,35,11
     EDITTEXT        IDC_P_POP1,278,106,29,13,ES_NUMBER
-    LTEXT           "Food:",IDC_P_LBL_FOOD,132,95,24,8
+    LTEXT           "食物：",IDC_P_LBL_FOOD,132,95,24,8
     EDITTEXT        IDC_P_FOOD1,130,106,31,13,ES_NUMBER
-    LTEXT           "Wood:",IDC_P_LBL_WOOD,168,95,22,8
+    LTEXT           "木材：",IDC_P_LBL_WOOD,168,95,22,8
     EDITTEXT        IDC_P_WOOD1,166,106,31,13,ES_NUMBER
-    LTEXT           "Gold:",IDC_P_LBL_GOLD,203,95,24,8
+    LTEXT           "黄金：",IDC_P_LBL_GOLD,203,95,24,8
     EDITTEXT        IDC_P_GOLD1,202,106,31,13,ES_NUMBER
-    LTEXT           "Stone:",IDC_P_LBL_STONE,240,95,24,8
+    LTEXT           "石料：",IDC_P_LBL_STONE,240,95,24,8
     EDITTEXT        IDC_P_STONE1,238,106,35,13,ES_NUMBER
-    LTEXT           "Name:",IDC_STATIC,21,95,21,8
+    LTEXT           "名称：",IDC_STATIC,21,95,21,8
     EDITTEXT        IDC_P_NAME1,18,106,79,13,ES_AUTOHSCROLL
-    LTEXT           "Color:",IDC_STATIC,315,95,19,8
-    LTEXT           "Play As:",IDC_STATIC,464,95,29,8
+    LTEXT           "颜色：",IDC_STATIC,315,95,19,8
+    LTEXT           "以...游戏:",IDC_STATIC,464,95,29,8
     COMBOBOX        IDC_P_P1_NUM,464,106,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_P2_NUM,464,122,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_P3_NUM,464,138,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
@@ -320,7 +323,7 @@ BEGIN
     COMBOBOX        IDC_P_P7_NUM,464,202,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_P8_NUM,464,218,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_P9_NUM,464,234,24,246,CBS_DROPDOWNLIST | WS_TABSTOP
-    LTEXT           "Civilization:",IDC_STATIC,406,95,35,10
+    LTEXT           "文明：",IDC_STATIC,403,95,35,10
     COMBOBOX        IDC_P_CIV1,402,106,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
     COMBOBOX        IDC_P_CIV2,402,122,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
     COMBOBOX        IDC_P_CIV3,402,138,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
@@ -330,7 +333,7 @@ BEGIN
     COMBOBOX        IDC_P_CIV7,402,202,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
     COMBOBOX        IDC_P_CIV8,402,218,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
     COMBOBOX        IDC_P_CIV9,402,234,58,246,CBS_DROPDOWNLIST | CBS_SORT | WS_TABSTOP
-    LTEXT           "Starting Age:",IDC_STATIC,356,95,42,8
+    LTEXT           "起始时代：",IDC_STATIC,356,95,42,8
     COMBOBOX        IDC_P_AGE1,356,106,41,165,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_P_AGE2,356,122,41,165,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_P_AGE3,356,138,41,165,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
@@ -389,7 +392,7 @@ BEGIN
     EDITTEXT        IDC_P_FOOD7,130,202,31,13,ES_NUMBER
     EDITTEXT        IDC_P_FOOD8,130,218,31,13,ES_NUMBER
     EDITTEXT        IDC_P_FOOD9,130,234,31,13,ES_NUMBER
-    LTEXT           "Human:",IDC_P_LBL_FOOD2,100,95,27,8
+    LTEXT           "人类：",IDC_P_LBL_FOOD2,103,95,20,8
     CONTROL         "",IDC_P_HUMAN1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,109,11,10
     CONTROL         "",IDC_P_HUMAN2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,141,11,10
     CONTROL         "",IDC_P_HUMAN3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,125,11,10
@@ -416,7 +419,7 @@ BEGIN
     LTEXT           "P7",IDC_STATIC,6,205,12,8
     LTEXT           "P8",IDC_STATIC,6,222,12,8
     LTEXT           "G",IDC_STATIC,6,237,12,8
-    LTEXT           "Diplomacy:",IDC_STATIC,494,95,41,8
+    LTEXT           "外交：",IDC_STATIC,494,95,41,8
     COMBOBOX        IDC_P_TEAM1,493,106,44,165,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_TEAM2,493,122,44,165,CBS_DROPDOWNLIST | WS_TABSTOP
     COMBOBOX        IDC_P_TEAM3,493,138,44,165,CBS_DROPDOWNLIST | WS_TABSTOP
@@ -428,228 +431,228 @@ BEGIN
     COMBOBOX        IDC_P_TEAM9,493,234,44,165,CBS_DROPDOWNLIST | WS_TABSTOP
 END
 
-IDD_CTY DIALOGEX 0, 0, 543, 321
+IDD_CTY DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
-CAPTION "City Plan"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "城市计划"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    CONTROL         "Player 1",IDC_P_CTY_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
-    CONTROL         "Player 2",IDC_P_CTY_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
-    CONTROL         "Player 3",IDC_P_CTY_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
-    CONTROL         "Player 4",IDC_P_CTY_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
-    CONTROL         "Player 5",IDC_P_CTY_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
-    CONTROL         "Player 6",IDC_P_CTY_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
-    CONTROL         "Player 7",IDC_P_CTY_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
-    CONTROL         "Player 8",IDC_P_CTY_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
-    CONTROL         "GAIA",IDC_P_CTY_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
-    LTEXT           "Filename:",IDC_STATIC,54,36,31,8
-    EDITTEXT        IDC_P_CTYSCRIPT,52,51,482,260,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "玩家 1",IDC_P_CTY_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
+    CONTROL         "玩家 2",IDC_P_CTY_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
+    CONTROL         "玩家 3",IDC_P_CTY_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
+    CONTROL         "玩家 4",IDC_P_CTY_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
+    CONTROL         "玩家 5",IDC_P_CTY_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
+    CONTROL         "玩家 6",IDC_P_CTY_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
+    CONTROL         "玩家 7",IDC_P_CTY_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
+    CONTROL         "玩家 8",IDC_P_CTY_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
+    CONTROL         "盖亚",IDC_P_CTY_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
+    LTEXT           "文件名：",IDC_STATIC,54,36,31,8
+    EDITTEXT        IDC_P_CTYSCRIPT,52,51,482,239,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
     EDITTEXT        IDC_P_CTY,88,34,171,12,ES_AUTOHSCROLL
-    LTEXT           "City Plan:",IDC_STATIC,54,7,30,8
-    PUSHBUTTON      "Import",IDC_P_IMCTY,52,18,29,13
-    PUSHBUTTON      "Export",IDC_P_EXCTY,81,18,29,13
-    PUSHBUTTON      "Clear",IDC_P_CLEARCTY,110,18,27,13
+    LTEXT           "城市计划：",IDC_STATIC,54,7,32,8
+    PUSHBUTTON      "导入",IDC_P_IMCTY,52,18,29,13
+    PUSHBUTTON      "导出",IDC_P_EXCTY,81,18,29,13
+    PUSHBUTTON      "清除",IDC_P_CLEARCTY,110,18,27,13
 END
 
-IDD_VICTORY DIALOGEX 0, 0, 543, 321
+IDD_VICTORY DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Victory"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "胜利"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    CONTROL         "Player 1",IDC_P_VC_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
-    CONTROL         "Player 2",IDC_P_VC_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
-    CONTROL         "Player 3",IDC_P_VC_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
-    CONTROL         "Player 4",IDC_P_VC_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
-    CONTROL         "Player 5",IDC_P_VC_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
-    CONTROL         "Player 6",IDC_P_VC_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
-    CONTROL         "Player 7",IDC_P_VC_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
-    CONTROL         "Player 8",IDC_P_VC_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
-    CONTROL         "GAIA",IDC_P_VC_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
-    LTEXT           "Victory Condition Script:",IDC_STATIC,54,7,80,8
-    PUSHBUTTON      "Import",IDC_P_IMVC,52,18,29,13
-    PUSHBUTTON      "Export",IDC_P_EXVC,81,18,29,13
-    PUSHBUTTON      "No VC",IDC_P_CLEARVC,110,18,27,13
-    LTEXT           "Filename:",IDC_STATIC,54,36,31,8
-    EDITTEXT        IDC_P_VCSCRIPT,52,51,335,260,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "玩家 1",IDC_P_VC_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
+    CONTROL         "玩家 2",IDC_P_VC_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
+    CONTROL         "玩家 3",IDC_P_VC_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
+    CONTROL         "玩家 4",IDC_P_VC_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
+    CONTROL         "玩家 5",IDC_P_VC_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
+    CONTROL         "玩家 6",IDC_P_VC_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
+    CONTROL         "玩家 7",IDC_P_VC_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
+    CONTROL         "玩家 8",IDC_P_VC_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
+    CONTROL         "盖亚",IDC_P_VC_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
+    LTEXT           "胜利条件脚本：",IDC_STATIC,54,7,45,8
+    PUSHBUTTON      "导入",IDC_P_IMVC,52,18,29,13
+    PUSHBUTTON      "导出",IDC_P_EXVC,81,18,29,13
+    PUSHBUTTON      "清除",IDC_P_CLEARVC,110,18,27,13
+    LTEXT           "文件名：",IDC_STATIC,54,36,31,8
+    EDITTEXT        IDC_P_VCSCRIPT,52,51,335,240,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
     EDITTEXT        IDC_P_VC,88,34,171,12,ES_AUTOHSCROLL
-    CONTROL         "Standard",IDC_V_SSTD,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,24,43,10
-    CONTROL         "Conquest",IDC_V_SCONQ,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,34,44,10
-    CONTROL         "Score",IDC_V_SSCORE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,45,39,10
+    CONTROL         "标准",IDC_V_SSTD,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,24,43,10
+    CONTROL         "征服",IDC_V_SCONQ,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,34,44,10
+    CONTROL         "积分",IDC_V_SSCORE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,45,39,10
     EDITTEXT        IDC_V_SCORE,445,81,39,12
-    CONTROL         "Time",IDC_V_STIME,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,55,39,10
+    CONTROL         "计时",IDC_V_STIME,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,55,39,10
     EDITTEXT        IDC_V_TIME,445,95,39,12
-    CONTROL         "Custom",IDC_V_SCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,65,39,10
-    LTEXT           "Score:",IDC_STATIC,417,83,22,8
-    LTEXT           "Time:",IDC_STATIC,421,97,18,8
-    LTEXT           "Relics:",IDC_STATIC,417,110,22,8
+    CONTROL         "定制",IDC_V_SCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,406,65,39,10
+    LTEXT           "积分：",IDC_STATIC,421,83,20,8
+    LTEXT           "计时：",IDC_STATIC,421,97,20,8
+    LTEXT           "圣物：",IDC_STATIC,421,110,20,8
     EDITTEXT        IDC_V_RELICS,445,108,39,12
-    LTEXT           "Explore %:",IDC_STATIC,405,123,34,8
+    LTEXT           "探索百分比：",IDC_STATIC,402,123,39,8
     EDITTEXT        IDC_V_EXPL,445,121,39,12
-    CONTROL         "Conquest",IDC_V_CONQUEST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,423,138,46,10
-    GROUPBOX        "Global Condition",IDC_STATIC,396,10,134,158
-    CONTROL         "All Custom Cond. Required",1305,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,423,151,100,10
+    CONTROL         "征服",IDC_V_CONQUEST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,423,138,46,10
+    GROUPBOX        "全局条件",IDC_STATIC,396,10,134,158
+    CONTROL         "需要所有定制条件",1305,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,423,151,100,10
 END
 
-IDD_TERRAIN DIALOGEX 0, 0, 543, 321
+IDD_TERRAIN DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Map"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "地图"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Map (width must equal height)",IDC_STATIC,9,11,195,51
-    LTEXT           "Size:",IDC_STATIC,16,26,16,8
-    LTEXT           "W",IDC_STATIC,39,26,8,8
+    GROUPBOX        "地图 (宽度必须等于高度)",IDC_STATIC,9,11,195,51
+    LTEXT           "尺寸：",IDC_STATIC,17,26,20,8
+    LTEXT           "宽",IDC_STATIC,39,26,8,8
     COMBOBOX        IDC_TR_SIZE,48,24,66,87,CBS_DROPDOWN | WS_TABSTOP
-    LTEXT           "H",IDC_STATIC,123,26,8,8
+    LTEXT           "高",IDC_STATIC,123,26,8,8
     COMBOBOX        IDC_TR_SIZE2,131,24,66,87,CBS_DROPDOWN | WS_TABSTOP
-    LTEXT           "AI Type:",IDC_STATIC,17,43,28,8
-    COMBOBOX        IDC_TR_AITYPE,48,41,149,300,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Selected Tile Modifications",IDC_STATIC,9,70,316,243
-    LTEXT           "X:",IDC_STATIC,17,86,8,8
-    EDITTEXT        IDC_TR_TX,27,84,28,12,ES_NUMBER
-    LTEXT           "Y:",IDC_STATIC,17,101,8,8
-    EDITTEXT        IDC_TR_TY,27,99,28,12,ES_NUMBER
-    COMBOBOX        IDC_TR_ELEV,26,133,38,87,CBS_DROPDOWN | CBS_UPPERCASE | WS_TABSTOP
-    PUSHBUTTON      "Save Tile",IDC_TR_SAVETILE,178,82,55,15
-    PUSHBUTTON      "Normalize",IDC_TR_NORMALIZE_ELEV,65,132,37,15
-    PUSHBUTTON      "Selected Terrain",IDC_TR_FLOOD,26,175,77,15
-    PUSHBUTTON      "Diamond (Single)",IDC_TR_OUTLINE,26,248,77,15
-    PUSHBUTTON      "Diamond",IDC_TR_OUTLINE_FORCE,26,230,77,15
-    PUSHBUTTON      "Swap For Entire Map",IDC_TR_SWAP_TERRAIN_TYPES,235,82,76,15
-    PUSHBUTTON      "Box (Single)",IDC_TR_OUTLINE_EIGHT,26,284,77,15
-    PUSHBUTTON      "Box",IDC_TR_OUTLINE_FORCE_EIGHT,26,266,77,15
-    PUSHBUTTON      "Selected Elevation",IDC_TR_FLOOD_ELEV,26,193,77,15
-    LISTBOX         IDC_TR_ID,118,100,197,204,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Area Modifications",IDC_STATIC,333,7,207,306
-    RTEXT           "From (L,B):",IDC_STATIC,352,22,40,10
+    LTEXT           "AI 类型：",IDC_STATIC,17,43,28,8
+    COMBOBOX        IDC_TR_AITYPE,48,41,149,251,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "选中地格修正",IDC_STATIC,9,70,316,221
+    LTEXT           "X:",IDC_STATIC,22,85,8,8
+    EDITTEXT        IDC_TR_TX,32,83,28,12,ES_NUMBER
+    LTEXT           "Y:",IDC_STATIC,69,85,8,8
+    EDITTEXT        IDC_TR_TY,79,83,28,12,ES_NUMBER
+    COMBOBOX        IDC_TR_ELEV,26,112,38,87,CBS_DROPDOWN | CBS_UPPERCASE | WS_TABSTOP
+    PUSHBUTTON      "保存地格",IDC_TR_SAVETILE,178,82,55,15
+    PUSHBUTTON      "正常化",IDC_TR_NORMALIZE_ELEV,65,111,37,15
+    PUSHBUTTON      "选中地形",IDC_TR_FLOOD,26,154,77,15
+    PUSHBUTTON      "十字 (单层)",IDC_TR_OUTLINE,26,227,77,15
+    PUSHBUTTON      "十字",IDC_TR_OUTLINE_FORCE,26,209,77,15
+    PUSHBUTTON      "全图替换",IDC_TR_SWAP_TERRAIN_TYPES,235,82,76,15
+    PUSHBUTTON      "方框 (单层)",IDC_TR_OUTLINE_EIGHT,26,263,77,15
+    PUSHBUTTON      "方框",IDC_TR_OUTLINE_FORCE_EIGHT,26,245,77,15
+    PUSHBUTTON      "选中海拔",IDC_TR_FLOOD_ELEV,26,172,77,15
+    LISTBOX         IDC_TR_ID,118,100,197,184,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "区域修正",IDC_STATIC,333,7,207,284
+    RTEXT           "从 (L,B)：",IDC_STATIC,352,22,40,10
     EDITTEXT        IDC_TR_MMX1,396,20,18,12,ES_NUMBER
     EDITTEXT        IDC_TR_MMY1,417,20,18,12,ES_NUMBER
-    PUSHBUTTON      "Set...",IDC_TR_MMSET1,440,20,29,12
-    RTEXT           "(R,T):",IDC_STATIC,352,36,40,10
+    PUSHBUTTON      "设定...",IDC_TR_MMSET1,440,20,29,12
+    RTEXT           "(R,T)：",IDC_STATIC,352,36,40,10
     EDITTEXT        IDC_TR_MMX2,396,34,18,12,ES_NUMBER
     EDITTEXT        IDC_TR_MMY2,417,34,18,12,ES_NUMBER
-    PUSHBUTTON      "Set...",IDC_TR_MMSET2,440,34,29,12
-    RTEXT           "To/Ref:",IDC_STATIC,352,50,40,10
+    PUSHBUTTON      "设定...",IDC_TR_MMSET2,440,34,29,12
+    RTEXT           "至/引用：",IDC_STATIC,352,50,40,10
     EDITTEXT        IDC_TR_MMXT,396,49,18,12,ES_NUMBER
     EDITTEXT        IDC_TR_MMYT,417,49,18,12,ES_NUMBER
-    PUSHBUTTON      "Set...",IDC_TR_MMSETT,440,49,29,12
-    PUSHBUTTON      "Copy",IDC_TR_MCCOPY,459,81,56,15
-    PUSHBUTTON      "Paste",IDC_TR_MCPASTE,459,99,56,15,WS_DISABLED
-    PUSHBUTTON      "Units",IDC_TR_RMUNITS,352,85,30,15
-    PUSHBUTTON      "Triggers",IDC_TR_RMTRIGS,385,85,45,15,WS_DISABLED
-    PUSHBUTTON      "All",IDC_TR_REPEAT,352,126,77,15
-    PUSHBUTTON      "Units",IDC_TR_REPEAT_UNITS,352,143,77,15
-    PUSHBUTTON      "Terrain",IDC_TR_REPEAT_TERRAIN,352,160,78,15
-    PUSHBUTTON      "Elevation",IDC_TR_REPEAT_ELEV,352,178,78,15
-    PUSHBUTTON      "Raise",IDC_TR_RAISE_ELEV,359,218,69,15
-    PUSHBUTTON      "Lower",IDC_TR_LOWER_ELEV,359,236,69,15
-    PUSHBUTTON      "All",IDC_TR_MMMOVE,448,133,79,15
-    PUSHBUTTON      "Units",IDC_TR_MOVE_UNITS,448,150,31,15
-    PUSHBUTTON      "Triggers",IDC_TR_MOVE_TRIGGERS,483,150,44,15
-    PUSHBUTTON      "All",IDC_TR_MMSWAP,448,185,80,15
-    PUSHBUTTON      "Terrain",IDC_TR_SWAP_TERRAIN,448,202,36,15
-    PUSHBUTTON      "Units",IDC_TR_SWAP_UNITS,448,219,36,15
-    PUSHBUTTON      "Elevations",IDC_TR_SWAP_ELEVATION,488,202,40,15
-    PUSHBUTTON      "Triggers",IDC_TR_SWAP_TRIGGERS,488,219,40,15
-    PUSHBUTTON      "Terrain",IDC_TR_MDUPT,449,262,36,15
-    PUSHBUTTON      "Units",IDC_TR_MDUPU,449,280,36,15
-    PUSHBUTTON      "Elevations",IDC_TR_MDUPE,488,262,41,15
-    PUSHBUTTON      "Triggers",IDC_TR_MDUPTR,488,280,41,15,WS_DISABLED
-    LTEXT           "Factor:",IDC_STATIC,353,282,24,8
-    EDITTEXT        IDC_TR_FACTOR,378,280,20,12,WS_DISABLED
-    LTEXT           "Constant:",IDC_STATIC,120,87,31,8
+    PUSHBUTTON      "设定...",IDC_TR_MMSETT,440,49,29,12
+    PUSHBUTTON      "复制",IDC_TR_MCCOPY,448,85,31,15
+    PUSHBUTTON      "粘贴",IDC_TR_MCPASTE,483,85,44,15,WS_DISABLED
+    PUSHBUTTON      "单位",IDC_TR_RMUNITS,352,85,30,15
+    PUSHBUTTON      "触发",IDC_TR_RMTRIGS,385,85,45,15,WS_DISABLED
+    PUSHBUTTON      "所有",IDC_TR_REPEAT,352,126,77,15
+    PUSHBUTTON      "单位",IDC_TR_REPEAT_UNITS,352,143,77,15
+    PUSHBUTTON      "地形",IDC_TR_REPEAT_TERRAIN,352,160,78,15
+    PUSHBUTTON      "海拔",IDC_TR_REPEAT_ELEV,352,178,78,15
+    PUSHBUTTON      "升高",IDC_TR_RAISE_ELEV,352,216,36,15
+    PUSHBUTTON      "降低",IDC_TR_LOWER_ELEV,393,216,36,15
+    PUSHBUTTON      "所有",IDC_TR_MMMOVE,448,124,79,15
+    PUSHBUTTON      "单位",IDC_TR_MOVE_UNITS,448,141,31,15
+    PUSHBUTTON      "触发",IDC_TR_MOVE_TRIGGERS,483,141,44,15
+    PUSHBUTTON      "所有",IDC_TR_MMSWAP,448,176,80,15
+    PUSHBUTTON      "地形",IDC_TR_SWAP_TERRAIN,448,193,36,15
+    PUSHBUTTON      "单位",IDC_TR_SWAP_UNITS,448,210,36,15
+    PUSHBUTTON      "海拔",IDC_TR_SWAP_ELEVATION,488,193,40,15
+    PUSHBUTTON      "触发",IDC_TR_SWAP_TRIGGERS,488,210,40,15
+    PUSHBUTTON      "地形",IDC_TR_MDUPT,449,244,36,15
+    PUSHBUTTON      "单位",IDC_TR_MDUPU,449,262,36,15
+    PUSHBUTTON      "海拔",IDC_TR_MDUPE,488,244,41,15
+    PUSHBUTTON      "触发",IDC_TR_MDUPTR,488,262,41,15,WS_DISABLED
+    LTEXT           "因数：",IDC_STATIC,353,262,20,8
+    EDITTEXT        IDC_TR_FACTOR,374,261,22,12,WS_DISABLED
+    LTEXT           "地形 ID：",IDC_STATIC,120,87,31,8
     LTEXT           "CNST",IDC_TR_CONST,152,87,20,10
     LTEXT           "1:",IDC_STATIC,225,28,10,10
     LTEXT           "2:",IDC_STATIC,225,42,10,10
     LTEXT           "3:",IDC_STATIC,275,27,10,10
     LTEXT           "4:",IDC_STATIC,275,42,10,10
     EDITTEXT        IDC_TR_UNK1,237,26,30,12,ES_NUMBER
-    EDITTEXT        IDC_TR_UNK2,237,39,30,12,ES_NUMBER
+    EDITTEXT        IDC_TR_UNK2,237,40,30,12,ES_NUMBER
     EDITTEXT        IDC_TR_UNK3,286,26,30,12,ES_NUMBER
     EDITTEXT        IDC_TR_UNK4,286,40,30,12,ES_NUMBER
-    PUSHBUTTON      "Clear Coordinates",IDC_TR_CLEAR,479,27,45,28,BS_MULTILINE
-    GROUPBOX        "Elevation",IDC_STATIC,345,202,92,58
-    GROUPBOX        "Repeat Ref Over Area",IDC_STATIC,345,112,91,87
-    GROUPBOX        "Delete",IDC_STATIC,345,70,92,37
-    GROUPBOX        "Duplicate",IDC_STATIC,442,246,93,58
-    GROUPBOX        "Swap Area With Area",IDC_STATIC,442,173,92,66
-    GROUPBOX        "Move Area To",IDC_STATIC,442,121,92,49
-    GROUPBOX        "Clipboard",IDC_STATIC,442,70,92,49
-    GROUPBOX        "Scale",IDC_STATIC,345,263,92,41
-    PUSHBUTTON      "Scale",IDC_TR_SCALE,399,279,32,15,WS_DISABLED
-    GROUPBOX        "Unknowns",IDC_STATIC,213,11,111,51
-    GROUPBOX        "Outline",IDC_STATIC,18,217,93,88
-    GROUPBOX        "Flood Fill Terrain With",IDC_STATIC,17,161,94,53
-    GROUPBOX        "Elevation (Normally 0 to 6)",IDC_STATIC,17,119,94,36
+    PUSHBUTTON      "清除坐标",IDC_TR_CLEAR,479,27,45,28,BS_MULTILINE
+    GROUPBOX        "海拔",IDC_STATIC,345,202,92,39
+    GROUPBOX        "在区域重复引用",IDC_STATIC,345,112,91,87
+    GROUPBOX        "删除",IDC_STATIC,345,70,92,37
+    GROUPBOX        "复制",IDC_STATIC,442,232,93,52
+    GROUPBOX        "交换区域",IDC_STATIC,442,164,92,66
+    GROUPBOX        "移动区域",IDC_STATIC,442,112,92,49
+    GROUPBOX        "剪贴板",IDC_STATIC,442,70,92,37
+    GROUPBOX        "缩放",IDC_STATIC,345,243,92,41
+    PUSHBUTTON      "缩放",IDC_TR_SCALE,399,259,32,15,WS_DISABLED
+    GROUPBOX        "未知",IDC_STATIC,213,11,111,51
+    GROUPBOX        "地形块描边",IDC_STATIC,18,196,93,88
+    GROUPBOX        "替换地形块为",IDC_STATIC,17,140,94,53
+    GROUPBOX        "海拔 (正常 0 至 6)",IDC_STATIC,17,98,94,36
 END
 
-IDD_UNITS DIALOGEX 0, 0, 543, 321
+IDD_UNITS DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Units"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "单位"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
     COMBOBOX        IDC_U_SELP,10,10,83,262,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Sort By:",IDC_STATIC,110,13,26,8
+    LTEXT           "分类依据：",IDC_STATIC,107,12,32,8
     COMBOBOX        IDC_U_SORT,138,10,52,198,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Re-sort",IDC_U_RESORT,191,10,37,13
-    LISTBOX         IDC_U_SELU,10,26,219,285,LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "1",IDC_U_MAKEP1,246,260,18,14
-    PUSHBUTTON      "2",IDC_U_MAKEP2,246,277,18,14
-    PUSHBUTTON      "3",IDC_U_MAKEP3,246,293,18,14
-    PUSHBUTTON      "4",IDC_U_MAKEP4,268,260,18,14
-    PUSHBUTTON      "5",IDC_U_MAKEP5,268,277,18,14
-    PUSHBUTTON      "6",IDC_U_MAKEP6,268,293,18,14
-    PUSHBUTTON      "7",IDC_U_MAKEP7,290,260,18,14
-    PUSHBUTTON      "8",IDC_U_MAKEP8,290,277,18,14
-    PUSHBUTTON      "G",IDC_U_MAKEGA,290,293,18,14
-    LTEXT           "Constant:",IDC_STATIC,479,13,31,8
-    LTEXT           "CNST",IDC_U_CONST,511,13,20,10
-    LTEXT           "X-Pos:",IDC_STATIC,241,46,22,8
+    PUSHBUTTON      "重新分类",IDC_U_RESORT,191,10,37,13
+    LISTBOX         IDC_U_SELU,10,26,219,263,LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "1",IDC_U_MAKEP1,242,253,18,11
+    PUSHBUTTON      "2",IDC_U_MAKEP2,268,253,18,11
+    PUSHBUTTON      "3",IDC_U_MAKEP3,294,253,18,11
+    PUSHBUTTON      "4",IDC_U_MAKEP4,242,265,18,11
+    PUSHBUTTON      "5",IDC_U_MAKEP5,268,265,18,11
+    PUSHBUTTON      "6",IDC_U_MAKEP6,294,265,18,11
+    PUSHBUTTON      "7",IDC_U_MAKEP7,242,277,18,11
+    PUSHBUTTON      "8",IDC_U_MAKEP8,268,277,18,11
+    PUSHBUTTON      "G",IDC_U_MAKEGA,294,277,18,11
+    LTEXT           "类型 ID：",IDC_STATIC,479,12,31,8
+    LTEXT           "CNST",IDC_U_CONST,511,12,20,10
+    LTEXT           "X 坐标：",IDC_STATIC,241,46,26,8
     EDITTEXT        IDC_U_X,273,44,28,12
-    LTEXT           "Y-Pos:",IDC_STATIC,241,61,22,8
+    LTEXT           "Y 坐标：",IDC_STATIC,241,61,26,8
     EDITTEXT        IDC_U_Y,273,59,28,12
-    LTEXT           "Z-Pos:",IDC_STATIC,241,76,22,8
+    LTEXT           "Z 坐标：",IDC_STATIC,241,76,26,8
     EDITTEXT        IDC_U_Z,273,74,28,12
-    LTEXT           "Rotation:",IDC_STATIC,239,90,30,8,0x2000
+    LTEXT           "相位：",IDC_STATIC,241,90,20,8,0x2000
     EDITTEXT        IDC_U_ROTATE_VAL,273,89,28,12
     COMBOBOX        IDC_U_ROTATE,273,105,29,84,CBS_DROPDOWNLIST | WS_TABSTOP
     LTEXT           "pi",IDC_STATIC,305,107,8,8,0x2000
-    LTEXT           "Frame:",IDC_STATIC,239,123,31,8,0x2000
+    LTEXT           "帧：",IDC_STATIC,241,123,14,8,0x2000
     EDITTEXT        IDC_U_FRAME,273,121,28,12
-    LTEXT           "Garrison:",IDC_STATIC,239,138,30,8,0x2000
+    LTEXT           "驻扎：",IDC_STATIC,241,138,20,8,0x2000
     EDITTEXT        IDC_U_GARRISON,273,136,40,12
-    LTEXT           "Unit ID:",IDC_STATIC,239,154,25,8
+    LTEXT           "单位 ID：",IDC_STATIC,241,154,28,8
     EDITTEXT        IDC_U_ID,273,152,40,12
-    LTEXT           "State:",IDC_STATIC,239,169,25,8
+    LTEXT           "状态：",IDC_STATIC,241,169,20,8
     EDITTEXT        IDC_U_STATE,273,167,40,12
-    LTEXT           "Next avail ID:",IDC_STATIC_NEXT_AVAIL,240,14,46,12
-    LTEXT           "ID",IDC_U_NEXT_AVAIL,288,14,27,10
-    PUSHBUTTON      "Deselect",IDC_U_DESELECT,234,183,43,14
-    PUSHBUTTON      "Add",IDC_U_ADD,234,199,43,14
-    PUSHBUTTON      "Delete",IDC_U_DEL,280,199,41,14
-    PUSHBUTTON      "Delete all of type",IDC_U_DEL_TYPE,234,215,87,14
-    PUSHBUTTON      "Renumber",IDC_U_RENUMBER,240,25,75,14
-    LTEXT           "List Type:",IDC_STATIC,326,13,32,10
+    LTEXT           "下一可用 ID：",IDC_STATIC_NEXT_AVAIL,240,12,40,8
+    LTEXT           "ID",IDC_U_NEXT_AVAIL,288,12,27,10
+    PUSHBUTTON      "取消选择",IDC_U_DESELECT,234,182,43,14
+    PUSHBUTTON      "新增",IDC_U_ADD,234,198,43,14
+    PUSHBUTTON      "删除",IDC_U_DEL,280,198,41,14
+    PUSHBUTTON      "删除同类所有",IDC_U_DEL_TYPE,234,214,87,14
+    PUSHBUTTON      "重新分配 ID",IDC_U_RENUMBER,240,25,75,14
+    LTEXT           "列表类型：",IDC_STATIC,328,12,32,10
     COMBOBOX        IDC_U_TYPE,365,10,103,229,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LISTBOX         IDC_U_UNIT,326,26,205,285,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Change Ownership",IDC_STATIC,241,250,72,61
-    PUSHBUTTON      "Change type for all",IDC_U_CHANGE_TYPE,234,231,87,14
-    PUSHBUTTON      "Save",IDC_U_SAVETYPE,280,183,41,14
+    LISTBOX         IDC_U_UNIT,326,26,205,263,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "变更所有权",IDC_STATIC,235,244,85,45
+    PUSHBUTTON      "改变同类所有",IDC_U_CHANGE_TYPE,234,230,87,14
+    PUSHBUTTON      "保存",IDC_U_SAVETYPE,280,182,41,14
 END
 
-IDD_DISABLES DIALOGEX 0, 0, 543, 321
+IDD_DISABLES DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Disables"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "禁用"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    COMBOBOX        IDC_D_SPLY,10,15,70,283,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    COMBOBOX        IDC_D_STYPE,10,32,70,268,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LISTBOX         IDC_D_ALL,88,10,188,301,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_D_SPLY,10,15,70,275,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_D_STYPE,10,32,70,258,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_D_ALL,88,26,188,264,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "<<",IDC_D_CLR,297,93,22,19
     PUSHBUTTON      "<",IDC_D_DEL,297,70,22,19
     PUSHBUTTON      ">",IDC_D_ADD,297,47,22,19
     PUSHBUTTON      ">>",IDC_D_FILL,297,24,22,19,WS_DISABLED
-    LISTBOX         IDC_D_SEL,342,10,191,301,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Copy Into Player",IDC_STATIC,10,59,70,162
+    LISTBOX         IDC_D_SEL,342,26,191,264,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "复制到玩家",IDC_STATIC,10,59,70,162
     PUSHBUTTON      "P1",IDC_D_COPY_INTO_P1,34,76,20,14
     PUSHBUTTON      "P2",IDC_D_COPY_INTO_P2,34,92,20,14
     PUSHBUTTON      "P3",IDC_D_COPY_INTO_P3,34,108,20,14
@@ -658,94 +661,101 @@ BEGIN
     PUSHBUTTON      "P6",IDC_D_COPY_INTO_P6,34,156,20,14
     PUSHBUTTON      "P7",IDC_D_COPY_INTO_P7,34,172,20,14
     PUSHBUTTON      "P8",IDC_D_COPY_INTO_P8,34,188,20,14
-    PUSHBUTTON      "All",IDC_D_COPY_INTO_ALL,34,204,20,14
+    PUSHBUTTON      "所有",IDC_D_COPY_INTO_ALL,34,204,20,14
+    LTEXT           "可用项目：",IDC_STATIC,91,15,32,8
+    LTEXT           "禁用项目：",IDC_STATIC,346,15,32,8
 END
 
-IDD_TRIGGERS DIALOGEX 0, 0, 543, 321
+IDD_TRIGGERS DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
-CAPTION "Triggers"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "触发"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    CONTROL         "Show <Display Order>",IDC_T_SHOWDISPLAYORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,2,84,13
-    CONTROL         "Show (ID)",IDC_T_SHOWFIREORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,96,2,45,13
-    PUSHBUTTON      "Sync ID to DO",IDC_T_SYNC,335,2,57,13
-    CONTROL         "Show Names",IDC_T_SHOWTRIGNAMES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,148,2,57,13
-    CONTROL         "Show Functionality",IDC_T_PSEUDONYMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,210,2,77,13
-    CONTROL         "Tree1",IDC_T_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_EDITLABELS | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,3,16,390,302,WS_EX_CLIENTEDGE
-    LTEXT           "Description:",IDC_STATIC,397,6,38,8
-    LTEXT           "Objective Order",IDC_STATIC,451,6,56,8
-    EDITTEXT        IDC_T_ORDER,507,3,32,13,ES_AUTOHSCROLL | ES_NUMBER
-    EDITTEXT        IDC_T_DESC,397,17,142,67,ES_MULTILINE | ES_WANTRETURN | WS_VSCROLL
-    CONTROL         "Starts On",IDC_T_STATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,399,86,45,11
-    CONTROL         "Looping",IDC_T_LOOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,449,86,41,11
-    CONTROL         "Objective",IDC_T_OBJ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,494,86,46,11
-    CONTROL         "Flash Objectives at start",IDC_T_OBJSTATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,399,99,138,11
-    LTEXT           "ID:",IDC_STATIC,399,115,20,8
-    EDITTEXT        IDC_T_DESCID,415,113,26,12,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
-    LTEXT           "Objective string ID:",IDC_STATIC,449,115,63,8
-    EDITTEXT        IDC_T_UNKNOWN,513,113,26,12,ES_AUTOHSCROLL | ES_NUMBER
-    PUSHBUTTON      "Deselect",IDC_T_DESELECT,398,129,70,17,WS_DISABLED
-    PUSHBUTTON      "New Trigger",IDC_T_ADD,471,129,70,17
-    PUSHBUTTON      "Edit / Rename",IDC_T_EDIT,398,148,70,17,WS_DISABLED
-    PUSHBUTTON      "New Condition",IDC_T_NCOND,471,148,70,17,WS_DISABLED
-    PUSHBUTTON      "Go to (BackSpace)",IDC_T_GOTO,398,167,70,17,WS_DISABLED
-    PUSHBUTTON      "New Effect",IDC_T_NEFFECT,471,167,70,17,WS_DISABLED
-    PUSHBUTTON      "Duplicate For All Players",IDC_T_DUPP,398,186,89,18,WS_DISABLED
-    GROUPBOX        "Multi-trigger Operations",IDC_STATIC,398,206,143,112
-    LTEXT           "Range:",IDC_STATIC,402,220,26,11
-    EDITTEXT        IDC_T_START,447,219,40,12,ES_NUMBER
-    LTEXT           "-",IDC_STATIC,489,222,8,8
-    EDITTEXT        IDC_T_END,498,219,40,12,ES_NUMBER
-    LTEXT           "Destination",IDC_STATIC,402,235,41,10
-    EDITTEXT        IDC_T_DEST,498,235,40,12,ES_NUMBER
-    GROUPBOX        "Using Display Orders",IDC_STATIC,402,249,136,28
-    PUSHBUTTON      "Move",IDC_T_MOVE,412,259,55,15
-    PUSHBUTTON      "Duplicate",IDC_T_DUPRANGE,470,259,54,15,WS_DISABLED
-    GROUPBOX        "Using Trigger IDs",IDC_STATIC,402,282,136,30
-    PUSHBUTTON      "Add Activation",IDC_T_ADD_ACTIVATION,412,292,55,15
-    PUSHBUTTON      "Delete",IDC_T_DELETE,470,292,55,15
-    CONTROL         "By Source",IDC_T_SOURCE,"Button",BS_AUTORADIOBUTTON,490,187,50,10
-    CONTROL         "By Target",IDC_T_TARGET,"Button",BS_AUTORADIOBUTTON,490,198,50,10
+    CONTROL         "显示触发显示顺序",IDC_T_SHOWDISPLAYORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,4,66,10
+    CONTROL         "显示触发 ID",IDC_T_SHOWFIREORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,82,4,49,10
+    PUSHBUTTON      "按显示顺序重新分配 ID",IDC_T_SYNC,317,2,74,14
+    CONTROL         "显示触发名称",IDC_T_SHOWTRIGNAMES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,4,54,10
+    CONTROL         "显示触发功能",IDC_T_PSEUDONYMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,198,4,54,10
+    CONTROL         "Tree1",IDC_T_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_EDITLABELS | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,3,17,390,278,WS_EX_CLIENTEDGE
+    LTEXT           "描述：",IDC_STATIC,397,6,20,8
+    LTEXT           "任务目标顺序：",IDC_STATIC,451,6,45,8
+    EDITTEXT        IDC_T_ORDER,496,3,43,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_T_DESC,397,17,142,45,ES_MULTILINE | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "开启",IDC_T_STATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,494,78,29,10
+    CONTROL         "循环",IDC_T_LOOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,494,91,29,10
+    CONTROL         "任务目标",IDC_T_OBJ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,494,65,41,10
+    CONTROL         "起始时闪烁任务目标",IDC_T_OBJSTATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,399,65,73,10
+    LTEXT           "ID:",IDC_STATIC,399,91,20,8
+    EDITTEXT        IDC_T_DESCID,432,89,33,12,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "字符串表：",IDC_STATIC,399,78,32,8
+    EDITTEXT        IDC_T_UNKNOWN,432,76,33,12,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "取消选择",IDC_T_DESELECT,446,124,45,17,WS_DISABLED
+    PUSHBUTTON      "新建触发",IDC_T_ADD,398,103,45,17
+    PUSHBUTTON      "编辑 / 重命名",IDC_T_EDIT,398,124,45,17,WS_DISABLED
+    PUSHBUTTON      "新建条件",IDC_T_NCOND,446,103,45,17,WS_DISABLED
+    PUSHBUTTON      "转到",IDC_T_GOTO,494,124,45,17,WS_DISABLED
+    PUSHBUTTON      "新建效果",IDC_T_NEFFECT,494,103,45,17,WS_DISABLED
+    PUSHBUTTON      "复制到所有玩家",IDC_T_DUPP,412,152,55,20,WS_DISABLED
+    GROUPBOX        "多触发操作",IDC_STATIC,398,200,143,95
+    LTEXT           "范围：",IDC_STATIC,413,210,26,11
+    EDITTEXT        IDC_T_START,447,209,40,12,ES_NUMBER
+    LTEXT           "-",IDC_STATIC,489,212,8,8
+    EDITTEXT        IDC_T_END,498,209,40,12,ES_NUMBER
+    LTEXT           "目的地：",IDC_STATIC,413,225,41,10
+    EDITTEXT        IDC_T_DEST,498,225,40,12,ES_NUMBER
+    GROUPBOX        "使用显示顺序",IDC_STATIC,402,240,67,50
+    PUSHBUTTON      "移动",IDC_T_MOVE,408,250,55,15
+    PUSHBUTTON      "复制",IDC_T_DUPRANGE,408,269,54,15,WS_DISABLED
+    GROUPBOX        "使用触发 ID",IDC_STATIC,474,240,64,50
+    PUSHBUTTON      "增加激活",IDC_T_ADD_ACTIVATION,479,250,55,15
+    PUSHBUTTON      "删除",IDC_T_DELETE,479,269,55,15
+    CONTROL         "根据来源",IDC_T_SOURCE,"Button",BS_AUTORADIOBUTTON,485,148,41,10
+    CONTROL         "根据目标",IDC_T_TARGET,"Button",BS_AUTORADIOBUTTON,485,158,41,10
+    CONTROL         "变换信息文本",IDC_T_MESSAGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,485,179,50,10
+    GROUPBOX        "多玩家复制",IDC_STATIC,398,142,143,53
+    CONTROL         "自动根据",IDC_T_AUTO,"Button",BS_AUTORADIOBUTTON,485,168,41,10
+    PUSHBUTTON      "逆向操作",IDC_T_DEDUPP,412,175,55,14,WS_DISABLED
 END
 
-IDD_MAPINSPECT DIALOGEX 0, 0, 419, 321
+IDD_MAPINSPECT DIALOGEX 0, 0, 419, 300
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
-CAPTION "MapInspect"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "地图查看器"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
 END
 
-IDD_TRIGTEXT DIALOGEX 0, 0, 543, 321
+IDD_TRIGTEXT DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
-CAPTION "Trigtext"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "触发文本"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    PUSHBUTTON      "Write trigtext...",IDC_TT_EXPORT,5,6,70,17
-    EDITTEXT        IDC_TT_VIEW,5,41,532,275,ES_MULTILINE | ES_AUTOVSCROLL | ES_NOHIDESEL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
-    EDITTEXT        IDC_TT_SEARCHTEXT,122,6,113,17,ES_AUTOHSCROLL
-    PUSHBUTTON      "Find",IDC_TT_FINDNEXT,236,6,37,17
-    LTEXT           "Context (num characters):",IDC_STATIC,281,10,82,9
-    CTEXT           "Click the map to search trigtext for those coordinates (click the little squares on the map).",IDC_STATIC,64,27,407,10
-    EDITTEXT        IDC_TT_CONTEXT,365,10,47,8,ES_AUTOHSCROLL | NOT WS_BORDER
+    PUSHBUTTON      "编写触发文本...",IDC_TT_EXPORT,5,6,70,17
+    EDITTEXT        IDC_TT_VIEW,5,41,532,254,ES_MULTILINE | ES_AUTOVSCROLL | ES_NOHIDESEL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_TT_SEARCHTEXT,161,8,113,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "查找",IDC_TT_FINDNEXT,275,6,37,17
+    LTEXT           "上下文范围（字符）：",IDC_STATIC,320,10,64,8
+    CTEXT           "点击地图以根据坐标搜索触发文本（点击地图上的小正方形）。",IDC_STATIC,64,27,407,10
+    EDITTEXT        IDC_TT_CONTEXT,386,8,47,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "导入触发文本...",IDC_TT_IMPORT,82,6,70,17,WS_DISABLED
 END
 
 IDD_STATS DIALOGEX 0, 0, 160, 168
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Scenario Statistics"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "场景统计"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    LTEXT           "Players:",IDC_STATIC,8,8,48,8
-    LTEXT           "Player 1",IDC_STATIC,8,17,48,8
-    LTEXT           "Player 2",IDC_STATIC,8,26,48,8
-    LTEXT           "Player 3",IDC_STATIC,8,35,48,8
-    LTEXT           "Player 4",IDC_STATIC,8,44,48,8
-    LTEXT           "Player 5",IDC_STATIC,8,53,48,8
-    LTEXT           "Player 6",IDC_STATIC,8,62,48,8
-    LTEXT           "Player 7",IDC_STATIC,8,71,48,8
-    LTEXT           "Player 8",IDC_STATIC,8,80,48,8
-    LTEXT           "Gaia",IDC_STATIC,8,89,48,8
-    LTEXT           "All",IDC_STATIC,8,98,48,8
-    LTEXT           "Units:",IDC_STATIC,56,8,48,8
+    LTEXT           "玩家：",IDC_STATIC,8,8,48,8
+    LTEXT           "玩家 1",IDC_STATIC,8,17,48,8
+    LTEXT           "玩家 2",IDC_STATIC,8,26,48,8
+    LTEXT           "玩家 3",IDC_STATIC,8,35,48,8
+    LTEXT           "玩家 4",IDC_STATIC,8,44,48,8
+    LTEXT           "玩家 5",IDC_STATIC,8,53,48,8
+    LTEXT           "玩家 6",IDC_STATIC,8,62,48,8
+    LTEXT           "玩家 7",IDC_STATIC,8,71,48,8
+    LTEXT           "玩家 8",IDC_STATIC,8,80,48,8
+    LTEXT           "盖亚",IDC_STATIC,8,89,48,8
+    LTEXT           "所有",IDC_STATIC,8,98,48,8
+    LTEXT           "单位：",IDC_STATIC,56,8,48,8
     LTEXT           "U1",IDC_S_UNITS1,56,17,48,8
     LTEXT           "U2",IDC_S_UNITS2,56,26,48,8
     LTEXT           "U3",IDC_S_UNITS3,56,35,48,8
@@ -756,7 +766,7 @@ BEGIN
     LTEXT           "U8",IDC_S_UNITS8,56,80,48,8
     LTEXT           "U9",IDC_S_UNITS9,56,89,48,8
     LTEXT           "U",IDC_S_UNITS,56,98,48,8
-    LTEXT           "Disabled:",IDC_STATIC,104,8,48,8
+    LTEXT           "禁用：",IDC_STATIC,104,8,48,8
     LTEXT           "D1",IDC_S_DISABLE1,104,17,48,8
     LTEXT           "D2",IDC_S_DISABLE2,104,26,48,8
     LTEXT           "D3",IDC_S_DISABLE3,104,35,48,8
@@ -767,286 +777,306 @@ BEGIN
     LTEXT           "D8",IDC_S_DISABLE8,104,80,48,8
     LTEXT           "D9",IDC_S_DISABLE9,104,89,48,8
     LTEXT           "D",IDC_S_DISABLE,104,98,48,8
-    LTEXT           "Triggers:",IDC_STATIC,8,112,48,8
+    LTEXT           "触发：",IDC_STATIC,8,112,48,8
     LTEXT           "TRIGGERS",IDC_S_TRIGGERS,56,112,48,8
-    LTEXT           "Conditions:",IDC_STATIC,8,121,48,8
+    LTEXT           "条件：",IDC_STATIC,8,121,48,8
     LTEXT           "CONDS",IDC_S_CONDITIONS,56,121,48,8
-    LTEXT           "Effects:",IDC_STATIC,8,130,48,8
+    LTEXT           "效果：",IDC_STATIC,8,130,48,8
     LTEXT           "EFFECTS",IDC_S_EFFECTS,56,130,48,8
-    LTEXT           "Max Players:",IDC_STATIC,104,112,44,8
+    LTEXT           "最大玩家数：",IDC_STATIC,104,112,44,8
     LTEXT           "P",IDC_S_PLAYERS,148,112,4,8
-    LTEXT           "Map Size:",IDC_STATIC,104,130,36,8
+    LTEXT           "地图尺寸：",IDC_STATIC,104,130,36,8
     LTEXT           "MAPSIZE",IDC_S_MAPSIZE,140,130,12,8
-    DEFPUSHBUTTON   "OK",IDOK,56,146,48,14
+    DEFPUSHBUTTON   "确定",IDOK,56,146,48,14
 END
 
 IDD_COND DIALOGEX 0, 0, 249, 222
 STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Condition Editor"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+CAPTION "条件编辑器"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    LTEXT           "Type:",IDC_STATIC,5,8,20,8
+    LTEXT           "类型：",IDC_STATIC,5,8,20,8
     LTEXT           "-1",IDC_C_TYPEVAL,24,8,24,8
     COMBOBOX        IDC_C_TYPE,58,5,141,271,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Virtual Type:",IDC_STATIC,5,24,47,8
+    LTEXT           "虚拟类型：",IDC_STATIC,5,24,32,8
     COMBOBOX        IDC_C_VTYPE,58,21,141,271,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "OK",IDOK,204,4,40,14
-    PUSHBUTTON      "Cancel",IDCANCEL,204,20,40,14
-    PUSHBUTTON      "Clear All",IDC_C_CLEAR,204,37,40,14
-    LTEXT           "Player:",IDC_STATIC,5,40,22,8
+    PUSHBUTTON      "确定",IDOK,204,4,40,14
+    PUSHBUTTON      "取消",IDCANCEL,204,20,40,14
+    PUSHBUTTON      "清除所有",IDC_C_CLEAR,204,37,40,14
+    LTEXT           "玩家：",IDC_STATIC,5,40,20,8
     COMBOBOX        IDC_C_PLAYER,58,38,141,138,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Primary Unit:",IDC_STATIC,5,55,40,8
+    LTEXT           "主要单位：",IDC_STATIC,5,55,32,8
     EDITTEXT        IDC_C_UIDOBJ,58,53,124,12,ES_AUTOHSCROLL | ES_NUMBER
     PUSHBUTTON      "...",IDC_C_USEL1,186,55,13,10
-    LTEXT           "Secondary Unit:",IDC_STATIC,5,70,52,8
+    LTEXT           "次要单位：",IDC_STATIC,5,70,32,8
     EDITTEXT        IDC_C_UIDLOC,58,68,124,12,ES_AUTOHSCROLL | ES_NUMBER
     PUSHBUTTON      "...",IDC_C_USEL2,186,70,13,10
-    LTEXT           "Unit Constant:",IDC_STATIC,5,85,46,8
+    LTEXT           "单位常量：",IDC_STATIC,5,85,32,8
     COMBOBOX        IDC_C_UCNST,58,83,186,175,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Unit Class:",IDC_STATIC,5,100,36,8
+    LTEXT           "单位种属：",IDC_STATIC,5,100,32,8
     COMBOBOX        IDC_C_GROUP,58,98,186,163,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Unit Type:",IDC_STATIC,5,115,34,8
+    LTEXT           "单位类型：",IDC_STATIC,5,115,32,8
     COMBOBOX        IDC_C_UTYPE,58,113,186,165,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Area:",IDC_STATIC,5,130,20,9
-    PUSHBUTTON      "Entire Map",IDC_C_AREA_ALL,57,128,43,13
+    LTEXT           "区域：",IDC_STATIC,5,130,20,8
+    PUSHBUTTON      "整个地图",IDC_C_AREA_ALL,57,128,43,13
     EDITTEXT        IDC_C_AREAX1,106,128,25,12,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           ",",IDC_STATIC,133,130,8,8
     EDITTEXT        IDC_C_AREAY1,140,128,25,12,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "to",IDC_STATIC,172,130,8,8
+    LTEXT           "至",IDC_STATIC,172,130,8,8
     EDITTEXT        IDC_C_AREAX2,185,128,25,12,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           ",",IDC_STATIC,212,130,8,8
     EDITTEXT        IDC_C_AREAY2,219,128,25,12,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Timer:",IDC_STATIC,5,145,21,8
+    LTEXT           "计时器：",IDC_STATIC,5,145,26,8
     EDITTEXT        IDC_C_TIMER,58,143,41,12,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Signal:",IDC_STATIC,5,160,31,8
+    LTEXT           "信号：",IDC_STATIC,5,160,20,8
     EDITTEXT        IDC_C_AISIG,58,158,41,12,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Research:",IDC_STATIC,5,175,34,8
+    LTEXT           "研发：",IDC_STATIC,5,175,20,8
     COMBOBOX        IDC_C_RESEARCH,58,173,186,187,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_C_TAUNT_PLAYER,102,158,45,175,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_C_TAUNT_SET,150,158,66,175,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Signaller:",IDC_STATIC,103,147,31,8
-    LTEXT           "Taunt:",IDC_STATIC,151,147,21,8
+    LTEXT           "信号器：",IDC_STATIC,103,147,31,8
+    LTEXT           "聊天：",IDC_STATIC,151,147,21,8
     EDITTEXT        IDC_C_AIGOAL,219,158,25,12,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Goal:",IDC_STATIC,217,147,21,8
-    LTEXT           "Amount:",IDC_STATIC,5,190,34,8
+    LTEXT           "目标：",IDC_STATIC,217,147,21,8
+    LTEXT           "数量：",IDC_STATIC,5,190,20,8
     EDITTEXT        IDC_C_AMOUNT,58,188,41,13,ES_AUTOHSCROLL
     COMBOBOX        IDC_C_RESTYPE,102,188,142,200,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Reserved:",IDC_STATIC,5,205,33,8
+    LTEXT           "预留：",IDC_STATIC,5,205,20,8
     EDITTEXT        IDC_C_RESERVED,58,203,41,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Reverse Condition",IDC_C_REVERSE,101,203,81,13
+    PUSHBUTTON      "反向条件",IDC_C_REVERSE,101,203,81,13
     EDITTEXT        IDC_C_REVERSEHD,185,203,27,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_C_UNKNOWNHD,215,203,28,12,ES_AUTOHSCROLL
 END
 
-IDD_EFFECT DIALOGEX 0, 0, 399, 289
+IDD_EFFECT DIALOGEX 0, 0, 501, 250
 STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Effect Editor"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "效果编辑器"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    LTEXT           "Type:",IDC_STATIC,3,8,21,8
-    LTEXT           "-1",IDC_E_TYPEVAL,24,8,23,8
+    LTEXT           "类型：",IDC_STATIC,5,8,20,8
+    LTEXT           "-1",IDC_E_TYPEVAL,24,8,21,8
     COMBOBOX        IDC_E_TYPE,47,6,124,354,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Virtual Type:",IDC_STATIC,4,24,47,8
+    LTEXT           "虚拟类型：",IDC_STATIC,5,24,32,8
     COMBOBOX        IDC_E_VTYPE,47,22,124,354,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "OK",1,182,6,35,13
-    PUSHBUTTON      "Cancel",2,182,21,36,13
-    PUSHBUTTON      "Clear All",IDC_E_CLEAR,182,36,36,13
-    LTEXT           "Source:",IDC_STATIC,4,40,26,8
-    LTEXT           "Target:",IDC_STATIC,68,40,24,8
-    LTEXT           "Diplomacy:",IDC_STATIC,122,40,36,8
+    PUSHBUTTON      "确定",1,182,6,35,13
+    PUSHBUTTON      "取消",2,182,21,36,13
+    PUSHBUTTON      "清除所有",IDC_E_CLEAR,182,36,36,13
+    LTEXT           "来源：",IDC_STATIC,5,40,20,8
+    LTEXT           "目标：",IDC_STATIC,69,40,20,8
+    LTEXT           "外交：",IDC_STATIC,123,40,20,8
     COMBOBOX        IDC_E_SPLAY,4,52,45,99,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_E_TPLAY,68,52,45,99,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_E_DSTATE,122,52,49,45,CBS_DROPDOWNLIST | WS_TABSTOP
-    LTEXT           "Selected Units:",IDC_E_NSELECTED,3,72,59,8
+    LTEXT           "选中单位：",IDC_E_NSELECTED,5,72,55,8
     EDITTEXT        IDC_E_UIDS,63,70,136,13,ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "...",IDC_E_OPENSEL,203,70,15,13
-    LTEXT           "Location:",IDC_STATIC,3,88,32,8
+    LTEXT           "目标位置：",IDC_STATIC,5,88,32,8
     EDITTEXT        IDC_E_LOCX,41,86,25,12,ES_AUTOHSCROLL
     LTEXT           ",",IDC_STATIC,69,89,8,8
     EDITTEXT        IDC_E_LOCY,75,86,25,12,ES_AUTOHSCROLL
-    LTEXT           "Location Unit:",IDC_STATIC,109,88,50,10
+    LTEXT           "目标单位：",IDC_STATIC,120,88,33,8
     EDITTEXT        IDC_E_LOCUID,160,86,40,13,ES_NUMBER
     PUSHBUTTON      "...",IDC_E_OPENSEL2,203,86,15,13
-    LTEXT           "Area:",IDC_STATIC,3,105,18,8
-    PUSHBUTTON      "Entire Map",IDC_E_AREA_ALL,41,103,43,13
+    LTEXT           "区域：",IDC_STATIC,5,105,20,8
+    PUSHBUTTON      "整个地图",IDC_E_AREA_ALL,41,103,43,13
     EDITTEXT        IDC_E_AREAX1,87,104,25,12,ES_AUTOHSCROLL
     LTEXT           ",",IDC_STATIC,114,107,8,8
     EDITTEXT        IDC_E_AREAY1,120,104,25,12,ES_AUTOHSCROLL
-    LTEXT           "to",IDC_STATIC,149,106,8,8
+    LTEXT           "至",IDC_STATIC,149,106,8,8
     EDITTEXT        IDC_E_AREAX2,160,104,25,12,ES_AUTOHSCROLL
     LTEXT           ",",IDC_STATIC,187,107,8,8
     EDITTEXT        IDC_E_AREAY2,193,104,25,12,ES_AUTOHSCROLL
-    LTEXT           "Research:",IDC_STATIC,3,121,34,8
+    LTEXT           "研发：",IDC_STATIC,5,121,20,8
     COMBOBOX        IDC_E_RESEARCH,41,120,177,157,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Amount:",IDC_STATIC,3,138,34,8
+    LTEXT           "数量：",IDC_STATIC,5,138,20,8
     EDITTEXT        IDC_E_AMOUNT,41,137,45,13,ES_AUTOHSCROLL
     COMBOBOX        IDC_E_RESTYPE,91,137,127,134,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "HP Cap:",IDC_STATIC,3,155,40,9
+    LTEXT           "HP 上限：",IDC_STATIC,5,155,31,8
     EDITTEXT        IDC_E_MAXHEALTH,41,153,32,12,ES_NUMBER
-    LTEXT           "AI Goal:",IDC_STATIC,3,171,27,9
+    LTEXT           "AI 目标：",IDC_STATIC,5,171,28,8
     EDITTEXT        IDC_E_AIGOAL,41,169,32,12,ES_NUMBER
-    LTEXT           "AI Signal / Shared Goal:",IDC_STATIC,95,171,79,9
+    LTEXT           "AI 信号 / 共享目标：",IDC_STATIC,113,171,59,8
     EDITTEXT        IDC_E_SIGGOAL,176,169,42,12,ES_NUMBER
-    LTEXT           "Sound:",IDC_STATIC,3,187,24,8
+    LTEXT           "音效：",IDC_STATIC,5,187,20,8
     EDITTEXT        IDC_E_SOUND,41,185,99,13,ES_AUTOHSCROLL
     EDITTEXT        IDC_E_SOUNDID,139,185,37,13,ES_NUMBER
-    LTEXT           "Type:",IDC_STATIC,153,204,18,8
+    LTEXT           "类型：",IDC_STATIC,156,203,20,8
     COMBOBOX        IDC_E_UTYPE,176,201,43,84,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Timer:",IDC_STATIC,93,220,20,8
-    EDITTEXT        IDC_E_DTIME,117,217,29,13,ES_AUTOHSCROLL
-    LTEXT           "String:",IDC_STATIC,152,220,21,8
-    EDITTEXT        IDC_E_TEXTID,176,217,43,13
-    LTEXT           "Class:",IDC_STATIC,3,205,20,8
+    LTEXT           "计时器：",IDC_STATIC,149,219,26,8
+    EDITTEXT        IDC_E_DTIME,175,217,42,13,ES_AUTOHSCROLL
+    LTEXT           "字符串：",IDC_STATIC,149,236,26,8
+    EDITTEXT        IDC_E_TEXTID,175,234,43,13
+    LTEXT           "种属：",IDC_STATIC,5,203,20,8
     COMBOBOX        IDC_E_GROUP,41,201,107,88,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Panel:",IDC_STATIC,3,220,34,8
+    LTEXT           "面板：",IDC_STATIC,5,219,20,8
     COMBOBOX        IDC_E_PANEL,41,217,48,63,CBS_DROPDOWN | WS_TABSTOP
-    LTEXT           "Stance:",IDC_STATIC,3,235,34,8
+    LTEXT           "姿态：",IDC_STATIC,5,236,20,8
     COMBOBOX        IDC_E_STANCE,41,234,78,63,CBS_DROPDOWN | WS_TABSTOP
-    EDITTEXT        IDC_E_TEXT,3,249,216,37,ES_MULTILINE | ES_AUTOVSCROLL
-    LTEXT           "Trigger:",IDC_STATIC,224,8,25,8
-    LTEXT           "-1",IDC_E_TRIGID,254,8,25,8
-    COMBOBOX        IDC_E_TRIG,224,17,171,122,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Unit Constant:",IDC_STATIC,224,142,46,9
-    LTEXT           "-1",IDC_E_UCNSTID,274,142,46,9
-    COMBOBOX        IDC_E_UCNST,224,151,171,138,CBS_SIMPLE | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_E_TEXT,223,17,149,86,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN
+    LTEXT           "触发 ID：",IDC_STATIC,377,8,28,8
+    LTEXT           "-1",IDC_E_TRIGID,407,8,25,8
+    COMBOBOX        IDC_E_TRIG,377,17,116,87,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "单位 ID：",IDC_STATIC,377,110,28,8
+    LTEXT           "-1",IDC_E_UCNSTID,407,110,46,9
+    COMBOBOX        IDC_E_UCNST,377,120,116,130,CBS_SIMPLE | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "<->",IDC_E_SWAPST,50,52,17,13
+    EDITTEXT        IDC_E_TRANSLATE,223,120,149,126,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY
+    LTEXT           "文本：",IDC_STATIC,223,8,20,8
+    LTEXT           "参考：",IDC_STATIC,223,110,20,8
 END
 
-IDD_UNITSEL1 DIALOG  0, 0, 186, 90
+IDD_UNITSEL1 DIALOGEX 0, 0, 186, 90
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Select Units..."
-FONT 8, "MS Sans Serif"
+CAPTION "选择单位..."
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,129,50,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,129,66,50,14
+    DEFPUSHBUTTON   "确定",IDOK,129,50,50,14
+    PUSHBUTTON      "取消",IDCANCEL,129,66,50,14
     LISTBOX         IDC_US_UNITS,7,7,108,81,WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Sort By:",IDC_STATIC,119,26,26,8
-    COMBOBOX        IDC_US_SORT,146,24,33,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "分类依据：",IDC_STATIC,121,26,32,8
+    COMBOBOX        IDC_US_SORT,153,24,26,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_US_PLAYER,121,7,58,100,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
 END
 
-IDD_UNITSEL2 DIALOG  0, 0, 186, 104
+IDD_UNITSEL2 DIALOGEX 0, 0, 186, 104
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Select Units..."
-FONT 8, "MS Sans Serif"
+CAPTION "选择单位..."
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,129,50,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,129,66,50,14
+    DEFPUSHBUTTON   "确定",IDOK,129,50,50,14
+    PUSHBUTTON      "取消",IDCANCEL,129,66,50,14
     LISTBOX         IDC_US_UNITS,7,7,108,81,LBS_MULTIPLESEL | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Sort By:",IDC_STATIC,119,26,26,8
-    COMBOBOX        IDC_US_SORT,146,24,33,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "分类依据：",IDC_STATIC,121,26,32,8
+    COMBOBOX        IDC_US_SORT,153,24,26,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_US_PLAYER,121,7,58,100,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Warning: Will ignore selections beyond 22 units, 40 units (userpatch) or 60 units (aohd).",IDC_US_NOTE,8,83,160,18
+    LTEXT           "警告：将会忽略超过 22，40 (Userpatch) \n　　　或 60 (AoHD) 单位的选择。",IDC_US_NOTE,8,83,160,18
 END
 
 IDD_PLAYER DIALOGEX 0, 0, 398, 225
 STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
-CAPTION "Player Details"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+CAPTION "玩家细节"
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    CONTROL         "Player 1",IDC_P_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,45,10
-    CONTROL         "Player 2",IDC_P_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,45,10
-    CONTROL         "Player 3",IDC_P_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,45,10
-    CONTROL         "Player 4",IDC_P_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,45,10
-    CONTROL         "Player 5",IDC_P_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,45,10
-    CONTROL         "Player 6",IDC_P_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,45,10
-    CONTROL         "Player 7",IDC_P_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,45,10
-    CONTROL         "Player 8",IDC_P_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,45,10
-    CONTROL         "GAIA",IDC_P_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,45,10
+    CONTROL         "玩家 1",IDC_P_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,45,10
+    CONTROL         "玩家 2",IDC_P_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,45,10
+    CONTROL         "玩家 3",IDC_P_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,45,10
+    CONTROL         "玩家 4",IDC_P_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,45,10
+    CONTROL         "玩家 5",IDC_P_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,45,10
+    CONTROL         "玩家 6",IDC_P_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,45,10
+    CONTROL         "玩家 7",IDC_P_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,45,10
+    CONTROL         "玩家 8",IDC_P_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,45,10
+    CONTROL         "盖亚",IDC_P_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,45,10
     PUSHBUTTON      "1",IDC_P_SWAPP1,296,38,20,14
-    PUSHBUTTON      "2",IDC_P_SWAPP2,296,54,20,14
-    PUSHBUTTON      "3",IDC_P_SWAPP3,296,70,20,14
-    PUSHBUTTON      "4",IDC_P_SWAPP4,318,38,20,14
+    PUSHBUTTON      "2",IDC_P_SWAPP2,318,38,20,14
+    PUSHBUTTON      "3",IDC_P_SWAPP3,340,38,20,14
+    PUSHBUTTON      "4",IDC_P_SWAPP4,296,54,20,14
     PUSHBUTTON      "5",IDC_P_SWAPP5,318,54,20,14
-    PUSHBUTTON      "6",IDC_P_SWAPP6,318,70,20,14
-    PUSHBUTTON      "7",IDC_P_SWAPP7,340,38,20,14
-    PUSHBUTTON      "8",IDC_P_SWAPP8,340,54,20,14
+    PUSHBUTTON      "6",IDC_P_SWAPP6,340,54,20,14
+    PUSHBUTTON      "7",IDC_P_SWAPP7,296,70,20,14
+    PUSHBUTTON      "8",IDC_P_SWAPP8,318,70,20,14
     PUSHBUTTON      "G",IDC_P_SWAPGA,340,70,20,14
-    CONTROL         "Active",IDC_P_ACTIVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,233,120,36,10
-    LTEXT           "Ore X:",IDC_P_LBL_OREX,183,48,24,8
+    CONTROL         "激活",IDC_P_ACTIVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,233,120,36,10
+    LTEXT           "矿石 X：",IDC_P_LBL_OREX,180,47,26,8
     EDITTEXT        IDC_P_OREX,209,45,41,12,ES_NUMBER
-    LTEXT           "Goods:",IDC_P_LBL_OREY,183,64,24,8
+    LTEXT           "商品：",IDC_P_LBL_OREY,180,63,24,8
     EDITTEXT        IDC_P_OREY,209,61,42,12,ES_NUMBER
-    GROUPBOX        "Diplomacy",IDC_STATIC,62,105,152,86
-    CONTROL         "Allied Victory",IDC_P_AV,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,233,134,56,10
-    LTEXT           "String Table:",IDC_STATIC,232,153,41,8
+    GROUPBOX        "外交",IDC_STATIC,62,105,152,86
+    CONTROL         "联盟胜利",IDC_P_AV,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,233,134,56,10
+    LTEXT           "字符串表：",IDC_STATIC,232,153,41,8
     EDITTEXT        IDC_P_STABLE,277,151,73,12,ES_AUTOHSCROLL
-    LTEXT           "Initial View:",IDC_STATIC,233,172,36,8
+    LTEXT           "初始视角：",IDC_STATIC,233,172,36,8
     EDITTEXT        IDC_P_X,277,170,34,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_P_Y,316,170,34,12,ES_AUTOHSCROLL
-    GROUPBOX        "Unknowns",IDC_STATIC,63,21,95,74
+    GROUPBOX        "未知",IDC_STATIC,63,21,95,74
     LTEXT           "Ver:",IDC_STATIC,77,39,12,10
     LTEXT           "Ss:",IDC_STATIC,77,55,9,10
     EDITTEXT        IDC_P_UF,105,38,38,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_P_US0,105,54,38,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_P_US1,105,70,38,12,ES_AUTOHSCROLL
-    GROUPBOX        "Advanced Options for the Selected Player",IDC_STATIC,53,7,338,210
-    GROUPBOX        "Other Resources",IDC_STATIC,168,21,95,74
-    GROUPBOX        "Swap This Player With",IDC_STATIC,272,21,110,74
-    LTEXT           "Tick = Ally     Gray = Neutral",IDC_STATIC,70,119,91,8
-    CONTROL         "Player 1",IDC_P_DSTATE1,"Button",BS_AUTO3STATE | WS_TABSTOP,70,135,39,10
-    CONTROL         "Player 2",IDC_P_DSTATE2,"Button",BS_AUTO3STATE | WS_TABSTOP,70,153,39,10
-    CONTROL         "Player 3",IDC_P_DSTATE3,"Button",BS_AUTO3STATE | WS_TABSTOP,70,171,39,10
-    CONTROL         "Player 4",IDC_P_DSTATE4,"Button",BS_AUTO3STATE | WS_TABSTOP,117,135,39,10
-    CONTROL         "Player 5",IDC_P_DSTATE5,"Button",BS_AUTO3STATE | WS_TABSTOP,117,153,39,10
-    CONTROL         "Player 6",IDC_P_DSTATE6,"Button",BS_AUTO3STATE | WS_TABSTOP,117,171,39,10
-    CONTROL         "Player 7",IDC_P_DSTATE7,"Button",BS_AUTO3STATE | WS_TABSTOP,165,135,39,10
-    CONTROL         "Player 8",IDC_P_DSTATE8,"Button",BS_AUTO3STATE | WS_TABSTOP,165,153,39,10
-    CONTROL         "Gaia",IDC_P_DSTATE9,"Button",BS_AUTO3STATE | WS_TABSTOP,165,171,39,10
-    GROUPBOX        "Other Options",IDC_STATIC,223,105,159,86
+    GROUPBOX        "选中玩家的高级设置",IDC_STATIC,53,7,338,210
+    GROUPBOX        "其他资源",IDC_STATIC,168,21,95,74
+    GROUPBOX        "将此玩家与...交换",IDC_STATIC,272,21,110,74
+    LTEXT           "选中 = 同盟     灰色 = 中立",IDC_STATIC,70,119,91,8
+    CONTROL         "玩家 1",IDC_P_DSTATE1,"Button",BS_AUTO3STATE | WS_TABSTOP,70,135,39,10
+    CONTROL         "玩家 2",IDC_P_DSTATE2,"Button",BS_AUTO3STATE | WS_TABSTOP,117,135,39,10
+    CONTROL         "玩家 3",IDC_P_DSTATE3,"Button",BS_AUTO3STATE | WS_TABSTOP,165,135,39,10
+    CONTROL         "玩家 4",IDC_P_DSTATE4,"Button",BS_AUTO3STATE | WS_TABSTOP,70,153,39,10
+    CONTROL         "玩家 5",IDC_P_DSTATE5,"Button",BS_AUTO3STATE | WS_TABSTOP,117,153,39,10
+    CONTROL         "玩家 6",IDC_P_DSTATE6,"Button",BS_AUTO3STATE | WS_TABSTOP,165,153,39,10
+    CONTROL         "玩家 7",IDC_P_DSTATE7,"Button",BS_AUTO3STATE | WS_TABSTOP,70,171,39,10
+    CONTROL         "玩家 8",IDC_P_DSTATE8,"Button",BS_AUTO3STATE | WS_TABSTOP,117,171,39,10
+    CONTROL         "盖亚",IDC_P_DSTATE9,"Button",BS_AUTO3STATE | WS_TABSTOP,165,171,39,10
+    GROUPBOX        "其他选项",IDC_STATIC,223,105,159,86
 END
 
-IDD_AI DIALOGEX 0, 0, 543, 321
+IDD_AI DIALOGEX 0, 0, 543, 300
 STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
 CAPTION "AI"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+FONT 8, "微软雅黑", 0, 0, 0x1
 BEGIN
-    CONTROL         "Player 1",IDC_P_AI_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
-    CONTROL         "Player 2",IDC_P_AI_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
-    CONTROL         "Player 3",IDC_P_AI_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
-    CONTROL         "Player 4",IDC_P_AI_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
-    CONTROL         "Player 5",IDC_P_AI_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
-    CONTROL         "Player 6",IDC_P_AI_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
-    CONTROL         "Player 7",IDC_P_AI_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
-    CONTROL         "Player 8",IDC_P_AI_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
-    CONTROL         "GAIA",IDC_P_AI_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
-    LTEXT           "Filename:",IDC_STATIC,54,36,31,8
-    EDITTEXT        IDC_P_AISCRIPT,52,51,482,260,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "玩家 1",IDC_P_AI_SP1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,51,43,10
+    CONTROL         "玩家 2",IDC_P_AI_SP2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,66,43,10
+    CONTROL         "玩家 3",IDC_P_AI_SP3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,81,43,10
+    CONTROL         "玩家 4",IDC_P_AI_SP4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,95,43,10
+    CONTROL         "玩家 5",IDC_P_AI_SP5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,109,43,10
+    CONTROL         "玩家 6",IDC_P_AI_SP6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,123,43,10
+    CONTROL         "玩家 7",IDC_P_AI_SP7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,138,43,10
+    CONTROL         "玩家 8",IDC_P_AI_SP8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,152,43,10
+    CONTROL         "盖亚",IDC_P_AI_SG,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,166,43,10
+    LTEXT           "文件名：",IDC_STATIC,54,36,31,8
+    EDITTEXT        IDC_P_AISCRIPT,52,51,482,239,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
     EDITTEXT        IDC_P_AI,88,34,171,12,ES_AUTOHSCROLL
-    LTEXT           "AI Script:",IDC_STATIC,54,7,30,8
-    LTEXT           "AI Mode:",IDC_STATIC,238,19,30,8
+    LTEXT           "AI 脚本：",IDC_STATIC,54,7,30,8
+    LTEXT           "AI 模式：",IDC_STATIC,238,19,30,8
     LTEXT           "0",IDC_P_AIMODE_VAL,270,19,8,8
-    CONTROL         "Standard",IDC_P_AIMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,288,19,67,8
-    PUSHBUTTON      "Import",IDC_P_IMAI,52,18,29,13
-    PUSHBUTTON      "Export",IDC_P_EXAI,81,18,29,13
-    PUSHBUTTON      "No AI",IDC_P_CLEARAI,110,18,27,13
-    PUSHBUTTON      "RandomGame",IDC_P_RANDOMGAME,137,18,50,13
+    CONTROL         "标准",IDC_P_AIMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,288,19,67,8
+    PUSHBUTTON      "导入",IDC_P_IMAI,52,18,29,13
+    PUSHBUTTON      "导出",IDC_P_EXAI,81,18,29,13
+    PUSHBUTTON      "无 AI",IDC_P_CLEARAI,110,18,27,13
+    PUSHBUTTON      "随机游戏",IDC_P_RANDOMGAME,137,18,50,13
     PUSHBUTTON      "Promisory",IDC_P_PROMISORY,187,18,42,13
 END
 
-
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
-
-1 TEXTINCLUDE 
+IDD_PREFERENCE DIALOGEX 0, 0, 340, 172
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "AOKTS 首选项"
+FONT 8, "微软雅黑", 0, 0, 0x0
 BEGIN
-    "resource.h\0"
+    DEFPUSHBUTTON   "确定",IDOK,113,152,48,14
+    CONTROL         "允许转换 HD 和 UP 效果",IDC_P_ASKCONVERTEFFECTS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,127,85,10
+    CONTROL         "自然语言表述",IDC_P_DISPLAYHINTS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,47,54,10
+    CONTROL         "禁用提示",IDC_P_DISABLETIPS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,256,77,41,10
+    CONTROL         "强制启用提示",IDC_P_FORCEENABLETIPS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,256,97,54,10
+    CONTROL         "显示触发名称",IDC_P_SHOWTRIGGERNAMES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,57,54,10
+    CONTROL         "显示触发功能",IDC_P_SHOWTRIGGERFUNCTION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,67,54,10
+    CONTROL         "显示触发显示顺序",IDC_P_SHOWDISPLAYORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,77,66,10
+    CONTROL         "显示触发 ID",IDC_P_SHOWTRIGGERIDS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,87,49,10
+    CONTROL         "启用所有编辑项",IDC_P_EDITALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,117,60,10
+    CONTROL         "关闭警告",IDC_P_NOWARNINGS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,256,117,41,10
+    CONTROL         "描绘触发条件",IDC_P_DRAWCONDS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,47,54,10
+    CONTROL         "描绘触发效果",IDC_P_DRAWEFFECTS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,57,54,10
+    CONTROL         "描绘触发位置",IDC_P_DRAWLOCATIONS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,67,54,10
+    CONTROL         "描绘地形",IDC_P_DRAWTERRAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,77,41,10
+    CONTROL         "描绘海拔",IDC_P_DRAWELEVATION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,87,41,10
+    CONTROL         "描绘玩家 1",IDC_P_DRAWPLAYER1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,47,46,10
+    CONTROL         "描绘玩家 2",IDC_P_DRAWPLAYER2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,57,46,10
+    CONTROL         "描绘玩家 3",IDC_P_DRAWPLAYER3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,67,46,10
+    CONTROL         "描绘玩家 4",IDC_P_DRAWPLAYER4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,77,46,10
+    CONTROL         "描绘玩家 5",IDC_P_DRAWPLAYER5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,87,46,10
+    CONTROL         "描绘玩家 6",IDC_P_DRAWPLAYER6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,97,46,10
+    CONTROL         "描绘玩家 7",IDC_P_DRAWPLAYER7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,107,46,10
+    CONTROL         "描绘玩家 8",IDC_P_DRAWPLAYER8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,117,46,10
+    CONTROL         "描绘盖亚",IDC_P_DRAWGAIA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,127,41,10
+    GROUPBOX        "通用",IDC_STATIC,6,17,99,130
+    GROUPBOX        "地图预览",IDC_STATIC,114,17,120,130
+    DEFPUSHBUTTON   "取消",IDCANCEL,180,152,48,14
+    GROUPBOX        "开发选项",IDC_STATIC,243,17,89,130
+    LTEXT           "以下选项的意义不明确，可能正在开发之中。\n其作用并非其字面意义所示，建议维持现状。",IDC_STATIC,255,31,74,34
+    LTEXT           "选择地图预览上默认描绘的内容。",IDC_STATIC,122,31,95,8
+    LTEXT           "选择触发编辑器的显示内容。",IDC_STATIC,16,31,83,8
+    LTEXT           "所有变更将从下次启动时起有效。",IDC_STATIC,12,6,95,8
+    CONTROL         "Wololokingdoms 模式",IDC_P_WKMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,107,82,10
 END
-
-3 TEXTINCLUDE 
-BEGIN
-    "\r\n"
-END
-
-2 TEXTINCLUDE 
-BEGIN
-    "#include ""afxres.h""\r\n"
-END
-
-#endif    // APSTUDIO_INVOKED
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1055,8 +1085,17 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 76
+    END
+
+    IDD_CAMPAIGN, DIALOG
+    BEGIN
+    END
+
     IDD_MSGS, DIALOG
     BEGIN
         LEFTMARGIN, 9
@@ -1065,7 +1104,6 @@ BEGIN
         VERTGUIDE, 394
         VERTGUIDE, 527
         TOPMARGIN, 9
-        BOTTOMMARGIN, 313
     END
 
     IDD_PLAYERS, DIALOG
@@ -1075,17 +1113,18 @@ BEGIN
         VERTGUIDE, 18
         VERTGUIDE, 500
         TOPMARGIN, 6
-        BOTTOMMARGIN, 312
     END
 
     IDD_CTY, DIALOG
     BEGIN
-        BOTTOMMARGIN, 311
+    END
+
+    IDD_VICTORY, DIALOG
+    BEGIN
     END
 
     IDD_TERRAIN, DIALOG
     BEGIN
-        BOTTOMMARGIN, 313
     END
 
     IDD_UNITS, DIALOG
@@ -1093,7 +1132,6 @@ BEGIN
         LEFTMARGIN, 10
         RIGHTMARGIN, 531
         TOPMARGIN, 10
-        BOTTOMMARGIN, 311
     END
 
     IDD_DISABLES, DIALOG
@@ -1101,12 +1139,39 @@ BEGIN
         LEFTMARGIN, 10
         RIGHTMARGIN, 533
         TOPMARGIN, 10
-        BOTTOMMARGIN, 311
     END
 
     IDD_TRIGGERS, DIALOG
     BEGIN
         TOPMARGIN, 2
+    END
+
+    IDD_MAPINSPECT, DIALOG
+    BEGIN
+    END
+
+    IDD_TRIGTEXT, DIALOG
+    BEGIN
+    END
+
+    IDD_STATS, DIALOG
+    BEGIN
+    END
+
+    IDD_COND, DIALOG
+    BEGIN
+    END
+
+    IDD_EFFECT, DIALOG
+    BEGIN
+    END
+
+    IDD_UNITSEL1, DIALOG
+    BEGIN
+    END
+
+    IDD_UNITSEL2, DIALOG
+    BEGIN
     END
 
     IDD_PLAYER, DIALOG
@@ -1124,10 +1189,41 @@ BEGIN
         RIGHTMARGIN, 534
         VERTGUIDE, 52
         TOPMARGIN, 7
-        BOTTOMMARGIN, 278
         HORZGUIDE, 51
     END
+
+    IDD_PREFERENCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 332
+        BOTTOMMARGIN, 170
+        BOTTOMMARGIN, 165
+    END
 END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
 #endif    // APSTUDIO_INVOKED
 
 
@@ -1136,36 +1232,36 @@ END
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
-    57600                   "Create a new document"
-    57601                   "Open an existing document"
-    57603                   "Save changes to open file"
-    57604                   "Save changes to a different file"
-    57605                   "Save current datafile to a scenario (useful for hex-editing)"
+    57600                   "创建新文档"
+    57601                   "打开已有文档"
+    57603                   "保存变更至当前文件"
+    57604                   "保存变更至其他文件"
+    57605                   "保存当前数据文件至场景 (用于16进制编辑)"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
-    57634                   "Copy the selection and put it on the Clipboard"
-    57635                   "Cut the selection and put it on the Clipboard"
-    57637                   "Insert Clipboard contents"
-    57643                   "Undo the last action"
+    57634                   "复制选择内容至剪贴板"
+    57635                   "剪切选择内容至剪贴板"
+    57637                   "插入剪贴板内容"
+    57643                   "撤销最后操作"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
-    57664                   "About AOK Trigger Studio"
-    57665                   "Quit the application; prompts to save documents"
-    57670                   "Display Help Table of Contents"
+    57664                   "关于 AOK 触发工作室"
+    57665                   "退出程序; 提示保存文档"
+    57670                   "显示帮助内容列表"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
-    59393                   "Show or hide the status bar"
+    59393                   "显示或隐藏状态栏"
 END
 
-#endif    // English (U.S.) resources
+#endif    // 中文(简体，中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1175,8 +1271,7 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-
-
+
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 

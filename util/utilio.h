@@ -177,7 +177,7 @@ template <class T> void readcs(FILE * in, char * dest, size_t space)
 	printf("Space: %lu\n", space);
 
 	if (len >= space) // need one for NULL term
-		throw std::length_error("readcs: not enough space in dest string");
+		throw std::length_error("读取字串：目标字符串没有足够的空间");
 
 	readbin(in, dest, len);
 	dest[len] = '\0'; // Scenario strings are not always null-terminated.

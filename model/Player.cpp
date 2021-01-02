@@ -19,22 +19,22 @@ int Player::num_players = 9;
 
 const char *Player::names[] =
 {
-	"Player 1",
-	"Player 2",
-	"Player 3",
-	"Player 4",
-	"Player 5",
-	"Player 6",
-	"Player 7",
-	"Player 8",
-	"GAIA",
-	"Player 10",
-	"Player 11",
-	"Player 12",
-	"Player 13",
-	"Player 14",
-	"Player 15",
-	"Player 16"
+	"玩家 1",
+	"玩家 2",
+	"玩家 3",
+	"玩家 4",
+	"玩家 5",
+	"玩家 6",
+	"玩家 7",
+	"玩家 8",
+	"盖亚",
+	"玩家 10",
+	"玩家 11",
+	"玩家 12",
+	"玩家 13",
+	"玩家 14",
+	"玩家 15",
+	"玩家 16"
 };
 
 Player::Player()

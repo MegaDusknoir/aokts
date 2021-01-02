@@ -27,6 +27,7 @@
 #include <stdexcept>
 
 const char datapath_aok[] = "data_aok.xml";
+const char datapath_wk[] = "data_wk.xml";
 const char datapath_swgb[] = "data_swgb.xml";
 
 using std::vector;
@@ -158,10 +159,22 @@ const PerGame Scenario::pgUP =
 	460,
 	514,
 	42, // including 1 undefined
-	20,
+	23,
 	34,
 	8,
-	28,
+	32,
+};
+
+const PerGame Scenario::pgETP =
+{
+	866,
+	460,
+	514,
+	42, // including 1 undefined
+	31,
+	62,
+	8,
+	32,
 };
 
 const PerGame Scenario::pgSWGB =
@@ -265,13 +278,12 @@ const PerGame Scenario::pgAOF6 =
 #define SMSG	" For stability\'s sake, I must discontinue reading the scenario." \
 				"\nPlease contact cyan.spam@gmail.com regarding this error."
 
-const char e_none[]	= "Scenario operation completed successfully.";
-const char e_compr[]	= "Zlib compression/decompression failed.";
-const char e_mem[]	= "I ran out of memory. This probably means "\
-	"that the scenario is invalid or that I got out of sync.";
-const char e_zver[]	= "Your version of zlib1.dll is incompatible. I need at least %s. ";
-const char e_digit[]	= "Oops, my programmer (David Tombs) made an error.\nProblem: %s" SMSG;
-const char e_bitmap[]	= "Sorry, the bitmap data in this scenario appears incomplete." SMSG;
+const char e_none[]	= "场景操作成功完成。";
+const char e_compr[]	= "Zlib 压缩/解压缩失败。";
+const char e_mem[]	= "内存不足。可能因为场景无效或同步错误。";
+const char e_zver[]	= "zlib1.dll版本不兼容。至少需要%s.";
+const char e_digit[]	= "啊，程序员 David Tombs 写了个错误。\n问题：%s" SMSG;
+const char e_bitmap[]	= "抱歉，此场景的位图数据似乎不完整。" SMSG;
 
 inline int truncate(float x)
 {
@@ -312,7 +324,7 @@ void Scenario::reset()
 
 	next_uid = 0;
 	memset(origname, 0, sizeof(origname));
-	strcpy(origname, "Trigger Studio 1.2.0"); // is this needed?
+	strcpy(origname, "触发工作室 1.2.2"); // is this needed?
 
 	for (i = 0; i < 6; i++)
 	{
@@ -429,6 +441,36 @@ char Scenario::StandardAI2[] = "Promisory";
 
 void Scenario::adapt_game() {
 	switch (game) {
+    case ETP:
+		strcpy(header.version, "1.21"); // is this needed?
+	    ver1 = SV1_AOC_SWGB;
+	    ver2 = SV2_AOC_SWGB;
+	    version2 = 1.22F;
+	    trigver=1.6;
+		perversion = &pv1_22;
+		pergame = &pgETP;
+		Condition::types = Condition::types_etp;
+		Condition::types_short = Condition::types_short_etp;
+		Condition::virtual_types = Condition::virtual_types_etp;
+		Effect::types = Effect::types_etp;
+		Effect::types_short = Effect::types_short_etp;
+		Effect::virtual_types = Effect::virtual_types_etp;
+		break;
+    case UP:
+	    strcpy(header.version, "1.21"); // is this needed?
+	    ver1 = SV1_AOC_SWGB;
+	    ver2 = SV2_AOC_SWGB;
+	    version2 = 1.22F;
+	    trigver=1.6;
+		perversion = &pv1_22;
+		pergame = &pgUP;
+		Condition::types = Condition::types_up;
+		Condition::types_short = Condition::types_short_up;
+		Condition::virtual_types = Condition::virtual_types_up;
+		Effect::types = Effect::types_up;
+		Effect::types_short = Effect::types_short_up;
+		Effect::virtual_types = Effect::virtual_types_up;
+		break;
 	case AOE:
 	    strcpy(header.version, "0.00"); // is this needed?
         ver1 = SV1_AOE1;
@@ -473,21 +515,6 @@ void Scenario::adapt_game() {
         Effect::types = Effect::types_aoc;
         Effect::types_short = Effect::types_short_aoc;
         Effect::virtual_types = Effect::virtual_types_aoc;
-        break;
-    case UP:
-	    strcpy(header.version, "1.21"); // is this needed?
-	    ver1 = SV1_AOC_SWGB;
-	    ver2 = SV2_AOC_SWGB;
-	    version2 = 1.22F;
-	    trigver=1.6;
-		perversion = &pv1_22;
-		pergame = &pgUP;
-        Condition::types = Condition::types_aok;
-        Condition::types_short = Condition::types_short_aok;
-        Condition::virtual_types = Condition::virtual_types_up;
-        Effect::types = Effect::types_up;
-        Effect::types_short = Effect::types_short_up;
-        Effect::virtual_types = Effect::virtual_types_up;
         break;
     case AOF:
 	    strcpy(header.version, "1.21"); // is this needed?
@@ -696,7 +723,7 @@ Game Scenario::open(const char *path, const char *dpath, Game version)
 	if (!header.read(scx.get()))
 	{
 		printf_log("Invalid scenario header in %s\n", path);
-		throw runtime_error("Not a valid scenario.");
+		throw runtime_error("不是有效的场景文件。");
 	}
 
 	printf_log("Outside Header Version %g: ", version2);
@@ -721,7 +748,7 @@ Game Scenario::open(const char *path, const char *dpath, Game version)
 		printf_log("Unrecognized scenario version: %s.\n", header.version);
 		game = UNKNOWN;
 		pergame = NULL;
-		throw bad_data_error("unrecognized format version");
+		throw bad_data_error("无法识别的格式版本。");
 	}
 
 	/* Inflate and Read Compressed Data */
@@ -733,7 +760,7 @@ Game Scenario::open(const char *path, const char *dpath, Game version)
 	}
 
 	if (c_len <= 0)
-		throw bad_data_error("no compressed data");
+		throw bad_data_error("无压缩数据");
 
 	printf_log("Allocating %d bytes for compressed data buffer.\n", c_len);
 
@@ -751,19 +778,19 @@ Game Scenario::open(const char *path, const char *dpath, Game version)
 	switch (code)
 	{
 	case Z_STREAM_ERROR:
-		throw logic_error("internal logic fault: zlib stream error");
+		throw logic_error("内部逻辑故障：zlib流错误");
 
 	case Z_DATA_ERROR:
-		throw bad_data_error("invalid compressed data");
+		throw bad_data_error("无效的压缩数据");
 
 	case Z_MEM_ERROR:
-		throw std::bad_alloc("not enough memory for decompression");
+		throw "内存不足，无法解压缩";
 
 	case Z_BUF_ERROR:
-		throw logic_error("internal logic fault: zlib buffer error");
+		throw logic_error("内部逻辑故障：zlib缓冲区错误");
 
 	case Z_VERSION_ERROR:
-		throw runtime_error("Your version of zlib1.dll is incompatible. I need " ZLIB_VERSION);
+		throw runtime_error("zlib1.dll版本不兼容。需要 " ZLIB_VERSION);
 	}
 
 	read_data(dpath);
@@ -772,7 +799,10 @@ Game Scenario::open(const char *path, const char *dpath, Game version)
         game = UP;
 	    adapt_game();
 	}
-
+	if ( (game == AOC || game == UP) && is_etp()) {
+        game = ETP;
+	    adapt_game();
+	}
 	return game;
 }
 
@@ -966,18 +996,18 @@ int Scenario::save(const char *path, const char *dpath, bool write, Game convert
 
 	case Z_STREAM_ERROR:
 		code = ERR_digit;
-		sprintf(msg, e_digit, "zlib stream error");
+		sprintf(msg, e_digit, "zlib流错误");
 		break;
 
 	case Z_MEM_ERROR:
 		code = ERR_mem;
-		printf("Could not allocate memory for compression stream.\n");
+		printf("无法为压缩流分配内存。\n");
 		strcpy(msg, e_mem);
 		break;
 
 	case Z_BUF_ERROR:
 		code = ERR_digit;
-		sprintf(msg, e_digit, "zlib buffer error.");
+		sprintf(msg, e_digit, "zlib缓冲区错误。");
 		break;
 
 	case Z_VERSION_ERROR:
@@ -986,7 +1016,7 @@ int Scenario::save(const char *path, const char *dpath, bool write, Game convert
 		break;
 	default:
 		code = ERR_unknown;
-		strcpy(msg, "Unknown error!");
+		strcpy(msg, "未知错误！");
 		break;
 	}
 
@@ -1042,6 +1072,7 @@ void Scenario::_header::write(FILE *scx, const SString *instr, long players, Gam
 		break;
 	case AOC:
 	case UP:
+	case ETP:
 	case SWGB:
 	case SWGBCC:
 	case AOHD:
@@ -1165,6 +1196,45 @@ bool Scenario::is_userpatch()
     return is_userpatch;
 }
 
+bool Scenario::is_etp()
+{
+	long num = triggers.size();
+
+	if (num < 1) {
+	    return false;
+	}
+
+	Trigger *trig = &(*triggers.begin());
+
+    bool is_etp = false;
+
+    // triggers
+	long i = num;
+	while (i--)
+	{
+	    // conditions
+	    for (vector<Condition>::iterator iter = trig->conds.begin(); iter != trig->conds.end(); ++iter) {
+	        if (iter->type >= 22 && iter->type <= 29) {
+	            is_etp = true;
+				break;
+	        }
+		}
+	    // effects
+	    for (vector<Effect>::iterator iter = trig->effects.begin(); iter != trig->effects.end(); ++iter) {
+	        if (iter->type >= 34 && iter->type <= 61) {
+	            is_etp = true;
+				break;
+	        }
+		}
+		trig++;
+	}
+
+    if (game != AOC && game != UP && game != ETP )
+        is_etp = false;
+
+    return is_etp;
+}
+
 void Scenario::next_sect(FILE * in) {
 	//readunk(dc2in.get(), sect, "Resources sect begin", true);
 
@@ -1250,6 +1320,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 		case AOF4:
 		case AOHD6:
 		case AOF6:
+		case ETP:
 		case UP:
 		    game = AOC;
 		    break;
@@ -1295,7 +1366,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 	default:
 		printf_log("Unrecognized scenario version2: %f.\n", version2);
 		game = UNKNOWN;
-		throw bad_data_error("unrecognized format version");
+		throw bad_data_error("无法识别的格式版本");
 	}
 
 	adapt_game();
@@ -1310,7 +1381,10 @@ void Scenario::read_data(const char *path)	//decompressed data
 		    esdata.load(datapath_swgb);
 		    break;
 	    default:
-		    esdata.load(datapath_aok);
+			if ( (scen.game == AOC || scen.game == UP || scen.game == ETP) && setts.wkmode )
+				esdata.load(datapath_wk);
+			else
+				esdata.load(datapath_aok);
 	    }
 	}
 	catch (std::exception& ex)
@@ -1318,8 +1392,8 @@ void Scenario::read_data(const char *path)	//decompressed data
 		printf_log("Could not load data: %s\n", ex.what());
 		printf_log("Path: %s\n", global::exedir);
 		MessageBox(NULL,
-			"Could not read Genie Data from xml file.",
-			"Error", MB_ICONERROR);
+			"无法从XML文件读取Genie数据。",
+			"错误", MB_ICONERROR);
 	}
 
 	FEP(p)
@@ -1426,11 +1500,11 @@ void Scenario::read_data(const char *path)	//decompressed data
 		p->read_aimode(dc2in.get());
     }
     catch (const std::length_error& e) {
-        MessageBox(NULL, "VC, CTY or AI file corrupted. Skipping to next section.", "Error", MB_ICONERROR);
+        MessageBox(NULL, "VC、CTY或AI文件已损坏。跳到下一节。", "错误", MB_ICONERROR);
         //cerr << e.what();
     }
     catch (...) {
-        MessageBox(NULL, "VC, CTY or AI file corrupted. Skipping to next section.", "Error", MB_ICONERROR);
+        MessageBox(NULL, "VC、CTY或AI文件已损坏。跳到下一节。", "错误", MB_ICONERROR);
     }
 
     next_sect(dc2in.get());
@@ -1463,7 +1537,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 	}
 	}
     catch (...) {
-        MessageBox(NULL, "Error reading player resources, number or color. Skipping to next section.", "Error", MB_ICONERROR);
+        MessageBox(NULL, "读取玩家资源、编号或颜色时出错。跳到下一节。", "错误", MB_ICONERROR);
     }
 
 	/* Global Victory */
@@ -1486,7 +1560,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 	SKIP(dc2in.get(), 0x2D00);	// 11520 should I check this? probably.
 	}
     catch (...) {
-        MessageBox(NULL, "Error reading global victory section. Skipping to next section.", "Error", MB_ICONERROR);
+        MessageBox(NULL, "读取全局胜利部分时出错。跳到下一节。", "错误", MB_ICONERROR);
     }
 
 	//readunk(dc2in.get(), sect, "diplomacy sect middle", true);
@@ -1528,7 +1602,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 		p->read_age(dc2in.get());
 	}
     catch (...) {
-        MessageBox(NULL, "Error reading global victory section. Skipping to next section.", "Error", MB_ICONERROR);
+        MessageBox(NULL, "读取全局胜利部分时出错。跳到下一节。", "错误", MB_ICONERROR);
     }
 
 	//* Map */
@@ -1607,7 +1681,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 
 		// verify just the first one because I'm lazy
 		if (t_order.front() > n_trigs)
-			throw bad_data_error("Trigger order list corrupted. Possibly out of sync.");
+			throw bad_data_error("触发顺序列表已损坏。可能同步错误。");
 	}
 
     if (ver2 == SV2_AOK) {
@@ -1647,7 +1721,7 @@ void Scenario::read_data(const char *path)	//decompressed data
 	}
 
 	if (fgetc(dc2in.get()) != EOF)
-		throw bad_data_error("Unrecognized data at end.");
+		throw bad_data_error("无法识别的尾端。");
 
     auto_upgrade_hd4();
     //auto_upgrade_hd6();
@@ -2820,7 +2894,7 @@ AOKTS_ERROR Scenario::swap_trigger_names_descriptions()
 	    long i = num;
 	    while (i--)
 	    {
-	        char buffer[MAX_TRIGNAME];
+	        char buffer[MAX_TRIGNAME + 1]; //源码又一次数组越界= =
 		    char *cstr = trig->description.unlock(MAX_TRIGNAME);
 	        strncpy ( buffer, cstr, MAX_TRIGNAME );
 	        buffer[MAX_TRIGNAME] = '\0';

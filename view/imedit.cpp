@@ -16,10 +16,14 @@
 
 int IM_msel = 0;
 int IM_csel = 0;
+const char warningChangingDataVersion[] =
+"数据版本变更将在下次载入场景操作时生效。";
 
 void LoadIM(HWND dialog)
 {
-	ENABLE_WND(IDC_M_USERPATCH, scen.game == AOC || scen.game == UP);
+	ENABLE_WND(IDC_M_USERPATCH, scen.game == AOC || scen.game == UP || scen.game == ETP);
+	ENABLE_WND(IDC_M_ETP, scen.game == AOC || scen.game == UP || scen.game == ETP);
+	ENABLE_WND(IDC_M_WOLOLO, scen.game == AOC || scen.game == UP || scen.game == ETP);
 
 	SetDlgItemText(dialog, IDC_M_MSGS, scen.messages[IM_msel].c_str());
 	SetDlgItemText(dialog, IDC_M_CINEM, scen.cinem[IM_csel]);
@@ -31,7 +35,9 @@ void LoadIM(HWND dialog)
 	SetDlgItemInt(dialog, IDC_G_NEXTID, scen.next_uid, FALSE);
 	SetDlgItemFloat(dialog, IDC_G_X, scen.editor_pos[0]);
 	SetDlgItemFloat(dialog, IDC_G_Y, scen.editor_pos[1]);
-	CheckDlgButton(dialog, IDC_M_USERPATCH, scen.game == UP);
+	CheckDlgButton(dialog, IDC_M_USERPATCH, scen.game == UP || scen.game == ETP);
+	CheckDlgButton(dialog, IDC_M_WOLOLO, setts.wkmode);
+	CheckDlgButton(dialog, IDC_M_ETP, scen.game == ETP);
 
     size_t max_checkboxes = IDC_DEP_AOAK - IDC_DEP_AOK + 1;
     ENABLE_WND(IDC_M_DSFRAME, scen.header.header_type == HT_AOE2SCENARIO);
@@ -87,7 +93,7 @@ void ExportBitmap(HWND dialog)
 		ofn.nMaxFile = _MAX_PATH;
 		ofn.lpstrFileTitle = NULL;
 		ofn.lpstrInitialDir = setts.BasePath;
-		ofn.lpstrTitle = "Export Bitmap";
+		ofn.lpstrTitle = "导出位图";
 		ofn.Flags = OFN_NOREADONLYRETURN;
 		ofn.lpstrDefExt = "bmp";
 
@@ -95,10 +101,40 @@ void ExportBitmap(HWND dialog)
 			success = scen.export_bmp(path);
 
 		if (!success)
-			MessageBox(dialog, "Bitmap export failed.", "AOKTS Warning", MB_ICONWARNING);
+			MessageBox(dialog, "导出位图失败。", "AOKTS 警告", MB_ICONWARNING);
 	}
 	else
-		MessageBox(dialog, "No bitmap to export. Duh?", "Bitmap Export", MB_OK);
+		MessageBox(dialog, "没有位图可以导出。", "位图导出", MB_OK);
+}
+
+std::string TimeFormat(char * ctime) {
+	std::string temp;
+	char * time[5] = { "Thu", "Jan", "01", "08:00:00", "1970" };
+	time[0] = strtok(ctime," ");
+	for (int i=1; i<4; i++) {
+		time[i] = strtok(NULL," ");
+	}
+	time[4] = strtok(NULL,"\n");
+	if (strcmp(time[1], "Jan") == 0) time[1] = "01";
+	else if (strcmp(time[1], "Feb") == 0) time[1] = "02";
+	else if (strcmp(time[1], "Mar") == 0) time[1] = "03";
+	else if (strcmp(time[1], "Apr") == 0) time[1] = "04";
+	else if (strcmp(time[1], "May") == 0) time[1] = "05";
+	else if (strcmp(time[1], "Jun") == 0) time[1] = "06";
+	else if (strcmp(time[1], "Jul") == 0) time[1] = "07";
+	else if (strcmp(time[1], "Aug") == 0) time[1] = "08";
+	else if (strcmp(time[1], "Sep") == 0) time[1] = "09";
+	else if (strcmp(time[1], "Oct") == 0) time[1] = "10";
+	else if (strcmp(time[1], "Nov") == 0) time[1] = "11";
+	else if (strcmp(time[1], "Dec") == 0) time[1] = "12";
+	temp.append(time[4]);
+	temp.append("年");
+	temp.append(time[1]);
+	temp.append("月");
+	temp.append(time[2]);
+	temp.append("日，");
+	temp.append(time[3]);
+	return temp;
 }
 
 void IMsgs_Reset(HWND dialog)
@@ -119,7 +155,7 @@ void IMsgs_Reset(HWND dialog)
 	sprintf(string, "%.2f", scen.trigver);
 	SetDlgItemText(dialog, IDC_G_TRIGSYSVER, string);
 	SetDlgItemText(dialog, IDC_G_GAME, gameName(scen.game));
-	SetDlgItemText(dialog, IDC_G_TIMESTAMP, _ctime32(&scen.header.timestamp));
+	SetDlgItemText(dialog, IDC_G_TIMESTAMP, TimeFormat(_ctime32(&scen.header.timestamp)).c_str());
 	SetDlgItemText(dialog, IDC_G_ONAME, scen.origname);
 	SetDlgItemFloat(dialog, IDC_G_X, scen.editor_pos[0]);
 	SetDlgItemFloat(dialog, IDC_G_Y, scen.editor_pos[1]);
@@ -170,12 +206,41 @@ void IMsgs_HandleCommand(HWND dialog, WORD code, WORD id, HWND control)
 		case IDC_M_USERPATCH:
 	        if (scen.game == AOC && IsDlgButtonChecked(dialog, IDC_M_USERPATCH)) {
 	            scen.game = UP;
-	        } else if (scen.game == UP && !IsDlgButtonChecked(dialog, IDC_M_USERPATCH)) {
+	        }
+			else if (scen.game == UP && !IsDlgButtonChecked(dialog, IDC_M_USERPATCH)) {
 	            if (!scen.is_userpatch()) {
 	                scen.game = AOC;
                 } else {
                     CheckDlgButton(dialog, IDC_M_USERPATCH, BST_CHECKED);
-			        MessageBox(dialog, "Can't disable. Scenario uses userpatch-only features.\nTry converting scenario.", "AOKTS Warning", MB_ICONWARNING);
+			        MessageBox(dialog, "无法禁用。场景含有 Userpatch 效果。\n请尝试转换场景。", "AOKTS 警告", MB_ICONWARNING);
+                }
+	        }
+			else if (scen.game == ETP && !IsDlgButtonChecked(dialog, IDC_M_USERPATCH)) {
+				CheckDlgButton(dialog, IDC_M_USERPATCH, BST_CHECKED);
+			    MessageBox(dialog, "无法禁用。请先禁用 ETP 拓展。", "AOKTS 警告", MB_ICONWARNING);
+			}
+	        scen.adapt_game();
+		    IMsgs_Reset(dialog);
+		    break;
+		case IDC_M_WOLOLO:
+			MessageBox(dialog, warningChangingDataVersion, "数据库切换",MB_ICONWARNING | MB_OK);
+	        if (!setts.wkmode && IsDlgButtonChecked(dialog, IDC_M_WOLOLO)) {
+	            setts.wkmode = 1;
+	        } else if (setts.wkmode && !IsDlgButtonChecked(dialog, IDC_M_WOLOLO)) {
+	            setts.wkmode = 0;
+	        }
+	        //scen.adapt_game();
+		    break;
+		case IDC_M_ETP:
+			if ( (scen.game == AOC || scen.game == UP) && IsDlgButtonChecked(dialog, IDC_M_ETP)) {
+	            scen.game = ETP;
+	        }
+			else if (scen.game == ETP && !IsDlgButtonChecked(dialog, IDC_M_ETP)) {
+	            if (!scen.is_etp()) {
+	                scen.game = UP;
+                } else {
+                    CheckDlgButton(dialog, IDC_M_ETP, BST_CHECKED);
+			        MessageBox(dialog, "无法禁用。场景含有 ETP 效果。", "AOKTS 警告", MB_ICONWARNING);
                 }
 	        }
 	        scen.adapt_game();
